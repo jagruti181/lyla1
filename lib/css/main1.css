@@ -130,10 +130,12 @@ input:focus {
 .socialicons {
     width: 60px;
     margin-top: 22px;
+    -webkit-transition: all 0.5s;
 }
 .socialicons:hover {
     -webkit-filter: grayscale(0);
     opacity: 1;
+    zoom: 1.1;
 }
 .container-fluid-non-responsive {
     padding-right: 15px;
@@ -192,12 +194,12 @@ input:focus {
     padding-top: 10px;
     margin-top: -9px;
     color: #96f3f3;
-    font-weight: 300;
+    font-weight: bold;
     font-size: 150%;
 }
 .protitle h5:hover,
 .proprice h5:hover {
-    color: #FFABD3;
+    color: #96f3f3;
 }
 .protitle a,
 .proprice a {
@@ -400,6 +402,7 @@ button.home-btn:focus {
     background-repeat: no-repeat;
     position: absolute;
     right: -6px;
+    visibility: hidden;
 }
 .discountprice {
     text-decoration: line-through;
@@ -517,6 +520,7 @@ h5.pricecolor {
 .product .img1,
 .product .img2 {
     width: 300px;
+    overflow: hidden;
     height: 300px;
 }
 .megamenu img {

@@ -1,4 +1,4 @@
-var adminurl='http://localhost/lyla/index.php/json/';
+var adminurl='http://zibacollection.co.uk/lyla/index.php/json/';
 var service = angular.module('Service', []);
 service.factory('MainJson',function($http)
 {

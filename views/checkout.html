@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="col-xs-4">
 
-                                    <input type="text" placeholder="Country" ng-model="form.billingcountry" class="form-control" required>
+                                    <input type="text" placeholder="Country" ng-model="form.billingcountry" ng-change="free(form.billingcountry)" class="form-control" required>
                                 </div>
                             </div>
 
@@ -132,6 +132,7 @@
                                 <input type="radio" name="1" ng-model="form.shipdifferent" value="1">Ship to this address
                                 <br>
                                 <input type="radio" name="1" ng-model="form.shipdifferent" value="2">Ship to different address</p>
+                                <button class="btn btn-default pull-right" ng-click="continueshipping()">Continue</button>
                             <div class="clearfix"></div>
                         </div>
                             
@@ -229,6 +230,7 @@
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
           <h3>Order Review</h3>
         </a>
+            <h4>{{free}}</h4>
       </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse in">

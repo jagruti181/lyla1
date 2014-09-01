@@ -637,10 +637,19 @@ phonecatControllers.controller('checkout',
         };
         MainJson.getcart().success(showcart);
         var getsubtotal=function(data, status){
+            console.log(data);
+            
             $scope.subtotal=data;
         };
         MainJson.totalcart().success(getsubtotal);
-        
+// free
+        $scope.free=function(country){
+            if(parseInt($scope.subtotal) >= parseInt(5))
+            {
+                alert("free");
+            }
+        };
+// free
         $scope.deletecart = function (id) {
             $scope.subtotal = MainJson.deletecart(id);
         };
