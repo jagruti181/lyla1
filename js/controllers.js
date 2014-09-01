@@ -452,7 +452,9 @@ phonecatControllers.controller('newsletter',
         var newslettersaved=function(data, status){
             if(data=="true")
             {
-                alert("Thank you for subscribing.");
+                //alert("Thank you for subscribing.");
+                TemplateService.lightboximage="img/newsletterpopup.jpg";
+                console.log("now popup should come.");
             }
             else
             {
@@ -496,6 +498,16 @@ phonecatControllers.controller('search',
 //search
 
     });
+
+
+phonecatControllers.controller('lightbox',
+                               function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+                                   $scope.removelightbox=function()
+                                   {
+                                        TemplateService.lightboximage="";  
+                                   };
+                               });
+
 
 
 
@@ -694,7 +706,8 @@ phonecatControllers.controller('slider',
             if(data!="false")
             {
                // alert("Order Placed");
-                $location.url("/xoxo");
+                TemplateService.lightboximage="img/giveawaypopup.jpg";
+                //$location.url("/xoxo");
                 MainJson.placelimitedemail(limited);
             }else{
                 alert("You Already Subscribed To This Offer");

@@ -9,6 +9,7 @@ templateservicemod.service('TemplateService', function () {
     this.content = "views/content.html";
     this.footer = "views/footer.html";
     this.firstload = "wow";
+    this.lightboximage = "";
     this.changetitle = function (newtitle) {
         this.title = newtitle;
     };

@@ -712,3 +712,17 @@ div.megamenu.megamenu2 {
 .pronew2 img {
     width: 35px;
 }
+.lightbox {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+}
+.lightbox img {
+    height: 70%;
+    margin: 5% auto;
+}

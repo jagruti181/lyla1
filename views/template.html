@@ -3,3 +3,6 @@
 <div ng-include src="template.content"></div>
 <div ng-include src="template.slider"></div>
 <div ng-include src="template.footer"></div>
+<div class="lightbox" ng-show="template.lightboximage != ''" ng-controller="lightbox">
+    <img src="{{template.lightboximage}}" ng-click="removelightbox();">
+</div>
