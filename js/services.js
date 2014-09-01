@@ -17,6 +17,7 @@ service.factory('MainJson',function($http)
             return $http({
                 url: adminurl+'placelimitedemail',
                 method: "POST",
+                withCredentials: true,
                data: {'limited':limited}
             });
 		},
@@ -24,6 +25,7 @@ service.factory('MainJson',function($http)
             return $http({
                 url: adminurl+'placelimited',
                 method: "POST",
+                withCredentials: true,
                data: {'limited':limited}
             });
 		},
@@ -31,59 +33,60 @@ service.factory('MainJson',function($http)
             return $http({
                 url: adminurl+'placeorder',
                 method: "POST",
+                withCredentials: true,
                data: {'form':form}
             });
 		},
 		seach: function(search) {
-		 	return $http.post(adminurl+'searchbyname?search='+search,{});
+            return $http.post(adminurl+'searchbyname?search='+search,{},{withCredentials: true});
 		},
 		showwishlist: function(user) {
-		 	return $http.post(adminurl+'showwishlist?user='+user,{});
+            return $http.post(adminurl+'showwishlist?user='+user,{},{withCredentials: true});
 		},
 		signupemail: function(email) {
-		 	return $http.post(adminurl+'signupemail?email='+email,{});
+            return $http.post(adminurl+'signupemail?email='+email,{},{withCredentials: true});
 		},
 		orderemail: function(email,orderid) {
-		 	return $http.post(adminurl+'orderemail?email='+email+'&orderid='+orderid,{});
+            return $http.post(adminurl+'orderemail?email='+email+'&orderid='+orderid,{},{withCredentials: true});
 		},
 		logout: function() {
-		 	return $http.post(adminurl+'logout',{});
+            return $http.post(adminurl+'logout',{},{withCredentials: true});
 		},
 		usercontact: function(id,name,email,phone,comment) {
-		 	return $http.post(adminurl+'usercontact?id='+id+'&name='+name+'&email='+email+'&phone='+phone+'&comment='+comment,{});
+            return $http.post(adminurl+'usercontact?id='+id+'&name='+name+'&email='+email+'&phone='+phone+'&comment='+comment,{},{withCredentials: true});
 		},
 		newsletter: function(id,email,status) {
-		 	return $http.post(adminurl+'newsletter?id='+id+'&email='+email+"&status="+status,{});
+            return $http.post(adminurl+'newsletter?id='+id+'&email='+email+"&status="+status,{},{withCredentials: true});
 		},
 		addtowishlist: function(user,product) {
-		 	return $http.post(adminurl+'addtowishlist?user='+user+'&product='+product,{});
+            return $http.post(adminurl+'addtowishlist?user='+user+'&product='+product,{},{withCredentials: true});
 		},
 		authenticate: function() {
-		 	return $http.post(adminurl+'authenticate',{});
+            return $http.post(adminurl+'authenticate',{},{withCredentials: true});
 		},
 		registeruser: function(firstname,lastname,email,password) {
-		 	return $http.post(adminurl+'registeruser?firstname='+firstname+'&lastname='+lastname+'&email='+email+'&password='+password,{});
+            return $http.post(adminurl+'registeruser?firstname='+firstname+'&lastname='+lastname+'&email='+email+'&password='+password,{},{withCredentials: true});
 		},
 		registerwholesaler: function(firstname,lastname,phone,email,password) {
-		 	return $http.post(adminurl+'registewholesaler?firstname='+firstname+'&lastname='+lastname+'&phone='+phone+'&email='+email+'&password='+password,{});
+            return $http.post(adminurl+'registewholesaler?firstname='+firstname+'&lastname='+lastname+'&phone='+phone+'&email='+email+'&password='+password,{},{withCredentials: true});
 		},
 		loginuser: function(email,password) {
-		 	return $http.post(adminurl+'loginuser?email='+email+'&password='+password,{});
+            return $http.post(adminurl+'loginuser?email='+email+'&password='+password,{},{withCredentials: true});
 		},
         getnavigation: function() {
-		 	return $http.post(adminurl+'getnavigation');
+            return $http.post(adminurl+'getnavigation',{},{withCredentials: true});
 		},
 		getproductdetails: function(product,category) {
-		 	return $http.get(adminurl+'getproductdetails',{params:{product:product}});
+            return $http.get(adminurl+'getproductdetails',{params:{product:product}},{withCredentials: true});
 		},
 		getproductbycategory: function(category) {
-		 	return $http.get(adminurl+'getproductbycategory',{params:{category:category}});
+            return $http.get(adminurl+'getproductbycategory',{params:{category:category}},{withCredentials: true});
 		},
 		getusercart: function(user) {
-		 	return $http.get(adminurl+'getusercart?user='+user,{});
+            return $http.get(adminurl+'getusercart?user='+user,{},{withCredentials: true});
 		},
         addtocart: function(id,name,price,quantity) {
-            return $http.post(adminurl+'addtocart?product='+id+'&productname='+name+"&quantity="+quantity+"&price="+price,{});
+            return $http.post(adminurl+'addtocart?product='+id+'&productname='+name+"&quantity="+quantity+"&price="+price,{},{withCredentials: true});
           /*
             price=parseFloat(price);
             quantity=parseInt(quantity);
@@ -114,15 +117,15 @@ service.factory('MainJson',function($http)
            */ 
 		},
         getcart: function () {
-            return $http.get(adminurl+'showcart',{});
+            return $http.post(adminurl+'showcart',{},{withCredentials: true});
             //return cart;
         },
         gettotalcart: function () {
-            return $http.get(adminurl+'totalitemcart',{});
+            return $http.post(adminurl+'totalitemcart',{},{withCredentials: true});
             //return cart;
         },
         totalcart: function () {
-            return $http.get(adminurl+'totalcart',{});
+            return $http.post(adminurl+'totalcart',{},{withCredentials: true});
             //return cart;
         },
         deletecart: function (id) {
@@ -143,7 +146,7 @@ service.factory('MainJson',function($http)
                 {
                     cart[i].quantity=quantity;
                     console.log(cart[i].name);
-                    returntwo.state=$http.post(adminurl+'addtocart?user='+uid+'&product='+id+"&quantity="+cart[i].quantity,{});
+                    returntwo.state=$http.post(adminurl+'addtocart?user='+uid+'&product='+id+"&quantity="+cart[i].quantity,{},{withCredentials: true});
                 }
                 
             }
