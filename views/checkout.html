@@ -1,0 +1,287 @@
+<div class="content">
+    <div class="contenttop">
+        <div class="row">
+            <div class="col-xs-4">
+                <span class="breadcrumb">
+							Home / Checkout
+							</span>
+            </div>
+
+        </div>
+
+        <div class="container billing">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          <h3>Checkout Method</h3>
+        </a>
+      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="row billing">
+                                <div class="col-xs-6">
+                                    <h4>CHECKOUT AS A GUEST OR REGISTER</h4>
+                                    <p>Register with us for future convenience:</p>
+                                    <p>
+                                        <input type="radio" name="1" >Checkout as guest
+                                        <br>
+                                        <input type="radio" name="1">Register
+                                    </p>
+                                    <hr>
+                                    <h5>REGISTER AND SAVE TIME!</h5>
+                                    <p>Register with us for future convenience:</p>
+                                    <ul>
+                                        <li>Fast and easy check out</li>
+                                        <li>Easy access to your order history and status</li>
+                                    </ul>
+                                    <button class="btn btn-default pull-right" ng-click="continuebilling()">Continue</button>
+                                    <!--{{form}}-->
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-xs-5 col-xs-offset-1" ng-show="(isloggedin=='0')">
+                                    <h4>LOGIN</h4>
+                                    <input type="text" placeholder="Username or email" class="form-control" required>
+                                    <br>
+                                    <br>
+                                    <input type="password" placeholder="Password" class="form-control" required>
+                                    <br>
+                                    <br>
+                                    <a href="">Forgot password ?</a>
+                                    <button href class="btn btn-default pull-right">Login</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" ng-show="(billinginfo=='1')">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          <h3>Billing Information</h3>
+        </a>
+      </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse in">
+                        <div class="panel-body billing-info">
+
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <input type="text" placeholder="First Name" ng-model="form.firstname" class="form-control" required>
+                                </div>
+                                <div class="col-xs-4">
+
+                                    <input type="text" placeholder="Last Name" ng-model="form.lastname" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <input type="text" placeholder="Company" ng-model="form.company" class="form-control">
+
+                                </div>
+                                <div class="col-xs-4">
+
+                                    <input type="email" placeholder="Email" ng-model="form.email" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <textarea name="" id="" class="form-control" ng-model="form.billingaddress" placeholder="Address"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <input type="text" placeholder="City" ng-model="form.billingcity" class="form-control" required>
+
+                                </div>
+                                <div class="col-xs-4">
+
+                                    <input type="text" placeholder="State/Province" ng-model="form.billingstate" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <input type="text" placeholder="Zip/Postal Code" ng-model="form.billingpincode" class="form-control" required>
+
+                                </div>
+                                <div class="col-xs-4">
+
+                                    <input type="text" placeholder="Country" ng-model="form.billingcountry" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <input type="tel" placeholder="Telephone" ng-model="form.phone" class="form-control" required>
+
+                                </div>
+                                <div class="col-xs-4">
+
+                                    <input type="tel" placeholder="Fax" ng-model="form.fax" class="form-control">
+                                </div>
+                            </div>
+
+                            <p>
+                                <input type="radio" name="1" ng-model="form.shipdifferent" value="1">Ship to this address
+                                <br>
+                                <input type="radio" name="1" ng-model="form.shipdifferent" value="2">Ship to different address</p>
+                            <div class="clearfix"></div>
+                        </div>
+                            
+                        
+                        <div class="panel-body billing-info" ng-show="form.shipdifferent==2">
+                            <h4>Ship To This Address</h4>
+
+                            
+
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <textarea name="" id="" class="form-control" ng-model="form.shippingaddress" placeholder="Address"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <input type="text" placeholder="City" ng-model="form.shippingcity" class="form-control" required>
+
+                                </div>
+                                <div class="col-xs-4">
+
+                                    <input type="text" placeholder="State/Province" ng-model="form.shippingstate" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <input type="text" placeholder="Zip/Postal Code" ng-model="form.shippingpincode" class="form-control" required>
+
+                                </div>
+                                <div class="col-xs-4">
+
+                                    <input type="text" placeholder="Country" ng-model="form.shippingcountry" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <p>
+                            <button class="btn btn-default pull-right" ng-click="continueshipping()">Continue</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" ng-show="(shippinginfo=='1')">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          <h3>Shipping Information</h3>
+        </a>
+      </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <strong>Free UK Delivery</strong>
+
+                            <p>
+                                <input type="radio" name="2">Free UK Delivery £0.00</p>
+                            <strong>Expedited UK Delivery</strong>
+                            <p>
+                                <input type="radio" name="2">Expedited UK Delivery £5.00</p>
+                                <br>
+                            <p>DO YOU HAVE ANY GIFT ITEMS IN YOUR ORDER?</p>
+
+                            <p><input type="checkbox"><a href>Add gift options.</a></p>
+                            <button class="btn btn-default pull-right" ng-click="continuepayment()">Continue</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" ng-show="(shippinginfo=='1')">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          <h3>Payment Information</h3>
+        </a>
+      </h4>
+                    </div>
+
+                    <div id="collapseThree" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                         <!--   <a href="https://www.paypal.com/us/webapps/mpp/paypal-popup" target="_blank">What is PayPal?</a>
+                            <p>You will be redirected to the Sty website when you place an order.</p>
+                            <button href class="btn btn-default pull-right">Continue</button>-->
+        <form action="#/thankyou" method="POST">
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_live_LummdQUKjom4PnlfHJhLPDKC" data-image="img/logo.jpg" data-name="Ziba Collection" data-description="Total Amount: £ {{subtotal}}" data-amount="{{subtotal*100}}">
+</script>
+</form>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          <h3>Order Review</h3>
+        </a>
+      </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Unit Price</th>
+                                        <th>Qty</th>
+                                        <th>Subtotal</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="singlecart in cart">
+                                        <td>{{singlecart.name}}</td>
+                                        <td>£ {{singlecart.price}}</td>
+                                        <td>
+                                            {{singlecart.qty}}
+                                        </td>
+                                        <td>£ {{singlecart.subtotal}}</td>
+                                       
+                                    </tr>
+                                    
+
+                                </tbody>
+                            </table>
+                            
+                            <div class="checkout row">
+                <div class="col-xs-8"></div>
+                <div class="col-xs-4"><table class="table table-bordered ">
+                    <tr>
+                        <th>Sub Total</th>
+                        <th>Discount</th>
+                        <th>Grand Total</th>
+                    </tr>
+                    <tr>
+                        <td>£ {{subtotal}}</td>
+                        <td>£ 0</td>
+                        <td>£ {{subtotal}}</td>
+                    </tr>
+                </table></div>
+            </div>
+                            
+                            <a href="" class="btn btn-primary pull-right" ng-click="placeorder(form)" ng-show="(accesslevel!=3)">Place order</a>
+                            <a href="" class="btn btn-primary pull-right" ng-click="placewholesaleorder(form)" ng-show="(accesslevel==3)">Place  Wholesale order</a>
+                            <div class="clearfix"></div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div ng-controller="slider">
+    <div>
+        <div class="" style="position:relative;">
+            <img src="img/banner.jpg" class="bigimg" alt="">
+
+
+            <div class="home-form">
+                <p>
+                    <input type="text" class="inputhome" ng-model="limited.name" placeholder="NAME">
+                </p>
+                <p>
+                    <input type="email" class="inputhome" ng-model="limited.email" placeholder="EMAIL">
+                </p>
+                <p>
+                    <input type="text" class="inputhome" ng-model="limited.address" placeholder="ADDRESS">
+                    <a class="btn btn-primary btn-go" ng-click="placelimited(limited)">Go</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<style>
+    .imageset {
+        width: 1020px;
+        margin: auto;
+        border: 10px solid #f7f7f7;
+        height: 270px;
+        position: relative;
+    }
+    .toggle {
+        position: absolute;
+        top: 100px;
+    }
+    .toggle.left {
+        left: -30px;
+    }
+    .toggle.right {
+        right: -30px;
+    }
+</style>
+
+<div class="productset">
+    <img src="img/butterfly.png" alt="" class="butterfly">
+
+
+</div>
+<div class="clearfix"></div>

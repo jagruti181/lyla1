@@ -1,0 +1,64 @@
+<div class="content">
+    <div class="contenttop">
+        <div class="row">
+            <div class="col-xs-4">
+                <span class="breadcrumb">
+							Home / Cart</a>
+							</span>
+                </span>
+            </div>
+
+        </div>
+
+        <div class="container cart">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                      
+                        <th>Unit Price</th>
+                        <th>Qty</th>
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="singlecart in cart">
+                        <td>{{singlecart.name}}</td>
+                        
+                        <td>£{{singlecart.price}}</td>
+                        <td>
+                            <input type="text" ng-model="newquantity[$index]" class="form-control cartinput">
+                        </td>
+                        <td>£{{singlecart.subtotal}}</td>
+                        <td><a class="btn btn-primary" ng-click="addtocart(singlecart.id,singlecart.name,singlecart.price,newquantity[$index])"><strong>Save</strong></a> &nbsp; &nbsp; &nbsp;<a ng-click="deletecart(singlecart.id)"><strong>X</strong></a></td>
+                        
+                    </tr>
+
+                </tbody>
+            </table>
+            
+            
+            <h3>Discount Codes</h3>
+            <p><input type="text" placeholder="Enter your coupon code" class="form-control newsletteremail " style="margin-right:5px;"><a class="btn btn-primary">Apply Coupon</a><a href="#/checkout" class="btn btn-primary pull-right">Proceed to checkout</a></p>
+            
+            <div class="checkout row">
+                <div class="col-xs-8"></div>
+                <div class="col-xs-4"><table class="table table-bordered ">
+                    <tr>
+                        <th>Sub Total</th>
+                        <th>Discount</th>
+                        <th>Grand Total</th>
+                    </tr>
+                    <tr>
+                        <td>£ {{subtotal}}</td>
+                        <td>£ 0</td>
+                        <td>£ {{subtotal}}</td>
+                    </tr>
+                </table></div>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
