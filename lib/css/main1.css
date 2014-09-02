@@ -364,6 +364,7 @@ ul.submenudown li {
     border-radius: 2px;
     padding: 0 10px;
     z-index: 1;
+    width: 400px;
 }
 .lookbookimg {
     padding: 10px;

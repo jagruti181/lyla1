@@ -26,7 +26,7 @@
                                     <h4>CHECKOUT AS A GUEST OR REGISTER</h4>
                                     <p>Register with us for future convenience:</p>
                                     <p>
-                                        <input type="radio" name="1" >Checkout as guest
+                                        <input type="radio" name="1">Checkout as guest
                                         <br>
                                         <input type="radio" name="1">Register
                                     </p>
@@ -132,15 +132,15 @@
                                 <input type="radio" name="1" ng-model="form.shipdifferent" value="1">Ship to this address
                                 <br>
                                 <input type="radio" name="1" ng-model="form.shipdifferent" value="2">Ship to different address</p>
-                                <button class="btn btn-default pull-right" ng-click="continueshipping()">Continue</button>
+                            <button class="btn btn-default pull-right" ng-click="continueshipping()">Continue</button>
                             <div class="clearfix"></div>
                         </div>
-                            
-                        
+
+
                         <div class="panel-body billing-info" ng-show="form.shipdifferent==2">
                             <h4>Ship To This Address</h4>
 
-                            
+
 
                             <div class="row">
                                 <div class="col-xs-8">
@@ -171,8 +171,8 @@
                             </div>
 
                             <p>
-                            <button class="btn btn-default pull-right" ng-click="continueshipping()">Continue</button>
-                            <div class="clearfix"></div>
+                                <button class="btn btn-default pull-right" ng-click="continueshipping()">Continue</button>
+                                <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
@@ -193,10 +193,12 @@
                             <strong>Expedited UK Delivery</strong>
                             <p>
                                 <input type="radio" name="2">Expedited UK Delivery £5.00</p>
-                                <br>
+                            <br>
                             <p>DO YOU HAVE ANY GIFT ITEMS IN YOUR ORDER?</p>
 
-                            <p><input type="checkbox"><a href>Add gift options.</a></p>
+                            <p>
+                                <input type="checkbox"><a href>Add gift options.</a>
+                            </p>
                             <button class="btn btn-default pull-right" ng-click="continuepayment()">Continue</button>
                             <div class="clearfix"></div>
                         </div>
@@ -213,13 +215,13 @@
 
                     <div id="collapseThree" class="panel-collapse collapse in">
                         <div class="panel-body">
-                         <!--   <a href="https://www.paypal.com/us/webapps/mpp/paypal-popup" target="_blank">What is PayPal?</a>
+                            <!--   <a href="https://www.paypal.com/us/webapps/mpp/paypal-popup" target="_blank">What is PayPal?</a>
                             <p>You will be redirected to the Sty website when you place an order.</p>
-                            <button href class="btn btn-default pull-right">Continue</button>-->
-        <form action="#/thankyou" method="POST">
-<script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_live_LummdQUKjom4PnlfHJhLPDKC" data-image="img/logo.jpg" data-name="Ziba Collection" data-description="Total Amount: £ {{subtotal}}" data-amount="{{subtotal*100}}">
-</script>
-</form>
+                            <button href class="btn btn-default pull-right">Continue</button> -->
+                            <form action="#/thankyou" method="POST">
+                                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_live_LummdQUKjom4PnlfHJhLPDKC" data-image="img/logo.jpg" data-name="Lyla Loves" data-description="Total Amount: £ {{subtotal}}" data-currency="GBP" data-amount="{{subtotal*100}}"  >
+                                </script>
+                            </form>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -231,7 +233,7 @@
           <h3>Order Review</h3>
         </a>
             <h4>{{free}}</h4>
-      </h4>
+                        </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse in">
                         <div class="panel-body">
@@ -242,7 +244,7 @@
                                         <th>Unit Price</th>
                                         <th>Qty</th>
                                         <th>Subtotal</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -253,33 +255,35 @@
                                             {{singlecart.qty}}
                                         </td>
                                         <td>£ {{singlecart.subtotal}}</td>
-                                       
+
                                     </tr>
-                                    
+
 
                                 </tbody>
                             </table>
-                            
+
                             <div class="checkout row">
-                <div class="col-xs-8"></div>
-                <div class="col-xs-4"><table class="table table-bordered ">
-                    <tr>
-                        <th>Sub Total</th>
-                        <th>Discount</th>
-                        <th>Grand Total</th>
-                    </tr>
-                    <tr>
-                        <td>£ {{subtotal}}</td>
-                        <td>£ 0</td>
-                        <td>£ {{subtotal}}</td>
-                    </tr>
-                </table></div>
-            </div>
-                            
+                                <div class="col-xs-8"></div>
+                                <div class="col-xs-4">
+                                    <table class="table table-bordered ">
+                                        <tr>
+                                            <th>Sub Total</th>
+                                            <th>Discount</th>
+                                            <th>Grand Total</th>
+                                        </tr>
+                                        <tr>
+                                            <td>£ {{subtotal}}</td>
+                                            <td>£ 0</td>
+                                            <td>£ {{subtotal}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
                             <a href="" class="btn btn-primary pull-right" ng-click="placeorder(form)" ng-show="(accesslevel!=3)">Place order</a>
                             <a href="" class="btn btn-primary pull-right" ng-click="placewholesaleorder(form)" ng-show="(accesslevel==3)">Place  Wholesale order</a>
                             <div class="clearfix"></div>
-                            
+
                         </div>
                     </div>
                 </div>

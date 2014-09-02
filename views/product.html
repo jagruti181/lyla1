@@ -1,7 +1,7 @@
 <div class="content">
     <div class="contenttop">
         <div class="row">
-            <div class="col-xs-4"><span class="breadcrumb">Home / Jewellery / Necklace / Bahar Necklace</span>
+            <div class="col-xs-4"><span class="breadcrumb">Home / Jewellery / Necklace / {{product.name}}</span>
             </div>
             <div class="col-xs-4"></div>
             <div class="col-xs-4">
@@ -25,8 +25,7 @@
                 </div>
                 <div class="prodcutcontent">
                     <div class="productdesc">
-                        <p>materials: brass & glass</p>
-                        <p>measurements: 17” inside neck measurement + 2” extension chain.</p>
+                        {{product.description}}
                     </div>
                     <label>Qty :</label>
                     <input type="text" value="1" class="quantitybox" ng-model="addquantity">
