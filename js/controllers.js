@@ -1,7 +1,7 @@
-var phonecatControllers = angular.module('phonecatControllers', ['templateservicemod', 'Service','ngRoute']);
+var phonecatControllers = angular.module('phonecatControllers', ['templateservicemod', 'Service', 'ngRoute']);
 
 phonecatControllers.controller('home',
- function ($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.changetitle("Home");
@@ -9,54 +9,49 @@ phonecatControllers.controller('home',
         TemplateService.slider = "views/slider.html";
         TemplateService.content = "views/content.html";
         $scope.homeactive = "active";
-        $scope.loginlogouttext="Login";
-        $scope.visible=false;
-        $scope.ishome="homeclass";
-        $scope.onhome="onhome";
-        $scope.demo="demodemo";
-        $scope.showaccount=function(){
-            $scope.visible=true;
+        $scope.loginlogouttext = "Login";
+        $scope.visible = false;
+        $scope.ishome = "homeclass";
+        $scope.onhome = "onhome";
+        $scope.demo = "demodemo";
+        $scope.showaccount = function () {
+            $scope.visible = true;
         };
-        $scope.hideaccount=function(){
-            $scope.visible=false;
+        $scope.hideaccount = function () {
+            $scope.visible = false;
         };
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.alldate=data;
-            $scope.loginlogouttext="Logout";
-          }
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.alldate = data;
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
-//newsletter
-        var newslettersaved=function(data, status){
-            if(data=="true")
-            {
-                $scope.msgg="Thank You For Subscribe";
-            }
-            else
-            {
-                $scope.msgg="Thank You For Subscribe";
+        //authenticate
+        //newsletter
+        var newslettersaved = function (data, status) {
+            if (data == "true") {
+                $scope.msgg = "Thank You For Subscribe";
+            } else {
+                $scope.msgg = "Thank You For Subscribe";
             }
         };
-        $scope.newsletter=function(uemail){
-            if(!uemail)
-            {
+        $scope.newsletter = function (uemail) {
+            if (!uemail) {
                 alert("Please Enter Email");
-            }else{
-            console.log($scope.alldate);
-            MainJson.newsletter("",uemail,"").success(newslettersaved);
+            } else {
+                console.log($scope.alldate);
+                MainJson.newsletter("", uemail, "").success(newslettersaved);
             }
         };
-//newsletter
-//cart badge
-            var totalcart=function(data, status){
-                $scope.badge=data;
-            };
-             MainJson.gettotalcart().success(totalcart);
-//cart badge
+        //newsletter
+        //cart badge
+        var totalcart = function (data, status) {
+            $scope.badge = data;
+        };
+        MainJson.gettotalcart().success(totalcart);
+        //cart badge
         $scope.$on("$includeContentLoaded", function () {
             TemplateService.firsttimeloaded();
             $(".zoomContainer").remove();
@@ -80,120 +75,116 @@ phonecatControllers.controller('home',
         }];
 
 
- });
+    });
 
 phonecatControllers.controller('cart',
- function ($scope, TemplateService, MainJson, $rootScope, $location) {
-      $(".zoomContainer").remove();
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
+        $(".zoomContainer").remove();
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.changetitle("Cart");
         TemplateService.content = "views/cart.html";
         TemplateService.slider = "";
-     $scope.cart=[];
-        $scope.loginlogouttext="Login";
-//authenticate
-        
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.loginlogouttext=data.email;
-            $scope.uid=data.id;
-          }
+        $scope.cart = [];
+        $scope.loginlogouttext = "Login";
+        //authenticate
+
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = data.email;
+                $scope.uid = data.id;
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
-     $scope.newquantity = [];
-        var showcart=function(data, status){
+        //authenticate
+        $scope.newquantity = [];
+        var showcart = function (data, status) {
             console.log(data);
             $scope.cart = data;
             console.log("Values in cart");
             console.log($scope.cart[0].qty);
             console.log($scope.cart.length);
-            
+
             for (var i = 0; i < $scope.cart.length; i++) {
-            $scope.newquantity[i] = $scope.cart[i].qty;
-            
-        }
+                $scope.newquantity[i] = $scope.cart[i].qty;
+
+            }
             console.log("values in newquantity");
             console.log($scope.newquantity);
         };
         MainJson.getcart().success(showcart);
-        var getsubtotal=function(data, status){
-            $scope.subtotal=data;
+        var getsubtotal = function (data, status) {
+            $scope.subtotal = data;
         };
         MainJson.totalcart().success(getsubtotal);
-//separating cart
-         $scope.postcart=function(){
-             $scope.cart = MainJson.getcart();
-            $scope.id=$scope.cart[0].id;
-            $scope.name=$scope.cart[0].name;
-            $scope.price=$scope.cart[0].price;
-            $scope.quantity=$scope.cart[0].quantity;
-            for(var i= 1;i<$scope.cart.length;i++)
-            {
-            $scope.id+=","+$scope.cart[i].id;
-            $scope.name+=","+$scope.cart[i].name;
-            $scope.price+=","+$scope.cart[i].price;
-            $scope.quantity+=","+$scope.cart[i].quantity;
+        //separating cart
+        $scope.postcart = function () {
+            $scope.cart = MainJson.getcart();
+            $scope.id = $scope.cart[0].id;
+            $scope.name = $scope.cart[0].name;
+            $scope.price = $scope.cart[0].price;
+            $scope.quantity = $scope.cart[0].quantity;
+            for (var i = 1; i < $scope.cart.length; i++) {
+                $scope.id += "," + $scope.cart[i].id;
+                $scope.name += "," + $scope.cart[i].name;
+                $scope.price += "," + $scope.cart[i].price;
+                $scope.quantity += "," + $scope.cart[i].quantity;
             }
-             
-            
-         }
-//separating cart
-//add to cart
-         var getsubtotal=function(data, status){
-            $scope.subtotal=data;
+
+
+        }
+        //separating cart
+        //add to cart
+        var getsubtotal = function (data, status) {
+            $scope.subtotal = data;
         };
-         var cartt=function(data, status){
+        var cartt = function (data, status) {
             console.log(data);
-             MainJson.totalcart().success(getsubtotal);
+            MainJson.totalcart().success(getsubtotal);
         };
-        $scope.addtocart = function (id, name, price, quantity,index) {
+        $scope.addtocart = function (id, name, price, quantity, index) {
             // console.log(id+name+price+quantity);
-            $scope.cart[index].subtotal=price*quantity;
+            $scope.cart[index].subtotal = price * quantity;
             MainJson.addtocart(id, name, price, quantity).success(cartt);
         };
-//addto cart
-        
+        //addto cart
+
         $scope.deletecart = function (id) {
             //console.log(cart);
-            for(var i=0;i<$scope.cart.length;i++) {
-                if($scope.cart[i].id == id)
-                {
-                    $scope.cart.splice(i,1);
+            for (var i = 0; i < $scope.cart.length; i++) {
+                if ($scope.cart[i].id == id) {
+                    $scope.cart.splice(i, 1);
                 }
             }
             //console.log(cart);
-            $scope.subtotal=0;
+            $scope.subtotal = 0;
             console.log($scope.cart);
-            for(var i=0;i<$scope.cart.length;i++)
-                {
-                    $scope.subtotal+=parseInt($scope.cart[i].qty)*parseFloat($scope.cart[i].price);
-                }
-            
+            for (var i = 0; i < $scope.cart.length; i++) {
+                $scope.subtotal += parseInt($scope.cart[i].qty) * parseFloat($scope.cart[i].price);
+            }
+
             MainJson.deletecartfromsession(id);
         };
         $scope.savecart = function (id, quantity) {
-            $scope.returntwo = MainJson.savecart($scope.uid,id, quantity);
-            $scope.subtotal=$scope.returntwo.subtotal;
+            $scope.returntwo = MainJson.savecart($scope.uid, id, quantity);
+            $scope.subtotal = $scope.returntwo.subtotal;
         };
 
- });
+    });
 
 phonecatControllers.controller('logout',
-   function ($scope, TemplateService, MainJson, $location) {
-        
+    function ($scope, TemplateService, MainJson, $location) {
+
         //######################authentication#####################3
-        var logout=function(data, status){
+        var logout = function (data, status) {
             //console.log(data);
-            $scope.loginlogouttext="Login";
-            $scope.isloggedin=0;
+            $scope.loginlogouttext = "Login";
+            $scope.isloggedin = 0;
             $location.url("/home");
         };
         MainJson.logout().success(logout);
         //######################authentication#####################3
-});
+    });
 
 
 
@@ -206,63 +197,56 @@ phonecatControllers.controller('login',
         TemplateService.changetitle("Login");
         TemplateService.content = "views/login.html";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-//authenticate
-        var cartdata=function(data, status){
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var cartdata = function (data, status) {
             console.log(data);
             for (var i = 0; i < data.length; i++) {
-            MainJson.addtocart(data[i].id, data[i].name, data[i].price, data[i].quantity);
+                MainJson.addtocart(data[i].id, data[i].name, data[i].price, data[i].quantity);
             }
         };
-        var authenticate=function(data, status){
+        var authenticate = function (data, status) {
             MainJson.getusercart(data.id).success(cartdata);
-          if(data!="false")
-          {
-            $scope.loginlogouttext="Logout";
-            
-              
-          }
+            if (data != "false") {
+                $scope.loginlogouttext = "Logout";
+
+
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
-        var emailsend=function(data, status){
+        //authenticate
+        var emailsend = function (data, status) {
             console.log(data);
             alert("Email send to you");
         };
-        var getsignup=function(data,status){
-            if(data!="false")
-            {
-                $scope.msgr="Registred Successful";
-                 $location.url("/home");
-               MainJson.signupemail(data.email).success(emailsend);
-            }
-            else
-            {
-                $scope.msgr="Error In Registration";
+        var getsignup = function (data, status) {
+            if (data != "false") {
+                $scope.msgr = "Registred Successful";
+                $location.url("/home");
+                MainJson.signupemail(data.email).success(emailsend);
+            } else {
+                $scope.msgr = "Error In Registration";
             }
         };
-        $scope.signup=function(register){
+        $scope.signup = function (register) {
             console.log(register);
-            MainJson.registeruser(register.firstname,register.lastname,register.email,register.password).success(getsignup);
+            MainJson.registeruser(register.firstname, register.lastname, register.email, register.password).success(getsignup);
         };
-        var getlogin=function(data, status){
-            if(data!="false")
-            {
-                $scope.msg="Login Successful";
-                 $location.url("/home");
-            }
-            else
-            {
-                $scope.msg="Invalid Email Or Password";
+        var getlogin = function (data, status) {
+            if (data != "false") {
+                $scope.msg = "Login Successful";
+                $location.url("/home");
+            } else {
+                $scope.msg = "Invalid Email Or Password";
             }
         };
-        $scope.userlogin=function(login){
+        $scope.userlogin = function (login) {
             console.log(login);
-            MainJson.loginuser(login.email,login.password).success(getlogin);
+            MainJson.loginuser(login.email, login.password).success(getlogin);
         };
-        
-        
-});
+
+
+    });
 phonecatControllers.controller('xoxo',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
         $scope.firstloadclass = TemplateService.firstload;
@@ -271,20 +255,19 @@ phonecatControllers.controller('xoxo',
         $scope.homeactive = "active";
         TemplateService.content = "views/xoxo.html";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.alldata=data;
-            $scope.loginlogouttext="Logout";
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.alldata = data;
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
+        //authenticate
 
 
-});
+    });
 
 phonecatControllers.controller('contact',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
@@ -294,44 +277,43 @@ phonecatControllers.controller('contact',
         $scope.homeactive = "active";
         TemplateService.content = "views/contact.html";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.alldata=data;
-            $scope.loginlogouttext="Logout";
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.alldata = data;
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
-//contact
-        var contact=function(data, status){
+        //authenticate
+        //contact
+        var contact = function (data, status) {
             console.log(data);
-            $scope.msg="YOUR REVIEW IS SAVED SUCCESSFULY";
+            $scope.msg = "YOUR REVIEW IS SAVED SUCCESSFULY";
         };
-        $scope.usercontact=function(data){
-            MainJson.usercontact("",data.name,data.email,data.phone,data.comment).success(contact);
+        $scope.usercontact = function (data) {
+            MainJson.usercontact("", data.name, data.email, data.phone, data.comment).success(contact);
         };
-//contact
+        //contact
 
-});
+    });
 
 
 phonecatControllers.controller('contact2',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-      
-    
-        var contact=function(data, status){
-            console.log(data);
-            $scope.msg="YOUR REVIEW IS SAVED SUCCESSFULY";
-        };
-        $scope.usercontact=function(data){
-            MainJson.usercontact("",data.name,data.email,data.phone,data.comment).success(contact);
-        };
-//contact
 
-});
+
+        var contact = function (data, status) {
+            console.log(data);
+            $scope.msg = "YOUR REVIEW IS SAVED SUCCESSFULY";
+        };
+        $scope.usercontact = function (data) {
+            MainJson.usercontact("", data.name, data.email, data.phone, data.comment).success(contact);
+        };
+        //contact
+
+    });
 
 phonecatControllers.controller('wholesaler',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
@@ -341,36 +323,32 @@ phonecatControllers.controller('wholesaler',
         $scope.homeactive = "active";
         TemplateService.content = "views/wholesaler.html";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.alldata=data;
-            $scope.loginlogouttext="Logout";
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.alldata = data;
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
-//register
-        var getwholesalersignup=function(data,status){
-            if(data!="false")
-            {
-                $scope.msgr="Registred Successful";
-               
-            }
-            else
-            {
-                $scope.msgr="Error In Registration";
-            }
-        };
-        $scope.wholesalersignup=function(register){
-            console.log(register);
-            MainJson.registerwholesaler(register.firstname,register.lastname,register.phone,register.email,register.password).success(getwholesalersignup);
-        };
-//register
+        //authenticate
+        //register
+        var getwholesalersignup = function (data, status) {
+            if (data != "false") {
+                $scope.msgr = "Registred Successful";
 
-});
+            } else {
+                $scope.msgr = "Error In Registration";
+            }
+        };
+        $scope.wholesalersignup = function (register) {
+            console.log(register);
+            MainJson.registerwholesaler(register.firstname, register.lastname, register.phone, register.email, register.password).success(getwholesalersignup);
+        };
+        //register
+
+    });
 
 
 phonecatControllers.controller('profile',
@@ -381,18 +359,17 @@ phonecatControllers.controller('profile',
         $scope.homeactive = "active";
         TemplateService.content = "views/profile.html";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.loginlogouttext="Logout";
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
+        //authenticate
 
-});
+    });
 
 phonecatControllers.controller('lylaloves',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
@@ -402,31 +379,30 @@ phonecatControllers.controller('lylaloves',
         $scope.homeactive = "active";
         TemplateService.content = "views/lylaloves.html";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.loginlogouttext=data.email;
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = data.email;
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
-//        $scope.$on('$includeContentLoaded', function () {
-//            console.log("content loaded");
-//        
-//            var $container = $('#isotope');
-//            
-//            // init
-//            $container.isotope({
-//                // options
-//                layoutMode: 'masonry',
-//                itemSelector: '.item',
-//
-//            });
-//        });
+        //authenticate
+        //        $scope.$on('$includeContentLoaded', function () {
+        //            console.log("content loaded");
+        //        
+        //            var $container = $('#isotope');
+        //            
+        //            // init
+        //            $container.isotope({
+        //                // options
+        //                layoutMode: 'masonry',
+        //                itemSelector: '.item',
+        //
+        //            });
+        //        });
 
-});
+    });
 
 phonecatControllers.controller('thankyou',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
@@ -436,99 +412,91 @@ phonecatControllers.controller('thankyou',
         $scope.homeactive = "active";
         TemplateService.content = "views/thankyou.html";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.loginlogouttext=data.email;
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = data.email;
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
+        //authenticate
 
-});
+    });
 phonecatControllers.controller('newsletter',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
         $scope.template = TemplateService;
-        $scope.msgg="Message here..........";
-        
-//authenticate
-        var authenticate=function(data, status){
+        $scope.msgg = "Message here..........";
+
+        //authenticate
+        var authenticate = function (data, status) {
             console.log(data);
-          if(data!="false")
-          {
-            $scope.alldate=data;
-            $scope.loginlogouttext="Logout";
-          }
+            if (data != "false") {
+                $scope.alldate = data;
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
-//newsletter
-        var newslettersaved=function(data, status){
-            if(data=="true")
-            {
+        //authenticate
+        //newsletter
+        var newslettersaved = function (data, status) {
+            if (data == "true") {
                 //alert("Thank you for subscribing.");
-                TemplateService.lightboximage="img/newsletterpopup.jpg";
+                TemplateService.lightboximage = "img/newsletterpopup.jpg";
                 console.log("now popup should come.");
-            }
-            else
-            {
+            } else {
                 //alert("Thank You For Subscribe");
                 $location.url("/xoxo");
             }
         };
-        $scope.newsletter=function(uemail){
-            if(!uemail)
-            {
+        $scope.newsletter = function (uemail) {
+            if (!uemail) {
                 alert("Please Enter Email");
-            }else{
-            console.log($scope.alldate);
-            MainJson.newsletter("",uemail,"").success(newslettersaved);
+            } else {
+                console.log($scope.alldate);
+                MainJson.newsletter("", uemail, "").success(newslettersaved);
             }
         };
-//newsletter
+        //newsletter
 
     });
 
 phonecatControllers.controller('search',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
         $scope.template = TemplateService;
-        $scope.msgg="Message here..........";
-        
-//authenticate
-        var authenticate=function(data, status){
+        $scope.msgg = "Message here..........";
+
+        //authenticate
+        var authenticate = function (data, status) {
             console.log(data);
-          if(data!="false")
-          {
-            $scope.alldate=data;
-            $scope.loginlogouttext="Logout";
-          }
+            if (data != "false") {
+                $scope.alldate = data;
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
-//search
-        $scope.search=function(search){
-             $location.url("/search/"+search);
+        //authenticate
+        //search
+        $scope.search = function (search) {
+            $location.url("/search/" + search);
         };
-//search
+        //search
 
     });
 
 
 phonecatControllers.controller('lightbox',
-                               function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
-                                   $scope.removelightbox=function()
-                                   {
-                                        TemplateService.lightboximage="";  
-                                   };
-                               });
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+        $scope.removelightbox = function () {
+            TemplateService.lightboximage = "";
+        };
+    });
 
 
 
 
 phonecatControllers.controller('searchpage',
- function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.changetitle("Search");
@@ -536,29 +504,28 @@ phonecatControllers.controller('searchpage',
         TemplateService.content = "views/search.html";
         TemplateService.slider = "";
         $scope.firstshow = "firstshow";
-     $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.loginlogouttext=data.email;
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = data.email;
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
+        //authenticate
 
-//searching
-     $scope.searchresult=$routeParams.search;
-     var searching=function(data, status){
-         $scope.find=data;
-     };
-     MainJson.seach($routeParams.search).success(searching);
-//searching
-});
+        //searching
+        $scope.searchresult = $routeParams.search;
+        var searching = function (data, status) {
+            $scope.find = data;
+        };
+        MainJson.seach($routeParams.search).success(searching);
+        //searching
+    });
 
 
 phonecatControllers.controller('lookbook',
- function ($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.changetitle("Ziba Lookbook");
@@ -566,16 +533,15 @@ phonecatControllers.controller('lookbook',
         TemplateService.content = "views/lookbook.html";
         TemplateService.slider = "";
         $scope.firstshow = "firstshow";
-     $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.loginlogouttext=data.email;
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = data.email;
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
+        //authenticate
         $scope.changeactivelookbook = function (id) {
             $scope.firstshow = "";
             console.log(id);
@@ -612,183 +578,174 @@ phonecatControllers.controller('lookbook',
         }];
         $scope.lookbookimages[0].active = "active";
         $scope.activeimage = $scope.lookbookimages[0].image;
-});
+    });
 
 
 phonecatControllers.controller('checkout',
- function ($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.changetitle("Checkout");
         TemplateService.content = "views/checkout.html";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-        $scope.isloggedin=0;
-        $scope.billinginfo=0;
-        $scope.shipdifferent=false;
-        $scope.shippinginfo=0;
-        $scope.form={};
-        $scope.continuebilling=function(){
-            $scope.billinginfo=1;
+        $scope.loginlogouttext = "Login";
+        $scope.isloggedin = 0;
+        $scope.billinginfo = 0;
+        $scope.shipdifferent = false;
+        $scope.shippinginfo = 0;
+        $scope.form = {};
+        $scope.continuebilling = function () {
+            $scope.billinginfo = 1;
         };
-        $scope.continueshipping=function(){
-            $scope.shippinginfo=1;
+        $scope.continueshipping = function () {
+            $scope.shippinginfo = 1;
         };
-        
-//authenticate
-        var authenticate=function(data, status){
+
+        //authenticate
+        var authenticate = function (data, status) {
             console.log(data);
-          if(data!="false")
-          {
-            $scope.isloggedin=1;
-            $scope.accesslevel=data.accesslevel;
-            $scope.status=data.status;
-            $scope.id=data.id;
-            $scope.email=data.email;
-            $scope.loginlogouttext="Logout";
-          }
+            if (data != "false") {
+                $scope.isloggedin = 1;
+                $scope.accesslevel = data.accesslevel;
+                $scope.status = data.status;
+                $scope.id = data.id;
+                $scope.email = data.email;
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
+        //authenticate
 
         $scope.newquantity = [];
-        var showcart=function(data, status){
+        var showcart = function (data, status) {
             console.log(data);
             $scope.cart = data;
             console.log($scope.cart[0].qty);
             console.log($scope.cart.length);
-            
+
             for (var i = 0; i < $scope.cart.length; i++) {
-            $scope.newquantity[i] = $scope.cart[i].qty;
-            console.log($scope.newquantity[i]);
-        }
+                $scope.newquantity[i] = $scope.cart[i].qty;
+                console.log($scope.newquantity[i]);
+            }
         };
         MainJson.getcart().success(showcart);
-        var getsubtotal=function(data, status){
+        var getsubtotal = function (data, status) {
             console.log(data);
-            
-            $scope.subtotal=data;
+
+            $scope.subtotal = data;
         };
         MainJson.totalcart().success(getsubtotal);
-     $scope.showshippingmethods=0;
-// free
-        $scope.free=function(country,subtotal){
+        $scope.showshippingmethods = 0;
+        // free
+        $scope.free = function (country, subtotal) {
             console.log(country);
             console.log(subtotal);
-            if(country=="United Kingdom")
-            {
-                if(subtotal>=15)
-                {
-                    $scope.showshippingmethods=1;
-                    $scope.form.shippingmethod=1;
-                }    
-                else
-                {
-                    $scope.showshippingmethods=2;
-                    $scope.form.shippingmethod=2;
+            if (country == "United Kingdom") {
+                if (subtotal >= 15) {
+                    $scope.showshippingmethods = 1;
+                    $scope.form.shippingmethod = 1;
+                } else {
+                    $scope.showshippingmethods = 2;
+                    $scope.form.shippingmethod = 2;
                 }
-                    
-            }
-            else 
-            {
-                if(subtotal>=20)
-                {
-                    $scope.showshippingmethods=3;
-                    $scope.form.shippingmethod=4;
+
+            } else {
+                if (subtotal >= 20) {
+                    $scope.showshippingmethods = 3;
+                    $scope.form.shippingmethod = 4;
+                } else {
+                    $scope.showshippingmethods = 4;
+                    $scope.form.shippingmethod = 5;
                 }
-                else
-                {
-                    $scope.showshippingmethods=4;
-                    $scope.form.shippingmethod=5;
-                }
-                
+
             }
         };
-// free
+        // free
         $scope.deletecart = function (id) {
             $scope.subtotal = MainJson.deletecart(id);
-            
+
         };
         $scope.savecart = function (id, quantity) {
             $scope.subtotal = MainJson.savecart(id, quantity);
         };
-        var orderemailsend=function(data, status){
+        var orderemailsend = function (data, status) {
             console.log(data);
             alert("Email send");
         };
-        var orderplaced=function(data, status){
+        var orderplaced = function (data, status) {
             console.log("place order returns");
             console.log(data);
-            MainJson.orderemail($scope.email,data).success(orderemailsend);
+            MainJson.orderemail($scope.email, data).success(orderemailsend);
             alert("Order Placed");
         };
-     
-        
-        $scope.placeorder=function(form){
+
+
+        $scope.placeorder = function (form) {
             console.log($scope.cart);
-           //MainJson.orderitem($scope.cart);
-           $scope.form.cart=$scope.cart;
-           $scope.form.user=$scope.id;
-           $scope.form.status=$scope.status; //MainJson.placeorder(form.firstname,form.lastname,form.email,form.company,form.billingaddress,form.billingcity,form.billingstate,form.billingpincode,form.billingcountry,form.phone,form.fax,form.shippingaddress,form.shippingcity,form.shippingstate,form.shippingpincode,form.shippingcountry,$scope.id,$scope.status).success(orderplaced); 
+            //MainJson.orderitem($scope.cart);
+            $scope.form.cart = $scope.cart;
+            $scope.form.user = $scope.id;
+            $scope.form.status = $scope.status; //MainJson.placeorder(form.firstname,form.lastname,form.email,form.company,form.billingaddress,form.billingcity,form.billingstate,form.billingpincode,form.billingcountry,form.phone,form.fax,form.shippingaddress,form.shippingcity,form.shippingstate,form.shippingpincode,form.shippingcountry,$scope.id,$scope.status).success(orderplaced); 
             MainJson.placeorder(form).success(orderplaced);
         };
- });
+    });
 
 phonecatControllers.controller('headerctrl',
     function ($scope, TemplateService) {
         $scope.template = TemplateService;
-        $scope.testing="testing";
+        $scope.testing = "testing";
 
     });
 phonecatControllers.controller('slider',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
         $scope.template = TemplateService;
-        
-        $scope.placelimited=function(limited){
-            
-        var limitedorder=function(data, status){
-            if(data!="false")
-            {
-               // alert("Order Placed");
-                TemplateService.lightboximage="img/giveawaypopup.jpg";
-                //$location.url("/xoxo");
-                MainJson.placelimitedemail(limited);
-            }else{
-                alert("You Already Subscribed To This Offer");
-            }
-        }; 
-            
-            if(!limited){
-               alert("Fill All Data") ;
-            }else{
-            
-        MainJson.placelimited(limited).success(limitedorder);
+
+        $scope.placelimited = function (limited) {
+
+            var limitedorder = function (data, status) {
+                if (data != "false") {
+                    // alert("Order Placed");
+                    TemplateService.lightboximage = "img/giveawaypopup.jpg";
+                    //$location.url("/xoxo");
+                    MainJson.placelimitedemail(limited);
+                } else {
+                    alert("You Already Subscribed To This Offer");
+                }
+            };
+
+            if (!limited) {
+                alert("Fill All Data");
+            } else {
+
+                MainJson.placelimited(limited).success(limitedorder);
             }
         };
-        
+
 
     });
 
 phonecatControllers.controller('category',
-    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
 
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
-
-        $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
+        $scope.gototop = function () {
+            $location.hash('totop');
+            $anchorScroll();
+        };
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
             console.log(data);
-          if(data!="false")
-          {
-            $scope.loginlogouttext=data.email;
-            $scope.accesslevel=data.accesslevel;
-          }
+            if (data != "false") {
+                $scope.loginlogouttext = data.email;
+                $scope.accesslevel = data.accesslevel;
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
+        //authenticate
 
 
         var categorysuccess = function (data, status) {
@@ -834,56 +791,51 @@ phonecatControllers.controller('product',
         TemplateService.slider = "";
         $scope.addquantity = 1;
         $scope.addedtocart = "hide";
-         $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.accesslevel=data.accesslevel;
-            $scope.id=data.id;
-            $scope.loginlogouttext=data.email;
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.accesslevel = data.accesslevel;
+                $scope.id = data.id;
+                $scope.loginlogouttext = data.email;
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
-//nextprevious
-        $scope.next=function(product){
-            $scope.num=1;
-            $scope.num=parseInt($scope.num);
-            $scope.product=parseInt(product);
-            $scope.sum=$scope.product+$scope.num;
-            
-            $location.url("/product/"+$scope.sum);
+        //authenticate
+        //nextprevious
+        $scope.next = function (product) {
+            $scope.num = 1;
+            $scope.num = parseInt($scope.num);
+            $scope.product = parseInt(product);
+            $scope.sum = $scope.product + $scope.num;
+
+            $location.url("/product/" + $scope.sum);
         };
-        $scope.previous=function(product){
-            $scope.num=1;
-            $scope.num=parseInt($scope.num);
-            $scope.product=parseInt(product);
-            $scope.sum=$scope.product-$scope.num;
-            if(parseInt($scope.sum)<1)
-            {
-                $location.url("/product/"+parseInt($scope.product+$scope.num));
-                
-            }else{
-            $location.url("/product/"+$scope.sum);
+        $scope.previous = function (product) {
+            $scope.num = 1;
+            $scope.num = parseInt($scope.num);
+            $scope.product = parseInt(product);
+            $scope.sum = $scope.product - $scope.num;
+            if (parseInt($scope.sum) < 1) {
+                $location.url("/product/" + parseInt($scope.product + $scope.num));
+
+            } else {
+                $location.url("/product/" + $scope.sum);
             }
         };
-//nestprevious
-        var getwishlist=function(data, status){
+        //nestprevious
+        var getwishlist = function (data, status) {
             console.log(data);
-            $scope.wish=data;
+            $scope.wish = data;
         };
-        $scope.addwishlist=function(id){
-            MainJson.addtowishlist(id,$routeParams.ProductId).success(getwishlist);
+        $scope.addwishlist = function (id) {
+            MainJson.addtowishlist(id, $routeParams.ProductId).success(getwishlist);
         };
         var productsuccess = function (data, status) {
-            if($scope.accesslevel==3)
-            {
-                $scope.rate=data.product.wholesaleprice;
-            }
-            else
-            {
-                $scope.rate=data.product.price;
+            if ($scope.accesslevel == 3) {
+                $scope.rate = data.product.wholesaleprice;
+            } else {
+                $scope.rate = data.product.price;
             }
             $scope.product = data.product;
             $scope.breadcrumbs = data.breadcrumbs;
@@ -892,7 +844,7 @@ phonecatControllers.controller('product',
             console.log(data);
         };
         MainJson.getproductdetails($routeParams.ProductId).success(productsuccess);
-        var cartt=function(data, status){
+        var cartt = function (data, status) {
             console.log(data);
         };
         $scope.addtocart = function (id, name, price, quantity) {
@@ -930,18 +882,17 @@ phonecatControllers.controller('delivery',
         $scope.deliveryactive = "active";
         TemplateService.content = "views/delivery.html";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.loginlogouttext="Logout";
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
+        //authenticate
 
-});
+    });
 
 phonecatControllers.controller('wishlist',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
@@ -951,24 +902,23 @@ phonecatControllers.controller('wishlist',
         $scope.deliveryactive = "active";
         TemplateService.content = "views/wishlist.html";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-//authenticate
-        
-        var userwishlist=function(data, status){
-            $scope.find=data;
+        $scope.loginlogouttext = "Login";
+        //authenticate
+
+        var userwishlist = function (data, status) {
+            $scope.find = data;
         };
-        var authenticate=function(data, status){
+        var authenticate = function (data, status) {
             console.log(data);
-          if(data!="false")
-          {
-             MainJson.showwishlist(data.id).success(userwishlist)
-            $scope.loginlogouttext="Logout";
-          }
+            if (data != "false") {
+                MainJson.showwishlist(data.id).success(userwishlist)
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
+        //authenticate
 
-});
+    });
 
 
 phonecatControllers.controller('returns',
@@ -979,18 +929,17 @@ phonecatControllers.controller('returns',
         TemplateService.content = "views/returns.html";
         $scope.returnsactive = "active";
         TemplateService.slider = "";
-        $scope.loginlogouttext="Login";
-//authenticate
-        var authenticate=function(data, status){
-          if(data!="false")
-          {
-            $scope.loginlogouttext="Logout";
-          }
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = "Logout";
+            }
         };
         MainJson.authenticate().success(authenticate);
-//authenticate
+        //authenticate
 
-});
+    });
 
 
 

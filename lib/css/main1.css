@@ -727,3 +727,15 @@ div.megamenu.megamenu2 {
     height: 70%;
     margin: 5% auto;
 }
+.gototop {
+    position: fixed;
+    top: 56px;
+    right: 10px;
+    outline:0px;
+}
+.gototop:focus {
+    position: fixed;
+    top: 56px;
+    right: 10px;
+    outline:0px;
+}
