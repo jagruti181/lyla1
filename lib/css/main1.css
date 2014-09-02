@@ -739,3 +739,10 @@ div.megamenu.megamenu2 {
     right: 10px;
     outline:0px;
 }
+.red {
+    color:red;
+    position: absolute;
+    font-size: 32px;
+    margin-top: -10px;
+    margin-left: 0px;
+}
