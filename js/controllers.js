@@ -149,14 +149,30 @@ phonecatControllers.controller('cart',
             console.log(data);
              MainJson.totalcart().success(getsubtotal);
         };
-        $scope.addtocart = function (id, name, price, quantity) {
+        $scope.addtocart = function (id, name, price, quantity,index) {
             // console.log(id+name+price+quantity);
+            $scope.cart[index].subtotal=price*quantity;
             MainJson.addtocart(id, name, price, quantity).success(cartt);
         };
 //addto cart
         
         $scope.deletecart = function (id) {
-            $scope.subtotal = MainJson.deletecart(id);
+            //console.log(cart);
+            for(var i=0;i<$scope.cart.length;i++) {
+                if($scope.cart[i].id == id)
+                {
+                    $scope.cart.splice(i,1);
+                }
+            }
+            //console.log(cart);
+            $scope.subtotal=0;
+            console.log($scope.cart);
+            for(var i=0;i<$scope.cart.length;i++)
+                {
+                    $scope.subtotal+=parseInt($scope.cart[i].qty)*parseFloat($scope.cart[i].price);
+                }
+            
+            MainJson.deletecartfromsession(id);
         };
         $scope.savecart = function (id, quantity) {
             $scope.returntwo = MainJson.savecart($scope.uid,id, quantity);
@@ -654,16 +670,44 @@ phonecatControllers.controller('checkout',
             $scope.subtotal=data;
         };
         MainJson.totalcart().success(getsubtotal);
+     $scope.showshippingmethods=0;
 // free
-        $scope.free=function(country){
-            if(parseInt($scope.subtotal) >= parseInt(5))
+        $scope.free=function(country,subtotal){
+            console.log(country);
+            console.log(subtotal);
+            if(country=="United Kingdom")
             {
-                alert("free");
+                if(subtotal>=15)
+                {
+                    $scope.showshippingmethods=1;
+                    $scope.form.shippingmethod=1;
+                }    
+                else
+                {
+                    $scope.showshippingmethods=2;
+                    $scope.form.shippingmethod=2;
+                }
+                    
+            }
+            else 
+            {
+                if(subtotal>=20)
+                {
+                    $scope.showshippingmethods=3;
+                    $scope.form.shippingmethod=4;
+                }
+                else
+                {
+                    $scope.showshippingmethods=4;
+                    $scope.form.shippingmethod=5;
+                }
+                
             }
         };
 // free
         $scope.deletecart = function (id) {
             $scope.subtotal = MainJson.deletecart(id);
+            
         };
         $scope.savecart = function (id, quantity) {
             $scope.subtotal = MainJson.savecart(id, quantity);

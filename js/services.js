@@ -129,16 +129,13 @@ service.factory('MainJson',function($http)
             //return cart;
         },
         deletecart: function (id) {
-            for(var i=0;i<cart.length;i++){
-                if(cart[i].id==id)
-                {
-                    cart.splice(i,1);
-                }
-                
-            }
+            
             subtotal=this.calcsubtotal();
             return subtotal;
         },
+        deletecartfromsession: function(id) {
+            return $http.post(adminurl+'deletecart?id='+id,{},{withCredentials: true});
+        },   
         savecart: function (uid,id,quantity) {
             console.log(cart);
             for(var i=0;i<cart.length;i++){

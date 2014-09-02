@@ -241,7 +241,7 @@ input:focus {
     border: 0px !important;
 }
 .table-hover tr:hover>td {
-    color: #FFABD3;
+    color: #03e1e4;
 }
 .checkout {
     margin-top: 30px;
