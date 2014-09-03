@@ -5,6 +5,10 @@
     font-weight: normal;
     font-style: normal;
 }
+.errormsg{
+    color: red;
+}
+.ng-invalid.ng-dirty { border: 1px solid red; }
 .font {
     font-family: "CheddarJack";
     font-size: x-large;
@@ -39,9 +43,9 @@
 .newbadge {
     background-color: rgb(39, 240, 232);
     position: absolute;
-    margin-left: 541px;
-    margin-top: 52px;
-    z-index: -1;
+    margin-left: 18px;
+    /* margin-top: 52px; */
+    z-index: 4;
 }
 .msg {
     color: white;
