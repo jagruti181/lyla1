@@ -23,7 +23,7 @@
                         <div class="panel-body">
                             <div class="row billing">
                                 <div class="col-md-12">
-                                    <div class="row" ng-show="(isloggedin=='0')">
+                                    <div class="row">
                                         <div class="col-xs-6">
                                             <h4>CHECKOUT AS A GUEST OR REGISTER</h4>
                                             <p>Register with us for future convenience:</p>
@@ -42,17 +42,16 @@
                                             <!--{{form}}-->
                                             <div class="clearfix"></div>
                                         </div>
-                                       <div class="col-xs-6">
+                                        <div class="col-xs-6 " ng-show="(isloggedin=='0')">
                                             <h4>LOGIN</h4>
-                                            <h5>{{msg}}</h5>
-                                            <input type="text" placeholder="Username or email" ng-model="login.email" class="form-control" required> 
+                                            <input type="text" placeholder="Username or email" class="form-control" required> 
                                             <br>
                                             <br>
-                                            <input type="password" placeholder="Password" ng-model="login.password" class="form-control" required>
+                                            <input type="password" placeholder="Password" class="form-control" required>
                                             <br>
                                             <br>
                                             <a href="">Forgot password ?</a>
-                                            <button href class="btn btn-primary pull-right" ng-click="userloginckeckout(login)">Login</button>
+                                            <button href class="btn btn-primary pull-right">Login</button>
 
 
                                         </div>
@@ -73,16 +72,15 @@
       </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse in">
-                        <p class="errormsg">{{errorvalid}}<p>
                         <div class="panel-body billing-info">
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="text" placeholder="First Name" ng-model="form.firstname" class="form-control" ng-class="allvalidation[0].validation" required><span class="red">*</span>
+                                    <input type="text" placeholder="First Name" ng-model="form.firstname" class="form-control" required><span class="red">*</span>
                                 </div>
                                 <div class="col-xs-4">
 
-                                    <input type="text" placeholder="Last Name" ng-model="form.lastname" class="form-control" ng-class="allvalidation[1].validation" required><span class="red">*</span>
+                                    <input type="text" placeholder="Last Name" ng-model="form.lastname" class="form-control" required><span class="red">*</span>
                                 </div>
                             </div>
 
@@ -93,19 +91,19 @@
                                 </div>
                                 <div class="col-xs-4">
 
-                                    <input type="email" placeholder="Email" ng-model="form.email" class="form-control" ng-class="allvalidation[2].validation" required><span class="red">*</span>
+                                    <input type="email" placeholder="Email" ng-model="form.email" class="form-control" required><span class="red">*</span>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-8">
-                                    <textarea name="" id="" class="form-control" ng-model="form.billingaddress" placeholder="Address" ng-class="allvalidation[3].validation" required></textarea><span class="red">*</span>
+                                    <textarea name="" id="" class="form-control" ng-model="form.billingaddress" placeholder="Address"></textarea><span class="red">*</span>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="text" placeholder="City" ng-model="form.billingcity" class="form-control" ng-class="allvalidation[4].validation" required><span class="red">*</span>
+                                    <input type="text" placeholder="City" ng-model="form.billingcity" class="form-control" required><span class="red">*</span>
 
                                 </div>
                                 <div class="col-xs-4">
@@ -116,13 +114,13 @@
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="text" placeholder="Zip/Postal Code" ng-model="form.billingpincode" class="form-control" ng-class="allvalidation[5].validation" required><span class="red">*</span>
+                                    <input type="text" placeholder="Zip/Postal Code" ng-model="form.billingpincode" class="form-control" required><span class="red">*</span>
 
                                 </div>
                                 <div class="col-xs-4">
 
 
-                                    <select placeholder="Country" ng-model="form.billingcountry" ng-change="free(form.billingcountry,subtotal)" class="form-control" ng-class="allvalidation[6].validation" required>
+                                    <select placeholder="Country" ng-model="form.billingcountry" ng-change="free(form.billingcountry,subtotal)" class="form-control" required><span class="red">*</span>
                                         <option value="">Select Country</option>
                                         <option value="Afganistan">Afghanistan</option>
                                         <option value="Albania">Albania</option>
@@ -371,13 +369,13 @@
                                         <option value="Zaire">Zaire</option>
                                         <option value="Zambia">Zambia</option>
                                         <option value="Zimbabwe">Zimbabwe</option>
-                                    </select><span class="red">*</span>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="tel" placeholder="Telephone" ng-model="form.phone" class="form-control" ng-class="allvalidation[7].validation" required><span class="red">*</span>
+                                    <input type="tel" placeholder="Telephone" ng-model="form.phone" class="form-control" required><span class="red">*</span>
 
                                 </div>
                                 <div class="col-xs-4">
@@ -387,9 +385,9 @@
                             </div>
 
                             <p>
-                                <input type="radio" name="shippdifferent" ng-model="form.shipdifferent" value="1">Ship to this address
+                                <input type="radio" name="1" ng-model="form.shipdifferent" value="1">Ship to this address
                                 <br>
-                                <input type="radio" name="shippdifferent" ng-model="form.shipdifferent" value="2">Ship to different address</p>
+                                <input type="radio" name="1" ng-model="form.shipdifferent" value="2">Ship to different address</p>
                             <button class="btn btn-primary pull-right" ng-click="continueshipping()">Continue</button>
                             <div class="clearfix"></div>
                         </div>
@@ -402,13 +400,13 @@
 
                             <div class="row">
                                 <div class="col-xs-8">
-                                    <textarea name="" id="" class="form-control" ng-model="form.shippingaddress" placeholder="Address" ng-class="allvalidation[8].validation" required></textarea>
+                                    <textarea name="" id="" class="form-control" ng-model="form.shippingaddress" placeholder="Address"></textarea>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="text" placeholder="City" ng-model="form.shippingcity" class="form-control" ng-class="allvalidation[9].validation" required>
+                                    <input type="text" placeholder="City" ng-model="form.shippingcity" class="form-control" required>
 
                                 </div>
                                 <div class="col-xs-4">
@@ -419,13 +417,13 @@
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="text" placeholder="Zip/Postal Code" ng-model="form.shippingpincode" class="form-control" ng-class="allvalidation[10].validation" required>
+                                    <input type="text" placeholder="Zip/Postal Code" ng-model="form.shippingpincode" class="form-control" required>
 
                                 </div>
                                 <div class="col-xs-4">
 
 
-                                    <select type="text" placeholder="Country" ng-model="form.shippingcountry" class="form-control" ng-class="allvalidation[11].validation" required>
+                                    <select type="text" placeholder="Country" ng-model="form.shippingcountry" class="form-control" required>
                                         <option value="">Select Country</option>
                                         <option value="Afganistan">Afghanistan</option>
                                         <option value="Albania">Albania</option>
@@ -679,7 +677,7 @@
                             </div>
 
                             <p>
-                                <button class="btn btn-primary pull-right" ng-click="continueshipping1()">Continue</button>
+                                <button class="btn btn-primary pull-right" ng-click="continueshipping()">Continue</button>
                                 <div class="clearfix"></div>
                         </div>
                     </div>
@@ -711,12 +709,12 @@
                                 <input type="radio" name="shipping" value="5" ng-model="form.shippingmethod">International Delivery £ 5.00
                             </p>
                                 
-                            <button class="btn btn-primary pull-right" ng-click="continuepayment(form)">Continue</button>
+                            <button class="btn btn-primary pull-right" ng-click="continuepayment()">Continue</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default" ng-show="(paywithcard=='1')">
+                <div class="panel panel-default" ng-show="(shippinginfo=='1')">
                     <div class="panel-heading">
                         <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion">
