@@ -733,14 +733,15 @@ div.megamenu.megamenu2 {
 }
 .gototop {
     position: fixed;
-    top: 56px;
+    bottom: 10px;
     right: 10px;
     outline:0px;
+    border-radius: 100%;
+    font-size: 30px;
+    padding: 18px 18px;
+    font-weight: 100;
 }
 .gototop:focus {
-    position: fixed;
-    top: 56px;
-    right: 10px;
     outline:0px;
 }
 .red {

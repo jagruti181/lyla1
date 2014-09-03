@@ -27,10 +27,10 @@
 
                         <td>£{{singlecart.price}}</td>
                         <td>
-                            <input type="text" ng-model="newquantity[$index]" class="form-control cartinput">
+                            <input type="text" ng-model="newquantity[$index]" class="form-control cartinput"> &nbsp; &nbsp;<a class="btn btn-primary" ng-click="addtocart(singlecart.id,singlecart.name,singlecart.price,newquantity[$index],$index)"><strong><span class="glyphicon glyphicon-floppy-save"></span></strong></a> 
                         </td>
                         <td>£{{singlecart.subtotal}}</td>
-                        <td><a class="btn btn-primary" ng-click="addtocart(singlecart.id,singlecart.name,singlecart.price,newquantity[$index],$index)"><strong>Save</strong></a> &nbsp; &nbsp; &nbsp;<a ng-click="deletecart(singlecart.id)"><strong>X</strong></a>
+                        <td><a ng-click="deletecart(singlecart.id)"><strong>X</strong></a>
                         </td>
 
                     </tr>

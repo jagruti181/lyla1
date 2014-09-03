@@ -731,36 +731,83 @@ phonecatControllers.controller('checkout',
         var getsubtotal = function (data, status) {
             console.log(data);
 
-            $scope.subtotal = data;
+            $scope.subtotal = parseFloat(data);
         };
         MainJson.totalcart().success(getsubtotal);
         $scope.showshippingmethods = 0;
         // free
-        $scope.free = function (country, subtotal) {
+        $scope.free = function (country, subtotal,shipping) {
             console.log(country);
             console.log(subtotal);
-            if (country == "United Kingdom") {
-                if (subtotal >= 15) {
-                    $scope.showshippingmethods = 1;
-                    $scope.form.shippingmethod = 1;
-                } else {
-                    $scope.showshippingmethods = 2;
-                    $scope.form.shippingmethod = 2;
-                }
+            console.log(shipping);
+            if(shipping=="1")
+            {
+                if (country == "United Kingdom") {
+                    if (subtotal >= 15) {
+                        $scope.showshippingmethods = 1;
+                        $scope.form.shippingmethod = 1;
+                        $scope.form.shippingcost=0;
+                    } else {
+                        $scope.showshippingmethods = 2;
+                        $scope.form.shippingmethod = 2;
+                        $scope.form.shippingcost=3;
+                    }
 
-            } else {
-                if (subtotal >= 20) {
-                    $scope.showshippingmethods = 3;
-                    $scope.form.shippingmethod = 4;
                 } else {
-                    $scope.showshippingmethods = 4;
-                    $scope.form.shippingmethod = 5;
-                }
+                    if (subtotal >= 20) {
+                        $scope.showshippingmethods = 3;
+                        $scope.form.shippingmethod = 4;
+                        $scope.form.shippingcost=0;
+                    } else {
+                        $scope.showshippingmethods = 4;
+                        $scope.form.shippingmethod = 5;
+                        $scope.form.shippingcost=5;
+                    }
 
+                }
             }
+            
+        };
+        $scope.free2 = function (country, subtotal,shipping) {
+            console.log(country);
+            console.log(subtotal);
+            console.log(shipping);
+            if(shipping=="2")
+            {
+                if (country == "United Kingdom") {
+                    if (subtotal >= 15) {
+                        $scope.showshippingmethods = 1;
+                        $scope.form.shippingmethod = 1;
+                        $scope.form.shippingcost=0;
+                    } else {
+                        $scope.showshippingmethods = 2;
+                        $scope.form.shippingmethod = 2;
+                        $scope.form.shippingcost=3;
+                    }
+
+                } else {
+                    if (subtotal >= 20) {
+                        
+                        $scope.showshippingmethods = 3;
+                        $scope.form.shippingmethod = 4;
+                        $scope.form.shippingcost=0;
+                    } else {
+                        $scope.showshippingmethods = 4;
+                        $scope.form.shippingmethod = 5;
+                        $scope.form.shippingcost=5;
+                    }
+
+                }
+            }
+
         };
         // free
-        
+        $scope.form.shippingcost=0;
+        $scope.changeshippingcost= function(value) 
+        {
+            console.log(value);
+            $scope.form.shippingcost=value;
+        };
         
         
         
@@ -773,13 +820,13 @@ phonecatControllers.controller('checkout',
         };
         var orderemailsend = function (data, status) {
             console.log(data);
-            alert("Email send");
+            //alert("Email send");
         };
         var orderplaced = function (data, status) {
             console.log("place order returns");
             console.log(data);
             MainJson.orderemail($scope.email, data).success(orderemailsend);
-            alert("Order Placed");
+            //alert("Order Placed");
         };
 
         
@@ -787,7 +834,7 @@ phonecatControllers.controller('checkout',
             console.log("place order returns");
             console.log(data);
             MainJson.orderemail($scope.email, data).success(orderemailsend);
-            alert("Order Placed");
+            //alert("Order Placed");
         };
         $scope.continuepayment=function(form){
             $scope.paywithcard=1;
@@ -878,7 +925,10 @@ phonecatControllers.controller('category',
             console.log(data.product);
         };
         MainJson.getproductbycategory($routeParams.CategoryId).success(categorysuccess);
-
+        
+        
+        
+        
         $scope.$on('$viewContentLoaded', function () {
 
             new WOW().init();
@@ -912,6 +962,8 @@ phonecatControllers.controller('product',
         $scope.addquantity = 1;
         $scope.addedtocart = "hide";
         $scope.loginlogouttext = "Login";
+        
+        
         //authenticate
         var authenticate = function (data, status) {
             if (data != "false") {
@@ -962,6 +1014,7 @@ phonecatControllers.controller('product',
             $scope.productimage = data.productimage;
             $scope.relatedproduct = data.relatedproduct;
             console.log(data);
+            $location.hash($scope.product.name.replace(/ /g,"_"));
         };
         MainJson.getproductdetails($routeParams.ProductId).success(productsuccess);
         var cartt = function (data, status) {
