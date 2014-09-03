@@ -54,13 +54,13 @@
        
         <div class="col-xs-3">
             
-            <div class="pull-right" style="margin-right:15px;">
+            <div class="pull-right" style="margin-right:15px;" ng-controller="badge">
               
                <a href="#/Login" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
                     <img src="img/account.png">
                 </a>
                 
-                
+                <a href="#" class="badge newbadge">{{totalcart}}</a>
                <a href="#/cart" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
                     <img src="img/cart.png">
                 </a>
