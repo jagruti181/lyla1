@@ -461,30 +461,6 @@ phonecatControllers.controller('newsletter',
 
     });
 
-phonecatControllers.controller('badge',
-    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
-        $scope.template = TemplateService;
-        $scope.msgg = "Message here..........";
-
-        //authenticate
-        var authenticate = function (data, status) {
-            console.log(data);
-            if (data != "false") {
-                $scope.alldate = data;
-                $scope.loginlogouttext = "Logout";
-            }
-        };
-        MainJson.authenticate().success(authenticate);
-        //authenticate
-        var totalcart=function(data,status){
-            console.log(data);
-            $scope.totalcart=data;
-        };
-       MainJson.gettotalcart().success(totalcart);
-
-    });
-
-
 phonecatControllers.controller('search',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
         $scope.template = TemplateService;
@@ -614,91 +590,16 @@ phonecatControllers.controller('checkout',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         $scope.isloggedin = 0;
-        $scope.form={};
-        $scope.form.shipdifferent=1;
         $scope.billinginfo = 0;
-        //$scope.shipdifferent = false;
+        $scope.shipdifferent = false;
         $scope.shippinginfo = 0;
-        $scope.paywithcard=0;
-        $scope.hidebilling = 1;
-        $scope.focusout=function(){
-            console.log("out focus");
-        };
-        //userloginckeckout
-        var getlogin = function (data, status) {
-            if (data != "false") {
-                //$scope.msg = "Login Successful";
-                $location.url("/checkout");
-        $scope.isloggedin = 1;
-            } else {
-                $scope.msg = "Invalid Email Or Password";
-            }
-        };
-        $scope.userloginckeckout=function(login){
-            console.log(login);
-            MainJson.loginuser(login.email, login.password).success(getlogin);
-        };
-        //userloginckeckout
-        
+        $scope.form = {};
         $scope.continuebilling = function () {
             $scope.billinginfo = 1;
         };
-        
         $scope.continueshipping = function () {
-            
-            //$scope.errorvalid="Fill All Information *";
-            //alert($scope.form.firstname);
-            console.log("first name");
-            console.log($scope.form.firstname);
-            
-            $scope.allvalidation=[{field:$scope.form.firstname,validation:""},{field:$scope.form.lastname,validation:""},{field:$scope.form.email,validation:""},{field:$scope.form.billingaddress,validation:""},{field:$scope.form.billingcity,validation:""},{field:$scope.form.billingpincode,validation:""},{field:$scope.form.billingcountry,validation:""},{field:$scope.form.phone,validation:""},{field:$scope.form.shipdifferent,validation:""}];
-            
-            
-            var check=formvalidation();
-            console.log(check);
-            if(check)
-            {
-             $scope.shippinginfo = 1; 
-             //$scope.hidebilling = 0;
-            }
-            
+            $scope.shippinginfo = 1;
         };
-        
-        $scope.continueshipping1 = function () {
-            
-            //$scope.errorvalid="Fill All Information *";
-            //alert($scope.form.firstname);
-            console.log("first name");
-            console.log($scope.form.firstname);
-            
-            $scope.allvalidation=[{field:$scope.form.firstname,validation:""},{field:$scope.form.lastname,validation:""},{field:$scope.form.email,validation:""},{field:$scope.form.billingaddress,validation:""},{field:$scope.form.billingcity,validation:""},{field:$scope.form.billingpincode,validation:""},{field:$scope.form.billingcountry,validation:""},{field:$scope.form.phone,validation:""},{field:$scope.form.shippingaddress,validation:""},{field:$scope.form.shippingcity,validation:""},{field:$scope.form.shippingpincode,validation:""},{field:$scope.form.shippingcountry,validation:""}];
-            
-            
-            var check=formvalidation();
-            console.log(check);
-            if(check)
-            {
-             $scope.shippinginfo = 1; 
-             //$scope.hidebilling = 0;
-            }
-            
-        };
-        
-        function formvalidation()
-            {
-                var isvalid2=true;
-                for(var i=0;i<$scope.allvalidation.length;i++)
-                {
-                    console.log("checking");
-                    console.log($scope.allvalidation[i].field);
-                    if($scope.allvalidation[i].field=="" || !$scope.allvalidation[i].field)
-                    {
-                        $scope.allvalidation[i].validation="ng-dirty";
-                        isvalid2= false;
-                    }
-                }
-                return isvalid2;
-            }
 
         //authenticate
         var authenticate = function (data, status) {
@@ -760,10 +661,6 @@ phonecatControllers.controller('checkout',
             }
         };
         // free
-        
-        
-        
-        
         $scope.deletecart = function (id) {
             $scope.subtotal = MainJson.deletecart(id);
 
@@ -782,24 +679,7 @@ phonecatControllers.controller('checkout',
             alert("Order Placed");
         };
 
-        
-        var orderplaced = function (data, status) {
-            console.log("place order returns");
-            console.log(data);
-            MainJson.orderemail($scope.email, data).success(orderemailsend);
-            alert("Order Placed");
-        };
-        $scope.continuepayment=function(form){
-            $scope.paywithcard=1;
-            $scope.form.finalamount=$scope.subtotal;
-            console.log($scope.cart);
-            //MainJson.orderitem($scope.cart);
-            $scope.form.cart = $scope.cart;
-            $scope.form.user = $scope.id;
-            $scope.form.status = $scope.status; //MainJson.placeorder(form.firstname,form.lastname,form.email,form.company,form.billingaddress,form.billingcity,form.billingstate,form.billingpincode,form.billingcountry,form.phone,form.fax,form.shippingaddress,form.shippingcity,form.shippingstate,form.shippingpincode,form.shippingcountry,$scope.id,$scope.status).success(orderplaced); 
-            MainJson.placeorder(form).success(orderplaced);
-        }
-        
+
         $scope.placeorder = function (form) {
             console.log($scope.cart);
             //MainJson.orderitem($scope.cart);
