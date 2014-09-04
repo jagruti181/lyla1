@@ -27,7 +27,8 @@
 
                         <td>£{{singlecart.price}}</td>
                         <td>
-                            <input type="text" ng-model="newquantity[$index]" class="form-control cartinput"> &nbsp; &nbsp;<a class="btn btn-primary" ng-click="addtocart(singlecart.id,singlecart.name,singlecart.price,newquantity[$index],$index)"><strong><span class="glyphicon glyphicon-floppy-save"></span></strong></a> 
+                            <span class="cartspace" ng-hide="newquantity[$index]!=1"></span>
+                            <a class="btn btn-default carticon" ng-click="subproductcart(singlecart.id,singlecart.name,singlecart.price,newquantity[$index],$index)" ng-show="newquantity[$index]!=1">-</a><input type="text" ng-model="newquantity[$index]" class="form-control cartinput"><a class="btn btn-default carticon" ng-click="addproductcart(singlecart.id,singlecart.name,singlecart.price,newquantity[$index],$index)">+</a> &nbsp; &nbsp;<a class="btn btn-primary" ng-click="addtocart(singlecart.id,singlecart.name,singlecart.price,newquantity[$index],$index)"><strong><span class="glyphicon glyphicon-floppy-save"></span></strong></a> 
                         </td>
                         <td>£{{singlecart.subtotal}}</td>
                         <td><a ng-click="deletecart(singlecart.id)"><strong>X</strong></a>
@@ -41,7 +42,7 @@
 
             <h3>Discount Codes</h3>
             <p>
-                <input type="text" placeholder="Enter your coupon code" class="form-control newsletteremail " style="margin-right:5px;"><a class="btn btn-primary">Apply Coupon</a><a href="#/checkout" class="btn btn-primary pull-right">Proceed to checkout</a>
+                <input type="text" placeholder="Enter your coupon code" class="form-control newsletteremail " style="margin-right:5px;"><a class="btn btn-primary">Apply Coupon</a><a href="#/checkout" class="btn btn-primary checkoutbtn pull-right">Proceed to checkout</a>
             </p>
 
             <div class="checkout row">

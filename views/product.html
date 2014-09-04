@@ -27,8 +27,8 @@
                     <div class="productdesc">
                         {{product.description}}
                     </div>
-                    <label>Qty :</label>
-                    <input type="text" value="1" class="quantitybox" ng-model="addquantity">
+                    <label class="hidden">Qty :</label>
+                    <input type="text" value="1" class="hidden quantitybox" ng-model="addquantity">
                     <a class="btn btn-primary" ng-click="addtocart(product.id,product.name,rate,addquantity)"><span class="glyphicon  glyphicon-shopping-cart"></span> Add to Cart</a>  <a href="" ng-click="addwishlist(id)"><span ng-show="{{wish}}" class="glyphicon glyphicon-heart prowish"></span><span style="color:rgb(39, 240, 232);" ng-hide="{{wish}}" class="glyphicon glyphicon-heart prowish"></span></a>
                    
                     <div ng-show="addedtocart=='show'" class="alert alert-success" style="margin:20px 0;">Added to Cart</div>

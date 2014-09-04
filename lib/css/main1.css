@@ -5,10 +5,12 @@
     font-weight: normal;
     font-style: normal;
 }
-.errormsg{
+.errormsg {
     color: red;
 }
-.ng-invalid.ng-dirty { border: 1px solid red; }
+.ng-invalid.ng-dirty {
+    border: 1px solid red;
+}
 .font {
     font-family: "CheddarJack";
     font-size: x-large;
@@ -735,19 +737,40 @@ div.megamenu.megamenu2 {
     position: fixed;
     bottom: 10px;
     right: 10px;
-    outline:0px;
+    outline: 0px;
     border-radius: 100%;
-    font-size: 30px;
-    padding: 18px 18px;
+    font-size: 18px;
+    padding: 15px;
     font-weight: 100;
+    color: #03D3D6;
+    border: 3px solid #E4E4E4;
 }
 .gototop:focus {
-    outline:0px;
+    outline: 0px;
 }
 .red {
-    color:red;
+    color: red;
     position: absolute;
     font-size: 32px;
     margin-top: -10px;
     margin-left: 0px;
+}
+.btn.btn-primary.checkoutbtn {
+    background: #ECB8C4;
+    font-weight: bold;
+    padding: 15px 30px;
+    font-size: 110%;
+}
+.carticon {
+    font-size: 25px;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    line-height: 16px;
+    padding: 2px;
+    border: 2px solid #ccc;
+    margin: 0 10px;
+}
+span.cartspace {
+    margin-left: 45px;
 }

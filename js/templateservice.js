@@ -18,6 +18,7 @@ templateservicemod.service('TemplateService', function () {
 
         this.firstload = "";
     };
+    
 });
 templateservicemod.controller('navigationctrl', ['$scope', 'TemplateService',
                                         function ($scope, TemplateService, MainJson, $rootScope) {

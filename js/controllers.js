@@ -140,6 +140,7 @@ phonecatControllers.controller('cart',
         };
         var cartt = function (data, status) {
             console.log(data);
+            MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
             MainJson.totalcart().success(getsubtotal);
         };
         $scope.addtocart = function (id, name, price, quantity, index) {
@@ -148,7 +149,33 @@ phonecatControllers.controller('cart',
             MainJson.addtocart(id, name, price, quantity).success(cartt);
         };
         //addto cart
-
+        
+        $scope.addproductcart = function (id, name, price, quantity, index) {
+             console.log(id+name+price+quantity);
+            quantity=parseInt(quantity)+1;
+            $scope.newquantity[index]=quantity;
+            $scope.cart[index].subtotal = price * quantity;
+            MainJson.addtocart(id, name, price, quantity).success(cartt);
+        };
+        $scope.subproductcart = function (id, name, price, quantity, index) {
+             console.log(id+name+price+quantity);
+            quantity=parseInt(quantity)-1;
+            $scope.newquantity[index]=quantity;
+            $scope.cart[index].subtotal = price * quantity;
+            MainJson.addtocart(id, name, price, quantity).success(cartt);
+        };
+        
+        
+        var deletefromcart=function() {
+            MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
+            MainJson.totalcart().success(getsubtotal);
+            console.log("Subtotal should change");
+        };
+        var savefromcart=function() {
+            MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
+            MainJson.totalcart().success(getsubtotal);
+            console.log("Subtotal should change on save");
+        };
         $scope.deletecart = function (id) {
             //console.log(cart);
             for (var i = 0; i < $scope.cart.length; i++) {
@@ -163,10 +190,11 @@ phonecatControllers.controller('cart',
                 $scope.subtotal += parseInt($scope.cart[i].qty) * parseFloat($scope.cart[i].price);
             }
 
-            MainJson.deletecartfromsession(id);
+            MainJson.deletecartfromsession(id).success(deletefromcart);
+            
         };
         $scope.savecart = function (id, quantity) {
-            $scope.returntwo = MainJson.savecart($scope.uid, id, quantity);
+            $scope.returntwo = MainJson.savecart($scope.uid, id, quantity).success(savefromcart);
             $scope.subtotal = $scope.returntwo.subtotal;
         };
 
@@ -199,10 +227,15 @@ phonecatControllers.controller('login',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
+        
+        var cartt=function(data,status) {
+            MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
+        };
+        
         var cartdata = function (data, status) {
             console.log(data);
             for (var i = 0; i < data.length; i++) {
-                MainJson.addtocart(data[i].id, data[i].name, data[i].price, data[i].quantity);
+                MainJson.addtocart(data[i].id, data[i].name, data[i].price, data[i].quantity).success(cartt);;
             }
         };
         var authenticate = function (data, status) {
@@ -478,9 +511,9 @@ phonecatControllers.controller('badge',
         //authenticate
         var totalcart=function(data,status){
             console.log(data);
-            $scope.totalcart=data;
+            $scope.template.totalproducts=data;
         };
-       MainJson.gettotalcart().success(totalcart);
+        MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
 
     });
 
@@ -1019,6 +1052,7 @@ phonecatControllers.controller('product',
         MainJson.getproductdetails($routeParams.ProductId).success(productsuccess);
         var cartt = function (data, status) {
             console.log(data);
+            MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
         };
         $scope.addtocart = function (id, name, price, quantity) {
             // console.log(id+name+price+quantity);

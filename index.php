@@ -60,7 +60,7 @@
                     <img src="img/account.png">
                 </a>
                 
-                <a href="#" class="badge newbadge">{{totalcart}}</a>
+                <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
                <a href="#/cart" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
                     <img src="img/cart.png">
                 </a>
