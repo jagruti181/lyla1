@@ -6,7 +6,8 @@ var firstapp = angular.module('firstapp', [
   'ngAnimate',
   'Service',
   'ui.bootstrap',
-  'ImageZoom'
+  'ImageZoom',
+'directives.skrollr'
 ]);
 
 firstapp.config(['$routeProvider',
@@ -81,11 +82,11 @@ firstapp.config(['$routeProvider',
             templateUrl: 'views/template.html',
             controller: 'thankyou'
         }).
-         when('/delivery', {
+        when('/delivery', {
             templateUrl: 'views/template.html',
             controller: 'delivery'
         }).
-         when('/returns', {
+        when('/returns', {
             templateUrl: 'views/template.html',
             controller: 'returns'
         }).
@@ -93,13 +94,13 @@ firstapp.config(['$routeProvider',
             redirectTo: '/home'
         });
   }]);
-  
+
 firstapp.filter('imagepath', function () {
     return function (input) {
         if (input == null) {
             //return "http://www.wohlig.co.in/zibabackend/uploads/2239a46835dc42bc7a6acade8f8517e9.jpg";
         } else {
-            return "http://zibacollection.co.uk/lyla/uploads/"+ input;
+            return "http://zibacollection.co.uk/lyla/uploads/" + input;
         }
     };
 });
@@ -258,11 +259,11 @@ firstapp.directive('ngElevateZoom', function () {
 firstapp.run(function ($rootScope) {
     $rootScope.isloaded = 0; //global variable
 });
-firstapp.directive('myRepeatDirective', function() {
-  return function(scope, element, attrs) {
-    angular.element(element).css('color','blue');
-    if (scope.$last){
-      new WOW().init();
-    }
-  };
+firstapp.directive('myRepeatDirective', function () {
+    return function (scope, element, attrs) {
+        angular.element(element).css('color', 'blue');
+        if (scope.$last) {
+            new WOW().init();
+        }
+    };
 });

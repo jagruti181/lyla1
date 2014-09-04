@@ -73,7 +73,7 @@ phonecatControllers.controller('home',
         }, {
             image: "img/slide2.jpg"
         }];
-
+   
 
     });
 
@@ -1056,6 +1056,7 @@ phonecatControllers.controller('product',
         };
         $scope.addtocart = function (id, name, price, quantity) {
             // console.log(id+name+price+quantity);
+            $scope.cartclicked="animated swing";
             MainJson.addtocart(id, name, price, quantity).success(cartt);
             $scope.addedtocart = "show";
         };

@@ -30,6 +30,8 @@
     <script src="lib/js/main.js"></script>
     <script src="lib/js/image-zoom.js"></script>
     <script src="lib/js/jquery.elevatezoom.min.js"></script>
+    <script src="lib/js/skrollr.js"></script>
+    <script src="lib/js/skrollr.dir.js"></script>
 
 
 </head>
@@ -95,13 +97,15 @@
     </div>
     <div class="barheight"></div>
     <div class="container-fluid-non-responsive">
-        <div ng-view></div>
+        <div ng-view skrollr-tag></div>
     </div>
 
     <script>
         var issearch=false;
     $(document).ready(function() {
+        //skrollr.init();
         $(".headsearch .icon").click(function() {
+            
             if(issearch)
             {
                 issearch=false;
