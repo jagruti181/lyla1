@@ -409,7 +409,6 @@ button.home-btn:focus {
     background-repeat: no-repeat;
     position: absolute;
     right: -6px;
-    visibility: hidden;
 }
 .discountprice {
     text-decoration: line-through;
@@ -607,7 +606,7 @@ h5.pricecolor {
     color: #2a4894;
 }
 img.slideset1 {
-    width: 250px;
+    width: 200px;
     float: left;
 }
 img.butterfly-top {
@@ -773,4 +772,22 @@ div.megamenu.megamenu2 {
 }
 span.cartspace {
     margin-left: 45px;
+}
+.imageset {
+    width: 1020px;
+    margin: auto;
+    border: 10px solid #f7f7f7;
+    height: 230px;
+    position: relative;
+}
+.toggle {
+    position: absolute;
+    top: 83px;
+    z-index: 10;
+}
+.toggle.left {
+    left: -30px;
+}
+.toggle.right {
+    right: -30px;
 }

@@ -130,6 +130,9 @@ service.factory('MainJson', function ($http,TemplateService) {
                 withCredentials: true
             });
         },
+        getallslider: function (user) {
+            return $http.get(adminurl + 'getallslider');
+        },
         addtocart: function (id, name, price, quantity) {
             return $http.post(adminurl + 'addtocart?product=' + id + '&productname=' + name + "&quantity=" + quantity + "&price=" + price, {}, {
                 withCredentials: true

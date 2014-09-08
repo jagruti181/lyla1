@@ -20,6 +20,16 @@ phonecatControllers.controller('home',
         $scope.hideaccount = function () {
             $scope.visible = false;
         };
+        $scope.showslideset1=0;
+        $scope.slidesetnext=function(value) {
+            console.log("Next Clicked");
+            $scope.showslideset1=1;
+            console.log($scope.showslideset1);
+        };
+        $scope.slidesetprev=function(value) {
+            console.log("Prev Clicked");
+            $scope.showslideset1=0;
+        };
         //authenticate
         var authenticate = function (data, status) {
             if (data != "false") {
@@ -28,6 +38,12 @@ phonecatControllers.controller('home',
             }
         };
         MainJson.authenticate().success(authenticate);
+        
+        var slidersuccess = function (data, status) {
+            $scope.sliders=data;
+            console.log($scope.sliders);
+        };
+        MainJson.getallslider().success(slidersuccess);
         //authenticate
         //newsletter
         var newslettersaved = function (data, status) {
@@ -954,6 +970,8 @@ phonecatControllers.controller('category',
             $scope.subcategory = data.subcategory;
             $scope.currentcategory = data.currentcategory;
             $scope.productlist = data.product;
+            $location.hash($scope.category.name.replace(/ /g,"_"));
+            $location.replace();
             console.log(data);
             console.log(data.product);
         };
@@ -1048,6 +1066,7 @@ phonecatControllers.controller('product',
             $scope.relatedproduct = data.relatedproduct;
             console.log(data);
             $location.hash($scope.product.name.replace(/ /g,"_"));
+            $location.replace();
         };
         MainJson.getproductdetails($routeParams.ProductId).success(productsuccess);
         var cartt = function (data, status) {
@@ -1057,6 +1076,7 @@ phonecatControllers.controller('product',
         $scope.addtocart = function (id, name, price, quantity) {
             // console.log(id+name+price+quantity);
             $scope.cartclicked="animated swing";
+            
             MainJson.addtocart(id, name, price, quantity).success(cartt);
             $scope.addedtocart = "show";
         };

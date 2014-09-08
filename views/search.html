@@ -32,7 +32,7 @@
 
         <div class="col-md-3 text-center" ng-repeat="product in find"  my-repeat-directive>
             <div class="product wow fadeInLeft" data-wow-delay="0.6s" data-wow-duration="1s" data-wow-offset="10" style="visibility:none;">
-                <span class="pronew"><img src="img/new.png"></span>
+                <span ng-show="product.isnew=='1'" class="pronew"><img src="img/new.png"></span>
                    <a href="#/product/{{product.id}}">
                     <div class="img1">
                         <img src="{{product.image|imagepath}}" class="img">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="proprice">
                     <a href="#/product/{{product.id}}">
-                        <h5 ng-show="(accesslevel!=3)">£ {{product.firstsaleprice}}</h5>
+                        <h5 ng-show="(accesslevel!=3)">£ {{product.price}}</h5>
                         <h5 ng-show="(accesslevel==3)">£ {{product.wholesaleprice}}</h5>
 						<!--h5 class="discountprice">£ {{product.price}}</h5-->
                     </a>
