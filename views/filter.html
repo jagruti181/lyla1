@@ -1,38 +1,54 @@
 <div class="filters sorting">
     <div class="row">
-        <div class="col-xs-4">
-            <h4>Category</h4>
-            <ul class="list-unstyled">
-                <li><a href="">Necklace</a></li>
-                <li><a href="">Bracelets</a></li>
-                <li><a href="">Earrings</a></li>
-                <li><a href="">Rings</a></li>
-                <li><a href="">Scarves</a></li>
-                <li><a href="">Bags</a></li>
-            </ul>
+        <div class="col-xs-8">
+            <h4>Colors</h4>
+            <div class="row">
+                <div class="col-md-6">
+
+
+                    <ul class="list-unstyled">
+                        <li><a ng-click="filtercolor('red')">Red</a>
+                        </li>
+                        <li><a ng-click="filtercolor('pink')">Pink</a>
+                        </li>
+                        <li><a ng-click="filtercolor('white')">White</a>
+                        </li>
+                        <li><a ng-click="filtercolor('gray')">Gray</a>
+                        </li>
+                        <li><a ng-click="filtercolor('black')">Black</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+
+                        <li><a ng-click="filtercolor('purple')">Purple</a>
+                        </li>
+                        <li><a ng-click="filtercolor('blue')">Blue</a>
+                        </li>
+                        <li><a ng-click="filtercolor('green')">Green</a>
+                        </li>
+                        <li><a ng-click="filtercolor('yellow')">Yellow</a>
+                        </li>
+                        <li><a ng-click="filtercolor('orange')">Orange</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
-        <div class="col-xs-4">
-            <h4>Color</h4>
-            <ul class="list-unstyled">
-                <li><a href="">Red</a></li>
-                <li><a href="">Green</a></li>
-                <li><a href="">Blue</a></li>
-            </ul>
-        </div>
+
         <div class="col-xs-4">
             <h4>Price</h4>
-            <ul class="list-unstyled">
-                <li><a href="">&pound; 0-50</a></li>
-                <li><a href="">&pound; 51-150</a></li>
-                <li><a href="">&pound; 151-250</a></li>
-                <li><a href="">&pound; 251-350</a></li>
-                <li><a href="">&pound; 350 above</a></li>
-            </ul>
+            <div class="rangeslider" range-slider min="0" max="30" model-min="filter.pricemin" model-max="filter.pricemax"></div>
+
         </div>
     </div>
     <div class="pull-right">
-        <button class=" btn btn-primary">Save</button>
-        <button class="btn btn-danger">Clear</button>
+        <button class=" btn btn-primary" ng-click="filtersave(filter);">Save</button>
+        <button class="btn btn-danger" ng-click="filterclear();">Clear</button>
     </div>
     <div class="clearfix"></div>
 </div>

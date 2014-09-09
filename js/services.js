@@ -6,12 +6,19 @@ service.factory('MainJson', function ($http,TemplateService) {
     var returntwo = [];
     var subtotal = 0;
     var totalproducts = 0;
+    var filters={color:"",pricemin:0,pricemax:30};
 
     /*{
 		placeorder: function(firstname,lastname,email,company,billingaddress,billingcity,billingstate,billingpincode,billingcountry,phone,fax,shippingaddress,shippingcity,shippingstate,shippingpincode,shippingcountry,id,status) {
 		 	return $http.post(adminurl+'placeorder?user='+id+'&firstname='+firstname+'&lastname='+lastname+'&email='+email+'&phone='+phone+'&status='+status+'&fax='+fax+'&company='+company+'&billingaddress='+billingaddress+'&billingcity='+billingcity+'&billingstate='+billingstate+'&billingpincode='+billingpincode+'&billingcountry='+billingcountry+'&shippingaddress='+shippingaddress+'&shippingstate='+shippingstate+'&shippingpincode='+shippingpincode+'&shippingcountry='+shippingcountry,{});
 		},*/
     return {
+        getfilters: function() {
+            return filters;  
+        },
+        setfilter: function(filter) {
+            filters=filter;  
+        },
         placelimitedemail: function (limited) {
             return $http({
                 url: adminurl + 'placelimitedemail',
@@ -119,7 +126,10 @@ service.factory('MainJson', function ($http,TemplateService) {
         getproductbycategory: function (category) {
             return $http.get(adminurl + 'getproductbycategory', {
                 params: {
-                    category: category
+                    category: category,
+                    color: filters.color,
+                    price1: filters.pricemin,
+                    price2: filters.pricemax,
                 }
             }, {
                 withCredentials: true

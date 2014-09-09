@@ -973,6 +973,7 @@ phonecatControllers.controller('slider',
 phonecatControllers.controller('category',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
 
+        
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -984,6 +985,31 @@ phonecatControllers.controller('category',
             $anchorScroll();
         };
         $scope.loginlogouttext = "Login";
+        
+        //filters
+        $scope.filter=MainJson.getfilters();
+        $scope.filtercolors=[{name:"red",active:""},{name:"pink",active:""},{name:"black",active:""},{name:"white",active:""},{name:"grey",active:""},{name:"blue",active:""},{name:"green",active:""},{name:"purple",active:""},{name:"yellow",active:""},{name:"orange",active:""}];
+        
+        $scope.filtercolor=function(color)
+        {
+            $scope.filter.color=color;  
+        };
+        
+        $scope.filtersave=function(filter) 
+        {
+            MainJson.setfilter(filter);   
+            console.log(MainJson.getfilters());
+            MainJson.getproductbycategory($routeParams.CategoryId).success(categorysuccess);
+        };
+        $scope.filterclear=function() 
+        {
+            $scope.filter={color:"",pricemin:0,pricemax:30};
+            MainJson.setfilter($scope.filter);  
+            MainJson.getproductbycategory($routeParams.CategoryId).success(categorysuccess);
+        };
+        
+        
+        
         //authenticate
         var authenticate = function (data, status) {
             console.log(data);

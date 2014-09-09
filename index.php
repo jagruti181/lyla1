@@ -10,6 +10,7 @@
     <link href="lib/css/image-zoom.min.css" rel="stylesheet">
     <link href="lib/css/font-awesome.min.css" rel="stylesheet">
     <link href="lib/css/main1.css" rel="stylesheet">
+    <link href="lib/range/angular.rangeSlider.css" rel="stylesheet">
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="lib/js/jquery-1.11.1.min.js"></script>
@@ -32,6 +33,7 @@
     <script src="lib/js/jquery.elevatezoom.min.js"></script>
     <script src="lib/js/skrollr.js"></script>
     <script src="lib/js/skrollr.dir.js"></script>
+    <script src="lib/range/angular.rangeSlider.js"></script>
 
 
 </head>
@@ -62,7 +64,7 @@
                     <img src="img/account.png">
                 </a>
                 
-                <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
+                <a href="#" class="badge newbadge {{cartclicked}}" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
                <a href="#/cart" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
                     <img src="img/cart.png">
                 </a>

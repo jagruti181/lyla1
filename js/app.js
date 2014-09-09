@@ -7,7 +7,8 @@ var firstapp = angular.module('firstapp', [
   'Service',
   'ui.bootstrap',
   'ImageZoom',
-'directives.skrollr'
+'directives.skrollr',
+    'ui-rangeSlider'
 ]);
 
 firstapp.config(['$routeProvider',
