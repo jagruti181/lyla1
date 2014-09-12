@@ -1,23 +1,32 @@
-var adminurl = 'http://zibacollection.co.uk/lyla/index.php/json/';
+var adminurl = 'http://lylaloves.co.uk/admin/index.php/json/';
 var service = angular.module('Service', []);
-service.factory('MainJson', function ($http,TemplateService) {
+service.factory('MainJson', function ($http, TemplateService) {
 
     var cart = [];
     var returntwo = [];
     var subtotal = 0;
     var totalproducts = 0;
-    var filters={color:"",pricemin:0,pricemax:30};
+    var filters = {
+        color: "",
+        pricemin: 0,
+        pricemax: 30
+    };
 
     /*{
 		placeorder: function(firstname,lastname,email,company,billingaddress,billingcity,billingstate,billingpincode,billingcountry,phone,fax,shippingaddress,shippingcity,shippingstate,shippingpincode,shippingcountry,id,status) {
 		 	return $http.post(adminurl+'placeorder?user='+id+'&firstname='+firstname+'&lastname='+lastname+'&email='+email+'&phone='+phone+'&status='+status+'&fax='+fax+'&company='+company+'&billingaddress='+billingaddress+'&billingcity='+billingcity+'&billingstate='+billingstate+'&billingpincode='+billingpincode+'&billingcountry='+billingcountry+'&shippingaddress='+shippingaddress+'&shippingstate='+shippingstate+'&shippingpincode='+shippingpincode+'&shippingcountry='+shippingcountry,{});
 		},*/
     return {
-        getfilters: function() {
-            return filters;  
+        checkdiscount: function (discountcoupon) {
+            return $http.post(adminurl + 'checkdiscount?coupon=' + discountcoupon, {}, {
+                withCredentials: true
+            });
         },
-        setfilter: function(filter) {
-            filters=filter;  
+        getfilters: function () {
+            return filters;
+        },
+        setfilter: function (filter) {
+            filters = filter;
         },
         placelimitedemail: function (limited) {
             return $http({

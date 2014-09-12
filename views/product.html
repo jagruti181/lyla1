@@ -30,15 +30,16 @@
                     <label class="hidden">Qty :</label>
                     <input type="text" value="1" class="hidden quantitybox" ng-model="addquantity">
                     <a class="btn btn-primary " ng-click="addtocart(product.id,product.name,rate,addquantity)"><span class="glyphicon  glyphicon-shopping-cart"></span> Add to Cart</a>  <a href="" ng-click="addwishlist(id)"><span ng-show="{{wish}}" class="glyphicon glyphicon-heart prowish"></span><span style="color:rgb(39, 240, 232);" ng-hide="{{wish}}" class="glyphicon glyphicon-heart prowish"></span></a>
-                   
+
                     <div ng-show="addedtocart=='show'" class="alert alert-success" style="margin:20px 0;">Added to Cart</div>
                 </div>
 
 
             </div>
         </div>
-         <span class="pronew2" ng-show="product.isnew=='1'"><img src="img/new.png"></span>
-        <span ng-repeat="image in productimage">
+        <span class="pronew2" ng-show="product.isnew=='1'"><img src="img/new.png"></span>
+        <!--<span ng-repeat="image in productimage">-->
+        <span>
                
                 <!--<div ><img src="img/product/pro11.jpg" class="imgback wow fadeInLeft" ></div>
                 <div><img src="img/product/pro12.jpg" class="imgback wow fadeInLeft"></div>
@@ -53,14 +54,59 @@
                         </div>
                     </div>-->
                      <!--<img src="{{image.image|imagepath}}"  class=" imgback wow fadeInLeft" resizable ng-style="{  height: windowHeight }">-->
-                    <div class="row">
+            <div class="row" ng-show="productimage[0].image">
                         <div class="col-md-6">
-                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />
+<!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
+                         
+                            <img skrollr  ng-src="{{productimage[0].image|imagepath}}" style="height:800px;"  data-350="opacity:1;margin-top:0px;margin-bottom:0px;" data-1150="opacity:1;margin-top:800px;margin-bottom:-800px;"  class=" imgback wow fadeInLeft zoomimg" />
                           </div>
                     </div>
+            <div class="row" ng-show="productimage[1].image">
+                <div class="col-md-6">
+                    <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
+
+                    <img skrollr  ng-src="{{productimage[1].image|imagepath}}" style="height:800px;"  data-1150="opacity:1;margin-top:0px;margin-bottom:0px;" data-1950="opacity:1;margin-top:0px;margin-bottom:-800px;"  class=" imgback wow fadeInLeft zoomimg" />
+                </div>
+            </div>
+            <div class="row" ng-show="productimage[2].image">
+                <div class="col-md-6">
+                    <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
+
+                    <img skrollr  ng-src="{{productimage[2].image|imagepath}}" style="height:800px;"  data-1950="opacity:1;margin-top:0px;margin-bottom:0px;" data-1100="opacity:1;margin-top:0px;margin-bottom:-800px;"  class=" imgback wow fadeInLeft zoomimg" />
+                </div>
+            </div>
+            <div class="row" ng-show="productimage[3].image">
+                <div class="col-md-6">
+                    <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
+
+                    <img skrollr  ng-src="{{productimage[3].image|imagepath}}" style="height:800px;"  data-1950="opacity:1;margin-top:0px;margin-bottom:0px;" data-2750="opacity:1;margin-top:800px;margin-bottom:-800px;"  class=" imgback wow fadeInLeft zoomimg" />
+                </div>
+            </div>
+            <div class="row" ng-show="productimage[4].image">
+                <div class="col-md-6">
+                    <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
+
+                    <img skrollr  ng-src="{{productimage[4].image|imagepath}}" style="height:800px;"  data-2750="opacity:1;margin-top:0px;margin-bottom:0px;" data-3550="opacity:1;margin-top:800px;margin-bottom:-800px;"  class=" imgback wow fadeInLeft zoomimg" />
+                </div>
+            </div>
+            <div class="row" ng-show="productimage[5].image">
+                <div class="col-md-6">
+                    <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
+
+                    <img skrollr  ng-src="{{productimage[5].image|imagepath}}" style="height:800px;"  data-350="opacity:1;margin-top:0px;margin-bottom:0px;" data-1100="opacity:1;margin-top:800px;margin-bottom:-800px;"  class=" imgback wow fadeInLeft zoomimg" />
+                </div>
+            </div>
+            <div class="row" ng-show="productimage[6].image">
+                <div class="col-md-6">
+                    <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
+
+                    <img skrollr  ng-src="{{productimage[6].image|imagepath}}" style="height:800px;"  data-350="opacity:1;margin-top:0px;margin-bottom:0px;" data-1100="opacity:1;margin-top:800px;margin-bottom:-800px;"  class=" imgback wow fadeInLeft zoomimg" />
+                </div>
+            </div>
                </span>
 
 
     </div>
-</div>
+</div >
+<div style="margin-bottom:800px"></div>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>

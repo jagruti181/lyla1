@@ -34,48 +34,49 @@
     <script src="lib/js/skrollr.js"></script>
     <script src="lib/js/skrollr.dir.js"></script>
     <script src="lib/range/angular.rangeSlider.js"></script>
+    <script src="lib/js/jstorage.js"></script>
 
 
 </head>
 
 <body>
-   <div class="top-bar barheight">
+    <div class="top-bar barheight">
 
-       <div class="row">
-       <div class="col-xs-4">
-          
-           
-           <div class="input-group headsearch" ng-controller="search">
-  <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
-  <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search" ng-change="search(searchpro)">
-</div>
-       </div>
-       <div class="col-xs-5 padder" ng-controller="newsletter">
+        <div class="row">
+            <div class="col-xs-4">
+
+
+                <div class="input-group headsearch" ng-controller="search">
+                    <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
+                    <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search" ng-change="search(searchpro)">
+                </div>
+            </div>
+            <div class="col-xs-5 padder" ng-controller="newsletter">
                 <p>Sign up for our newsletter! &nbsp;&nbsp;&nbsp;
                     <input type="email" class="form-control newsletteremail" ng-model="uemail" placeholder="" required> <a style="color:black;" class="btn btn-primary" ng-click="newsletter(uemail)">GO</a>
                 </p>
             </div>
-       
-        <div class="col-xs-3">
-            
-            <div class="pull-right" style="margin-right:15px;" ng-controller="badge">
-              
-               <a href="#/Login" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
-                    <img src="img/account.png">
-                </a>
-                
-                <a href="#" class="badge newbadge {{cartclicked}}" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
-               <a href="#/cart" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
-                    <img src="img/cart.png">
-                </a>
-                
-                <a href="#/wishlist" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
-                    <img src="img/wishlist.png">
-                </a>
-                
-               
-                    
-                <!--a href="https://twitter.com/ZibaCollection" target="_blank" class="fadeInRight wow" ng-class="firstloadclass" data-wow-delay="0.3s">
+
+            <div class="col-xs-3">
+
+                <div class="pull-right" style="margin-right:15px;" ng-controller="badge">
+
+                    <a href="#/Login" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
+                        <img src="img/account.png">
+                    </a>
+
+                    <a href="#" class="badge newbadge {{cartclicked}}" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
+                    <a href="#/cart" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
+                        <img src="img/cart.png">
+                    </a>
+
+                    <a href="#/wishlist" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
+                        <img src="img/wishlist.png">
+                    </a>
+
+
+
+                    <!--a href="https://twitter.com/ZibaCollection" target="_blank" class="fadeInRight wow" ng-class="firstloadclass" data-wow-delay="0.3s">
                     <img src="img/twitter.png" class="socialicons tadaanimation">
                 </a>
                 <a href="http://pinterest.com/zibacollection/" target="_blank" class="fadeInRight wow" ng-class="firstloadclass" data-wow-delay="0.4s">
@@ -90,11 +91,11 @@
                 <a href="http://zibaacc.tumblr.com/" target="_blank" class="fadeInRight wow" ng-class="firstloadclass" data-wow-delay="0.7s">
                     <img src="img/tumbler.png" class="socialicons tadaanimation">
                 </a-->
+                </div>
+
+
+
             </div>
-            
-            
-            
-        </div>
         </div>
     </div>
     <div class="barheight"></div>
@@ -103,27 +104,24 @@
     </div>
 
     <script>
-        var issearch=false;
-    $(document).ready(function() {
-        //skrollr.init();
-        $(".headsearch .icon").click(function() {
-            
-            if(issearch)
-            {
-                issearch=false;
-                $(".headsearch .inputbox").removeClass("showit");
-                $(".headsearch .icon").removeClass("showit");
-            }
-            else
-            {
-                issearch=true;
-                $(".headsearch .inputbox").addClass("showit");
-                $(".headsearch .icon").addClass("showit");
-            }
+        var issearch = false;
+        $(document).ready(function () {
+            //skrollr.init();
+            $(".headsearch .icon").click(function () {
+
+                if (issearch) {
+                    issearch = false;
+                    $(".headsearch .inputbox").removeClass("showit");
+                    $(".headsearch .icon").removeClass("showit");
+                } else {
+                    issearch = true;
+                    $(".headsearch .inputbox").addClass("showit");
+                    $(".headsearch .icon").addClass("showit");
+                }
+            });
         });
-    });
     </script>
-            
+
 </body>
 
 </html>

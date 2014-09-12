@@ -606,7 +606,7 @@ h5.pricecolor {
     color: #2a4894;
 }
 img.slideset1 {
-    width: 200px;
+    width: 190px;
     float: left;
 }
 img.butterfly-top {
@@ -777,7 +777,7 @@ span.cartspace {
     width: 1020px;
     margin: auto;
     border: 10px solid #f7f7f7;
-    height: 230px;
+    height: 244px;
     position: relative;
 }
 .toggle {
@@ -790,4 +790,14 @@ span.cartspace {
 }
 .toggle.right {
     right: -30px;
+}
+.proprice.proprice2 {
+    position: absolute;
+    left: 53px;
+    top: 189px;
+    width: 100px;
+}
+.pickweek {
+    position: relative;
+    display: inline-block;
 }

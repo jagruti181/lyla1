@@ -43,13 +43,23 @@
                 <img src="img/rightbanner.png" alt="" ng-show="showslideset1==0">
             </div>
         </a>
-        <div style="overflow:hidden;">
+        <div style="overflow:hidden;height:230px;">
             <span ng-repeat="slider in sliders">
-                <span ng-show="$index<5">
+                <span ng-show="$index<5" class="pickweek">
                     <a href="#/product/{{slider.link}}"><img src="{{slider.image|imagepath}}" class="slideset1 animated slideInLeft" ng-show="showslideset1==0"></a>
+                    <div class="proprice proprice2">
+                        <a href="#/product/{{product.id}}">
+                            <h5>£ {{slider.price}}</h5>
+                        </a>
+                    </div>
                 </span>
-                <span ng-show="$index>=5">
+            <span ng-show="$index>=5" class="pickweek">
                     <a href="#/product/{{slider.link}}"><img src="{{slider.image|imagepath}}" class="slideset1 animated slideInRight" ng-show="showslideset1==1"></a>
+                <div class="proprice proprice2">
+                    <a href="#/product/{{product.id}}">
+                        <h5>£ {{slider.price}}</h5>
+                    </a>
+                </div>
                 </span>
             </span>
         </div>

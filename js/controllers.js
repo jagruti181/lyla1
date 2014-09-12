@@ -302,6 +302,78 @@ phonecatControllers.controller('login',
 
 
     });
+
+
+phonecatControllers.controller('loginwishlist',
+                               function ($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
+                                   $scope.firstloadclass = TemplateService.firstload;
+                                   $scope.template = TemplateService;
+                                   TemplateService.header = "views/header.html";
+                                   TemplateService.navigation = "views/navigation.html";
+                                   TemplateService.changetitle("Login");
+                                   TemplateService.content = "views/login.html";
+                                   TemplateService.slider = "";
+                                   $scope.loginlogouttext = "Login";
+                                   //authenticate
+                                   $scope.alert2="Login or signup for wishlist";
+
+                                   var cartt=function(data,status) {
+                                       MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
+                                   };
+
+                                   var cartdata = function (data, status) {
+                                       console.log(data);
+                                       for (var i = 0; i < data.length; i++) {
+                                           MainJson.addtocart(data[i].id, data[i].name, data[i].price, data[i].quantity).success(cartt);;
+                                       }
+                                   };
+                                   var authenticate = function (data, status) {
+                                       MainJson.getusercart(data.id).success(cartdata);
+                                       if (data != "false") {
+                                           $scope.loginlogouttext = "Logout";
+
+
+                                       }
+                                   };
+                                   MainJson.authenticate().success(authenticate);
+                                   //authenticate
+                                   var emailsend = function (data, status) {
+                                       console.log(data);
+                                       alert("Email send to you");
+                                   };
+                                   var getsignup = function (data, status) {
+                                       if (data != "false") {
+                                           $scope.msgr = "Registred Successful";
+                                           $location.url("/home");
+                                           MainJson.signupemail(data.email).success(emailsend);
+                                       } else {
+                                           $scope.msgr = "Error In Registration";
+                                       }
+                                   };
+                                   $scope.signup = function (register) {
+                                       console.log(register);
+                                       MainJson.registeruser(register.firstname, register.lastname, register.email, register.password).success(getsignup);
+                                   };
+                                   var getlogin = function (data, status) {
+                                       if (data != "false") {
+                                           $scope.msg = "Login Successful";
+                                           $location.url("/wishlist");
+                                       } else {
+                                           $scope.msg = "Invalid Email Or Password";
+                                       }
+                                   };
+                                   $scope.userlogin = function (login) {
+                                       console.log(login);
+                                       MainJson.loginuser(login.email, login.password).success(getlogin);
+                                   };
+
+
+                               });
+
+
+
+
+
 phonecatControllers.controller('xoxo',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
         $scope.firstloadclass = TemplateService.firstload;
@@ -1205,6 +1277,10 @@ phonecatControllers.controller('wishlist',
             if (data != "false") {
                 MainJson.showwishlist(data.id).success(userwishlist)
                 $scope.loginlogouttext = "Logout";
+            }
+            else
+            {
+                $location.path("/loginwishlist");
             }
         };
         MainJson.authenticate().success(authenticate);
