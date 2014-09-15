@@ -35,6 +35,7 @@
     <script src="lib/js/skrollr.js"></script>
     <script src="lib/js/skrollr.dir.js"></script>
     <script src="lib/range/angular.rangeSlider.js"></script>
+    <script src="lib/js/ng-infinite-scroll.min.js"></script>
     <script src="lib/js/jstorage.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
 

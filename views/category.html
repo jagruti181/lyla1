@@ -1,8 +1,8 @@
-<div class="content" >
+<div class="content">
     <div class="contenttop">
         <div class="row">
             <div class="col-xs-4">
-                <span class="breadcrumb" >
+                <span class="breadcrumb">
 							Home / 
 							<span ng-repeat="br in breadcrumbs" ng-class="{'active':currentcategory == br.id}">
 								<a href="#/category/{{br.id}}">{{br.name}} <span ng-hide="{{$last}}">/</span> 
@@ -28,38 +28,33 @@
     </div>
     <div class="maincontent">
 
-
-
-        <div class="col-md-3 text-center" ng-repeat="product in productlist"  my-repeat-directive>
-            <div class="product wow fadeInLeft" data-wow-delay="0.6s" data-wow-duration="1s" data-wow-offset="10" style="visibility:none;">
-                <span ng-show="product.isnew=='1'" class="pronew"><img src="img/new.png"></span>
-                   <a href="#/product/{{product.id}}">
-                    <div class="img1">
-                        <img src="{{product.productimage[0].image|imagepath}}" class="img">
-                    </div>
-
-                    <div class="img2">
-                        <img src="{{product.productimage[1].image|imagepath}}" class="img">
-                    </div>
-                </a>
-				
-                <div class="protitle">
-                    <a href="#/product/{{product.id}}"><h5>{{product.name}}</h5></a>
-                </div>
-                <div class="proprice">
+        <div infinite-scroll='addMoreItems();' ng-style="productsheight">
+            <div class="col-md-3 text-center clearfix" ng-repeat="product in products" my-repeat-directive>
+                <div class="product wow fadeInLeft" data-wow-delay="0.6s" data-wow-duration="1s" data-wow-offset="10" style="visibility:none;">
+                    <span ng-show="product.isnew=='1'" class="pronew"><img src="img/new.png"></span>
                     <a href="#/product/{{product.id}}">
-                        <h5 ng-show="(accesslevel!=3)">£ {{product.price}}</h5>
-                        <h5 ng-show="(accesslevel==3)">£ {{product.wholesaleprice}}</h5>
-						<!--h5 class="discountprice">£ {{product.price}}</h5-->
+                        <div class="img1">
+                            <img src="{{product.productimage[0].image|imagepath}}" class="img">
+                        </div>
+
+                        <div class="img2">
+                            <img src="{{product.productimage[1].image|imagepath}}" class="img">
+                        </div>
                     </a>
+
+                    <div class="protitle">
+                        <a href="#/product/{{product.id}}"><h5>{{product.name}}</h5></a>
+                    </div>
+                    <div class="proprice">
+                        <a href="#/product/{{product.id}}">
+                            <h5 ng-show="(accesslevel!=3)">£ {{product.price}}</h5>
+                            <h5 ng-show="(accesslevel==3)">£ {{product.wholesaleprice}}</h5>
+                            <!--h5 class="discountprice">£ {{product.price}}</h5-->
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        
-
-
-
     </div>
 </div>
 <a skrollr class="gototop btn btn-default" data-0="opacity:0;" data-1000="opacity:1;" ng-click="gototop();"><span class="glyphicon glyphicon-chevron-up"></span></a>

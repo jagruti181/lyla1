@@ -1295,7 +1295,25 @@ phonecatControllers.controller('category',
         MainJson.authenticate().success(authenticate);
         //authenticate
 
-
+        $scope.products=[];
+        $scope.productsheight={};
+        
+        $scope.addMoreItems=function()
+        {
+            console.log("More Products Added "+$scope.products.length);
+            var first=$scope.products.length;
+            var addition=12;
+            var sum=first+addition;
+            if(sum>$scope.productlist.length)
+            {
+                sum=$scope.productlist.length;
+            }
+            for(var i=first;i<sum;i++)
+            {
+                $scope.products.push($scope.productlist[i]);
+            }
+            $scope.productsheight.height=($scope.products.length/4)*430+"px";
+        };
         var categorysuccess = function (data, status) {
             $scope.category = data.category;
             $scope.breadcrumbs = data.breadcrumbs;
@@ -1306,6 +1324,7 @@ phonecatControllers.controller('category',
             $location.replace();
             console.log(data);
             console.log(data.product);
+            $scope.addMoreItems();
         };
         MainJson.getproductbycategory($routeParams.CategoryId).success(categorysuccess);
 

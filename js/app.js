@@ -8,7 +8,8 @@ var firstapp = angular.module('firstapp', [
   'ui.bootstrap',
   'ImageZoom',
 'directives.skrollr',
-    'ui-rangeSlider'
+    'ui-rangeSlider',
+    'infinite-scroll'
 ]);
 
 firstapp.config(['$routeProvider',

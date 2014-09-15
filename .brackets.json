@@ -1,5 +1,7 @@
 {
     "jscodehints.detectedExclusions": [
-        "C:/xampp/htdocs/lyla1/js/services.js"
+        "C:/xampp/htdocs/lyla1/js/services.js",
+        "C:/xampp/htdocs/lyla1/admin/assets/js/modules/annotations.js",
+        "C:/xampp/htdocs/lyla1/js/controllers.js"
     ]
 }
