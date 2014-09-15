@@ -1315,6 +1315,8 @@ phonecatControllers.controller('category',
             $scope.productsheight.height=($scope.products.length/4)*430+"px";
         };
         var categorysuccess = function (data, status) {
+            $scope.products=[];
+            $scope.productsheight={};
             $scope.category = data.category;
             $scope.breadcrumbs = data.breadcrumbs;
             $scope.subcategory = data.subcategory;
