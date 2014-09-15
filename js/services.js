@@ -1,4 +1,4 @@
-var adminurl = 'http://lylaloves.co.uk/admin/index.php/json/';
+var adminurl = 'http://www.lylaloves.co.uk/admin/index.php/json/';
 var service = angular.module('Service', []);
 service.factory('MainJson', function ($http, TemplateService) {
 

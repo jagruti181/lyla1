@@ -656,7 +656,7 @@ phonecatControllers.controller('badge',
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
         $scope.msgg = "Message here..........";
-
+        
         //authenticate
         var authenticate = function (data, status) {
             console.log(data);
@@ -1409,7 +1409,7 @@ phonecatControllers.controller('product',
         };
         $scope.addtocart = function (id, name, price, quantity) {
             // console.log(id+name+price+quantity);
-            $scope.cartclicked = "animated swing";
+            TemplateService.cartclicked = "animated swing";
 
             MainJson.addtocart(id, name, price, quantity).success(cartt);
             $scope.addedtocart = "show";
