@@ -354,15 +354,15 @@ phonecatControllers.controller('login',
     });
 
 
-phonecatControllers.controller('loginwishlist ',
+phonecatControllers.controller('loginwishlist',
     function ($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
         TemplateService.changetitle("Login");
         TemplateService.content = "views/login.html";
         TemplateService.slider = "";
+        TemplateService.lightboximage = "";
         $scope.loginlogouttext = "Login";
         //authenticate
         $scope.alert2 = "Login or signup for wishlist";
@@ -1381,12 +1381,21 @@ phonecatControllers.controller('product',
             }
         };
         //nestprevious
+        $scope.wishlistlogin=false;
+        $scope.wishlistadded=false;
         var getwishlist = function (data, status) {
             console.log(data);
             $scope.wish = data;
+            $scope.wishlistadded=true;
         };
         $scope.addwishlist = function (id) {
-            MainJson.addtowishlist(id, $routeParams.ProductId).success(getwishlist);
+            if($scope.id)
+            {
+                MainJson.addtowishlist(id, $routeParams.ProductId).success(getwishlist);
+            }
+            else {
+                $scope.wishlistlogin=true;
+            }
         };
         var productsuccess = function (data, status) {
             if ($scope.accesslevel == 3) {
