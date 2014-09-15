@@ -11,6 +11,7 @@
     <link href="lib/css/font-awesome.min.css" rel="stylesheet">
     <link href="lib/css/main1.css" rel="stylesheet">
     <link href="lib/range/angular.rangeSlider.css" rel="stylesheet">
+    <link href="https://checkout.stripe.com/v3/checkout/button.css" rel="stylesheet">
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="lib/js/jquery-1.11.1.min.js"></script>
@@ -35,6 +36,7 @@
     <script src="lib/js/skrollr.dir.js"></script>
     <script src="lib/range/angular.rangeSlider.js"></script>
     <script src="lib/js/jstorage.js"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
 
 
 </head>

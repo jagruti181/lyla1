@@ -269,5 +269,19 @@ class Json extends CI_Controller
 		$data["message"]=$this->db->query("SELECT `slider`.`id` as `id`,`productimage`.`image` as `image`,`product`.`id` as `link`,`product`.`price` as `price`,`slider`.`order` as `order`  FROM `slider` INNER JOIN `product` on `product`.`id`=`slider`.`product` INNER JOIN `productimage` ON `productimage`.`product`=`product`.`id` GROUP BY `product`.`id`  ORDER BY `slider`.`order`,`productimage`.`order`  LIMIT 0,10")->result();
 		$this->load->view("json",$data);
 	}
+	function getdiscountcoupon()
+	{
+		$couponcode=$this->input->get_post("couponcode");
+		$query=$this->db->query("SELECT * from `discountcoupon` WHERE `couponcode` LIKE '$couponcode' ");
+		if($query->num_rows() > 0)
+		{
+		$data['message']=$query->row();
+		}
+		else
+		{
+		$data['message']=false;
+		}
+		$this->load->view("json",$data);
+	}
 }
 ?>

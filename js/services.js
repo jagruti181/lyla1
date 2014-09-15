@@ -11,6 +11,8 @@ service.factory('MainJson', function ($http, TemplateService) {
         pricemin: 0,
         pricemax: 30
     };
+    var coupondetails=$.jStorage.get("coupon");
+    var discount=$.jStorage.get("coupon");
 
     /*{
 		placeorder: function(firstname,lastname,email,company,billingaddress,billingcity,billingstate,billingpincode,billingcountry,phone,fax,shippingaddress,shippingcity,shippingstate,shippingpincode,shippingcountry,id,status) {
@@ -22,6 +24,14 @@ service.factory('MainJson', function ($http, TemplateService) {
                 withCredentials: true
             });
         },
+        getcoupondetails: function () {
+            return coupondetails;
+        },
+        setcoupondetails: function (coupon) {
+            $.jStorage.set("coupon",coupon);
+            coupondetails=coupon;
+        },
+        
         getfilters: function () {
             return filters;
         },
@@ -191,6 +201,11 @@ service.factory('MainJson', function ($http, TemplateService) {
             });
             //return cart;
         },
+        getdiscountcoupon: function (couponcode) {
+            return $http.post(adminurl + 'getdiscountcoupon?couponcode=' + couponcode, {}, {
+                withCredentials: true
+            });
+        },
         gettotalcart: function () {
             return $http.post(adminurl + 'totalitemcart', {}, {
                 withCredentials: true
@@ -242,6 +257,8 @@ service.factory('MainJson', function ($http, TemplateService) {
             console.log(data);
             TemplateService.totalproducts = data;
             return 0;
-        }
+        },
+
+
     }
 });

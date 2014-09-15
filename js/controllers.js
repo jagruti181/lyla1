@@ -22,15 +22,15 @@ phonecatControllers.controller('home',
         $scope.hideaccount = function () {
             $scope.visible = false;
         };
-        $scope.showslideset1=0;
-        $scope.slidesetnext=function(value) {
+        $scope.showslideset1 = 0;
+        $scope.slidesetnext = function (value) {
             console.log("Next Clicked");
-            $scope.showslideset1=1;
+            $scope.showslideset1 = 1;
             console.log($scope.showslideset1);
         };
-        $scope.slidesetprev=function(value) {
+        $scope.slidesetprev = function (value) {
             console.log("Prev Clicked");
-            $scope.showslideset1=0;
+            $scope.showslideset1 = 0;
         };
         //authenticate
         var authenticate = function (data, status) {
@@ -40,9 +40,9 @@ phonecatControllers.controller('home',
             }
         };
         MainJson.authenticate().success(authenticate);
-        
+
         var slidersuccess = function (data, status) {
-            $scope.sliders=data;
+            $scope.sliders = data;
             console.log($scope.sliders);
         };
         MainJson.getallslider().success(slidersuccess);
@@ -91,7 +91,7 @@ phonecatControllers.controller('home',
         }, {
             image: "img/slide2.jpg"
         }];
-   
+
 
     });
 
@@ -116,13 +116,62 @@ phonecatControllers.controller('cart',
             }
         };
         MainJson.authenticate().success(authenticate);
+        //check coupons
+        $scope.discountamount = 0;
+
+        function calcdiscountamount() {
+            var data = MainJson.getcoupondetails();
+            var subtotal = parseFloat($scope.subtotal);
+            console.log(data);
+            if (data.coupontype == '1') {
+                if (data.coupontype.discountpercent != '0') {
+                    $scope.ispercent = parseFloat(data.discountpercent);
+                    $scope.discountamount = (subtotal * $scope.ispercent / 100);
+                } else {
+                    $scope.isamount = parseFloat(data.discountamount);
+                    $scope.discountamount = $scope.isamount;
+                }
+            }
+            if (data.coupontype == 4) {
+                $scope.isfreedelivery = "Free Delivery";
+                $scope.discountamount = 0;
+            }
+        };
+
+
+
+        var coupondetails = {};
+        $scope.ispercent = 0;
+        $scope.isamount = 0;
+        $scope.isfreedelivery = 0;
+        $scope.discountamount = 0;
+        var couponsuccess = function (data, status) {
+            if (data == 'false') {
+                $scope.validcouponcode = 0;
+            } else {
+                console.log("Show it");
+                $scope.validcouponcode = 1;
+
+                MainJson.setcoupondetails(data);
+                calcdiscountamount();
+
+            }
+        }
+
+
+
+        $scope.checkcoupon = function (couponcode) {
+            MainJson.getdiscountcoupon(couponcode).success(couponsuccess);
+        };
+
+
         //authenticate
         $scope.newquantity = [];
         var showcart = function (data, status) {
             console.log(data);
             $scope.cart = data;
             console.log("Values in cart");
-            console.log($scope.cart[0].qty);
+            // console.log($scope.cart[0].qty);
             console.log($scope.cart.length);
 
             for (var i = 0; i < $scope.cart.length; i++) {
@@ -135,6 +184,7 @@ phonecatControllers.controller('cart',
         MainJson.getcart().success(showcart);
         var getsubtotal = function (data, status) {
             $scope.subtotal = data;
+            calcdiscountamount();
         };
         MainJson.totalcart().success(getsubtotal);
         //separating cart
@@ -169,29 +219,29 @@ phonecatControllers.controller('cart',
             MainJson.addtocart(id, name, price, quantity).success(cartt);
         };
         //addto cart
-        
+
         $scope.addproductcart = function (id, name, price, quantity, index) {
-             console.log(id+name+price+quantity);
-            quantity=parseInt(quantity)+1;
-            $scope.newquantity[index]=quantity;
+            console.log(id + name + price + quantity);
+            quantity = parseInt(quantity) + 1;
+            $scope.newquantity[index] = quantity;
             $scope.cart[index].subtotal = price * quantity;
             MainJson.addtocart(id, name, price, quantity).success(cartt);
         };
         $scope.subproductcart = function (id, name, price, quantity, index) {
-             console.log(id+name+price+quantity);
-            quantity=parseInt(quantity)-1;
-            $scope.newquantity[index]=quantity;
+            console.log(id + name + price + quantity);
+            quantity = parseInt(quantity) - 1;
+            $scope.newquantity[index] = quantity;
             $scope.cart[index].subtotal = price * quantity;
             MainJson.addtocart(id, name, price, quantity).success(cartt);
         };
-        
-        
-        var deletefromcart=function() {
+
+
+        var deletefromcart = function () {
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
             MainJson.totalcart().success(getsubtotal);
             console.log("Subtotal should change");
         };
-        var savefromcart=function() {
+        var savefromcart = function () {
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
             MainJson.totalcart().success(getsubtotal);
             console.log("Subtotal should change on save");
@@ -211,7 +261,7 @@ phonecatControllers.controller('cart',
             }
 
             MainJson.deletecartfromsession(id).success(deletefromcart);
-            
+
         };
         $scope.savecart = function (id, quantity) {
             $scope.returntwo = MainJson.savecart($scope.uid, id, quantity).success(savefromcart);
@@ -220,10 +270,10 @@ phonecatControllers.controller('cart',
 
     });
 
-phonecatControllers.controller('logout',
+phonecatControllers.controller('logout ',
     function ($scope, TemplateService, MainJson, $location) {
 
-       //######################authentication#####################3
+        //######################authentication#####################3
         var logout = function (data, status) {
             //console.log(data);
             $scope.loginlogouttext = "Login";
@@ -249,11 +299,11 @@ phonecatControllers.controller('login',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
-        
-        var cartt=function(data,status) {
+
+        var cartt = function (data, status) {
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
         };
-        
+
         var cartdata = function (data, status) {
             console.log(data);
             for (var i = 0; i < data.length; i++) {
@@ -304,72 +354,71 @@ phonecatControllers.controller('login',
     });
 
 
-phonecatControllers.controller('loginwishlist',
-                               function ($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
-                                   $scope.firstloadclass = TemplateService.firstload;
-                                   $scope.template = TemplateService;
-                                   TemplateService.header = "views/header.html";
-                                   TemplateService.navigation = "views/navigation.html";
-                                   TemplateService.changetitle("Login");
-                                   TemplateService.content = "views/login.html";
-                                   TemplateService.slider = "";
-                                   $scope.loginlogouttext = "Login";
-                                   //authenticate
-                                   $scope.alert2="Login or signup for wishlist";
+phonecatControllers.controller('loginwishlist ',
+    function ($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
+        $scope.firstloadclass = TemplateService.firstload;
+        $scope.template = TemplateService;
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.changetitle("Login");
+        TemplateService.content = "views/login.html";
+        TemplateService.slider = "";
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        $scope.alert2 = "Login or signup for wishlist";
 
-                                   var cartt=function(data,status) {
-                                       MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
-                                   };
+        var cartt = function (data, status) {
+            MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
+        };
 
-                                   var cartdata = function (data, status) {
-                                       console.log(data);
-                                       for (var i = 0; i < data.length; i++) {
-                                           MainJson.addtocart(data[i].id, data[i].name, data[i].price, data[i].quantity).success(cartt);;
-                                       }
-                                   };
-                                   var authenticate = function (data, status) {
-                                       MainJson.getusercart(data.id).success(cartdata);
-                                       if (data != "false") {
-                                           $scope.loginlogouttext = "Logout";
-
-
-                                       }
-                                   };
-                                   MainJson.authenticate().success(authenticate);
-                                   //authenticate
-                                   var emailsend = function (data, status) {
-                                       console.log(data);
-                                       alert("Email send to you");
-                                   };
-                                   var getsignup = function (data, status) {
-                                       if (data != "false") {
-                                           $scope.msgr = "Registred Successful";
-                                           $location.url("/home");
-                                           MainJson.signupemail(data.email).success(emailsend);
-                                       } else {
-                                           $scope.msgr = "Error In Registration";
-                                       }
-                                   };
-                                   $scope.signup = function (register) {
-                                       console.log(register);
-                                       MainJson.registeruser(register.firstname, register.lastname, register.email, register.password).success(getsignup);
-                                   };
-                                   var getlogin = function (data, status) {
-                                       if (data != "false") {
-                                           $scope.msg = "Login Successful";
-                                           $location.url("/wishlist");
-                                       } else {
-                                           $scope.msg = "Invalid Email Or Password";
-                                       }
-                                   };
-                                   $scope.userlogin = function (login) {
-                                       console.log(login);
-                                       MainJson.loginuser(login.email, login.password).success(getlogin);
-                                   };
+        var cartdata = function (data, status) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                MainJson.addtocart(data[i].id, data[i].name, data[i].price, data[i].quantity).success(cartt);;
+            }
+        };
+        var authenticate = function (data, status) {
+            MainJson.getusercart(data.id).success(cartdata);
+            if (data != "false") {
+                $scope.loginlogouttext = "Logout";
 
 
-                               });
+            }
+        };
+        MainJson.authenticate().success(authenticate);
+        //authenticate
+        var emailsend = function (data, status) {
+            console.log(data);
+            alert("Email send to you");
+        };
+        var getsignup = function (data, status) {
+            if (data != "false") {
+                $scope.msgr = "Registred Successful";
+                $location.url("/home");
+                MainJson.signupemail(data.email).success(emailsend);
+            } else {
+                $scope.msgr = "Error In Registration";
+            }
+        };
+        $scope.signup = function (register) {
+            console.log(register);
+            MainJson.registeruser(register.firstname, register.lastname, register.email, register.password).success(getsignup);
+        };
+        var getlogin = function (data, status) {
+            if (data != "false") {
+                $scope.msg = "Login Successful";
+                $location.url("/wishlist");
+            } else {
+                $scope.msg = "Invalid Email Or Password";
+            }
+        };
+        $scope.userlogin = function (login) {
+            console.log(login);
+            MainJson.loginuser(login.email, login.password).success(getlogin);
+        };
 
+
+    });
 
 
 
@@ -433,7 +482,7 @@ phonecatControllers.controller('contact',
 
 phonecatControllers.controller('contact2',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        
+
         var contact = function (data, status) {
             console.log(data);
             $scope.msg = "YOUR REVIEW IS SAVED SUCCESSFULY";
@@ -618,9 +667,9 @@ phonecatControllers.controller('badge',
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
-        var totalcart=function(data,status){
+        var totalcart = function (data, status) {
             console.log(data);
-            $scope.template.totalproducts=data;
+            $scope.template.totalproducts = data;
         };
         MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
 
@@ -696,6 +745,9 @@ phonecatControllers.controller('searchpage',
 
 phonecatControllers.controller('lookbook',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
+
+
+
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -726,28 +778,28 @@ phonecatControllers.controller('lookbook',
         $scope.lookbookimages = [{
             id: 1,
             image: "img/lookbook/pro1.jpg"
-        }, {
+                                   }, {
             id: 2,
             image: "img/lookbook/pro2.jpg"
-        }, {
+                                   }, {
             id: 3,
             image: "img/lookbook/pro1.jpg"
-        }, {
+                                   }, {
             id: 4,
             image: "img/lookbook/pro2.jpg"
-        }, {
+                                   }, {
             id: 5,
             image: "img/lookbook/pro1.jpg"
-        }, {
+                                   }, {
             id: 6,
             image: "img/lookbook/pro2.jpg"
-        }, {
+                                   }, {
             id: 7,
             image: "img/lookbook/pro1.jpg"
-        }, {
+                                   }, {
             id: 8,
             image: "img/lookbook/pro2.jpg"
-        }];
+                                   }];
         $scope.lookbookimages[0].active = "active";
         $scope.activeimage = $scope.lookbookimages[0].image;
     });
@@ -764,91 +816,196 @@ phonecatControllers.controller('checkout',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         $scope.isloggedin = 0;
-        $scope.form={};
-        $scope.form.shipdifferent=1;
+        $scope.form = {};
+        $scope.form.shipdifferent = 1;
         $scope.billinginfo = 0;
         //$scope.shipdifferent = false;
         $scope.shippinginfo = 0;
-        $scope.paywithcard=0;
+        $scope.paywithcard = 0;
         $scope.hidebilling = 1;
-        $scope.focusout=function(){
+        $scope.focusout = function () {
             console.log("out focus");
         };
+        var handler = StripeCheckout.configure({
+            key: 'pk_live_LummdQUKjom4PnlfHJhLPDKC',
+            image: 'img/logo.jpg',
+            currency: 'GBP',
+            token: function (token) {
+                // Use the token to create the charge with a server-side script.
+                // You can access the token ID with `token.id`
+            }
+        });
+
+        $scope.StipePaymentGen = function (amount) {
+
+
+            handler.open({
+                name: 'Lyla Loves',
+                description: 'Total Amount: £ ' + amount,
+                amount: amount * 100,
+
+            });
+
+        };
+
+
+
+        //discountamount
+        $scope.discountamount = 0;
+
+        function calcdiscountamount() {
+            var data = MainJson.getcoupondetails();
+            var subtotal = parseFloat($scope.subtotal);
+            console.log(data);
+            if (data.coupontype == '1') {
+                if (data.coupontype.discountpercent != '0') {
+                    $scope.ispercent = parseFloat(data.discountpercent);
+                    $scope.discountamount = (subtotal * $scope.ispercent / 100);
+                } else {
+                    $scope.isamount = parseFloat(data.discountamount);
+                    $scope.discountamount = $scope.isamount;
+                }
+            }
+            if (data.coupontype == 4) {
+                $scope.isfreedelivery = "Free Delivery";
+                $scope.discountamount = 0;
+            }
+        };
+
+
         //userloginckeckout
         var getlogin = function (data, status) {
             if (data != "false") {
                 //$scope.msg = "Login Successful";
                 $location.url("/checkout");
-        $scope.isloggedin = 1;
+                $scope.isloggedin = 1;
             } else {
                 $scope.msg = "Invalid Email Or Password";
             }
         };
-        $scope.userloginckeckout=function(login){
+        $scope.userloginckeckout = function (login) {
             console.log(login);
             MainJson.loginuser(login.email, login.password).success(getlogin);
         };
         //userloginckeckout
-        
+
         $scope.continuebilling = function () {
             $scope.billinginfo = 1;
         };
-        
+
         $scope.continueshipping = function () {
-            
+
             //$scope.errorvalid="Fill All Information *";
             //alert($scope.form.firstname);
             console.log("first name");
             console.log($scope.form.firstname);
-            
-            $scope.allvalidation=[{field:$scope.form.firstname,validation:""},{field:$scope.form.lastname,validation:""},{field:$scope.form.email,validation:""},{field:$scope.form.billingaddress,validation:""},{field:$scope.form.billingcity,validation:""},{field:$scope.form.billingpincode,validation:""},{field:$scope.form.billingcountry,validation:""},{field:$scope.form.phone,validation:""},{field:$scope.form.shipdifferent,validation:""}];
-            
-            
-            var check=formvalidation();
+
+            $scope.allvalidation = [{
+                field: $scope.form.firstname,
+                validation: ""
+            }, {
+                field: $scope.form.lastname,
+                validation: ""
+            }, {
+                field: $scope.form.email,
+                validation: ""
+            }, {
+                field: $scope.form.billingaddress,
+                validation: ""
+            }, {
+                field: $scope.form.billingcity,
+                validation: ""
+            }, {
+                field: $scope.form.billingpincode,
+                validation: ""
+            }, {
+                field: $scope.form.billingcountry,
+                validation: ""
+            }, {
+                field: $scope.form.phone,
+                validation: ""
+            }, {
+                field: $scope.form.shipdifferent,
+                validation: ""
+            }];
+
+
+            var check = formvalidation();
             console.log(check);
-            if(check)
-            {
-             $scope.shippinginfo = 1; 
-             //$scope.hidebilling = 0;
+            if (check) {
+                $scope.shippinginfo = 1;
+                //$scope.hidebilling = 0;
             }
-            
+
         };
-        
+
         $scope.continueshipping1 = function () {
-            
+
             //$scope.errorvalid="Fill All Information *";
             //alert($scope.form.firstname);
             console.log("first name");
             console.log($scope.form.firstname);
-            
-            $scope.allvalidation=[{field:$scope.form.firstname,validation:""},{field:$scope.form.lastname,validation:""},{field:$scope.form.email,validation:""},{field:$scope.form.billingaddress,validation:""},{field:$scope.form.billingcity,validation:""},{field:$scope.form.billingpincode,validation:""},{field:$scope.form.billingcountry,validation:""},{field:$scope.form.phone,validation:""},{field:$scope.form.shippingaddress,validation:""},{field:$scope.form.shippingcity,validation:""},{field:$scope.form.shippingpincode,validation:""},{field:$scope.form.shippingcountry,validation:""}];
-            
-            
-            var check=formvalidation();
+
+            $scope.allvalidation = [{
+                field: $scope.form.firstname,
+                validation: ""
+            }, {
+                field: $scope.form.lastname,
+                validation: ""
+            }, {
+                field: $scope.form.email,
+                validation: ""
+            }, {
+                field: $scope.form.billingaddress,
+                validation: ""
+            }, {
+                field: $scope.form.billingcity,
+                validation: ""
+            }, {
+                field: $scope.form.billingpincode,
+                validation: ""
+            }, {
+                field: $scope.form.billingcountry,
+                validation: ""
+            }, {
+                field: $scope.form.phone,
+                validation: ""
+            }, {
+                field: $scope.form.shippingaddress,
+                validation: ""
+            }, {
+                field: $scope.form.shippingcity,
+                validation: ""
+            }, {
+                field: $scope.form.shippingpincode,
+                validation: ""
+            }, {
+                field: $scope.form.shippingcountry,
+                validation: ""
+            }];
+
+
+            var check = formvalidation();
             console.log(check);
-            if(check)
-            {
-             $scope.shippinginfo = 1; 
-             //$scope.hidebilling = 0;
+            if (check) {
+                $scope.shippinginfo = 1;
+                //$scope.hidebilling = 0;
             }
-            
+
         };
-        
-        function formvalidation()
-            {
-                var isvalid2=true;
-                for(var i=0;i<$scope.allvalidation.length;i++)
-                {
-                    console.log("checking");
-                    console.log($scope.allvalidation[i].field);
-                    if($scope.allvalidation[i].field=="" || !$scope.allvalidation[i].field)
-                    {
-                        $scope.allvalidation[i].validation="ng-dirty";
-                        isvalid2= false;
-                    }
+
+        function formvalidation() {
+            var isvalid2 = true;
+            for (var i = 0; i < $scope.allvalidation.length; i++) {
+                console.log("checking");
+                console.log($scope.allvalidation[i].field);
+                if ($scope.allvalidation[i].field == "" || !$scope.allvalidation[i].field) {
+                    $scope.allvalidation[i].validation = "ng-dirty";
+                    isvalid2 = false;
                 }
-                return isvalid2;
             }
+            return isvalid2;
+        }
 
         //authenticate
         var authenticate = function (data, status) {
@@ -880,71 +1037,86 @@ phonecatControllers.controller('checkout',
         MainJson.getcart().success(showcart);
         var getsubtotal = function (data, status) {
             console.log(data);
-
             $scope.subtotal = parseFloat(data);
+            calcdiscountamount();
+
         };
+
+
         MainJson.totalcart().success(getsubtotal);
         $scope.showshippingmethods = 0;
         // free
-        $scope.free = function (country, subtotal,shipping) {
+        $scope.free = function (country, subtotal, shipping) {
+            console.log("MAaaaza");
             console.log(country);
             console.log(subtotal);
             console.log(shipping);
-            if(shipping=="1")
-            {
+            var coupondetails=MainJson.getcoupondetails();
+            if (coupondetails && MainJson.getcoupondetails().coupontype == "4") {
+                console.log("ABC");
+                $scope.showshippingmethods = 5;
+                $scope.form.shippingcost = 0;
+                $scope.form.shippingmethod = 6;
+                return 0;
+            } else if (shipping == "1") {
                 if (country == "United Kingdom") {
                     if (subtotal >= 15) {
                         $scope.showshippingmethods = 1;
                         $scope.form.shippingmethod = 1;
-                        $scope.form.shippingcost=0;
+                        $scope.form.shippingcost = 0;
                     } else {
                         $scope.showshippingmethods = 2;
                         $scope.form.shippingmethod = 2;
-                        $scope.form.shippingcost=3;
+                        $scope.form.shippingcost = 3;
                     }
 
                 } else {
                     if (subtotal >= 20) {
                         $scope.showshippingmethods = 3;
                         $scope.form.shippingmethod = 4;
-                        $scope.form.shippingcost=0;
+                        $scope.form.shippingcost = 0;
                     } else {
                         $scope.showshippingmethods = 4;
                         $scope.form.shippingmethod = 5;
-                        $scope.form.shippingcost=5;
+                        $scope.form.shippingcost = 5;
                     }
 
                 }
             }
-            
+
         };
-        $scope.free2 = function (country, subtotal,shipping) {
+        $scope.free2 = function (country, subtotal, shipping) {
             console.log(country);
             console.log(subtotal);
             console.log(shipping);
-            if(shipping=="2")
-            {
+            var coupondetails=MainJson.getcoupondetails();
+            if (coupondetails && MainJson.getcoupondetails().coupontype == "4") {
+                $scope.showshippingmethods = 5;
+                $scope.form.shippingcost = 0;
+                $scope.form.shippingmethod = 6;
+                return 0;
+            } else if (shipping == "2") {
                 if (country == "United Kingdom") {
                     if (subtotal >= 15) {
                         $scope.showshippingmethods = 1;
                         $scope.form.shippingmethod = 1;
-                        $scope.form.shippingcost=0;
+                        $scope.form.shippingcost = 0;
                     } else {
                         $scope.showshippingmethods = 2;
                         $scope.form.shippingmethod = 2;
-                        $scope.form.shippingcost=3;
+                        $scope.form.shippingcost = 3;
                     }
 
                 } else {
                     if (subtotal >= 20) {
-                        
+
                         $scope.showshippingmethods = 3;
                         $scope.form.shippingmethod = 4;
-                        $scope.form.shippingcost=0;
+                        $scope.form.shippingcost = 0;
                     } else {
                         $scope.showshippingmethods = 4;
                         $scope.form.shippingmethod = 5;
-                        $scope.form.shippingcost=5;
+                        $scope.form.shippingcost = 5;
                     }
 
                 }
@@ -952,15 +1124,14 @@ phonecatControllers.controller('checkout',
 
         };
         // free
-        $scope.form.shippingcost=0;
-        $scope.changeshippingcost= function(value) 
-        {
+        $scope.form.shippingcost = 0;
+        $scope.changeshippingcost = function (value) {
             console.log(value);
-            $scope.form.shippingcost=value;
+            $scope.form.shippingcost = value;
         };
-        
-        
-        
+
+
+
         $scope.deletecart = function (id) {
             $scope.subtotal = MainJson.deletecart(id);
 
@@ -979,16 +1150,16 @@ phonecatControllers.controller('checkout',
             //alert("Order Placed");
         };
 
-        
+
         var orderplaced = function (data, status) {
             console.log("place order returns");
             console.log(data);
             MainJson.orderemail($scope.email, data).success(orderemailsend);
             //alert("Order Placed");
         };
-        $scope.continuepayment=function(form){
-            $scope.paywithcard=1;
-            $scope.form.finalamount=$scope.subtotal;
+        $scope.continuepayment = function (form) {
+            $scope.paywithcard = 1;
+            $scope.form.finalamount = $scope.subtotal;
             console.log($scope.cart);
             //MainJson.orderitem($scope.cart);
             $scope.form.cart = $scope.cart;
@@ -996,7 +1167,7 @@ phonecatControllers.controller('checkout',
             $scope.form.status = $scope.status; //MainJson.placeorder(form.firstname,form.lastname,form.email,form.company,form.billingaddress,form.billingcity,form.billingstate,form.billingpincode,form.billingcountry,form.phone,form.fax,form.shippingaddress,form.shippingcity,form.shippingstate,form.shippingpincode,form.shippingcountry,$scope.id,$scope.status).success(orderplaced); 
             MainJson.placeorder(form).success(orderplaced);
         }
-        
+
         $scope.placeorder = function (form) {
             console.log($scope.cart);
             //MainJson.orderitem($scope.cart);
@@ -1016,7 +1187,7 @@ phonecatControllers.controller('headerctrl',
 phonecatControllers.controller('slider',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
         $scope.template = TemplateService;
-        
+
 
         $scope.placelimited = function (limited) {
 
@@ -1045,7 +1216,7 @@ phonecatControllers.controller('slider',
 phonecatControllers.controller('category',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
 
-        
+
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -1057,31 +1228,62 @@ phonecatControllers.controller('category',
             $anchorScroll();
         };
         $scope.loginlogouttext = "Login";
-        
+
         //filters
-        $scope.filter=MainJson.getfilters();
-        $scope.filtercolors=[{name:"red",active:""},{name:"pink",active:""},{name:"black",active:""},{name:"white",active:""},{name:"grey",active:""},{name:"blue",active:""},{name:"green",active:""},{name:"purple",active:""},{name:"yellow",active:""},{name:"orange",active:""}];
-        
-        $scope.filtercolor=function(color)
-        {
-            $scope.filter.color=color;  
+        $scope.filter = MainJson.getfilters();
+        $scope.filtercolors = [{
+            name: "red",
+            active: ""
+        }, {
+            name: "pink",
+            active: ""
+        }, {
+            name: "black",
+            active: ""
+        }, {
+            name: "white",
+            active: ""
+        }, {
+            name: "grey",
+            active: ""
+        }, {
+            name: "blue",
+            active: ""
+        }, {
+            name: "green",
+            active: ""
+        }, {
+            name: "purple",
+            active: ""
+        }, {
+            name: "yellow",
+            active: ""
+        }, {
+            name: "orange",
+            active: ""
+        }];
+
+        $scope.filtercolor = function (color) {
+            $scope.filter.color = color;
         };
-        
-        $scope.filtersave=function(filter) 
-        {
-            MainJson.setfilter(filter);   
+
+        $scope.filtersave = function (filter) {
+            MainJson.setfilter(filter);
             console.log(MainJson.getfilters());
             MainJson.getproductbycategory($routeParams.CategoryId).success(categorysuccess);
         };
-        $scope.filterclear=function() 
-        {
-            $scope.filter={color:"",pricemin:0,pricemax:30};
-            MainJson.setfilter($scope.filter);  
+        $scope.filterclear = function () {
+            $scope.filter = {
+                color: "",
+                pricemin: 0,
+                pricemax: 30
+            };
+            MainJson.setfilter($scope.filter);
             MainJson.getproductbycategory($routeParams.CategoryId).success(categorysuccess);
         };
-        
-        
-        
+
+
+
         //authenticate
         var authenticate = function (data, status) {
             console.log(data);
@@ -1100,16 +1302,16 @@ phonecatControllers.controller('category',
             $scope.subcategory = data.subcategory;
             $scope.currentcategory = data.currentcategory;
             $scope.productlist = data.product;
-            $location.hash($scope.category.name.replace(/ /g,"_"));
+            $location.hash($scope.category.name.replace(/ /g, "_"));
             $location.replace();
             console.log(data);
             console.log(data.product);
         };
         MainJson.getproductbycategory($routeParams.CategoryId).success(categorysuccess);
-        
-        
-        
-        
+
+
+
+
         $scope.$on('$viewContentLoaded', function () {
 
             new WOW().init();
@@ -1145,8 +1347,8 @@ phonecatControllers.controller('product',
         $scope.addquantity = 1;
         $scope.addedtocart = "hide";
         $scope.loginlogouttext = "Login";
-        
-        
+
+
         //authenticate
         var authenticate = function (data, status) {
             if (data != "false") {
@@ -1197,7 +1399,7 @@ phonecatControllers.controller('product',
             $scope.productimage = data.productimage;
             $scope.relatedproduct = data.relatedproduct;
             console.log(data);
-            $location.hash($scope.product.name.replace(/ /g,"_"));
+            $location.hash($scope.product.name.replace(/ /g, "_"));
             $location.replace();
         };
         MainJson.getproductdetails($routeParams.ProductId).success(productsuccess);
@@ -1207,8 +1409,8 @@ phonecatControllers.controller('product',
         };
         $scope.addtocart = function (id, name, price, quantity) {
             // console.log(id+name+price+quantity);
-            $scope.cartclicked="animated swing";
-            
+            $scope.cartclicked = "animated swing";
+
             MainJson.addtocart(id, name, price, quantity).success(cartt);
             $scope.addedtocart = "show";
         };
@@ -1277,9 +1479,7 @@ phonecatControllers.controller('wishlist',
             if (data != "false") {
                 MainJson.showwishlist(data.id).success(userwishlist)
                 $scope.loginlogouttext = "Logout";
-            }
-            else
-            {
+            } else {
                 $location.path("/loginwishlist");
             }
         };

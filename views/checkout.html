@@ -382,10 +382,7 @@
                                             <input type="tel" placeholder="Telephone" ng-model="form.phone" class="form-control" ng-class="allvalidation[7].validation" required><span class="red">*</span>
 
                                         </div>
-                                        <div class="col-xs-4">
-
-                                            <input type="tel" placeholder="Fax" ng-model="form.fax" class="form-control">
-                                        </div>
+                                        
                                     </div>
                                     <div></div>
 
@@ -713,6 +710,9 @@
                             <p ng-show="showshippingmethods==4">
                                 <input type="radio" name="shipping" value="5" ng-model="form.shippingmethod" ng-change="changeshippingcost(5)">International Delivery £ 5.00
                             </p>
+                            <p ng-show="showshippingmethods==5">
+                                <input type="radio" name="shipping" value="6" ng-model="form.shippingmethod" ng-change="changeshippingcost(0)">Free Delivery £ 0.00
+                            </p>
 
                             <button class="btn btn-primary pull-right" ng-click="continuepayment(form)">Continue</button>
                             <div class="clearfix"></div>
@@ -734,17 +734,21 @@
                             <p>You will be redirected to the Sty website when you place an order.</p>
                             <button href class="btn btn-primary pull-right">Continue</button> -->
                             <div class="row">
+                               
                                 <div class="col-xs-3">
+<!--
                                     <form action="#/thankyou" method="POST">
-                                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_live_LummdQUKjom4PnlfHJhLPDKC" data-image="img/logo.jpg" data-name="Lyla Loves" data-description="Total Amount: £ {{subtotal+form.shippingcost}}" data-currency="GBP" data-amount="{{subtotal*100}}">
+                                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_live_LummdQUKjom4PnlfHJhLPDKC" data-image="img/logo.jpg" data-name="Lyla Loves" data-description="Total Amount: £ {{subtotal+form.shippingcost-discountamount}}" data-currency="GBP" data-amount="{{subtotal+form.shippingcost-discountamount}}">
                                         </script>
                                     </form>
+-->
+                                    <button id="customButton" class="stripe-button-el" ng-click="StipePaymentGen(subtotal+form.shippingcost-discountamount)"><span>Pay with Card</span></button>
                                 </div>
                                 <div class="col-xs-3">
                                     <script src="lib/js/paypal-button.min.js?merchant=rajan@ispirare-acc.co.uk"
                                             data-button="buynow"
                                             data-name="Lyla Loves"
-                                            data-amount="{{subtotal+form.shippingcost}}.00"
+                                            data-amount="{{subtotal+form.shippingcost-discountamount}}.00"
                                             data-currency="GBP"
                                             data-callback="http://www.lylaloves.co.uk/#/thankyou"
                                             async
@@ -808,9 +812,9 @@
                                         </tr>
                                         <tr>
                                             <td>£ {{subtotal}}</td>
-                                            <td>£ 0</td>
-                                            <td ng-show="form.shippingcost!=0">{{form.shippingcost}}</td>
-                                            <td>£ {{subtotal+form.shippingcost}}</td>
+                                            <td>£ {{discountamount}}</td>
+                                            <td ng-show="form.shippingcost!=0">£ {{form.shippingcost}}</td>
+                                            <td>£ {{subtotal+form.shippingcost-discountamount}}</td>
                                         </tr>
                                     </table>
                                 </div>

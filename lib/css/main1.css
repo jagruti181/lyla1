@@ -5,6 +5,9 @@
     font-weight: normal;
     font-style: normal;
 }
+body {
+    height: 0px !important;
+}
 .errormsg {
     color: red;
 }
@@ -800,4 +803,10 @@ span.cartspace {
 .pickweek {
     position: relative;
     display: inline-block;
+}
+.btn.valid0 {
+    background: red;
+}
+.btn.valid1 {
+    background: green;
 }
