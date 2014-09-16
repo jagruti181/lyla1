@@ -831,6 +831,7 @@ phonecatControllers.controller('checkout',
             image: 'img/logo.jpg',
             currency: 'GBP',
             token: function (token) {
+                $location.path("/thankyou");
                 // Use the token to create the charge with a server-side script.
                 // You can access the token ID with `token.id`
             }
@@ -1179,9 +1180,14 @@ phonecatControllers.controller('checkout',
     });
 
 phonecatControllers.controller('headerctrl',
-    function ($scope, TemplateService) {
+    function ($scope, TemplateService,MainJson) {
         $scope.template = TemplateService;
         $scope.testing = "testing";
+        var fillemail=function(data,status) {
+              $scope.email=data.email;
+        };
+        
+        MainJson.authenticate().success(fillemail);
 
     });
 phonecatControllers.controller('slider',

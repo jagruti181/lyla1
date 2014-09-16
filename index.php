@@ -3,6 +3,32 @@
 
 <head ng-controller="headerctrl">
     <title ng-bind="'Lyla Loves - '+template.title">Lyla Loves</title>
+    <script>
+        var hostname=window.location.hostname;
+        if(hostname=="lylaloves.co.uk")
+        {
+        console.log(hostname);
+        window.location.replace("http://www.lylaloves.co.uk/");
+        }
+        else
+        
+        {
+        console.log("other "+hostname );
+        }
+    </script>
+    <script type="text/javascript">
+        var _clt = _clt || [];
+        _clt["custId"] = "{{email}}";
+        _clt["siteId"] = “40606bc583";
+        _clt["ref"] = encodeURIComponent(document.referrer);
+        (function() {
+            var cl = document.createElement('script'); cl.type = 'text/javascript'; cl.async = true;
+            cl.src = 'https:' == document.location.protocol ? '
+            https://lib.canopylabs.com:8889/js/cl_ga4.js' : 'http://lib.canopylabs.com:8888/js/cl_ga4.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cl, s);
+        })();
+    </script>
+    
 
     <link rel="shortcut icon" href="img/logo.jpg" />
     <link href="lib/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -108,8 +134,10 @@
 
     <script>
         var issearch = false;
+        
         $(document).ready(function () {
-            //skrollr.init();
+            
+            
             $(".headsearch .icon").click(function () {
 
                 if (issearch) {
@@ -124,7 +152,27 @@
             });
         });
     </script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+        ga('create', 'UA-54886004-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script src="lib/js/paypal-button.min.js?merchant=rajan@ispirare-acc.co.uk"
+            data-button="buynow"
+            data-name0="Lyla Loves"
+            data-amount0="10.00"
+            data-name1="Lyla Loves1"
+            data-amount1="11.00"
+            
+            data-currency="GBP"
+            data-callback="http://www.lylaloves.co.uk/#/thankyou"
+            async
+            ></script>
 </body>
 
 </html>
