@@ -162,17 +162,7 @@
         ga('send', 'pageview');
 
     </script>
-    <script src="lib/js/paypal-button.min.js?merchant=rajan@ispirare-acc.co.uk"
-            data-button="buynow"
-            data-name0="Lyla Loves"
-            data-amount0="10.00"
-            data-name1="Lyla Loves1"
-            data-amount1="11.00"
-            
-            data-currency="GBP"
-            data-callback="http://www.lylaloves.co.uk/#/thankyou"
-            async
-            ></script>
+    
 </body>
 
 </html>
