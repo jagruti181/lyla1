@@ -258,6 +258,19 @@ service.factory('MainJson', function ($http, TemplateService) {
             TemplateService.totalproducts = data;
             return 0;
         },
+        chargestripe: function (token, email,amount,name) {
+            return $http.get('http://wohlig.com/stripe/index.php/welcome/chargestripe', {
+                params: {
+                    token: token,
+                    email: email,
+                    amount: amount*100,
+                    name: name,
+                    
+                }
+            }, {
+                withCredentials: true
+            });
+        },
 
 
     }

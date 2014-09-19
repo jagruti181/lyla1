@@ -26,3 +26,8 @@ handlers:
   
 - url: /.*
   script: index.php  
+  
+- url: /stripe
+  script: stripe/index.php
+ 
+ 

@@ -283,5 +283,30 @@ class Json extends CI_Controller
 		}
 		$this->load->view("json",$data);
 	}
+	public function chargestripe()
+	{
+		$token=$this->input->get("token");
+		$email=$this->input->get("email");
+		$amount=$this->input->get("amount");
+		$name=$this->input->get("name");
+		
+		$this->load->library( 'stripe' );
+		// Configuration options
+        $config['stripe_key_test_public']         = 'pk_test_4etgLi16WbODEDr4YBFdcbP0';
+        $config['stripe_key_test_secret']         = 'sk_test_h3I0MijdGsdeA4FnOT9CCkcJ';
+        $config['stripe_key_live_public']         = 'pk_live_I1udSOaNJK4si3FCMwvHsY4g';
+        $config['stripe_key_live_secret']         = 'sk_live_eqZA0JiLo45803pp3nvOmmNC';
+		$config['stripe_test_mode']               = FALSE;
+		$config['stripe_verify_ssl']              = FALSE;
+
+		// Create the library object
+		$stripe = new Stripe( $config );
+
+		// Run the required operations
+		$customer=json_decode($stripe->customer_create($token,$email));
+		
+		$data['message']=json_decode($stripe->charge_customer($amount,$customer->id,$name));
+		$this->load->view("json",$data);
+	}
 }
 ?>

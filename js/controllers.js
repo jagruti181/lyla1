@@ -826,12 +826,18 @@ phonecatControllers.controller('checkout',
         $scope.focusout = function () {
             console.log("out focus");
         };
+        var paymentcomplete=function(data,status) {
+            console.log(data);
+            window.location.href="http://www.lylaloves.co.uk/#/thankyou";
+        };
         var handler = StripeCheckout.configure({
-            key: 'pk_live_LummdQUKjom4PnlfHJhLPDKC',
+            key: 'pk_live_I1udSOaNJK4si3FCMwvHsY4g',
+            //key: 'pk_test_4etgLi16WbODEDr4YBFdcbP0',
             image: 'img/logo.jpg',
             currency: 'GBP',
             token: function (token) {
-                $location.path("/thankyou");
+                MainJson.chargestripe(token.id,$scope.form.email,($scope.subtotal+$scope.form.shippingcost-$scope.discountamount),($scope.form.firstname+" "+$scope.form.lastname)).success(paymentcomplete);
+                //window.location.href="http://www.lylaloves.co.uk/#/thankyou";
                 // Use the token to create the charge with a server-side script.
                 // You can access the token ID with `token.id`
             }

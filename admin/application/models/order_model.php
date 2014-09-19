@@ -52,6 +52,7 @@ class Order_model extends CI_Model
     }
 	function placeorder($user,$firstname,$lastname,$email,$billingaddress,$billingcity,$billingstate,$billingcountry,$shippingaddress,$shippingcity,$shippingcountry,$shippingstate,$shippingpincode,$billingpincode,$phone,$status,$company,$fax,$carts,$finalamount)
 	{
+        
 		$query=$this->db->query("INSERT INTO `order`(`user`, `firstname`, `lastname`, `email`, `billingaddress`, `billingcity`, `billingstate`, `billingcountry`, `shippingaddress`, `shippingcity`, `shippingcountry`, `shippingstate`, `shippingpincode`, `finalamount`, `billingpincode`) VALUES ('$user','$firstname','$lastname','$email','$billingaddress','$billingcity','$billingstate','$billingcountry','$shippingaddress','$shippingcity','$shippingcountry','$shippingstate','$shippingpincode','$finalamount','$billingpincode')");
         
         
@@ -61,6 +62,10 @@ class Order_model extends CI_Model
             
             
             $querycart=$this->db->query("INSERT INTO `orderitems`(`order`, `product`, `quantity`, `price`, `finalprice`) VALUES ('$order','".$cart['id']."','".$cart['qty']."','".$cart['price']."','".$cart['subtotal']."')");
+            $quantity=intval($cart['qty']);
+            $productid=$cart['id'];
+            $this->db->query("UPDATE `product` SET `product`.`quantity`=`product`.`quantity`-$quantity WHERE `product`.`id`='$productid'");
+            
             
         }
         
@@ -223,6 +228,7 @@ class Order_model extends CI_Model
 	function deleteorder($id)
 	{
 		$query=$this->db->query("DELETE FROM `order` WHERE `id`='$id'");
+        $query=$this->db->query("DELETE FROM `orderitems` WHERE `order`='$id'");
 	}
     function deleteorderitem($id)
 	{

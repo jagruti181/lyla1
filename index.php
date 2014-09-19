@@ -19,12 +19,11 @@
     <script type="text/javascript">
         var _clt = _clt || [];
         _clt["custId"] = "{{email}}";
-        _clt["siteId"] = “40606bc583";
+        _clt["siteId"] = "40606bc583";
         _clt["ref"] = encodeURIComponent(document.referrer);
         (function() {
             var cl = document.createElement('script'); cl.type = 'text/javascript'; cl.async = true;
-            cl.src = 'https:' == document.location.protocol ? '
-            https://lib.canopylabs.com:8889/js/cl_ga4.js' : 'http://lib.canopylabs.com:8888/js/cl_ga4.js';
+            cl.src = 'https:' == document.location.protocol ? 'https://lib.canopylabs.com:8889/js/cl_ga4.js' : 'http://lib.canopylabs.com:8888/js/cl_ga4.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cl, s);
         })();
     </script>
@@ -129,7 +128,8 @@
     </div>
     <div class="barheight"></div>
     <div class="container-fluid-non-responsive">
-        <div ng-view skrollr-tag></div>
+<!--        <div ng-view skrollr-tag></div>-->
+        <div ng-view></div>
     </div>
 
     <script>
@@ -162,6 +162,11 @@
         ga('send', 'pageview');
 
     </script>
+    <script type="text/javascript">(function(d, t){
+    if(window.location.hash!='#gleam'&&(''+document.cookie).match(/(^|;)\s*Gleamg7NTT=X($|;)/)){return;}
+    var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    g.src = "https://js.gleam.io/g7NTT/ol.js"; s.parentNode.insertBefore(g, s);
+}(document, "script"));</script>
     
 </body>
 

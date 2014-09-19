@@ -2638,6 +2638,16 @@ class Site extends CI_Controller
 		$data['title']='View order';
 		$this->load->view('template',$data);
 	}
+    function deleteorder()
+    {
+        $access = array("1");
+        $this->checkaccess($access);
+        $id=$this->input->get('id');
+        $data['table']=$this->order_model->deleteorder($id);
+        $data['redirect']="site/vieworder";
+        //$data['other']="template=$template";
+        $this->load->view("redirect",$data);
+    }
 	//Order
    
 	function newsletter()

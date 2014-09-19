@@ -85,7 +85,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Shipping Pincode</label>
 						<div class="col-sm-4">
-						  <input type="text" id="" name="shippingpincode" class="form-control" value="<?php echo set_value('shippingpincode',$before['order']->shippingcountry); ?>">
+                            <input type="text" id="" name="shippingpincode" class="form-control" value="<?php echo set_value('shippingpincode',$before['order']->billingpincode); ?>">
 						</div>
 					</div>
 					<div class="form-group">

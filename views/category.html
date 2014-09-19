@@ -29,7 +29,7 @@
     <div class="maincontent">
 
         <div infinite-scroll='addMoreItems();' ng-style="productsheight">
-            <div class="col-md-3 text-center clearfix" ng-repeat="product in products" my-repeat-directive>
+            <div class="col-xs-3 text-center clearfix" ng-repeat="product in products" my-repeat-directive>
                 <div class="product wow fadeInLeft" data-wow-delay="0.6s" data-wow-duration="1s" data-wow-offset="10" style="visibility:none;">
                     <span ng-show="product.isnew=='1'" class="pronew"><img src="img/new.png"></span>
                     <a href="#/product/{{product.id}}">
