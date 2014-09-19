@@ -27,12 +27,17 @@
                     <p>lyla@lylaloves.co.uk</p>
                 </div>
                 <div class="col-xs-5 col-xs-offset-4">
+                    <div class="contactthankyou" ng-show="contactsubmit" style="padding: 20%;">
+                       Thank you. Your message has been sent.
+                   </div>
+                    <div ng-hide="contactsubmit">
                     <h4>Submit query</h4>
                     <p><input type="text" class="form-control" ng-model="contact.name" placeholder="Name*" required></p>
                     <p><input type="text" class="form-control" ng-model="contact.email" placeholder="Email Address*" required></p>
                     <p><input type="text" class="form-control" ng-model="contact.phone" placeholder="Telephone"></p>
                     <p><textarea name="" class="form-control" ng-model="contact.comment" placeholder="Comment*"></textarea></p>
                     <a class="btn btn-primary pull-right" href="" ng-click="usercontact(contact)">Submit</a>
+                    </div>
                 </div>
             </div>
 

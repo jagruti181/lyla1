@@ -107,6 +107,9 @@ input:focus {
     background: #d8f2ef;
     padding: 22px 0 15px;
     margin-bottom: 5px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
 }
 .newsletter .form-control {
     border: none;
@@ -745,6 +748,7 @@ div.megamenu.megamenu2 {
     padding: 15px;
     font-weight: 100;
     color: #03D3D6;
+    z-index: 100000;
     border: 3px solid #E4E4E4;
 }
 .gototop:focus {
