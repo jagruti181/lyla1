@@ -16,6 +16,7 @@ $order=$this->input->get('id');
 					<th>id</th>
 					<th>order</th>
 					<th>product</th>
+                    <th>product SKU</th>
 					<th>quantity</th>
 					<th> price </th>
 					<th>discount</th>
@@ -29,6 +30,7 @@ $order=$this->input->get('id');
 						<td class="id"><?php echo $row->id; ?></td>
 						<td><?php echo $row->firstname; ?></td>
 						<td><?php echo $row->name; ?></td>
+                        <td><?php echo $row->sku; ?></td>
 						<td><?php echo $row->quantity; ?></td>
 						<td><?php echo $row->price; ?></td>
 						<td><?php echo $row->discount; ?></td>
