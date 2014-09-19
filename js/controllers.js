@@ -1229,7 +1229,7 @@ phonecatControllers.controller('slider',
 
 phonecatControllers.controller('category',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
-
+        $scope.iscategory="category";
 
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
@@ -1439,6 +1439,7 @@ phonecatControllers.controller('product',
                 $scope.rate = data.product.price;
             }
             $scope.product = data.product;
+            $scope.product.quantity=parseInt($scope.product.quantity);
             $scope.breadcrumbs = data.breadcrumbs;
             $scope.productimage = data.productimage;
             $scope.relatedproduct = data.relatedproduct;

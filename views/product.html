@@ -19,8 +19,8 @@
                     <h5>{{product.name}}</h5> 
                     <h4>£ {{rate}}</h4>
                     <!--h4 class="discountprice">£ 400</h4-->
-                    <h6 ng-show="product.quantity==0">OUT OF STOCK</h6>
-                    <h6 ng-show="product.quantity!=0">IN STOCK</h6>
+                    <h6 ng-show="product.quantity<=0">OUT OF STOCK</h6>
+                    <h6 ng-show="product.quantity>0">IN STOCK</h6>
                     <!--h6>Available {{product.quantity}} pcs</h6-->
                 </div>
                 <div class="prodcutcontent">
@@ -33,7 +33,7 @@
                     
                     <div ng-show="wishlistlogin" class="alert alert-warning" style="margin:20px 0;">Please Login for Wishlist</div>
                     <div ng-show="wishlistadded" class="alert alert-success" style="margin:20px 0;">Added to Wishlist</div>
-                    <div ng-show="addedtocart=='show'" class="alert alert-success" style="margin:20px 0;">Added to Cart</div>
+                    <span ng-show="product.quantity>0"><div ng-show="addedtocart=='show'" class="alert alert-success" style="margin:20px 0;">Added to Cart</div></span>
                 </div>
 
 
