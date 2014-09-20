@@ -489,7 +489,9 @@ phonecatControllers.controller('contact2',
             console.log(data);
             $scope.msg = "YOUR REVIEW IS SAVED SUCCESSFULY";
         };
+        $scope.contactsubmit=false;
         $scope.usercontact = function (data) {
+            $scope.contactsubmit=true;
             MainJson.usercontact("", data.name, data.email, data.phone, data.comment).success(contact);
         };
         //contact
