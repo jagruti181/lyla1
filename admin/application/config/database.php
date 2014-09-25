@@ -52,16 +52,16 @@ if(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'],'Goo
 }
 else
 {
-  	$active_group = 'production';
+  	$active_group = 'testing';
 }
 
 $active_record = TRUE;
 
 // Testing (local) DB settings
-$db['testing']['hostname'] = 'localhost';
-$db['testing']['username'] = '';
-$db['testing']['password'] = '';
-$db['testing']['database'] = '';
+$db['testing']['hostname'] = '173.194.110.226';
+$db['testing']['username'] = 'root';
+$db['testing']['password'] = 'chintan123';
+$db['testing']['database'] = 'lylaadmin';
 $db['testing']['dbdriver'] = 'mysql';
 $db['testing']['dbprefix'] = '';
 $db['testing']['pconnect'] = TRUE;

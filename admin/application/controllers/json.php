@@ -11,9 +11,7 @@ class Json extends CI_Controller
         $this->load->library('email');
         $this->email->from('lyla@lylaloves.co.uk', 'Lyla');
         $this->email->to($email);
-        $this->email->cc('another@another-example.com');
-        $this->email->bcc('them@their-example.com');
-
+       
         $this->email->subject('Limited Stock');
         $this->email->message('<img src="http://zibacollection.co.uk/lylalovecouk/img/onformsubmit.jpg" width="560px" height="398px">');
 
@@ -109,9 +107,10 @@ class Json extends CI_Controller
 		$shippingstate=$order['form']['shippingstate'];
 		$shippingpincode=$order['form']['shippingpincode'];
 		$billingpincode=$order['form']['billingpincode'];
+        $shippingmethod=$order['form']['shippingmethod'];
 		$carts=$order['form']['cart'];
                 $finalamount=$order['form']['finalamount'];
-		$data["message"]=$this->order_model->placeorder($user,$firstname,$lastname,$email,$billingaddress,$billingcity,$billingstate,$billingcountry,$shippingaddress,$shippingcity,$shippingcountry,$shippingstate,$shippingpincode,$billingpincode,$phone,$status,$company,$fax,$carts,$finalamount);
+        $data["message"]=$this->order_model->placeorder($user,$firstname,$lastname,$email,$billingaddress,$billingcity,$billingstate,$billingcountry,$shippingaddress,$shippingcity,$shippingcountry,$shippingstate,$shippingpincode,$billingpincode,$phone,$status,$company,$fax,$carts,$finalamount,$shippingmethod);
         //$data["message"]=$this->order_model->placeorder($user,$firstname,$lastname,$email,$billingaddress,$billingcity,$billingstate,$billingcountry,$shippingaddress,$shippingcity,$shippingcountry,$shippingstate,$shippingpincode,$billingpincode,$phone,$status,$company,$fax);
 		$this->load->view("json",$data);
 	}

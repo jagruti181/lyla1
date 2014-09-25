@@ -7,13 +7,12 @@
         var hostname=window.location.hostname;
         if(hostname=="lylaloves.co.uk")
         {
-        console.log(hostname);
-        window.location.replace("http://www.lylaloves.co.uk/");
+            console.log(hostname);
+            window.location.replace("http://www.lylaloves.co.uk/");
         }
         else
-        
         {
-        console.log("other "+hostname );
+            console.log("other "+hostname );
         }
     </script>
     <script type="text/javascript">
@@ -154,9 +153,9 @@
     </script>
     
     <script type="text/javascript">(function(d, t){
-    if(window.location.hash!='#gleam'&&(''+document.cookie).match(/(^|;)\s*Gleamg7NTT=X($|;)/)){return;}
+    if(window.location.hash!='#gleam'&&(''+document.cookie).match(/(^|;)\s*GleamaaA2s=X($|;)/)){return;}
     var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-    g.src = "https://js.gleam.io/g7NTT/ol.js"; s.parentNode.insertBefore(g, s);
+    g.src = "https://js.gleam.io/aaA2s/ol.js"; s.parentNode.insertBefore(g, s);
 }(document, "script"));</script>
     
 </body>

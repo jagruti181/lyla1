@@ -1,4 +1,5 @@
-
+<?php error_reporting(E_ALL);
+ini_set('display_errors', 1);?>
 	    <section class="panel">
 		    <header class="panel-heading">
 				 Edit Order Details
@@ -103,6 +104,47 @@
 						?>
 						</div>
 					</div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Shipping Method</label>
+                        <div class="col-sm-4">
+                          
+<?php
+//echo $before['order']->shippingmethod;
+$check=$before['order']->shippingmethod;
+
+
+if($check=="1")
+{
+echo "Free UK Delivery £ 0.00";
+}
+if($check=="2")
+{
+echo "Standard Delivery £ 3.00";
+}
+if($check=="3")
+{
+echo "Next Day UK Delivery £ 5.00";
+}
+if($check=="4")
+{
+echo "Free International Delivery £ 0.00";
+}
+if($check=="5")
+{
+echo "International Delivery £ 5.00";
+}
+if($check=="6")
+{
+echo "Free Delivery £ 0.00";
+}
+
+
+?>
+                            
+
+                            
+                        </div>
+                    </div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Order Status</label>
 						<div class="col-sm-4">

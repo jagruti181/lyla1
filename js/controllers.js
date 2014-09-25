@@ -1380,6 +1380,7 @@ phonecatControllers.controller('product',
         console.log($routeParams.ProductId);
         $scope.template = TemplateService;
         TemplateService.content = "views/product.html";
+        $scope.bottommenu="fixed";
         TemplateService.slider = "";
         $scope.addquantity = 1;
         $scope.addedtocart = "hide";

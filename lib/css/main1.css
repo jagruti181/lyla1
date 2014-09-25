@@ -107,9 +107,11 @@ input:focus {
     background: #d8f2ef;
     padding: 22px 0 15px;
     margin-bottom: 5px;
-    position: fixed;
     bottom: 0px;
     width: 100%;
+}
+.newsletter.fixed {
+    position:fixed;
 }
 .newsletter .form-control {
     border: none;
