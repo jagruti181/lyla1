@@ -8,7 +8,7 @@
 					  <div class="form-group">
 							<label class="col-sm-2 control-label">Image Upload</label>
 							<div class="col-sm-4">
-							 <input type="file" class="spa1n6 fileinput" id="search-input" name="image" class="imagename" >
+				                <input type="file" class="spa1n6 fileinput" id="search-input" name="image" class="imagename" >
 							</div>
 						</div>
 					  
@@ -16,7 +16,45 @@
 							<a href="<?php echo site_url('site/viewproduct'); ?>" type="submit" class="btn btn-info">Cancel</a></div>
 				 </form>
 			
-				  <table id="datatable_example" class="table table-striped table-hover" id="sample_1" style="width:100%;margin-bottom:0; ">
+             <div class="hidden jsontable"><?php echo json_encode($table);?></div>
+             
+             
+            <script>
+                $(document).ready(function() {
+                    var jsontable=JSON.parse($(".jsontable").text());
+                    function createtable(data)
+                    {
+                        var table=$(".tablecontent");
+                        $(table).html("");
+                        for(var i=0;i<data.length;i++)
+                        {
+                            $(table).append("<tr><td style='display:none;' class='rowid'>"+data[i].id+"</td><td><img src='http://zibacollection.co.uk/lyla/uploads/"+data[i].productimage+"' style='height:100px;width:100px;'></td><td>Image is default</td><td><a style='' class='btn btn-primary' href2='http://localhost:10080/admin/index.php/site/defaultimage?imageid="+data[i].id+" &amp;&amp; id=10'>Default</a></td><td><input type='text' id='normal-field' class='order3 form-control' value='"+data[i].order+"' class='form-control' name='ordernumber'><td style='width:30px;'></td><td class='ms'><div class='btn-group'><a href2='http://localhost:10080/admin/index.php/site/deleteimage?imageid="+data[i].id+" &amp;&amp; id=10' class='button red deleteimage btn btn-danger btn-xs' rel='tooltip'><i class='icon-trash'></i></a> </div></td></tr>");
+                        }
+                    };
+                    
+                    createtable(jsontable);
+                });
+                
+                
+            </script>
+              
+              
+                <table class="table table-striped table-hover" id="" style="width:100%;margin-bottom:0; ">
+                    <thead>
+                        <tr>
+                            <th class="to_hide_phone  no_sort">Name</th>
+                            <th>Status</th>
+                            <th>Make it Default?</th>
+                            <th>Order Number</th>
+                            <th class="ms no_sort "> Actions </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tablecontent">
+                        
+                    </tbody>
+              </table>
+
+				  <!--<table id="datatable_example" class="table table-striped table-hover" id="sample_1" style="width:100%;margin-bottom:0; ">
 					<thead>
 					  <tr>
 						  <th class="to_hide_phone  no_sort">Name</th>
@@ -38,7 +76,8 @@
 						</tr>
 					   <?php } ?>
 						</tbody>
-				</table>
+				</table>-->
+
 			</div>
 		</section>
     

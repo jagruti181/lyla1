@@ -273,7 +273,7 @@ phonecatControllers.controller('cart',
 phonecatControllers.controller('logout ',
     function ($scope, TemplateService, MainJson, $location) {
 
-        //######################authentication#####################3
+        //######################authentication######################
         var logout = function (data, status) {
             //console.log(data);
             $scope.loginlogouttext = "Login";
@@ -281,7 +281,7 @@ phonecatControllers.controller('logout ',
             $location.url("/home");
         };
         MainJson.logout().success(logout);
-        //######################authentication#####################3
+        //######################authentication######################
     });
 
 

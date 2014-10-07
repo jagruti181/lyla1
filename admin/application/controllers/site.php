@@ -2558,7 +2558,7 @@ class Site extends CI_Controller
 		$this->form_validation->set_rules('orderstatus','orderstatus','trim|');
 		$this->form_validation->set_rules('firstname','Firstname','trim|required');
 		$this->form_validation->set_rules('lastname','Lastname','trim|required');
-		$this->form_validation->set_rules('email','Email','trim|required|valid_email|is_unique[user.email]');
+		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
 		$this->form_validation->set_rules('billingaddress','billingaddress','trim');
 		$this->form_validation->set_rules('billingcity','billingcity','trim');
 		$this->form_validation->set_rules('billingstate','billingstate','trim');
@@ -2965,5 +2965,7 @@ class Site extends CI_Controller
 		$data['title']='View pickofweak';
 		$this->load->view('template',$data);
 	}
+    
+    
 }
 ?>

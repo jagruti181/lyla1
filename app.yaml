@@ -22,12 +22,25 @@ handlers:
   script: admin/index.php
 
 - url: /admin/(.+)
-  script: admin/index.php  
+  script: admin/index.php    
+
+- url: /myuploads
+  script: myuploads/index.php
+
+- url: /myuploads/(.+)
+  script: myuploads/index.php  
+
+- url: /uploadsuccess
+  script: uploadsuccess/index.php
+
+- url: /uploadsuccess/(.+)
+  script: uploadsuccess/index.php  
   
 - url: /.*
   script: index.php  
   
-- url: /stripe
-  script: stripe/index.php
+
+
+
  
  
