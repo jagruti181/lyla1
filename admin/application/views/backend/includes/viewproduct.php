@@ -39,7 +39,7 @@
 						</td>
 						<td> <a class="btn btn-primary btn-xs" href="<?php echo site_url('site/editproduct?id=').$row->id;?>"><i class="icon-pencil"></i></a>
                                       
-                                      <a class="btn btn-danger btn-xs" href="<?php echo site_url('site/deleteproduct?id=').$row->id; ?>"><i class="icon-trash "></i></a>
+                            <a class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')" href="<?php echo site_url('site/deleteproduct?id=').$row->id; ?>"><i class="icon-trash "></i></a>
 									 
 					  </td>
 					  <td class="hidden"><span class="productid"><?php echo $row->id; ?></span></td>

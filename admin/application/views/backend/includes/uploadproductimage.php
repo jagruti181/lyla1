@@ -130,9 +130,16 @@
         //$("#output").html(data.tmp_name);
         var jsontable=JSON.parse($(".jsontable").text());
         var num=jsontable.length-1;
-        var product=jsontable[num].productid;
+        var product="<?php echo $before['product']->id; ?>";
         var image=data.tmp_name;
-        var order=parseInt(jsontable[num].order)+1;
+        if(num>0)
+        {
+            var order=parseInt(jsontable[num].order)+1;
+        }
+        else
+        {
+            var order=1;
+        }
         console.log({product:product,image:image,order:order});
         $.post("<?php echo site_url("json/addimagetoproduct");?>",{product:product,image:image,order:order},function(data) {location.reload();});
     };

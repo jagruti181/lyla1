@@ -314,7 +314,15 @@ class Json extends CI_Controller
         $product=$this->input->get_post("product");
         $image=$this->input->get_post("image");
         $order=$this->input->get_post("order");
-        $this->db->query("INSERT INTO `productimage` (`id`,`product`,`image`,`is_default`,`order`,`status`) VALUES (NULL,'$product','$image','0','$order','0')");
+        if($order=="1")
+        {
+            $default=1;
+        }
+        else 
+        {
+            $default=0;
+        }
+        $this->db->query("INSERT INTO `productimage` (`id`,`product`,`image`,`is_default`,`order`,`status`) VALUES (NULL,'$product','$image','$default','$order','0')");
         echo "Done";
         
     }
