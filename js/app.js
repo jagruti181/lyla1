@@ -103,9 +103,21 @@ firstapp.config(['$routeProvider',
 
 firstapp.filter('imagepath', function () {
     return function (input) {
-        var prosubstr=str.substring(0, 5);
+        var prosubstr=input.substring(0, 5);
+        console.log(prosubstr);
         if (prosubstr == "gs://") {
             return "http://www.lylaloves.co.uk/showimage?size=300&image="+input;
+        } else {
+            return "http://zibacollection.co.uk/lyla/uploads/" + input;
+        }
+    };
+});
+firstapp.filter('imagepathbig', function () {
+    return function (input) {
+        var prosubstr=input.substring(0, 5);
+        console.log(prosubstr);
+        if (prosubstr == "gs://") {
+            return "http://www.lylaloves.co.uk/showimage?size=800&image="+input;
         } else {
             return "http://zibacollection.co.uk/lyla/uploads/" + input;
         }
