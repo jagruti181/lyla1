@@ -307,5 +307,19 @@ class Json extends CI_Controller
 		$data['message']=json_decode($stripe->charge_customer($amount,$customer->id,$name));
 		$this->load->view("json",$data);
 	}
+    
+    
+    public function addimagetoproduct()
+    {
+        $product=$this->input->get_post("product");
+        $image=$this->input->get_post("image");
+        $order=$this->input->get_post("order");
+        $this->db->query("INSERT INTO `productimage` (`id`,`product`,`image`,`is_default`,`order`,`status`) VALUES (NULL,'$product','$image','0','$order','0')");
+        echo "Done";
+        
+    }
+    
+    
+    
 }
 ?>

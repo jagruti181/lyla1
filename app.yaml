@@ -28,7 +28,13 @@ handlers:
   script: myuploads/index.php
 
 - url: /myuploads/(.+)
-  script: myuploads/index.php  
+  script: myuploads/index.php
+  
+- url: /showimage
+  script: showimage/index.php
+
+- url: /showimage/(.+)
+  script: showimage/index.php  
 
 - url: /uploadsuccess
   script: uploadsuccess/index.php

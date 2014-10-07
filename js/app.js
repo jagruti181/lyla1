@@ -103,8 +103,9 @@ firstapp.config(['$routeProvider',
 
 firstapp.filter('imagepath', function () {
     return function (input) {
-        if (input == null) {
-            //return "http://www.wohlig.co.in/zibabackend/uploads/2239a46835dc42bc7a6acade8f8517e9.jpg";
+        var prosubstr=str.substring(0, 5);
+        if (prosubstr == "gs://") {
+            return "http://www.lylaloves.co.uk/showimage?size=300&image="+input;
         } else {
             return "http://zibacollection.co.uk/lyla/uploads/" + input;
         }
