@@ -108,7 +108,7 @@ firstapp.filter('imagepath', function () {
         if (prosubstr == "gs://") {
             return "http://www.lylaloves.co.uk/showimage?size=300&image="+input;
         } else {
-            return "http://zibacollection.co.uk/lyla/uploads/" + input;
+            return "http://www.lylaloves.co.uk/showimage?size=300&image=gs://lylaimages/images"+input;
         }
     };
 });
@@ -119,7 +119,7 @@ firstapp.filter('imagepathbig', function () {
         if (prosubstr == "gs://") {
             return "http://www.lylaloves.co.uk/showimage?size=800&image="+input;
         } else {
-            return "http://zibacollection.co.uk/lyla/uploads/" + input;
+            return "http://www.lylaloves.co.uk/showimage?size=800&image=gs://lylaimages/images"+input;
         }
     };
 });

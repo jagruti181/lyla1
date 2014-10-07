@@ -93,7 +93,7 @@
                                                     }
                                                     else
                                                     {
-                                                        echo "http://zibacollection.co.uk/lyla/uploads/";
+                                                        echo "http://www.lylaloves.co.uk/showimage?size=800&image=gs://lylaimages/images";
                                                     }
                                                     echo $row->productimage;?>" style="height:100px;width:100px;" /></td>
 						<td><?php if($row->is_default=="1") { echo "Image is default"; } else { echo "";} ?></td>
