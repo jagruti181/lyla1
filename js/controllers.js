@@ -604,6 +604,7 @@ phonecatControllers.controller('thankyou',
         TemplateService.content = "views/thankyou.html";
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
+        MainJson.destroycart().success(MainJson.gettotalproductsincart);
         //authenticate
         var authenticate = function (data, status) {
             if (data != "false") {
@@ -1165,7 +1166,7 @@ phonecatControllers.controller('checkout',
         var orderplaced = function (data, status) {
             console.log("place order returns");
             console.log(data);
-            MainJson.orderemail($scope.email, data).success(orderemailsend);
+            MainJson.orderemail($scope.form.email, data).success(orderemailsend);
             //alert("Order Placed");
         };
         $scope.continuepayment = function (form) {

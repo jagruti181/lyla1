@@ -407,5 +407,10 @@ class User_model extends CI_Model
         $this->cart->insert($data);
     }
     
+    function destroycart() {
+        $this->cart->destroy();
+        return 0;
+    }
+    
 }
 ?>

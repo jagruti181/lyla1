@@ -138,6 +138,11 @@ class Json extends CI_Controller
 		//$data["message"]=$this->order_model->addtocart($user,$product,$quantity);
 		$this->load->view("json",$data);
 	}
+	function destroycart()
+	{
+        $data["message"]=$this->user_model->destroycart();
+		$this->load->view("json",$data);
+	}
     
     function showcart() {
         $cart=$this->cart->contents();
