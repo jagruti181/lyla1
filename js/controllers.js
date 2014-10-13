@@ -161,6 +161,7 @@ phonecatControllers.controller('cart',
 
 
         $scope.checkcoupon = function (couponcode) {
+            console.log(couponcode);
             MainJson.getdiscountcoupon(couponcode).success(couponsuccess);
         };
 
@@ -833,7 +834,7 @@ phonecatControllers.controller('checkout',
         };
         var paymentcomplete=function(data,status) {
             console.log(data);
-            window.location.href="http://www.lylaloves.co.uk/#/thankyou";
+            window.location.href="http://wohlig.biz/#/thankyou";
         };
         var handler = StripeCheckout.configure({
             key: 'pk_live_I1udSOaNJK4si3FCMwvHsY4g',
