@@ -24,6 +24,10 @@ service.factory('MainJson', function ($http, TemplateService) {
                 withCredentials: true
             });
         },
+        nextproduct: function(product,next)
+        {
+            return $http.get("http://localhost:10080/admin/index.php/json/nextproduct",{params:{id:product,next:next}});
+        },
         getcoupondetails: function () {
             return coupondetails;
         },

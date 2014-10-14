@@ -834,7 +834,7 @@ phonecatControllers.controller('checkout',
         };
         var paymentcomplete=function(data,status) {
             console.log(data);
-            window.location.href="http://wohlig.biz/#/thankyou";
+            window.location.href="http://www.lylaloves.co.uk/#/thankyou";
         };
         var handler = StripeCheckout.configure({
             key: 'pk_live_I1udSOaNJK4si3FCMwvHsY4g',
@@ -1400,25 +1400,15 @@ phonecatControllers.controller('product',
         MainJson.authenticate().success(authenticate);
         //authenticate
         //nextprevious
+        var changelocation=function(data)
+        {
+            $location.url("/product/" + data.id);
+        };
         $scope.next = function (product) {
-            $scope.num = 1;
-            $scope.num = parseInt($scope.num);
-            $scope.product = parseInt(product);
-            $scope.sum = $scope.product + $scope.num;
-
-            $location.url("/product/" + $scope.sum);
+            MainJson.nextproduct(product,1).success(changelocation);
         };
         $scope.previous = function (product) {
-            $scope.num = 1;
-            $scope.num = parseInt($scope.num);
-            $scope.product = parseInt(product);
-            $scope.sum = $scope.product - $scope.num;
-            if (parseInt($scope.sum) < 1) {
-                $location.url("/product/" + parseInt($scope.product + $scope.num));
-
-            } else {
-                $location.url("/product/" + $scope.sum);
-            }
+            MainJson.nextproduct(product,0).success(changelocation);
         };
         //nestprevious
         $scope.wishlistlogin=false;

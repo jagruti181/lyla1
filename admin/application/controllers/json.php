@@ -331,6 +331,45 @@ class Json extends CI_Controller
         echo "Done";
         
     }
+    public function nextproduct() 
+    {
+        $id=$this->input->get_post("id");
+        $next=$this->input->get_post("next");
+        $sign=">";
+        $orderby="ASC";
+        if($next=="0")
+        {
+            $sign="<";
+            $orderby="DESC";
+        }
+        $query=$this->db->query("SELECT `id` FROM `product` WHERE `id`$sign'$id' ORDER BY `id` $orderby  LIMIT 0,1");
+        
+        if ($query->num_rows() > 0)
+        {
+            $data['message']=$query->row();
+
+            //return $query;
+        }
+        else 
+        {
+            $searchstring=substr($category,1);
+            $query2=$this->db->query("SELECT `id` FROM `product` ORDER BY `id` $orderby  LIMIT 0,1");
+            
+            if($query)
+            {
+                $data['message']=$query2->id;
+            }
+            else
+            {
+                $data['message']=false;
+            }
+            
+        }
+
+        
+
+        $this->load->view('json',$data);
+    }
     
     
     
