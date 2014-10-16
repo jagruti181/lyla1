@@ -2737,6 +2737,31 @@ class Site extends CI_Controller
 	}
     
     
+	function printorderinvoice()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$data[ 'category' ] =$this->category_model->getcategorydropdown();
+		$data[ 'table' ] =$this->order_model->getorderitem($this->input->get('id'));
+		$data['before']=$this->order_model->beforeedit($this->input->get('id'));
+        $data['id']=$this->input->get('id');
+		$data['page']='orderinvoice';
+		$this->load->view('templateinvoice',$data);
+	}
+    
+	function printorderlabel()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$data[ 'category' ] =$this->category_model->getcategorydropdown();
+		$data[ 'table' ] =$this->order_model->getorderitem($this->input->get('id'));
+		$data['before']=$this->order_model->beforeedit($this->input->get('id'));
+        $data['id']=$this->input->get('id');
+		$data['page']='templatelabel';
+		$data['title']='Edit order items';
+		$this->load->view('templatelabel',$data);
+	}
+    
 	function editorderitems()
 	{
 		$access = array("1");

@@ -61,26 +61,60 @@ ini_set('display_errors', 1);?>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Shipping Address</label>
 						<div class="col-sm-4">
-						  <textarea name="shippingaddress" class="form-control"><?php echo set_value('shippingaddress',$before['order']->shippingaddress); ?></textarea>
+						  <textarea name="shippingaddress" class="form-control"><?php 
+                                if($before['order']->shippingaddress=="")
+                                {
+//                                    $before['order']->billingaddress)?
+                                        echo set_value('shippingaddress',$before['order']->billingaddress);
+                                }
+                                else
+                                {
+//                                    $before['order']->shippingaddress)
+                                    echo set_value('shippingaddress',$before['order']->shippingaddress);
+                                }
+
+//echo set_value('shippingaddress',$before['order']->shippingaddress);
+                              ?></textarea>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Shipping City</label>
 						<div class="col-sm-4">
-						  <input type="text" id="" name="shippingcity" class="form-control" value="<?php echo set_value('shippingcity',$before['order']->shippingcity); ?>">
+						  <input type="text" id="" name="shippingcity" class="form-control" value="<?php
+                            if($before['order']->shippingcity=="")
+                                echo set_value('shippingcity',$before['order']->billingcity);
+                            else
+                                echo set_value('shippingcity',$before['order']->shippingcity);
+                            ?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Shipping State</label>
 						<div class="col-sm-4">
-						  <input type="text" id="" name="shippingstate" class="form-control" value="<?php echo set_value('shippingstate',$before['order']->shippingstate); ?>">
+						  <input type="text" id="" name="shippingstate" class="form-control" value="<?php
+                            if($before['order']->shippingstate=="")
+                                echo set_value('shippingstate',$before['order']->billingstate);
+                            else
+                                echo set_value('shippingstate',$before['order']->shippingstate);
+                            ?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Shipping Country</label>
 						<div class="col-sm-4">
-						<?php 	 echo form_dropdown('shippingcountry',$country,set_value('shippingcountry',$before['order']->shippingcountry),'id="select2" class="chzn-select form-control" 	data-placeholder="Choose a country..."');
-						?>
+						<?php 
+                                if($before['order']->shippingcountry=="")
+                                {
+                                    echo form_dropdown('shippingcountry',$country,set_value('shippingcountry',$before['order']->billingcountry),'id="select2" class="chzn-select form-control" 	data-placeholder="Choose a country..."');
+                                }
+                                else
+                                {
+                                    echo form_dropdown('shippingcountry',$country,set_value('shippingcountry',$before['order']->shippingcountry),'id="select2" class="chzn-select form-control" 	data-placeholder="Choose a country..."');
+                                }
+
+//echo set_value('shippingcountry',$before['order']->shippingaddress);
+                              ?>
+						
 						</div>
 					</div>
 					<div class="form-group">
