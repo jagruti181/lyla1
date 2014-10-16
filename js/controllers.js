@@ -1156,13 +1156,7 @@ phonecatControllers.controller('checkout',
             console.log(data);
             //alert("Email send");
         };
-        var orderplaced = function (data, status) {
-            console.log("place order returns");
-            console.log(data);
-            MainJson.orderemail($scope.email, data).success(orderemailsend);
-            //alert("Order Placed");
-        };
-
+     
 
         var orderplaced = function (data, status) {
             console.log("place order returns");
