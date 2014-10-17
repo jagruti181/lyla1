@@ -27,10 +27,23 @@
                     <div class="productdesc">
                         {{product.description}}
                     </div>
-                    <label class="hidden">Qty :</label>
-                    <input type="text" value="1" class="hidden quantitybox" ng-model="addquantity">
-                    <a class="btn btn-primary " ng-click="addtocart(product.id,product.name,rate,addquantity)"><span class="glyphicon  glyphicon-shopping-cart"></span> Add to Cart</a>  <a href="" ng-click="addwishlist(id)"><span ng-show="{{wish}}" class="glyphicon glyphicon-heart prowish"></span><span style="color:rgb(39, 240, 232);" ng-hide="{{wish}}" class="glyphicon glyphicon-heart prowish"></span></a>
-                    
+                    <span ng-show="product.quantity>0">
+                        <label class="hidden">Qty :</label>
+                        <input type="text" value="1" class="hidden quantitybox" ng-model="addquantity">
+                        <a class="btn btn-primary " ng-click="addtocart(product.id,product.name,rate,addquantity)"><span class="glyphicon  glyphicon-shopping-cart"></span> Add to Cart</a>
+                    </span>
+                    <span ng-show="product.quantity<=0">
+                        
+                        <span ng-hide="addedtowaitinglist"><input type="email" value="1" class="form-control waitingemail" placeholder="Email" style="width:190px;" ng-model="product.waitingemail">
+                            <a class="btn btn-primary " ng-click="addtowaitinglist(product.id,product.waitingemail)">Add to Waiting List</a></span>
+                        <span ng-show="addedtowaitinglist">You have been added to waiting list</span>
+                    </span>
+
+
+
+
+                    <a href="" ng-click="addwishlist(id)"><span ng-show="{{wish}}" class="glyphicon glyphicon-heart prowish"></span><span style="color:rgb(39, 240, 232);" ng-hide="{{wish}}" class="glyphicon glyphicon-heart prowish"></span></a>
+
                     <div ng-show="wishlistlogin" class="alert alert-warning" style="margin:20px 0;">Please Login for Wishlist</div>
                     <div ng-show="wishlistadded" class="alert alert-success" style="margin:20px 0;">Added to Wishlist</div>
                     <span ng-show="product.quantity>0"><div ng-show="addedtocart=='show'" class="alert alert-success" style="margin:20px 0;">Added to Cart</div></span>
@@ -109,6 +122,6 @@
 
 
     </div>
-</div >
+</div>
 <div style="margin-bottom:800px"></div>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>

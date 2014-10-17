@@ -482,6 +482,11 @@ class Product_model extends CI_Model
 		
 		return $parents;
 	}
+    public function addproductwaitinglist($email,$product)
+    {
+        $this->db->query("INSERT INTO `productwaiting`(`email`,`user`,`product`) VALUES ('$email','','$product')");
+        return true;
+    }
     
 }
 ?>

@@ -378,6 +378,13 @@ class Json extends CI_Controller
         $this->load->view("json",$data);
     }
     
+    function addproductwaitinglist() 
+    {
+        $email=$this->input->get_post("email");
+        $product=$this->input->get_post("product");
+        $data["message"]=$this->product_model->addproductwaitinglist($email,$product);
+        $this->load->view('json',$data);
+    }
     
     
     

@@ -1,9 +1,9 @@
 var adminurl = 'http://www.lylaloves.co.uk/admin/index.php/json/';
-var adminurl2 = 'http://localhost:8080/admin/index.php/json/';
+var adminurl2 = 'http://www.lylaloves.co.uk/admin/index.php/json/';
 
-var conversionrate={id: "1", name: "GBP", conversionrate: "1", isdefault: "1"};
+var conversionrate=[{id: "1", name: "GBP", conversionrate: "1", isdefault: "1"}];
 $.holdReady( true );
-$.getJSON(adminurl2+"getconversionrates",{},function(data) {
+$.getJSON(adminurl+"getconversionrates",{},function(data) {
     
     conversionrate=data;
     //console.log("Conversion Rate");
@@ -119,7 +119,9 @@ service.factory('MainJson', function ($http, TemplateService) {
             $.jStorage.set("coupon",coupon);
             coupondetails=coupon;
         },
-        
+        addtowaitinglist:function(product,email) {
+            return $http.get(adminurl+"addproductwaitinglist",{params: {product:product,email:email}});
+        },
         getfilters: function () {
             return filters;
         },

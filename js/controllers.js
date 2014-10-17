@@ -1514,6 +1514,14 @@ phonecatControllers.controller('product',
             MainJson.addtocart(id, name, price, quantity).success(cartt);
             $scope.addedtocart = "show";
         };
+        var addedtowaitinglist=function(data) {
+            console.log(data);
+            $scope.addedtowaitinglist=true;
+        };
+        $scope.addedtowaitinglist=false;
+        $scope.addtowaitinglist=function(product,email) {
+            MainJson.addtowaitinglist(product,email).success(addedtowaitinglist);
+        };
 
         $scope.$on("$includeContentLoaded", function () {
 
