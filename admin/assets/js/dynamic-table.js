@@ -1,10 +1,12 @@
+var table1="";
+
 var Script = function () {
 
         // begin first table
-        $('#sample_1').dataTable({
+        table1=$('#sample_1').dataTable({
             "sDom": "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
             "sPaginationType": "bootstrap",
-			"pageLength": 50,
+			"iDisplayLength": 100,
             "oLanguage": {
                 "sLengthMenu": "_MENU_ records per page",
                 "oPaginate": {
@@ -12,12 +14,15 @@ var Script = function () {
                     "sNext": "Next"
                 }
             },
+			"order": [[ 2, "asc" ]],
             "aoColumnDefs": [{
                 'bSortable': false,
                 'aTargets': [0]
             }]
         });
 
+		table1.fnSort([[2,'asc']]);
+		table1.fnSort([[2,'asc']]);
         jQuery('#sample_1 .group-checkable').change(function () {
             var set = jQuery(this).attr("data-set");
             var checked = jQuery(this).is(":checked");

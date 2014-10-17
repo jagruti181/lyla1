@@ -114,10 +114,10 @@
 
 
 
-                    <!--a href="https://twitter.com/ZibaCollection" target="_blank" class="fadeInRight wow" ng-class="firstloadclass" data-wow-delay="0.3s">
+                    <!--a href="https://twitter.com/ZibaCollection" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.3s">
                     <img src="img/twitter.png" class="socialicons tadaanimation">
                 </a>
-                <a href="http://pinterest.com/zibacollection/" target="_blank" class="fadeInRight wow" ng-class="firstloadclass" data-wow-delay="0.4s">
+                <a href="http://pinterest.com/zibacollection/" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.4s">
                     <img src="img/pinterest.png" class="socialicons tadaanimation">
                 </a>
                 <a href="http://instagram.com/zibacollection" target="_blank" class="wow fadeInRight" data-wow-delay="0.5s">
@@ -126,7 +126,7 @@
                 <a href="https://www.facebook.com/pages/Ziba-Collection/284068054986182" target="_blank" class="wow fadeInRight" data-wow-delay="0.6s">
                     <img src="img/facebook.png" class="socialicons tadaanimation">
                 </a>
-                <a href="http://zibaacc.tumblr.com/" target="_blank" class="fadeInRight wow" ng-class="firstloadclass" data-wow-delay="0.7s">
+                <a href="http://zibaacc.tumblr.com/" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.7s">
                     <img src="img/tumbler.png" class="socialicons tadaanimation">
                 </a-->
                 </div>

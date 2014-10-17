@@ -1,7 +1,7 @@
 var phonecatControllers = angular.module('phonecatControllers', ['templateservicemod', 'Service', 'ngRoute']);
 phonecatControllers.controller('home',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        ////$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.changetitle("Home");
         $scope.template = TemplateService;
@@ -164,7 +164,7 @@ phonecatControllers.controller('home',
 phonecatControllers.controller('cart',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
         $(".zoomContainer").remove();
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -357,7 +357,7 @@ phonecatControllers.controller('logout ',
 
 phonecatControllers.controller('login',
     function ($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -492,7 +492,7 @@ phonecatControllers.controller('loginwishlist',
 
 phonecatControllers.controller('xoxo',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -516,7 +516,7 @@ phonecatControllers.controller('xoxo',
 
 phonecatControllers.controller('contact',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.changetitle("Login");
         TemplateService.header = "views/header.html";
@@ -567,7 +567,7 @@ phonecatControllers.controller('contact2',
 
 phonecatControllers.controller('wholesaler',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -605,7 +605,7 @@ phonecatControllers.controller('wholesaler',
 
 phonecatControllers.controller('profile',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -627,7 +627,7 @@ phonecatControllers.controller('profile',
 
 phonecatControllers.controller('lylaloves',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -662,7 +662,7 @@ phonecatControllers.controller('lylaloves',
 
 phonecatControllers.controller('thankyou',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -786,7 +786,7 @@ phonecatControllers.controller('lightbox',
 
 phonecatControllers.controller('searchpage',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -820,7 +820,7 @@ phonecatControllers.controller('lookbook',
 
 
 
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -879,7 +879,7 @@ phonecatControllers.controller('lookbook',
 
 phonecatControllers.controller('checkout',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -1295,7 +1295,7 @@ phonecatControllers.controller('category',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
         $scope.iscategory = "category";
 
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -1438,7 +1438,7 @@ phonecatControllers.controller('category',
 
 phonecatControllers.controller('product',
     function ($scope, $routeParams, TemplateService, MainJson, $timeout, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -1546,7 +1546,7 @@ phonecatControllers.controller('product',
 
 phonecatControllers.controller('delivery',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -1568,7 +1568,7 @@ phonecatControllers.controller('delivery',
 
 phonecatControllers.controller('wishlist',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -1599,7 +1599,7 @@ phonecatControllers.controller('wishlist',
 
 phonecatControllers.controller('returns',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
-        $scope.firstloadclass = TemplateService.firstload;
+        //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";

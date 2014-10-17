@@ -103,24 +103,14 @@ firstapp.config(['$routeProvider',
 
 firstapp.filter('imagepath', function () {
     return function (input) {
-        var prosubstr=input.substring(0, 5);
-        console.log(prosubstr);
-        if (prosubstr == "gs://") {
-            return "http://www.lylaloves.co.uk/showimage?size=300&image="+input;
-        } else {
-            return "http://www.lylaloves.co.uk/showimage?size=300&image=gs://lylaimages/images"+input;
-        }
+        return "http://www.lylaloves.co.uk/showimage?size=300&image="+input;
+        
     };
 });
 firstapp.filter('imagepathbig', function () {
     return function (input) {
-        var prosubstr=input.substring(0, 5);
-        console.log(prosubstr);
-        if (prosubstr == "gs://") {
-            return "http://www.lylaloves.co.uk/showimage?size=800&image="+input;
-        } else {
-            return "http://www.lylaloves.co.uk/showimage?size=800&image=gs://lylaimages/images"+input;
-        }
+        return "http://www.lylaloves.co.uk/showimage?size=800&image="+input;
+       
     };
 });
 
@@ -132,7 +122,7 @@ firstapp.filter('convertprice', function () {
         {
             if(conversionrate[i].name==currency)
             {
-                console.log("currency: "+currency+" price ini: "+price+" price new: "+parseFloat(conversionrate[i].conversionrate)*price);
+                //console.log("currency: "+currency+" price ini: "+price+" price new: "+parseFloat(conversionrate[i].conversionrate)*price);
                 if(currency=="USD")
                 {
                     currencyshow="$";

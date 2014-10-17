@@ -1,6 +1,5 @@
 <div class=" row" style="padding:1% 0;">
 	<div class=" pull-right col-md-1 createbtn" ><a class="btn btn-primary" href="<?php echo site_url('site/createproduct'); ?>"><i class="icon-plus"></i>Create </a></div>
-	
 </div>
 <div class="row">
 	<div class="col-lg-12">
@@ -107,5 +106,8 @@ var productid;
 		$(parentrow).find("input.quantity").attr("readonly","1");
 		$(this).hide();
 	});
+     table1.table1.fnSort([[2,'asc']]);
+     
+     
  });
  </script>

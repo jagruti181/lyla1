@@ -364,7 +364,7 @@ class Product_model extends CI_Model
 		LEFT JOIN `productimage` ON `productimage`.`product`=`product`.`id`
 		WHERE `product`.`visibility`=1 AND `product`.`status`=1 AND `product`.`quantity` > 0 AND `product`.`name` LIKE '%$color%' $pricefilter
 		GROUP BY `product`.`id`
-		ORDER BY `category`.`order`,`productimage`.`order`,`product`.`name`")->result();
+		ORDER BY `product`.`id` DESC")->result();
 		
 		foreach($query['product'] as $p_row)
 		{
