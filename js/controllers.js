@@ -1,5 +1,4 @@
 var phonecatControllers = angular.module('phonecatControllers', ['templateservicemod', 'Service', 'ngRoute']);
-
 phonecatControllers.controller('home',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
         $scope.firstloadclass = TemplateService.firstload;
@@ -16,6 +15,73 @@ phonecatControllers.controller('home',
         $scope.ishome = "homeclass";
         $scope.onhome = "onhome";
         $scope.demo = "demodemo";
+
+
+        //start get country from geo location
+        //        $scope.country = false;
+        //        console.log("hello im in home controller");
+        //        var showlocationdata = function (data, status) {
+        //            console.log("in location success");
+        //            console.log(data);
+        //            var address = data.results[0].address_components;
+        //            for (var i = 0; i < address.length; i++) {
+        //                if (address[i].types.indexOf("country") >= 0) {
+        //                    $scope.country = address[i].short_name;
+        //                    
+        //
+        //
+        //                    var countries = ['AL', 'AD', 'AM', 'AT', 'BY', 'BE', 'BA', 'BG', 'CH', 'CY', 'CZ', 'DE',
+        //  'DK', 'EE', 'ES', 'FO', 'FI', 'FR', 'GE', 'GI', 'GR', 'HU', 'HR',
+        //  'IE', 'IS', 'IT', 'LT', 'LU', 'LV', 'MC', 'MK', 'MT', 'NO', 'NL', 'PL',
+        //  'PT', 'RO', 'RU', 'SE', 'SI', 'SK', 'SM', 'TR', 'UA', 'VA' ];
+        //
+        //                    if(countries.indexOf($scope.country) >= 0)
+        //                    {
+        //                        $scope.country="EUROPE";
+        //                    }
+        //                    console.log("Country ////////////////////////");
+        //                    //case1 : short name: GB
+        //                    console.log($scope.country);
+        //                    if($scope.country=="GB")
+        //                    {
+        //                        currency="GBP";
+        //                    }
+        //                    else if($scope.country=="EUROPE")
+        //                    {
+        //                        currency="EURO";
+        //                    }
+        //                    else 
+        //                    {
+        //                        currency="USD";
+        //                    }
+        //                    console.log("Currency: "+currency);
+        //                    break;
+        //                }
+        //            }
+        //            MainJson.storecountry($scope.geocountry);
+        //        };
+        //
+        //        function showPosition2(position) {
+        //            var latlon = position.coords.latitude + "," + position.coords.longitude;
+        //            console.log("Positions:.........");
+        //            console.log(position);
+        //            $scope.coords = position.coords;
+        //            lat = position.coords.latitude;
+        //            long = position.coords.longitude;
+        //            locationdata = lat + "," + long;
+        //
+        //            MainJson.getmap(locationdata).success(showlocationdata);
+        //        }
+        //
+        //        if (navigator.geolocation) {
+        //            navigator.geolocation.getCurrentPosition(showPosition2, showError);
+        //        } else {
+        //            x.innerHTML = "Geolocation is not supported by this browser.";
+        //        }
+
+
+        //get get country from geo location
+
         $scope.showaccount = function () {
             $scope.visible = true;
         };
@@ -473,9 +539,9 @@ phonecatControllers.controller('contact',
             console.log(data);
             $scope.msg = "YOUR REVIEW IS SAVED SUCCESSFULY";
         };
-        $scope.contactsubmit=false;
+        $scope.contactsubmit = false;
         $scope.usercontact = function (data) {
-            $scope.contactsubmit=true;
+            $scope.contactsubmit = true;
             MainJson.usercontact("", data.name, data.email, data.phone, data.comment).success(contact);
         };
         //contact
@@ -490,9 +556,9 @@ phonecatControllers.controller('contact2',
             console.log(data);
             $scope.msg = "YOUR REVIEW IS SAVED SUCCESSFULY";
         };
-        $scope.contactsubmit=false;
+        $scope.contactsubmit = false;
         $scope.usercontact = function (data) {
-            $scope.contactsubmit=true;
+            $scope.contactsubmit = true;
             MainJson.usercontact("", data.name, data.email, data.phone, data.comment).success(contact);
         };
         //contact
@@ -662,7 +728,7 @@ phonecatControllers.controller('badge',
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
         $scope.msgg = "Message here..........";
-        
+
         //authenticate
         var authenticate = function (data, status) {
             console.log(data);
@@ -832,9 +898,9 @@ phonecatControllers.controller('checkout',
         $scope.focusout = function () {
             console.log("out focus");
         };
-        var paymentcomplete=function(data,status) {
+        var paymentcomplete = function (data, status) {
             console.log(data);
-            window.location.href="http://www.lylaloves.co.uk/#/thankyou";
+            window.location.href = "http://www.lylaloves.co.uk/#/thankyou";
         };
         var handler = StripeCheckout.configure({
             key: 'pk_live_I1udSOaNJK4si3FCMwvHsY4g',
@@ -842,7 +908,7 @@ phonecatControllers.controller('checkout',
             image: 'img/logo.jpg',
             currency: 'GBP',
             token: function (token) {
-                MainJson.chargestripe(token.id,$scope.form.email,($scope.subtotal+$scope.form.shippingcost-$scope.discountamount),($scope.form.firstname+" "+$scope.form.lastname)).success(paymentcomplete);
+                MainJson.chargestripe(token.id, $scope.form.email, ($scope.subtotal + $scope.form.shippingcost - $scope.discountamount), ($scope.form.firstname + " " + $scope.form.lastname)).success(paymentcomplete);
                 //window.location.href="http://www.lylaloves.co.uk/#/thankyou";
                 // Use the token to create the charge with a server-side script.
                 // You can access the token ID with `token.id`
@@ -1064,7 +1130,7 @@ phonecatControllers.controller('checkout',
             console.log(country);
             console.log(subtotal);
             console.log(shipping);
-            var coupondetails=MainJson.getcoupondetails();
+            var coupondetails = MainJson.getcoupondetails();
             if (coupondetails && MainJson.getcoupondetails().coupontype == "4") {
                 console.log("ABC");
                 $scope.showshippingmethods = 5;
@@ -1102,7 +1168,7 @@ phonecatControllers.controller('checkout',
             console.log(country);
             console.log(subtotal);
             console.log(shipping);
-            var coupondetails=MainJson.getcoupondetails();
+            var coupondetails = MainJson.getcoupondetails();
             if (coupondetails && MainJson.getcoupondetails().coupontype == "4") {
                 $scope.showshippingmethods = 5;
                 $scope.form.shippingcost = 0;
@@ -1156,7 +1222,7 @@ phonecatControllers.controller('checkout',
             console.log(data);
             //alert("Email send");
         };
-     
+
 
         var orderplaced = function (data, status) {
             console.log("place order returns");
@@ -1186,13 +1252,13 @@ phonecatControllers.controller('checkout',
     });
 
 phonecatControllers.controller('headerctrl',
-    function ($scope, TemplateService,MainJson) {
+    function ($scope, TemplateService, MainJson) {
         $scope.template = TemplateService;
         $scope.testing = "testing";
-        var fillemail=function(data,status) {
-              $scope.email=data.email;
+        var fillemail = function (data, status) {
+            $scope.email = data.email;
         };
-        
+
         MainJson.authenticate().success(fillemail);
 
     });
@@ -1227,7 +1293,7 @@ phonecatControllers.controller('slider',
 
 phonecatControllers.controller('category',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
-        $scope.iscategory="category";
+        $scope.iscategory = "category";
 
         $scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
@@ -1240,7 +1306,13 @@ phonecatControllers.controller('category',
             $anchorScroll();
         };
         $scope.loginlogouttext = "Login";
-
+        //get user country
+        var getcountry = function (data, status) {
+            console.log("get country");
+            console.log(data);
+        };
+        //  MainJson.showcountry().success(getcountry);
+        $scope.usercountry = "India";
         //filters
         $scope.filter = MainJson.getfilters();
         $scope.filtercolors = [{
@@ -1307,28 +1379,25 @@ phonecatControllers.controller('category',
         MainJson.authenticate().success(authenticate);
         //authenticate
 
-        $scope.products=[];
-        $scope.productsheight={};
-        
-        $scope.addMoreItems=function()
-        {
-            console.log("More Products Added "+$scope.products.length);
-            var first=$scope.products.length;
-            var addition=12;
-            var sum=first+addition;
-            if(sum>$scope.productlist.length)
-            {
-                sum=$scope.productlist.length;
+        $scope.products = [];
+        $scope.productsheight = {};
+
+        $scope.addMoreItems = function () {
+            console.log("More Products Added " + $scope.products.length);
+            var first = $scope.products.length;
+            var addition = 12;
+            var sum = first + addition;
+            if (sum > $scope.productlist.length) {
+                sum = $scope.productlist.length;
             }
-            for(var i=first;i<sum;i++)
-            {
+            for (var i = first; i < sum; i++) {
                 $scope.products.push($scope.productlist[i]);
             }
-            $scope.productsheight.height=($scope.products.length/4)*430+"px";
+            $scope.productsheight.height = ($scope.products.length / 4) * 430 + "px";
         };
         var categorysuccess = function (data, status) {
-            $scope.products=[];
-            $scope.productsheight={};
+            $scope.products = [];
+            $scope.productsheight = {};
             $scope.category = data.category;
             $scope.breadcrumbs = data.breadcrumbs;
             $scope.subcategory = data.subcategory;
@@ -1376,7 +1445,7 @@ phonecatControllers.controller('product',
         console.log($routeParams.ProductId);
         $scope.template = TemplateService;
         TemplateService.content = "views/product.html";
-        $scope.bottommenu="fixed";
+        $scope.bottommenu = "fixed";
         TemplateService.slider = "";
         $scope.addquantity = 1;
         $scope.addedtocart = "hide";
@@ -1394,31 +1463,28 @@ phonecatControllers.controller('product',
         MainJson.authenticate().success(authenticate);
         //authenticate
         //nextprevious
-        var changelocation=function(data)
-        {
+        var changelocation = function (data) {
             $location.url("/product/" + data.id);
         };
         $scope.next = function (product) {
-            MainJson.nextproduct(product,1).success(changelocation);
+            MainJson.nextproduct(product, 1).success(changelocation);
         };
         $scope.previous = function (product) {
-            MainJson.nextproduct(product,0).success(changelocation);
+            MainJson.nextproduct(product, 0).success(changelocation);
         };
         //nestprevious
-        $scope.wishlistlogin=false;
-        $scope.wishlistadded=false;
+        $scope.wishlistlogin = false;
+        $scope.wishlistadded = false;
         var getwishlist = function (data, status) {
             console.log(data);
             $scope.wish = data;
-            $scope.wishlistadded=true;
+            $scope.wishlistadded = true;
         };
         $scope.addwishlist = function (id) {
-            if($scope.id)
-            {
+            if ($scope.id) {
                 MainJson.addtowishlist(id, $routeParams.ProductId).success(getwishlist);
-            }
-            else {
-                $scope.wishlistlogin=true;
+            } else {
+                $scope.wishlistlogin = true;
             }
         };
         var productsuccess = function (data, status) {
@@ -1428,7 +1494,7 @@ phonecatControllers.controller('product',
                 $scope.rate = data.product.price;
             }
             $scope.product = data.product;
-            $scope.product.quantity=parseInt($scope.product.quantity);
+            $scope.product.quantity = parseInt($scope.product.quantity);
             $scope.breadcrumbs = data.breadcrumbs;
             $scope.productimage = data.productimage;
             $scope.relatedproduct = data.relatedproduct;

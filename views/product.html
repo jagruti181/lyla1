@@ -17,7 +17,7 @@
             <div class="productdetails pull-right">
                 <div class="productheader">
                     <h5>{{product.name}}</h5> 
-                    <h4>£ {{rate}}</h4>
+                    <h4>{{rate|convertprice}}</h4>
                     <!--h4 class="discountprice">£ 400</h4-->
                     <h6 ng-show="product.quantity<=0">OUT OF STOCK</h6>
                     <h6 ng-show="product.quantity>0">IN STOCK</h6>

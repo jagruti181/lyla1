@@ -47,8 +47,8 @@
                     </div>
                     <div class="proprice">
                         <a href="#/product/{{product.id}}">
-                            <h5 ng-show="(accesslevel!=3)">£ {{product.price}}</h5>
-                            <h5 ng-show="(accesslevel==3)">£ {{product.wholesaleprice}}</h5>
+                            <h5 ng-show="(accesslevel!=3)">{{product.price|convertprice}}</h5>
+                            <h5 ng-show="(accesslevel==3)">{{product.wholesaleprice|convertprice}}</h5>
                             <!--h5 class="discountprice">£ {{product.price}}</h5-->
                         </a>
                     </div>

@@ -124,6 +124,29 @@ firstapp.filter('imagepathbig', function () {
     };
 });
 
+firstapp.filter('convertprice', function () {
+    return function (input) {
+        var price=parseFloat(input);
+        var currencyshow="£";
+        for(var i=0;i<conversionrate.length;i++)
+        {
+            if(conversionrate[i].name==currency)
+            {
+                console.log("currency: "+currency+" price ini: "+price+" price new: "+parseFloat(conversionrate[i].conversionrate)*price);
+                if(currency=="USD")
+                {
+                    currencyshow="$";
+                }
+                else if(currency=="EURO")
+                {
+                    currencyshow="€";
+                }
+                return currencyshow+" "+(parseFloat(conversionrate[i].conversionrate)*price).toFixed(2);
+            }
+        }
+    };
+});
+
 function AccordionDemoCtrl($scope) {
     $scope.oneAtATime = true;
     /*

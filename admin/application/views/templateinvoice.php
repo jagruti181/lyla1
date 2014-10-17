@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-xs-2">
                 <div class="logo">
-                    <img src="http://localhost:8080/img/logo.jpg" alt="" style="width:100%;">
+                    <img src="<?php echo base_url();?>../img/logo.jpg" alt="" style="width:100%;">
                 </div>
             </div>
             <div class="col-xs-5"></div>

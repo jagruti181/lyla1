@@ -371,6 +371,15 @@ class Json extends CI_Controller
         $this->load->view('json',$data);
     }
     
+    function getconversionrates () {
+        
+        //$continent->name=geoip_continent_code_by_name($ip);
+        $data["message"]=$this->currency_model->viewcurrency();
+        $this->load->view("json",$data);
+    }
+    
+    
+    
     
     
 }

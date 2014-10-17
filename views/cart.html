@@ -25,13 +25,13 @@
                     <tr ng-repeat="singlecart in cart">
                         <td>{{singlecart.name}}</td>
 
-                        <td>£{{singlecart.price}}</td>
+                        <td>{{singlecart.price|convertprice}}</td>
                         <td>
                             <span class="cartspace" ng-hide="newquantity[$index]!=1"></span>
                             <a class="btn btn-default carticon" ng-click="subproductcart(singlecart.id,singlecart.name,singlecart.price,newquantity[$index],$index)" ng-show="newquantity[$index]!=1">-</a>
                             <input type="text" ng-model="newquantity[$index]" class="form-control cartinput" readonly><a class="btn btn-default carticon" ng-click="addproductcart(singlecart.id,singlecart.name,singlecart.price,newquantity[$index],$index)">+</a> &nbsp; &nbsp;<a class="hidden btn btn-primary" ng-click="addtocart(singlecart.id,singlecart.name,singlecart.price,newquantity[$index],$index)"><strong><span class="glyphicon glyphicon-floppy-save"></span></strong></a> 
                         </td>
-                        <td>£{{singlecart.subtotal}}</td>
+                        <td>{{singlecart.subtotal|convertprice}}</td>
                         <td><a ng-click="deletecart(singlecart.id)"><strong>X</strong></a>
                         </td>
 
@@ -58,9 +58,9 @@
                             <th>Grand Total</th>
                         </tr>
                         <tr>
-                            <td>£ {{subtotal}}</td>
-                            <td>£ {{discountamount}}</td>
-                            <td>£ {{subtotal-discountamount}}</td>
+                            <td>{{subtotal|convertprice}}</td>
+                            <td>{{discountamount|convertprice}}</td>
+                            <td>{{subtotal-discountamount|convertprice}}</td>
                         </tr>
                     </table>
                 </div>

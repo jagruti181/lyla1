@@ -62,6 +62,17 @@
     <script src="lib/js/ng-infinite-scroll.min.js"></script>
     <script src="lib/js/jstorage.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-55688126-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 
 
 </head>
@@ -158,16 +169,60 @@
     g.src = "https://js.gleam.io/aaA2s/ol.js"; s.parentNode.insertBefore(g, s);
 }(document, "script"));</script>
 
+    
+
+<!--script for geo location-->
+    
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
 
-        ga('create', 'UA-55688126-1', 'auto');
-        ga('send', 'pageview');
+        function showPosition(position) {
+            var latlon = position.coords.latitude + "," + position.coords.longitude;
+            console.log(position.coords);
+        }
 
+        function showError(error) {
+            switch (error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+            }
+
+        }
+
+        function showError(error) {
+            switch (error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+            }
+        }
     </script>
+    
     
 </body>
 

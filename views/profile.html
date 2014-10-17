@@ -161,7 +161,7 @@
                                     <tr ng-repeat="singlecart in cart">
                                         <td>{{singlecart.name}}</td>
 
-                                        <td>£{{singlecart.price}}</td>
+                                        <td>{{singlecart.price|convertprice}}</td>
                                         <td>
                                             <input type="number" ng-model="newquantity[$index]" class="form-control cartinput">
                                         </td>
