@@ -253,7 +253,9 @@ service.factory('MainJson', function ($http, TemplateService) {
             return $http.get(adminurl + 'getallslider');
         },
         destroycart: function () {
-            return $http.get(adminurl + 'destroycart');
+            return $http.post(adminurl + 'destroycart', {}, {
+                withCredentials: true
+            });
         },
         addtocart: function (id, name, price, quantity) {
             return $http.post(adminurl + 'addtocart?product=' + id + '&productname=' + name + "&quantity=" + quantity + "&price=" + price, {}, {
