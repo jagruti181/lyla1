@@ -76,6 +76,19 @@ class Newsletter_model extends CI_Model
 		
 		return $return;
 	}
+	public function getuserdropdownproductwaiting()
+	{
+		$query=$this->db->query("SELECT `firstname`,`lastname`,`id` FROM `user` ORDER BY `name`  ASC")->result();
+		$return=array(
+		
+		);
+		foreach($query as $row)
+		{
+			$return[$row->id]=$row->firstname." ".$row->lastname;
+		}
+		
+		return $return;
+	}
 	function editaddress($id,$billingaddress,$billingcity,$billingstate,$billingcountry,$shippingaddress,$shippingcity,$shippingstate,$shippingcountry,$shippingpincode)
 	{
 		$data  = array(

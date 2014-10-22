@@ -326,7 +326,7 @@ class Product_model extends CI_Model
 	}
 	function viewproductwaiting($product)
 	{
-		$query=$this->db->query("SELECT `user`.`firstname`,`user`.`lastname`,`productwaiting`.`email`,`productwaiting`.`timestamp` FROM `productwaiting` 
+		$query=$this->db->query("SELECT `user`.`firstname`,`user`.`lastname`,`productwaiting`.`email`,`productwaiting`.`timestamp`,`productwaiting`.`id` as `id` FROM `productwaiting` 
 		LEFT JOIN `user` ON `user`.`id`=`productwaiting`.`user`
 		ORDER BY `productwaiting`.`timestamp` DESC")->result();
 		return $query;
@@ -487,6 +487,32 @@ class Product_model extends CI_Model
         $this->db->query("INSERT INTO `productwaiting`(`email`,`user`,`product`) VALUES ('$email','','$product')");
         return true;
     }
+	
+	public function beforeeditproductwaiting( $id )
+	{
+		$this->db->where( 'id', $id );
+		$query=$this->db->get( 'productwaiting' )->row();
+		return $query;
+	}
+    
+	public function editproductwaiting($id,$product,$user,$email)
+	{
+		$data = array(
+			'product' => $product,
+			'user' => $user,
+			'email' => $email,
+			'timestamp' => NULL
+		);
+		$this->db->where( 'id', $id );
+		$q=$this->db->update( 'productwaiting', $data );
+		
+		return 1;
+	}
+    
+	function deleteproductwaiting($id)
+	{
+		$query=$this->db->query("DELETE FROM `productwaiting` WHERE `id`='$id'");
+	}
     
 }
 ?>

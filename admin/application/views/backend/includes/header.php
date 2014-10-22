@@ -226,6 +226,13 @@ $(document).ready(function(){
                           <span class="arrow"></span>
                       </a>
                   </li>
+                  <li >
+                      <a href="<?php echo site_url('site/viewproductwaiting'); ?>" class="">
+                          <i class="icon-money"></i>
+                          <span>Product Waiting</span>
+                          <span class="arrow"></span>
+                      </a>
+                  </li>
               </ul>
               <!-- sidebar menu end-->
           </div>

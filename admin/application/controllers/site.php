@@ -2399,13 +2399,14 @@ class Site extends CI_Controller
 	{
 		$access = array("1");
 		$this->checkaccess($access);
-		$data['before']=$this->product_model->beforeeditproduct($this->input->get('id'));
-		$data['table']=$this->product_model->viewproductwaiting($this->input->get('id'));
+//		$data['before']=$this->product_model->beforeeditproduct($this->input->get('id'));
+		$data['table']=$this->product_model->viewproductwaiting();
 		$data['page']='viewproductwaiting';
-		$data['page2']='block/productblock';
+//		$data['page2']='block/productblock';
 		$data['title']='Product waiting';
 		$this->load->view('template',$data);
 	}
+    
 	//Newsletter
 	public function createnewsletteruser()
 	{
@@ -2991,6 +2992,67 @@ class Site extends CI_Controller
 		$this->load->view('template',$data);
 	}
     
+    
+	function editproductwaiting()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$data['before']=$this->product_model->beforeeditproductwaiting($this->input->get('id'));
+		$data['product']=$this->product_model->getproductdropdown();
+		$data[ 'user' ] =$this->newsletter_model->getuserdropdownproductwaiting();
+		$data['page']='editproductwaiting';
+		$data['title']='Edit product Waiting';
+		$this->load->view('template',$data);
+	}
+    
+	function editproductwaitingsubmit()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$this->form_validation->set_rules('email','Email','trim|valid_email');
+		$this->form_validation->set_rules('product','product','trim');
+		$this->form_validation->set_rules('user','user','trim');
+		if($this->form_validation->run() == FALSE)	
+		{
+			$data['alerterror'] = validation_errors();
+			$data['before']=$this->product_model->beforeeditproductwaiting($this->input->get('id'));
+            $data['product']=$this->product_model->getproductdropdown();
+            $data[ 'user' ] =$this->newsletter_model->getuserdropdownproductwaiting();
+            $data['page']='editproductwaiting';
+            $data['title']='Edit product Waiting';
+            $this->load->view('template',$data);
+		}
+		else
+		{
+			$id=$this->input->post('id');
+			$email=$this->input->post('email');
+			$product=$this->input->post('product');
+			$user=$this->input->post('user');
+//			print_r($_POST);
+			if($this->product_model->editproductwaiting($id,$product,$user,$email)==0)
+			$data['alerterror']="Product Waiting Editing was unsuccesful";
+			else
+			$data['alertsuccess']="productwaiting edited Successfully.";
+			$data['table']=$this->product_model->viewproductwaiting();
+            $data['page']='viewproductwaiting';
+    //		$data['page2']='block/productblock';
+            $data['title']='Product waiting';
+            $this->load->view('template',$data);
+		}
+	}
+    
+	function deleteproductwaiting()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$this->product_model->deleteproductwaiting($this->input->get('id'));
+		$data['alertsuccess']="Product Waiting Deleted Successfully";
+		$data['table']=$this->product_model->viewproductwaiting();
+        $data['page']='viewproductwaiting';
+//		$data['page2']='block/productblock';
+        $data['title']='Product waiting';
+        $this->load->view('template',$data);
+	}
     
 }
 ?>
