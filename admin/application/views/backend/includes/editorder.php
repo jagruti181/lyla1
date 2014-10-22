@@ -171,6 +171,10 @@ if($check=="6")
 {
 echo "Free Delivery £ 0.00";
 }
+if($check=="7")
+{
+echo "Express International Delivery £ 10.00";
+}
 
 
 ?>

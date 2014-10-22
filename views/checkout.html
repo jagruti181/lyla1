@@ -713,6 +713,9 @@
                             <p ng-show="showshippingmethods==5">
                                 <input type="radio" name="shipping" value="6" ng-model="form.shippingmethod" ng-change="changeshippingcost(0)">Free Delivery £ 0.00
                             </p>
+                            <p ng-show="showshippingmethods==3 || showshippingmethods==4">
+                                <input type="radio" name="shipping" value="7" ng-model="form.shippingmethod" ng-change="changeshippingcost(10)">Express International Delivery £ 10.00
+                            </p>
 
                             <button class="btn btn-primary pull-right" ng-click="continuepayment(form)">Continue</button>
                             <div class="clearfix"></div>
