@@ -9,9 +9,9 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /(.+\.(gif|png|jpg|css|js|html|eot|woff|ttf|svg))$
+- url: /(.+\.(gif|png|jpg|css|js|html|eot|woff|ttf|svg|otf))$
   static_files: \1
-  upload: .+\.(gif|png|jpg|css|js|html|eot|woff|ttf|svg)$
+  upload: .+\.(gif|png|jpg|css|js|html|eot|woff|ttf|svg|otf)$
   application_readable: true  
 
     
@@ -22,7 +22,7 @@ handlers:
   script: admin/index.php
 
 - url: /admin/(.+)
-  script: admin/index.php    
+  script: admin/index.php 
 
 - url: /myuploads
   script: myuploads/index.php
