@@ -1,11 +1,16 @@
 var adminurl = 'http://www.lylaloves.co.uk/admin/index.php/json/';
 var adminurl2 = 'http://www.lylaloves.co.uk/admin/index.php/json/';
 
-var conversionrate=[{id: "1", name: "GBP", conversionrate: "1", isdefault: "1"}];
-$.holdReady( true );
-$.getJSON(adminurl+"getconversionrates",{},function(data) {
-    
-    conversionrate=data;
+var conversionrate = [{
+    id: "1",
+    name: "GBP",
+    conversionrate: "1",
+    isdefault: "1"
+}];
+//$.holdReady(true);
+$.getJSON(adminurl + "getconversionrates", {}, function (data) {
+
+    conversionrate = data;
     //console.log("Conversion Rate");
 });
 
@@ -13,10 +18,10 @@ $.getJSON(adminurl+"getconversionrates",{},function(data) {
 var lat = 0;
 var long = 0;
 var currency = "GBP";
-var country= false;
-var showError=function(data) {
+var country = false;
+var showError = function (data) {
     console.log(data);
-    $.holdReady( false );
+    $.holdReady(false);
 };
 var showlocationdata = function (data, status) {
     console.log("in location success");
@@ -25,7 +30,7 @@ var showlocationdata = function (data, status) {
     for (var i = 0; i < address.length; i++) {
         if (address[i].types.indexOf("country") >= 0) {
             country = address[i].short_name;
-           
+
 
 
             var countries = ['AL', 'AD', 'AM', 'AT', 'BY', 'BE', 'BA', 'BG', 'CH', 'CY', 'CZ', 'DE',
@@ -50,12 +55,49 @@ var showlocationdata = function (data, status) {
             break;
         }
     }
-     $.holdReady( false);
+    //$.holdReady(false);
 };
+
+var ongettingdata = function (data) {
+        console.log("in location success");
+        console.log(data);
+        country = data.country_code;
+        
+            if (data) {
+                country = data.country_code;
+
+
+
+                var countries = ['AL', 'AD', 'AM', 'AT', 'BY', 'BE', 'BA', 'BG', 'CH', 'CY', 'CZ', 'DE',
+  'DK', 'EE', 'ES', 'FO', 'FI', 'FR', 'GE', 'GI', 'GR', 'HU', 'HR',
+  'IE', 'IS', 'IT', 'LT', 'LU', 'LV', 'MC', 'MK', 'MT', 'NO', 'NL', 'PL',
+  'PT', 'RO', 'RU', 'SE', 'SI', 'SK', 'SM', 'TR', 'UA', 'VA'];
+
+                if (countries.indexOf(country) >= 0) {
+                    country = "EUROPE";
+                }
+                console.log("Country ////////////////////////");
+                //case1 : short name: GB
+                console.log(country);
+                if (country == "GB") {
+                    currency = "GBP";
+                } else if (country == "EUROPE") {
+                    currency = "EURO";
+                } else {
+                    currency = "USD";
+                }
+                console.log("Currency: " + currency);
+            
+            }
+        }
+        $.holdReady(false);
+    
+
+
 //start get country from geo location
 function CommonCode() {
+
     
-    console.log("common code");
 
     function showPosition2(position) {
         var latlon = position.coords.latitude + "," + position.coords.longitude;
@@ -69,11 +111,13 @@ function CommonCode() {
         $.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + locationdata + "&key=AIzaSyAj0OXepKIgjTlZiPe_ZVYTDjL8rYpobgQ").success(showlocationdata);
     }
 
-    if (navigator.geolocation) {
+    console.log("common code");
+    $.getJSON("http://www.telize.com/geoip").success(ongettingdata);
+    /*if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition2, showError);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
-    }
+    }*/
 
 }
 CommonCode();
@@ -82,7 +126,7 @@ CommonCode();
 
 var service = angular.module('Service', []);
 service.factory('MainJson', function ($http, TemplateService) {
-    var country="";
+    var country = "";
     var cart = [];
     var returntwo = [];
     var subtotal = 0;
@@ -92,8 +136,8 @@ service.factory('MainJson', function ($http, TemplateService) {
         pricemin: 0,
         pricemax: 30
     };
-    var coupondetails=$.jStorage.get("coupon");
-    var discount=$.jStorage.get("coupon");
+    var coupondetails = $.jStorage.get("coupon");
+    var discount = $.jStorage.get("coupon");
 
     /*{
 		placeorder: function(firstname,lastname,email,company,billingaddress,billingcity,billingstate,billingpincode,billingcountry,phone,fax,shippingaddress,shippingcity,shippingstate,shippingpincode,shippingcountry,id,status) {
@@ -105,22 +149,31 @@ service.factory('MainJson', function ($http, TemplateService) {
                 withCredentials: true
             });
         },
-        nextproduct: function(product,next)
-        {
-            return $http.get("http://localhost:10080/admin/index.php/json/nextproduct",{params:{id:product,next:next}});
+        nextproduct: function (product, next) {
+            return $http.get("http://localhost:10080/admin/index.php/json/nextproduct", {
+                params: {
+                    id: product,
+                    next: next
+                }
+            });
         },
         getcoupondetails: function () {
             return coupondetails;
         },
-        getmap: function(data){
-            return $http.get("https://maps.googleapis.com/maps/api/geocode/json?address="+data+"&key=AIzaSyAj0OXepKIgjTlZiPe_ZVYTDjL8rYpobgQ",{});
+        getmap: function (data) {
+            return $http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + data + "&key=AIzaSyAj0OXepKIgjTlZiPe_ZVYTDjL8rYpobgQ", {});
         },
         setcoupondetails: function (coupon) {
-            $.jStorage.set("coupon",coupon);
-            coupondetails=coupon;
+            $.jStorage.set("coupon", coupon);
+            coupondetails = coupon;
         },
-        addtowaitinglist:function(product,email) {
-            return $http.get(adminurl+"addproductwaitinglist",{params: {product:product,email:email}});
+        addtowaitinglist: function (product, email) {
+            return $http.get(adminurl + "addproductwaitinglist", {
+                params: {
+                    product: product,
+                    email: email
+                }
+            });
         },
         getfilters: function () {
             return filters;
@@ -353,14 +406,14 @@ service.factory('MainJson', function ($http, TemplateService) {
             TemplateService.totalproducts = data;
             return 0;
         },
-        chargestripe: function (token, email,amount,name) {
+        chargestripe: function (token, email, amount, name) {
             return $http.get('http://wohlig.com/stripe/index.php/welcome/chargestripe', {
                 params: {
                     token: token,
                     email: email,
-                    amount: amount*100,
+                    amount: amount * 100,
                     name: name,
-                    
+
                 }
             }, {
                 withCredentials: true
