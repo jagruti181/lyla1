@@ -885,8 +885,10 @@ phonecatControllers.controller('checkout',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.changetitle("Checkout");
         TemplateService.content = "views/checkout.html";
+    
         TemplateService.slider = "";
-        $scope.loginlogouttext = "Login";
+        $scope.buttonsvalidate={billing:0,shipping:0,payment:0};    
+    $scope.loginlogouttext = "Login";
         $scope.isloggedin = 0;
         $scope.form = {};
         $scope.form.shipdifferent = 1;
@@ -970,6 +972,7 @@ phonecatControllers.controller('checkout',
 
         $scope.continuebilling = function () {
             $scope.billinginfo = 1;
+            $scope.buttonsvalidate.billing=1;
         };
 
         $scope.continueshipping = function () {
@@ -1013,6 +1016,7 @@ phonecatControllers.controller('checkout',
             console.log(check);
             if (check) {
                 $scope.shippinginfo = 1;
+                $scope.buttonsvalidate.shipping=1;
                 //$scope.hidebilling = 0;
             }
 
@@ -1068,6 +1072,8 @@ phonecatControllers.controller('checkout',
             console.log(check);
             if (check) {
                 $scope.shippinginfo = 1;
+                
+                $scope.buttonsvalidate.shipping=1;
                 //$scope.hidebilling = 0;
             }
 
@@ -1232,6 +1238,7 @@ phonecatControllers.controller('checkout',
         };
         $scope.continuepayment = function (form) {
             $scope.paywithcard = 1;
+            $scope.buttonsvalidate.payment=1;
             $scope.form.finalamount = $scope.subtotal;
             console.log($scope.cart);
             //MainJson.orderitem($scope.cart);

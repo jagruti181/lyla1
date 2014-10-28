@@ -57,7 +57,7 @@
 
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary pull-right" ng-click="continuebilling()">Continue</button>
+                                    <button class="btn btn-primary pull-right" ng-click="continuebilling()" ng-show="buttonsvalidate.billing==0">Continue</button>
                                 </div>
 
                             </div>
@@ -390,7 +390,7 @@
                                         <input type="radio" name="shippdifferent" ng-model="form.shipdifferent" value="1">Ship to this address
                                         <br>
                                         <input type="radio" name="shippdifferent" ng-model="form.shipdifferent" value="2">Ship to different address</p>
-                                    <button class="btn btn-primary pull-right" ng-click="continueshipping()">Continue</button>
+                                    <button class="btn btn-primary pull-right" ng-click="continueshipping()" ng-show="buttonsvalidate.shipping==0">Continue</button>
                                     <div class="clearfix"></div>
                                 </div>
 
@@ -717,7 +717,7 @@
                                 <input type="radio" name="shipping" value="7" ng-model="form.shippingmethod" ng-change="changeshippingcost(10)">Express International Delivery £ 10.00
                             </p>
 
-                            <button class="btn btn-primary pull-right" ng-click="continuepayment(form)">Continue</button>
+                            <button class="btn btn-primary pull-right" ng-click="continuepayment(form)" ng-show="buttonsvalidate.payment==0">Continue</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
