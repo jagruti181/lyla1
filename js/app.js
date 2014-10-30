@@ -116,7 +116,12 @@ firstapp.filter('imagepathbig', function () {
 
 firstapp.filter('convertprice', function () {
     return function (input) {
+        
         var price=parseFloat(input);
+        if(price<0)
+        {
+            return 0;
+        }
         var currencyshow="£";
         for(var i=0;i<conversionrate.length;i++)
         {
