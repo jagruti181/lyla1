@@ -514,5 +514,28 @@ class Product_model extends CI_Model
 		$query=$this->db->query("DELETE FROM `productwaiting` WHERE `id`='$id'");
 	}
     
+    function exportproductcsv()
+	{
+		$this->load->dbutil();
+		$query=$this->db->query("SELECT `product`.`id`AS `Parentid`,`product`.`id`AS `Productid`, `product`.`name`,CONCAT('http://www.lylaloves.co.uk/#/product/',`product`.`id`) as `Permalink` ,CONCAT('http://www.lylaloves.co.uk/#/product/',`productimage`.`image`) as `ImageURL` ,`product`.`description`,'0000-00-00' AS 'productpublished','0000-00-00' AS 'productmodified','Item' AS 'Type', `product`.`price`,`category`.`name` AS `Category`,`product`. `quantity` ,'NO' AS 'Allow Backorders'
+FROM `product`
+LEFT OUTER JOIN `productimage` ON `productimage`.`product`=`product`.`id`
+LEFT OUTER JOIN `productcategory` ON `productcategory`.`product`=`product`.`id`
+LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
+
+       $content= $this->dbutil->csv_from_result($query);
+        //$data = 'Some file data';
+
+        if ( ! write_file('./csvgenerated/productfile.csv', $content))
+        {
+             echo 'Unable to write the file';
+        }
+        else
+        {
+            redirect(base_url('csvgenerated/productfile.csv'), 'refresh');
+             echo 'File written!';
+        }
+	}
+    
 }
 ?>

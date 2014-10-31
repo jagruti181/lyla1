@@ -1,4 +1,7 @@
 <div class=" row" style="padding:1% 0;">
+<div class="col-md-10">
+		<div class=" pull-right col-md-1 createbtn" ><a class="btn btn-primary" href="<?php echo site_url('site/exportproductcsv'); ?>"target="_blank"><i class="icon-plus"></i>Export to CSV </a></div>
+	</div>
 	<div class=" pull-right col-md-1 createbtn" ><a class="btn btn-primary" href="<?php echo site_url('site/createproduct'); ?>"><i class="icon-plus"></i>Create </a></div>
 </div>
 <div class="row">

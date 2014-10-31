@@ -112,5 +112,26 @@ class Newsletter_model extends CI_Model
 		$this->db->query("UPDATE `newsletter` SET `credits`=`credits`+$credits WHERE `id`='$id'");
 		return 1;
 	}
+    
+    function exportnewslettercsv()
+	{
+		$this->load->dbutil();
+		$query=$this->db->query("SELECT `newsletterusers`.`id`,CONCAT(`user`.`firstname`,'',`user`.`lastname`) as `username`,`newsletterusers`.`email`,`newsletterusers`.`status`
+        FROM `newsletterusers`
+        LEFT OUTER JOIN `user` ON `user`.`id`=`newsletterusers`.`user`");
+
+       $content= $this->dbutil->csv_from_result($query);
+        //$data = 'Some file data';
+
+        if ( ! write_file('./csvgenerated/newsletterfile.csv', $content))
+        {
+             echo 'Unable to write the file';
+        }
+        else
+        {
+            redirect(base_url('csvgenerated/newsletterfile.csv'), 'refresh');
+             echo 'File written!';
+        }
+	}
 }
 ?>

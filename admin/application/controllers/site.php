@@ -3053,6 +3053,46 @@ class Site extends CI_Controller
         $data['title']='Product waiting';
         $this->load->view('template',$data);
 	}
+    //csv
     
+    	public function exportusercsv()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$this->user_model->exportusercsv();
+            
+        $data['table']=$this->user_model->viewusers();
+		$data['page']='viewusers';
+		$data['title']='View Users';
+		$this->load->view('template',$data);
+	}
+    	public function exportnewslettercsv()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$this->newsletter_model->exportnewslettercsv();
+         
+	}
+    	public function exportordercsv()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$this->order_model->exportordercsv();
+         
+	}
+    	public function exportorderitemcsv()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$this->order_model->exportorderitemcsv();
+         
+	}
+    	public function exportproductcsv()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$this->product_model->exportproductcsv();
+         
+	}
 }
 ?>
