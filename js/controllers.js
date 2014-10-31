@@ -190,11 +190,13 @@ phonecatControllers.controller('cart',
             var subtotal = parseFloat($scope.subtotal);
             console.log(data);
             if (data.coupontype == '1') {
-                if (data.coupontype.discountpercent != '0') {
+                if (data.discountpercent != '0') {
+                    console.log("ABC");
                     $scope.ispercent = parseFloat(data.discountpercent);
                     $scope.discountamount = (subtotal * $scope.ispercent / 100);
                 } else {
                     $scope.isamount = parseFloat(data.discountamount);
+                    console.log("ABCD");
                     $scope.discountamount = $scope.isamount;
                 }
             }
@@ -939,11 +941,13 @@ phonecatControllers.controller('checkout',
             var subtotal = parseFloat($scope.subtotal);
             console.log(data);
             if (data.coupontype == '1') {
-                if (data.coupontype.discountpercent != '0') {
+                if (data.discountpercent != '0') {
                     $scope.ispercent = parseFloat(data.discountpercent);
+                    console.log("ABC");
                     $scope.discountamount = (subtotal * $scope.ispercent / 100);
                 } else {
                     $scope.isamount = parseFloat(data.discountamount);
+                    console.log("ABCD");
                     $scope.discountamount = $scope.isamount;
                 }
             }
