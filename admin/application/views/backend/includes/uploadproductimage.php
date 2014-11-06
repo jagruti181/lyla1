@@ -141,7 +141,12 @@
             var order=1;
         }
         console.log({product:product,image:image,order:order});
-        $.post("<?php echo site_url("json/addimagetoproduct");?>",{product:product,image:image,order:order},function(data) {location.reload();});
+        $.post("<?php echo site_url("json/addimagetoproduct");?>",{product:product,image:image,order:order},function(data) {
+            location.reload();
+        });
+    };
+    function errorEncounter(data) {
+        console.log(data);
     };
     var newurl="";
     var options = { 
@@ -149,7 +154,7 @@
         //beforeSubmit:  beforeSubmit,  // pre-submit callback 
         resetForm: true,        // reset the form after successful submit 
         success: beforeSubmit,
-        error: beforeSubmit,
+        error: errorEncounter,
         dataType: 'json',
         url: newurl,
     }; 
