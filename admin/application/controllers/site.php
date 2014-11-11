@@ -2639,6 +2639,15 @@ class Site extends CI_Controller
 		$data['title']='View order';
 		$this->load->view('template',$data);
 	}
+	function viewpendingorder()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$data['table']=$this->order_model->viewpendingorder();
+		$data['page']='vieworder';
+		$data['title']='View Pending order';
+		$this->load->view('template',$data);
+	}
     function deleteorder()
     {
         $access = array("1");

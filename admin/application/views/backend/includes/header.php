@@ -190,6 +190,13 @@ $(document).ready(function(){
                       </a>
                   </li>
                   <li >
+                      <a href="<?php echo site_url('site/viewpendingorder'); ?>" class="">
+                          <i class="icon-money"></i>
+                          <span>Pending Orders</span>
+                          <span class="arrow"></span>
+                      </a>
+                  </li>
+                  <li >
                       <a href="<?php echo site_url('site/newsletter'); ?>" class="">
                           <i class="icon-money"></i>
                           <span>Newsletter</span>

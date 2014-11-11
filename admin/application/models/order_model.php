@@ -27,6 +27,18 @@ class Order_model extends CI_Model
 		LEFT OUTER JOIN  `user` ON `user`.`id`=`order`.`user`
 		LEFT OUTER JOIN `orderstatus` ON `orderstatus`.`id`=`order`.`orderstatus`
 		LEFT OUTER JOIN `currency` ON `currency`.`id`=`order`.`currency`
+        WHERE `order`.`orderstatus` <> 1
+		ORDER BY `order`.`timestamp` DESC";   
+		$query=$this->db->query($query)->result();
+		return $query;
+	}
+	function viewpendingorder()
+	{
+		$query="SELECT `order`.`id` as `id`,`order`.`firstname` as `firstname`,`order`.`lastname` as `lastname`,`order`.`user` as `user`,`order`.`orderstatus` as `orderstatusid`,`orderstatus`.`name` as `orderstatus`,`order`.`totalamount`,`order`.`discountamount`,`order`.`finalamount`,`order`.`trackingcode`,`order`.`timestamp` FROM `order` 	
+		LEFT OUTER JOIN  `user` ON `user`.`id`=`order`.`user`
+		LEFT OUTER JOIN `orderstatus` ON `orderstatus`.`id`=`order`.`orderstatus`
+		LEFT OUTER JOIN `currency` ON `currency`.`id`=`order`.`currency`
+        WHERE `order`.`orderstatus` ='1'
 		ORDER BY `order`.`timestamp` DESC";   
 		$query=$this->db->query($query)->result();
 		return $query;
