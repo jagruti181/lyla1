@@ -347,7 +347,7 @@ class Product_model extends CI_Model
 		$where = "";
 		if($price1!="")
 		{
-		$pricefilter="AND (`product`.`price` BETWEEN '$price1' AND '$price2' OR `product`.`price`='$price1' OR `product`.`price`='$price2')";
+		$pricefilter="AND (`product`.`price` BETWEEN $price1 AND $price2 OR `product`.`price`=$price1 OR `product`.`price`=$price2)";
 		}
 		else
 		{
@@ -358,11 +358,15 @@ class Product_model extends CI_Model
 			$where .= " OR `category`.`parent`='$category' ";
 		$query['category']=$this->db->query("SELECT `category`.`name` ,`category`.`image1` FROM `category`
 		WHERE `category`.`id`='$category'")->row();
+        
+       
+        
 		$query['product']=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`,`product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`productimage`.`image` FROM `product`
 		INNER JOIN `productcategory` ON `product`.`id`=`productcategory`.`product` 
-		INNER JOIN `category` ON `category`.`id`=`productcategory`.`category` AND (   `productcategory`.`category`=$category $where )
+		INNER JOIN `category` ON `category`.`id`=`productcategory`.`category` 
 		LEFT JOIN `productimage` ON `productimage`.`product`=`product`.`id`
 		WHERE `product`.`visibility`=1 AND `product`.`status`=1 AND `product`.`quantity` > 0 AND `product`.`name` LIKE '%$color%' $pricefilter
+        AND (   `productcategory`.`category`=$category $where )
 		GROUP BY `product`.`id`
 		ORDER BY `product`.`id` DESC")->result();
 		
