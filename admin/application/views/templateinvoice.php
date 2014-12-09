@@ -33,9 +33,7 @@
 </head>
 
 <body>
-   <?php
-//        print_r($before);
-    ?>
+  
     <div class="container">
         <div class="row">
             <div class="col-xs-2">
@@ -60,11 +58,13 @@
         </div>
         <div class="row">
             <div class="col-xs-5">
-                <div style="border:1px solid #ccc; padding:10px;"><b>Billing Address</b>
+            <div style="border:1px solid #ccc; padding:10px;"><b>Billing Address</b>
                     <div>
                        <?php
                         if($before['order']->billingaddress=="")
                         {
+                             echo $before['order']->firstname." ".$before['order']->lastname;
+                            echo "<br>";
                              echo $before['order']->shippingaddress;
                             echo "<br>";
                              echo $before['order']->shippingcity;
@@ -76,6 +76,8 @@
                         }
                         else
                         {
+                             echo $before['order']->firstname." ".$before['order']->lastname;
+                            echo "<br>";
                              echo $before['order']->billingaddress;
                             echo "<br>";
                              echo $before['order']->billingcity;
@@ -87,15 +89,18 @@
                         ?>
                     </div>
                 </div>
-
             </div>
+            
             <div class="col-xs-2"></div>
+            
             <div class="col-xs-5">
                 <div style="border:1px solid #ccc; padding:10px;"><b>Shipping Address</b>
                     <div>
                        <?php
                         if($before['order']->shippingaddress=="")
                         {
+                             echo $before['order']->firstname." ".$before['order']->lastname;
+                            echo "<br>";
                             echo $before['order']->billingaddress;
                             echo "<br>";
                              echo $before['order']->billingcity;
@@ -109,6 +114,8 @@
                         }
                         else
                         {
+                             echo $before['order']->firstname." ".$before['order']->lastname;
+                            echo "<br>";
                              echo $before['order']->shippingaddress;
                             echo "<br>";
                              echo $before['order']->shippingcity;
