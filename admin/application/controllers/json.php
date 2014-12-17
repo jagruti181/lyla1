@@ -36,8 +36,6 @@ class Json extends CI_Controller
         $this->load->library('email');
         $this->email->from('lyla@lylaloves.co.uk', 'Lyla');
         $this->email->to($email);
-        $this->email->cc('another@another-example.com');
-        $this->email->bcc('them@their-example.com');
 
         $this->email->subject('Welcome to Lyla');
         $this->email->message('Hello, You Sign Up successfully...Thank You For Visiting');
@@ -55,8 +53,6 @@ class Json extends CI_Controller
         $this->load->library('email');
         $this->email->from('lyla@lylaloves.co.uk', 'Lyla');
         $this->email->to($email);
-        $this->email->cc('another@another-example.com');
-        $this->email->bcc('them@their-example.com');
 
         $this->email->subject('Order');
         $this->email->message('<img src="http://zibacollection.co.uk/lylalovecouk/img/orderlyla.jpg" width="560px" height="398px">');
