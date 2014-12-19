@@ -899,11 +899,19 @@ phonecatControllers.controller('checkout',
         $scope.shippinginfo = 0;
         $scope.paywithcard = 0;
         $scope.hidebilling = 1;
+    
+                
+        
+        $scope.paymentorderemail = "";
+        $scope.paymentorderid = 0;
+    
+    
         $scope.focusout = function () {
             console.log("out focus");
         };
         var paymentcomplete = function (data, status) {
             console.log(data);
+            MainJson.orderemail($scope.paymentorderemail, $scope.paymentorderid).success(orderemailsend);
             window.location.href = "http://www.lylaloves.co.uk/#/thankyou";
         };
         var handler = StripeCheckout.configure({
@@ -1233,11 +1241,14 @@ phonecatControllers.controller('checkout',
             //alert("Email send");
         };
 
-
+        // order id and email after payment
+    
         var orderplaced = function (data, status) {
             console.log("place order returns");
             console.log(data);
-            MainJson.orderemail($scope.form.email, data).success(orderemailsend);
+            $scope.paymentorderemail = $scope.form.email;
+            $scope.paymentorderid = data;
+//            MainJson.orderemail($scope.form.email, data).success(orderemailsend);
             //alert("Order Placed");
         };
         $scope.continuepayment = function (form) {
