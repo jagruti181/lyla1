@@ -1246,7 +1246,7 @@ phonecatControllers.controller('checkout',
         var orderplaced = function (data, status) {
             console.log("place order returns");
             console.log(data);
-            $scope.paymentorderemail = $scope.form.email;
+//            $scope.paymentorderemail = $scope.form.email;
             $scope.paymentorderid = data;
 //            MainJson.orderemail($scope.form.email, data).success(orderemailsend);
             //alert("Order Placed");
@@ -1255,6 +1255,7 @@ phonecatControllers.controller('checkout',
             $scope.paywithcard = 1;
             $scope.buttonsvalidate.payment=1;
             $scope.form.finalamount = $scope.subtotal;
+            $scope.paymentorderemail = $scope.form.email;
             console.log($scope.cart);
             //MainJson.orderitem($scope.cart);
             $scope.form.cart = $scope.cart;
