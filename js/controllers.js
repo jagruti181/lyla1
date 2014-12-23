@@ -200,7 +200,31 @@ phonecatControllers.controller('cart',
                     $scope.discountamount = $scope.isamount;
                 }
             }
-            if (data.coupontype == 4) {
+            if (data.coupontype == '2') {
+                console.log($scope.cart);
+                
+                var totallength=0;
+                _.each($scope.cart,function(cart) {totallength+=parseInt(cart.qty);} );
+                var xproducts=parseInt(data.xproducts);
+                var yproducts=parseInt(data.yproducts);
+                var itter=Math.floor(totallength/xproducts)*yproducts;
+                console.log("ITTER "+itter);
+                var newcart=_.sortBy($scope.cart, function(cart){ cart.price=parseFloat(cart.price);cart.qty2=parseInt(cart.qty);return parseFloat(cart.price); });
+                //newcart=_.each(newcart, function(cart){  cart.price=parseFloat(cart.price);cart.qty=parseFloat(cart.qty); });
+                console.log(newcart);
+                $scope.discountamount=0;
+                for(var i=0;i<itter;i++)
+                {
+                    if(newcart[i].qty2!=0)
+                    {
+                        newcart[i].qty2--;
+                        $scope.discountamount+=newcart[i].price;
+                    }
+                    
+                }
+            }
+            if (data.coupontype == '4') {
+                console.log("FREE DELIVERY APPLIED");
                 $scope.isfreedelivery = "Free Delivery";
                 $scope.discountamount = 0;
             }
@@ -959,7 +983,32 @@ phonecatControllers.controller('checkout',
                     $scope.discountamount = $scope.isamount;
                 }
             }
-            if (data.coupontype == 4) {
+			if (data.coupontype == '2') {
+                console.log($scope.cart);
+                
+                var totallength=0;
+                _.each($scope.cart,function(cart) {totallength+=parseInt(cart.qty);} );
+                var xproducts=parseInt(data.xproducts);
+                var yproducts=parseInt(data.yproducts);
+                var itter=Math.floor(totallength/xproducts)*yproducts;
+                console.log("ITTER "+itter);
+                var newcart=_.sortBy($scope.cart, function(cart){ cart.price=parseFloat(cart.price);cart.qty2=parseInt(cart.qty);return parseFloat(cart.price); });
+                //newcart=_.each(newcart, function(cart){  cart.price=parseFloat(cart.price);cart.qty=parseFloat(cart.qty); });
+                console.log(newcart);
+                $scope.discountamount=0;
+                for(var i=0;i<itter;i++)
+                {
+                    if(newcart[i].qty2!=0)
+                    {
+                        newcart[i].qty2--;
+                        $scope.discountamount+=newcart[i].price;
+                    }
+                    
+                }
+            }
+            
+            if (data.coupontype == '4') {
+                console.log("FREE DELIVERY APPLIED");
                 $scope.isfreedelivery = "Free Delivery";
                 $scope.discountamount = 0;
             }
@@ -1130,6 +1179,8 @@ phonecatControllers.controller('checkout',
                 $scope.newquantity[i] = $scope.cart[i].qty;
                 console.log($scope.newquantity[i]);
             }
+            
+            calcdiscountamount();
         };
         MainJson.getcart().success(showcart);
         var getsubtotal = function (data, status) {

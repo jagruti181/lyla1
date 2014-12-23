@@ -73,6 +73,7 @@
     <script src="lib/js/angular-animate.js"></script>
     <script src="lib/js/angular-route.min.js"></script>
     <script src="lib/js/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
 
     <!--<script src="lib/js/bootstrap.min.js"></script>-->
     <script src="lib/js/ui-bootstrap-tpls-0.11.0.min.js"></script>
