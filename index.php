@@ -118,21 +118,23 @@
     <div class="top-bar barheight">
 
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-2">
 
 
-                <div class="input-group headsearch" ng-controller="search">
-                    <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
-                    <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search" ng-change="search(searchpro)">
-                </div>
+            
             </div>
             <div class="col-xs-7 padder" ng-controller="newsletter">
                 <p style="text-align:center;">Sign up for our newsletter and get free delivery on your first order! &nbsp;&nbsp;&nbsp;
-                    <input type="email" class="form-control newsletteremail" ng-model="uemail" placeholder="" required> <a style="color:black;" class="btn btn-primary" ng-click="newsletter(uemail)">GO</a>
+                    <input type="email" class="form-control newsletteremail" ng-model="uemail" placeholder="" required> <a style="color:black;" class="btn btn-primary" ng-click="newsletter(uemail)">SIGN UP</a>
                 </p>
             </div>
 
-            <div class="col-xs-2">
+            <div class="col-xs-3">
+                
+                    <div class="input-group headsearch " ng-controller="search">
+                    <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
+                    <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search" ng-change="search(searchpro)">
+                </div>
 
                 <div class="pull-right" style="margin-right:15px;" ng-controller="badge">
 
