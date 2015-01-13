@@ -3101,7 +3101,46 @@ class Site extends CI_Controller
 		$access = array("1");
 		$this->checkaccess($access);
 		$this->product_model->exportproductcsv();
-         
+        $data['redirect']="site/viewproduct";
+        $this->load->view("redirect",$data);
 	}
+    
+    function uploadproductcsv()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$data[ 'page' ] = 'uploadproductcsv';
+		$data[ 'title' ] = 'Upload product';
+		$this->load->view( 'template', $data );
+	} 
+    
+    function uploadproductcsvsubmit()
+	{
+        $access = array("1");
+		$this->checkaccess($access);
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = '*';
+        $this->load->library('upload', $config);
+        $filename="file";
+        $file="";
+        if (  $this->upload->do_upload($filename))
+        {
+            $uploaddata = $this->upload->data();
+            $file=$uploaddata['file_name'];
+            $filepath=$uploaddata['file_path'];
+        }
+        $fullfilepath=$filepath."".$file;
+        $file = $this->csvreader->parse_file($fullfilepath);
+        $id1=$this->product_model->createbycsv($file);
+//        echo $id1;
+        if($id1==0)
+        $data['alerterror']="New products could not be Uploaded.";
+		else
+		$data['alertsuccess']="products Uploaded Successfully.";
+        
+        $data['redirect']="site/viewproduct";
+        $this->load->view("redirect",$data);
+    }
+   
 }
 ?>

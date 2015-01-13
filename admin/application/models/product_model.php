@@ -539,6 +539,52 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
             redirect(base_url('csvgenerated/productfile.csv'), 'refresh');
              echo 'File written!';
         }
+//		file_put_contents("gs://lylafiles/product_$timestamp.csv", $content);
+//		redirect("http://lylaloves.co.uk/servepublic?name=product_$timestamp.csv", 'refresh');
+	}
+    
+	public function createbycsv($file)
+	{
+        foreach ($file as $row)
+        {
+//            $city=$row['city'];
+//            $cityquery=$this->db->query("SELECT * FROM `city` where `name`LIKE '$city'")->row();
+//            if(empty($cityquery))
+//            {
+//                $this->db->query("INSERT INTO `city`(`name`) VALUES ('$city')");
+//                $cityid=$this->db->insert_id();
+//            }
+//            else
+//            {
+//                $cityid=$cityquery->id;
+//            }
+            $specialpricefrom=date_format($row['specialpricefrom'], 'Y-m-d');
+            $specialpriceto=date_format($row['specialpriceto'], 'Y-m-d');
+            
+            $data  = array(
+                'name' => $row['name'],
+                'sku' => $row['sku'],
+                'description' => $row['description'],
+                'url' => $row['url'],
+                'metatitle' => $row['metatitle'],
+                'metadesc' => $row['metadescription'],
+                'metakeyword' => $row['metakeyword'],
+                'quantity' => $row['quantity'],
+                'price' => $row['price'],
+                'wholesaleprice' => $row['wholesaleprice'],
+                'firstsaleprice' => $row['firstsaleprice'],
+                'secondsaleprice' => $row['secondsaleprice'],
+                'specialpricefrom' => $specialpricefrom,
+                'specialpriceto' => $specialpriceto,
+                'status' => 1
+            );
+
+            $query=$this->db->insert( 'product', $data );
+        }
+		if(!$query)
+			return  0;
+		else
+			return  1;
 	}
     
 }

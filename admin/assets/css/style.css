@@ -3950,3 +3950,12 @@ span.customSelect.changed {
 .customSelectInner {
     background:url(../img/customSelect-arrow.gif) no-repeat center right;
 }
+a.btn-pos {
+    position: relative;
+    left: 80px;
+}
+
+a.btn-poss {
+    position: relative;
+    right: 193px;
+}

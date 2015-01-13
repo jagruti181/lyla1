@@ -374,5 +374,37 @@ class Order_model extends CI_Model
 //		
 //		return $query;
 //	}
+    
+    function emailcustomerdiscount()
+    {
+        $date = new DateTime('7 days ago');
+        $date=$date->format('Y-m-d');
+        $query=$this->db->query("SELECT `order`.`id` as `id`,`order`.`firstname` as `firstname`,`order`.`lastname` as `lastname`,`order`.`email` as `email`,`order`.`user` as `user`,`order`.`orderstatus` as `orderstatusid`,`orderstatus`.`name` as `orderstatus`,`order`.`totalamount`,`order`.`discountamount`,`order`.`finalamount`,`order`.`trackingcode`,DATE(`order`.`timestamp`) AS `timestamp` FROM `order` 	
+		LEFT OUTER JOIN  `user` ON `user`.`id`=`order`.`user`
+		LEFT OUTER JOIN `orderstatus` ON `orderstatus`.`id`=`order`.`orderstatus`
+		LEFT OUTER JOIN `currency` ON `currency`.`id`=`order`.`currency`
+WHERE DATE(`order`.`timestamp`) = '$date'")->result();
+        foreach($query as $row)
+        {
+            $email=$row->email;
+        $email = explode(",", $email);
+//            $email=$this->input->get('email');
+//            $orderid=$this->input->get('orderid');
+            $this->load->library('email');
+            $this->email->from('lyla@lylaloves.co.uk', 'Lyla');
+            $this->email->to($email);
+
+            $this->email->subject('Lyla');
+            $this->email->message('Thank You.<br><img src="http://zibacollection.co.uk/lylalovecouk/img/orderlyla.jpg" width="560px" height="398px">');
+          // $this->email->html('<b>hello</b>');
+
+            $this->email->send();
+
+            $data["message"]=$this->email->print_debugger();
+            $this->load->view("json",$data);
+        
+        }
+        
+    }
 }
 ?>

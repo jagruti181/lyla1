@@ -72,7 +72,7 @@
             
             <div class="col-xs-3">
                 <div class="logo">
-                    <img src="<?php echo base_url('../img/logo.jpg'); ?>" alt="" style="width:100%;">
+                    <img src="<?php echo base_url('../img/logo.jpg'); ?>" alt="" style="width:62px;height:100px;">
                 </div>
             </div>
         </div>

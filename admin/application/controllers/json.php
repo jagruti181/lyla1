@@ -386,6 +386,10 @@ class Json extends CI_Controller
     }
     
     
+        public function emailcustomerdiscount()
+    {
+        $this->order_model->emailcustomerdiscount();
+    }
     
     
 }
