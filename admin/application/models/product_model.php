@@ -547,20 +547,12 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
 	{
         foreach ($file as $row)
         {
-//            $city=$row['city'];
-//            $cityquery=$this->db->query("SELECT * FROM `city` where `name`LIKE '$city'")->row();
-//            if(empty($cityquery))
-//            {
-//                $this->db->query("INSERT INTO `city`(`name`) VALUES ('$city')");
-//                $cityid=$this->db->insert_id();
-//            }
-//            else
-//            {
-//                $cityid=$cityquery->id;
-//            }
-            $specialpricefrom=date_format($row['specialpricefrom'], 'Y-m-d');
-            $specialpriceto=date_format($row['specialpriceto'], 'Y-m-d');
             
+            if($row['specialpricefrom'] != "")
+				$specialpricefrom = date("Y-m-d",strtotime($row['specialpricefrom']));
+			if($row['specialpriceto'] != "")
+				$specialpriceto = date("Y-m-d",strtotime($row['specialpriceto']));
+            $sku=$row['sku'];
             $data  = array(
                 'name' => $row['name'],
                 'sku' => $row['sku'],
@@ -578,8 +570,11 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
                 'specialpriceto' => $specialpriceto,
                 'status' => 1
             );
-
+            $checkproductpresent=$this->db->query("SELECT COUNT(`id`) as `count1` FROM `product` WHERE `sku`='$sku'")->row();
+            if($checkproductpresent->count1 == 0)
+            {
             $query=$this->db->insert( 'product', $data );
+            }
         }
 		if(!$query)
 			return  0;

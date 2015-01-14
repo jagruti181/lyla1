@@ -3118,19 +3118,28 @@ class Site extends CI_Controller
 	{
         $access = array("1");
 		$this->checkaccess($access);
-        $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = '*';
-        $this->load->library('upload', $config);
-        $filename="file";
-        $file="";
-        if (  $this->upload->do_upload($filename))
-        {
-            $uploaddata = $this->upload->data();
-            $file=$uploaddata['file_name'];
-            $filepath=$uploaddata['file_path'];
-        }
-        $fullfilepath=$filepath."".$file;
-        $file = $this->csvreader->parse_file($fullfilepath);
+        
+//        $config['upload_path'] = './uploads/';
+//        $config['allowed_types'] = '*';
+//        $this->load->library('upload', $config);
+//        $filename="file";
+//        $file="";
+//        if (  $this->upload->do_upload($filename))
+//        {
+//            $uploaddata = $this->upload->data();
+//            $file=$uploaddata['file_name'];
+//            $filepath=$uploaddata['file_path'];
+//        }
+//        $fullfilepath=$filepath."".$file;
+        //"http://storage.googleapis.com/lylalovescsv/product.csv"
+        
+		$this->form_validation->set_rules('url','url','trim');
+        $path=$this->input->get_post('url');
+//        $fullfilepath=file_get_contents($path); 
+        $file = $this->csvreader->parse_file($path);
+//        print_r($file);
+        
+//        $file = $this->csvreader->parse_file($fullfilepath);
         $id1=$this->product_model->createbycsv($file);
 //        echo $id1;
         if($id1==0)

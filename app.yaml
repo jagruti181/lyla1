@@ -40,13 +40,7 @@ handlers:
 
 - url: /uploadsuccess/(.+)
   script: uploadsuccess/index.php  
-  
-  - url: /servepublic
-  script: servepublic/index.php
 
-- url: /servepublic/(.+)
-  script: servepublic/index.php  
-  
 - url: /.*
   script: index.php  
   

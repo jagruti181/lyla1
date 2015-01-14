@@ -5,7 +5,7 @@
 	</div>
 	<div class="col-md-3">
 	
-		<a class="btn btn-default"  href="<?php echo base_url('uploads/product.csv'); ?>"><i class="icon-upload"></i>Download CSV Format</a> &nbsp; 
+		<a class="btn btn-default"  href="http://storage.googleapis.com/lylalovescsv/product.csv"><i class="icon-upload"></i>Download CSV Format</a> &nbsp; 
 	</div>
 </div>
 <div class="row">
@@ -18,13 +18,20 @@
 			  <form class="form-horizontal tasi-form" method="post" action="<?php echo site_url('site/uploadproductcsvsubmit');?>" enctype= "multipart/form-data">
 				
 				
+<!--
 				<div class=" form-group">
 				  <label class="col-sm-2 control-label" for="normal-field">Product CSV File</label>
 				  <div class="col-sm-4">
 					<input type="file" id="normal-field" class="form-control" name="file">
 				  </div>
 				</div>
-				
+-->
+				<div class="form-group">
+						<label class="col-sm-2 control-label">URL</label>
+						<div class="col-sm-4">
+						  <input type="url" id="normal-field" class="form-control" name="url" value="<?php echo set_value('url');?>">
+						</div>
+					</div>
 				<div class=" form-group">
 				  <label class="col-sm-2 control-label">&nbsp;</label>
 				  <div class="col-sm-4">
