@@ -52,8 +52,10 @@ var showlocationdata = function (data, status) {
                 currency = "USD";
             }
             console.log("Currency: " + currency);
+            
             break;
         }
+        
     }
     //$.holdReady(false);
 };
@@ -87,6 +89,12 @@ var ongettingdata = function (data) {
                     currency = "USD";
                 }
                 console.log("Currency: " + currency);
+                if(currency=="USD" || currency=="EURO")
+                {
+                    console.log("Show Popup");
+                    
+                    //POPup to be here
+                }
             
             }
         }

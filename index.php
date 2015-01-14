@@ -114,7 +114,7 @@
 
 </head>
 
-<body>
+<body >
     <div class="top-bar barheight">
 
         <div class="row">
@@ -213,7 +213,12 @@
             s.parentNode.insertBefore(g, s);
         }(document, "script"));
     </script>
-
+<script>
+window.addEventListener("beforeunload", function (e) {
+    alert("See You");
+    return false;
+}); 
+    </script>
 
 </body>
 
