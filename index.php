@@ -119,7 +119,10 @@
 
         <div class="row">
             <div class="col-xs-2">
-
+ <div class="input-group headsearch " ng-controller="search">
+                    <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
+                    <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search" ng-change="search(searchpro)">
+                </div>
 
             
             </div>
@@ -131,11 +134,7 @@
 
             <div class="col-xs-3">
                 
-                    <div class="input-group headsearch " ng-controller="search">
-                    <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
-                    <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search" ng-change="search(searchpro)">
-                </div>
-
+                   
                 <div class="pull-right" style="margin-right:15px;" ng-controller="badge">
 
                     <a href="#/Login" class="fadeInRight wow topicon" ng-class="firstloadclass wow">

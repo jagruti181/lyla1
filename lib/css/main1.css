@@ -102,6 +102,7 @@ input:focus {
 .newsletteremail {
     width: 200px;
     border: 0px;
+    height: 27px;
 }
 .newsletter {
     background: #d8f2ef;
@@ -159,12 +160,11 @@ input:focus {
     min-width: 1080px;
 }
 .headsearch {
-    width: 51.7%;
+    width: 90%;
     border: 0px;
     border-bottom: 2px solid #e4e4e4;
     font-size: 16px;
     position: absolute;
-    /* margin: 65px 0 0 180px; */
     margin: 10px;
     border: 0px;
     right: -15px;
@@ -677,14 +677,15 @@ li.homeclass {
     padding: 0px;
     -webkit-transition: all 0.5s;
     position: relative;
-    right: 100px;
+    right: 0;
+    height: 26px;
 }
 .headsearch .inputbox.showit {
     width: 100%;
     opacity: 1;
     padding: 10px;
     position: relative;
-    right: 160px;
+    left: -1px;
     top: 0px;
 }
 .headsearch .icon {
