@@ -4,6 +4,7 @@
 <head ng-controller="headerctrl">
     <title ng-bind="'Lyla Loves - '+template.title">Lyla Loves</title>
     <meta name="name" content="Lyla Loves">
+    <meta name="msvalidate.01" content="7FB67E680F127E1BBF8AF2977231BE73" />
     <meta name="description" content="Bring your Outfit to Life with Fashion Jewelry by lyla loves! Shop Statement Necklaces, Cuff Bracelets, and Midi Rings! Find the Best Fashion Jewelry at lylaloves.co.uk.">
     <meta name="keywords" content="Jewelry, Fashion Jewelry, Statement Necklaces, Earrings, Rings, Cuff Bracelets.">
     <script>
@@ -107,7 +108,7 @@
             m.parentNode.insertBefore(a, m)
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-55688126-1', 'auto');
+        ga('create', 'UA-54886004-1', 'auto');
         ga('send', 'pageview');
     </script>
 
