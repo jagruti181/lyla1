@@ -43,6 +43,12 @@ handlers:
 
 - url: /.*
   script: index.php  
+
+- url: /BingSiteAuth.xml
+  static_files: BingSiteAuth.xml
+  
+- url: /googleeb491dfb6fb22923.html
+  static_files: googleeb491dfb6fb22923.html
   
 
 
