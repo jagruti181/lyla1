@@ -37,10 +37,9 @@
                 return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
             }
         };
-        
-        if(isMobile.any())
-        {
-            window.location="http://mobile.lylaloves.co.uk"+window.location.hash;
+
+        if (isMobile.any()) {
+            window.location = "http://mobile.lylaloves.co.uk" + window.location.hash;
         }
     </script>
     <script type="text/javascript">
@@ -115,17 +114,17 @@
 
 </head>
 
-<body >
+<body>
     <div class="top-bar barheight">
 
         <div class="row">
             <div class="col-xs-2">
- <div class="input-group headsearch " ng-controller="search">
+                <div class="input-group headsearch " ng-controller="search">
                     <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
                     <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search" ng-change="search(searchpro)">
                 </div>
 
-            
+
             </div>
             <div class="col-xs-7 padder" ng-controller="newsletter">
                 <p style="text-align:center;">Sign up for our newsletter and get free delivery on your first order! &nbsp;&nbsp;&nbsp;
@@ -134,8 +133,8 @@
             </div>
 
             <div class="col-xs-3">
-                
-                   
+
+
                 <div class="pull-right" style="margin-right:15px;" ng-controller="badge">
 
                     <a href="#/Login" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
@@ -213,11 +212,11 @@
             s.parentNode.insertBefore(g, s);
         }(document, "script"));
     </script>
-<script>
-window.addEventListener("beforeunload", function (e) {
-    alert("See You");
-    return false;
-}); 
+    <script>
+        window.addEventListener("beforeunload", function (e) {
+            alert("See You");
+            return false;
+        });
     </script>
 
 </body>
