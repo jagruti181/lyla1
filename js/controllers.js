@@ -643,7 +643,10 @@ phonecatControllers.controller('profile',
         //authenticate
         var authenticate = function (data, status) {
             if (data != "false") {
+                
                 $scope.loginlogouttext = "Logout";
+            }else{
+                $location.url("/Login");
             }
         };
         MainJson.authenticate().success(authenticate);
@@ -754,13 +757,27 @@ phonecatControllers.controller('badge',
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
         $scope.msgg = "Message here..........";
+        $scope.check = 0;
 
+        //TO LOGIN OR PROFILE
+        $scope.toprofile = function () {
+            if($scope.check == 0){
+                $location.url("/Login");
+            }else{
+                $location.url("/profile");
+            }
+        }
+    
         //authenticate
         var authenticate = function (data, status) {
+            console.log("hhhhhhhhhhhhhhhhhhh");
             console.log(data);
             if (data != "false") {
+                $scope.check = 1;
                 $scope.alldate = data;
                 $scope.loginlogouttext = "Logout";
+            }else{
+                $scope.check = 0;
             }
         };
         MainJson.authenticate().success(authenticate);
@@ -1670,6 +1687,28 @@ phonecatControllers.controller('wishlist',
 
     });
 
+
+phonecatControllers.controller('returns',
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
+        //$scope.firstloadclass = TemplateService.firstload;
+        $scope.template = TemplateService;
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.changetitle("Returns");
+        TemplateService.content = "views/returns.html";
+        $scope.returnsactive = "active";
+        TemplateService.slider = "";
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = "Logout";
+            }
+        };
+        MainJson.authenticate().success(authenticate);
+        //authenticate
+
+    });
 
 phonecatControllers.controller('returns',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
