@@ -121,7 +121,7 @@
             <div class="col-xs-2">
                 <div class="input-group headsearch " ng-controller="search">
                     <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
-                    <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search" ng-change="search(searchpro)">
+                    <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search for an item" ng-change="search(searchpro)">
                 </div>
 
 
@@ -138,16 +138,16 @@
                 <div class="pull-right" style="margin-right:15px;" ng-controller="badge">
 
                     <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
-                        <img src="img/account.png">
+                        <img src="img/account.png">Log In
                     </a>
 
                     <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
                     <a href="#/cart" class="topicon {{template.cartclicked}}">
-                        <img src="img/cart.png">
+                        <img src="img/cart.png">Cart
                     </a>
 
                     <a href="#/wishlist" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
-                        <img src="img/wishlist.png">
+                        <img src="img/wishlist.png">Favourites
                     </a>
 
 

@@ -865,3 +865,13 @@ span.cartspace {
     -moz-osx-font-smoothing: grayscale;
     color: #898989;
 }
+.breadcrumb {
+padding: 10px 5px;
+margin-bottom: 20px;
+list-style: none;
+color: #A8A8A8;
+border-radius: 0;
+line-height: 28px;
+zoom: 0.9;
+display: none;
+}
