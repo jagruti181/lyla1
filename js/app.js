@@ -96,6 +96,10 @@ firstapp.config(['$routeProvider',
             templateUrl: 'views/template.html',
             controller: 'loginwishlist'
         }).
+          when('/subjewellery', {
+            templateUrl: 'views/template.html',
+            controller: 'subjewellery'
+        }).
         otherwise({
             redirectTo: '/home'
         });

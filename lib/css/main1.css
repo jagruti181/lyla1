@@ -193,7 +193,7 @@ input:focus {
     margin-bottom: 30px;
     border-top: 1px solid #eee;
     padding: 5px 0;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
 }
 .protitle h5 {
     font-weight: 400;
@@ -874,4 +874,12 @@ border-radius: 0;
 line-height: 28px;
 zoom: 0.9;
 display: none;
+}
+.socialbigs {
+text-align: center;
+font-family: "CheddarJack";
+font-size: 40px;
+background: #efc7cf;
+padding: 67px 0;
+margin: 10px;
 }

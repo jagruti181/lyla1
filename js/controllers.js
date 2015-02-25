@@ -688,6 +688,40 @@ phonecatControllers.controller('lylaloves',
         //        });
 
     });
+phonecatControllers.controller('subjewellery',
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
+        //$scope.firstloadclass = TemplateService.firstload;
+        $scope.template = TemplateService;
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.changetitle("lylaloves...");
+        $scope.homeactive = "active";
+        TemplateService.content = "views/subjewellery.html";
+        TemplateService.slider = "";
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = data.email;
+            }
+        };
+        MainJson.authenticate().success(authenticate);
+        //authenticate
+        //        $scope.$on('$includeContentLoaded', function () {
+        //            console.log("content loaded");
+        //        
+        //            var $container = $('#isotope');
+        //            
+        //            // init
+        //            $container.isotope({
+        //                // options
+        //                layoutMode: 'masonry',
+        //                itemSelector: '.item',
+        //
+        //            });
+        //        });
+
+    });
 
 phonecatControllers.controller('thankyou',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {

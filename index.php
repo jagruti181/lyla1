@@ -147,7 +147,7 @@
                     </a>
 
                     <a href="#/wishlist" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
-                        <img src="img/wishlist.png">Favourites
+                        <img src="img/wishlist2.png">Favourites
                     </a>
 
 
