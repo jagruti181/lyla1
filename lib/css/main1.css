@@ -916,7 +916,11 @@ span.cartspace {
     text-align: center;
     font-family: "CheddarJack";
     font-size: 40px;
-    background: #efc7cf;
-    padding: 67px 0;
+/*    background: #efc7cf;*/
     margin: 10px;
+}
+.socialbigs img {
+    width: 300px;
+    height: 300px;
+    /* opacity: 0.5; */
 }
