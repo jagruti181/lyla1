@@ -917,40 +917,22 @@ phonecatControllers.controller('lookbook',
         //authenticate
         $scope.changeactivelookbook = function (id) {
             $scope.firstshow = "";
-            console.log(id);
+//            console.log(id);
             for (var i = 0; i < $scope.lookbookimages.length; i++) {
                 $scope.lookbookimages[i].active = "";
             }
             $scope.lookbookimages[id].active = "active";
             $scope.activeimage = $scope.lookbookimages[id].image;
+            $scope.activelookbook = $scope.lookbookimages[id];
         };
-        $scope.lookbookimages = [{
-            id: 1,
-            image: "img/lookbook/pro1.jpg"
-                                   }, {
-            id: 2,
-            image: "img/lookbook/pro2.jpg"
-                                   }, {
-            id: 3,
-            image: "img/lookbook/pro1.jpg"
-                                   }, {
-            id: 4,
-            image: "img/lookbook/pro2.jpg"
-                                   }, {
-            id: 5,
-            image: "img/lookbook/pro1.jpg"
-                                   }, {
-            id: 6,
-            image: "img/lookbook/pro2.jpg"
-                                   }, {
-            id: 7,
-            image: "img/lookbook/pro1.jpg"
-                                   }, {
-            id: 8,
-            image: "img/lookbook/pro2.jpg"
-                                   }];
-        $scope.lookbookimages[0].active = "active";
-        $scope.activeimage = $scope.lookbookimages[0].image;
+        
+
+        var categorysuccess = function (data, status) {
+            $scope.lookbookimages = data.product;
+            $scope.changeactivelookbook(0);
+        };
+        MainJson.getproductbycategory(9).success(categorysuccess);
+
     });
 
 

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-xs-4">
                 <span class="breadcrumb">
-							Home / Global Grudge
+							Home / Lookbook
                 </span>
             </div>
             <div class="col-xs-4"></div>
@@ -21,26 +21,32 @@
     </div>
     <div class="maincontent">
 
-        <div class="lookdetails">
+        <div class="lookdetails text-center">
             
-            <h3>Necklace</h3>
-            <h4>&pound; 60</h4>
-            <a class="btn btn-primary" ng-click="addtocart(product.id,product.name,product.price,addquantity)"><span class="glyphicon  glyphicon-shopping-cart"></span> Add to Cart</a>
+            <h5 class="protitle big">{{activelookbook.name}}</h5>
+            
+            <div class="proprice">
+                        <h5>{{activelookbook.price|convertprice}}</h5>
+                        <hr style="width:100%;">
+                    </div>
+            <a class="btn btn-primary btn-black no-margin" ng-click="addtocart(activelookbook.id,activelookbook.name,activelookbook.price,1)">Add to Cart</a>
             <br>
             <div class="pad"></div>
+<!--
             <a href="" class="btn"><span class="glyphicon glyphicon-chevron-left"></span>Previous</a>
             <a href="" class="btn">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+-->
         </div>
 
         <div class="text-center pad look-img">
-            <img src="{{activeimage}}" class="img img-2">
+            <img ng-src="{{activelookbook.image|imagepath}}" class="img img-2">
         </div>
 
         <div class="horizon {{firstshow}}">
             <div class="horislide">
 
                 <div class="hori-item {{image.active}}" ng-repeat="image in lookbookimages">
-                    <img src="{{image.image}}" class="img" ng-click="changeactivelookbook($index)" alt="">
+                    <img ng-src="{{image.image|imagepath}}" class="img" ng-click="changeactivelookbook($index)" alt="">
                 </div>
                
             </div>
