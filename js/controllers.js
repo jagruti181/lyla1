@@ -2,13 +2,17 @@ var phonecatControllers = angular.module('phonecatControllers', ['templateservic
 phonecatControllers.controller('home',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
         ////$scope.firstloadclass = TemplateService.firstload;
-        $scope.template = TemplateService;
-        TemplateService.changetitle("Home");
+
         $scope.template = TemplateService;
         TemplateService.slider = "views/slider.html";
+        TemplateService.meta = "Fashion Jewellery London and Accessories | Lyla Loves";
+        TemplateService.title = "Fashion Jewellery London and Accessories";
+        TemplateService.metadescription = "Bring your outfit to life with fashion jewellery london and accessories for women by Lyla Loves! Shop for necklaces, bracelets, earrings, midi rings and more!";
+        TemplateService.keywords = "fashion jewellery online, dainty jewellery, jewellery london, fashion necklaces for women, bracelets for women, earrings for women, midi rings, accessories for women";
         TemplateService.header = "views/headerhome.html";
         TemplateService.navigation = "views/navigationhome.html";
         TemplateService.content = "views/content.html";
+
         $scope.homeactive = "active";
         $scope.loginlogouttext = "Login";
         $scope.visible = false;
@@ -202,25 +206,29 @@ phonecatControllers.controller('cart',
             }
             if (data.coupontype == '2') {
                 console.log($scope.cart);
-                
-                var totallength=0;
-                _.each($scope.cart,function(cart) {totallength+=parseInt(cart.qty);} );
-                var xproducts=parseInt(data.xproducts);
-                var yproducts=parseInt(data.yproducts);
-                var itter=Math.floor(totallength/xproducts)*yproducts;
-                console.log("ITTER "+itter);
-                var newcart=_.sortBy($scope.cart, function(cart){ cart.price=parseFloat(cart.price);cart.qty2=parseInt(cart.qty);return parseFloat(cart.price); });
+
+                var totallength = 0;
+                _.each($scope.cart, function (cart) {
+                    totallength += parseInt(cart.qty);
+                });
+                var xproducts = parseInt(data.xproducts);
+                var yproducts = parseInt(data.yproducts);
+                var itter = Math.floor(totallength / xproducts) * yproducts;
+                console.log("ITTER " + itter);
+                var newcart = _.sortBy($scope.cart, function (cart) {
+                    cart.price = parseFloat(cart.price);
+                    cart.qty2 = parseInt(cart.qty);
+                    return parseFloat(cart.price);
+                });
                 //newcart=_.each(newcart, function(cart){  cart.price=parseFloat(cart.price);cart.qty=parseFloat(cart.qty); });
                 console.log(newcart);
-                $scope.discountamount=0;
-                for(var i=0;i<itter;i++)
-                {
-                    if(newcart[i].qty2!=0)
-                    {
+                $scope.discountamount = 0;
+                for (var i = 0; i < itter; i++) {
+                    if (newcart[i].qty2 != 0) {
                         newcart[i].qty2--;
-                        $scope.discountamount+=newcart[i].price;
+                        $scope.discountamount += newcart[i].price;
                     }
-                    
+
                 }
             }
             if (data.coupontype == '4') {
@@ -282,22 +290,22 @@ phonecatControllers.controller('cart',
         MainJson.totalcart().success(getsubtotal);
         //separating cart
         $scope.postcart = function () {
-            $scope.cart = MainJson.getcart();
-            $scope.id = $scope.cart[0].id;
-            $scope.name = $scope.cart[0].name;
-            $scope.price = $scope.cart[0].price;
-            $scope.quantity = $scope.cart[0].quantity;
-            for (var i = 1; i < $scope.cart.length; i++) {
-                $scope.id += "," + $scope.cart[i].id;
-                $scope.name += "," + $scope.cart[i].name;
-                $scope.price += "," + $scope.cart[i].price;
-                $scope.quantity += "," + $scope.cart[i].quantity;
+                $scope.cart = MainJson.getcart();
+                $scope.id = $scope.cart[0].id;
+                $scope.name = $scope.cart[0].name;
+                $scope.price = $scope.cart[0].price;
+                $scope.quantity = $scope.cart[0].quantity;
+                for (var i = 1; i < $scope.cart.length; i++) {
+                    $scope.id += "," + $scope.cart[i].id;
+                    $scope.name += "," + $scope.cart[i].name;
+                    $scope.price += "," + $scope.cart[i].price;
+                    $scope.quantity += "," + $scope.cart[i].quantity;
+                }
+
+
             }
-
-
-        }
-        //separating cart
-        //add to cart
+            //separating cart
+            //add to cart
         var getsubtotal = function (data, status) {
             $scope.subtotal = data;
         };
@@ -544,7 +552,10 @@ phonecatControllers.controller('contact',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
-        TemplateService.changetitle("Login");
+        TemplateService.title = "Contact Lyla Loves | Fashion Jewellery London";
+        TemplateService.metadescription = "To ask any query related to fashion jewellery or to shop for the latest accessories, get in touch with our experts and get your style right at Lyla Loves.";
+        TemplateService.keywords = "fashion jewellery online, jewllery london, necklaces, bracelets, earrings, rings, accessories for women";
+//        TemplateService.changetitle("Login");
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
         $scope.homeactive = "active";
@@ -643,9 +654,9 @@ phonecatControllers.controller('profile',
         //authenticate
         var authenticate = function (data, status) {
             if (data != "false") {
-                
+
                 $scope.loginlogouttext = "Logout";
-            }else{
+            } else {
                 $location.url("/Login");
             }
         };
@@ -658,9 +669,12 @@ phonecatControllers.controller('lylaloves',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
+        TemplateService.title = "Follow Lyla Loves on Facebook, Twitter, Pinterest, & Instagram";
+        TemplateService.metadescription = "Follow Lyla Loves on Facebook, Twitter, Pinterest, Instagram & Tumblr to stay updated on the latest fashion and style trends for women and win exciting prizes.";
+        TemplateService.keywords = "instagram lyla_loves, twitter lyla_loves, facebook lylaloves, pinterest lyla loves";
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
-        TemplateService.changetitle("lylaloves...");
+        //        TemplateService.changetitle("lylaloves...");
         $scope.homeactive = "active";
         TemplateService.content = "views/lylaloves.html";
         TemplateService.slider = "";
@@ -692,9 +706,12 @@ phonecatControllers.controller('subjewellery',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
+        TemplateService.title = "London Fashion Jewellery | Dainty Jewellery ";
+        TemplateService.metadescription = "Buy women's fashion jewellery london, dainty jewellery, necklaces, bracelets, earrings and midi rings at affordable prices only at Lyla Loves.";
+        TemplateService.keywords = "fashion jewellery online, dainty jewellery, jewellery london, fashion necklaces for women, bracelets for women, earrings for women, midi rings";
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
-        TemplateService.changetitle("lylaloves...");
+        //        TemplateService.changetitle("lylaloves...");
         $scope.homeactive = "active";
         TemplateService.content = "views/subjewellery.html";
         TemplateService.slider = "";
@@ -795,13 +812,13 @@ phonecatControllers.controller('badge',
 
         //TO LOGIN OR PROFILE
         $scope.toprofile = function () {
-            if($scope.check == 0){
+            if ($scope.check == 0) {
                 $location.url("/Login");
-            }else{
+            } else {
                 $location.url("/profile");
             }
         }
-    
+
         //authenticate
         var authenticate = function (data, status) {
             console.log("hhhhhhhhhhhhhhhhhhh");
@@ -810,7 +827,7 @@ phonecatControllers.controller('badge',
                 $scope.check = 1;
                 $scope.alldate = data;
                 $scope.loginlogouttext = "Logout";
-            }else{
+            } else {
                 $scope.check = 0;
             }
         };
@@ -917,7 +934,7 @@ phonecatControllers.controller('lookbook',
         //authenticate
         $scope.changeactivelookbook = function (id) {
             $scope.firstshow = "";
-//            console.log(id);
+            //            console.log(id);
             for (var i = 0; i < $scope.lookbookimages.length; i++) {
                 $scope.lookbookimages[i].active = "";
             }
@@ -925,7 +942,7 @@ phonecatControllers.controller('lookbook',
             $scope.activeimage = $scope.lookbookimages[id].image;
             $scope.activelookbook = $scope.lookbookimages[id];
         };
-        
+
 
         var categorysuccess = function (data, status) {
             $scope.lookbookimages = data.product;
@@ -944,10 +961,14 @@ phonecatControllers.controller('checkout',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.changetitle("Checkout");
         TemplateService.content = "views/checkout.html";
-    
+
         TemplateService.slider = "";
-        $scope.buttonsvalidate={billing:0,shipping:0,payment:0};    
-    $scope.loginlogouttext = "Login";
+        $scope.buttonsvalidate = {
+            billing: 0,
+            shipping: 0,
+            payment: 0
+        };
+        $scope.loginlogouttext = "Login";
         $scope.isloggedin = 0;
         $scope.form = {};
         $scope.form.shipdifferent = 1;
@@ -956,13 +977,13 @@ phonecatControllers.controller('checkout',
         $scope.shippinginfo = 0;
         $scope.paywithcard = 0;
         $scope.hidebilling = 1;
-    
-                
-        
+
+
+
         $scope.paymentorderemail = "";
         $scope.paymentorderid = 0;
-    
-    
+
+
         $scope.focusout = function () {
             console.log("out focus");
         };
@@ -1016,30 +1037,34 @@ phonecatControllers.controller('checkout',
                     $scope.discountamount = $scope.isamount;
                 }
             }
-			if (data.coupontype == '2') {
+            if (data.coupontype == '2') {
                 console.log($scope.cart);
-                
-                var totallength=0;
-                _.each($scope.cart,function(cart) {totallength+=parseInt(cart.qty);} );
-                var xproducts=parseInt(data.xproducts);
-                var yproducts=parseInt(data.yproducts);
-                var itter=Math.floor(totallength/xproducts)*yproducts;
-                console.log("ITTER "+itter);
-                var newcart=_.sortBy($scope.cart, function(cart){ cart.price=parseFloat(cart.price);cart.qty2=parseInt(cart.qty);return parseFloat(cart.price); });
+
+                var totallength = 0;
+                _.each($scope.cart, function (cart) {
+                    totallength += parseInt(cart.qty);
+                });
+                var xproducts = parseInt(data.xproducts);
+                var yproducts = parseInt(data.yproducts);
+                var itter = Math.floor(totallength / xproducts) * yproducts;
+                console.log("ITTER " + itter);
+                var newcart = _.sortBy($scope.cart, function (cart) {
+                    cart.price = parseFloat(cart.price);
+                    cart.qty2 = parseInt(cart.qty);
+                    return parseFloat(cart.price);
+                });
                 //newcart=_.each(newcart, function(cart){  cart.price=parseFloat(cart.price);cart.qty=parseFloat(cart.qty); });
                 console.log(newcart);
-                $scope.discountamount=0;
-                for(var i=0;i<itter;i++)
-                {
-                    if(newcart[i].qty2!=0)
-                    {
+                $scope.discountamount = 0;
+                for (var i = 0; i < itter; i++) {
+                    if (newcart[i].qty2 != 0) {
                         newcart[i].qty2--;
-                        $scope.discountamount+=newcart[i].price;
+                        $scope.discountamount += newcart[i].price;
                     }
-                    
+
                 }
             }
-            
+
             if (data.coupontype == '4') {
                 console.log("FREE DELIVERY APPLIED");
                 $scope.isfreedelivery = "Free Delivery";
@@ -1066,7 +1091,7 @@ phonecatControllers.controller('checkout',
 
         $scope.continuebilling = function () {
             $scope.billinginfo = 1;
-            $scope.buttonsvalidate.billing=1;
+            $scope.buttonsvalidate.billing = 1;
         };
 
         $scope.continueshipping = function () {
@@ -1110,7 +1135,7 @@ phonecatControllers.controller('checkout',
             console.log(check);
             if (check) {
                 $scope.shippinginfo = 1;
-                $scope.buttonsvalidate.shipping=1;
+                $scope.buttonsvalidate.shipping = 1;
                 //$scope.hidebilling = 0;
             }
 
@@ -1166,8 +1191,8 @@ phonecatControllers.controller('checkout',
             console.log(check);
             if (check) {
                 $scope.shippinginfo = 1;
-                
-                $scope.buttonsvalidate.shipping=1;
+
+                $scope.buttonsvalidate.shipping = 1;
                 //$scope.hidebilling = 0;
             }
 
@@ -1212,7 +1237,7 @@ phonecatControllers.controller('checkout',
                 $scope.newquantity[i] = $scope.cart[i].qty;
                 console.log($scope.newquantity[i]);
             }
-            
+
             calcdiscountamount();
         };
         MainJson.getcart().success(showcart);
@@ -1326,18 +1351,18 @@ phonecatControllers.controller('checkout',
         };
 
         // order id and email after payment
-    
+
         var orderplaced = function (data, status) {
             console.log("place order returns");
             console.log(data);
-//            $scope.paymentorderemail = $scope.form.email;
+            //            $scope.paymentorderemail = $scope.form.email;
             $scope.paymentorderid = data;
-//            MainJson.orderemail($scope.form.email, data).success(orderemailsend);
+            //            MainJson.orderemail($scope.form.email, data).success(orderemailsend);
             //alert("Order Placed");
         };
         $scope.continuepayment = function (form) {
             $scope.paywithcard = 1;
-            $scope.buttonsvalidate.payment=1;
+            $scope.buttonsvalidate.payment = 1;
             $scope.form.finalamount = $scope.subtotal;
             $scope.paymentorderemail = $scope.form.email;
             console.log($scope.cart);
@@ -1404,10 +1429,105 @@ phonecatControllers.controller('category',
 
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
+            TemplateService.title = "Find latest collection of fashion jewellery online";
+        TemplateService.metadescription = "Grab all the latest arrivals in fashion jewellery online today and find a range of accessories for women at Lyla loves.";
+        TemplateService.keywords = "fashion jewellery online, dainty jewellery, jewellery london, accessories for women";
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
+    
+    if($routeParams.CategoryId=="2")
+    {
+        TemplateService.title = "Fashion Necklaces for Women, Statement Necklaces ";
+        TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women, silver statement necklaces, dragonfly necklaces, zodiac necklaces and much more at Lyla Loves.";
+        TemplateService.keywords = "fashion necklaces for women, silver statement necklace, dragonfly necklace, zodiac necklace, gold necklaces, silver necklaces, pendant necklaces";
+   
+    }
+    
+    if($routeParams.CategoryId=="3")
+    {
+        TemplateService.title = "Gold, silver and leather bracelets for women";
+        TemplateService.metadescription = "Find out the best collection of gold and silver bracelets, wrap around bracelets and leather bracelets for women and many more at Lyla Loves.";
+        TemplateService.keywords = "bracelets for women, silver bracelets for women, wrap around bracelets, leather bracelets for women, adjustable bracelets, bangles";
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.content = "views/category.html";
+        TemplateService.slider = "";
+    }
+            if($routeParams.CategoryId=="4")
+    {
+        TemplateService.title = "Ear cuffs, gold, silver and stud earrings for women";
+        TemplateService.metadescription = "Shop for a range of ear cuffs online, gold and silver earrings, stud earrings for women and more. Choose from beautiful selection of earrings at Lyla Loves.";
+        TemplateService.keywords = "ear cuffs online, stud earrings for women, gold earrings, silver earrings.";
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.content = "views/category.html";
+        TemplateService.slider = "";
+    }
+        if($routeParams.CategoryId=="5")
+    {
+        TemplateService.title = "Gold stacking rings & silver midi rings for women";
+        TemplateService.metadescription = "Buy ultimate piece of women's fashion rings from a wide range of gold and silver midi rings, gold stacking rings and many more only at Lyla Loves.";
+        TemplateService.keywords = "rings for women, silver midi rings, gold stacking rings, geometric rings, pearl rings.";
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.content = "views/category.html";
+        TemplateService.slider = "";
+    }
+            if($routeParams.CategoryId=="6")
+    {
+        TemplateService.title = "Buy the latest fashion accessories for women online";
+        TemplateService.metadescription = "Get the best trendy fashion accessories for women like bags, mobile cases, scarves and more at Lyla Loves.";
+        TemplateService.keywords = "accessories for women, bags for women, scarves for women, mobile phone cases, hair accessories.";
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.content = "views/category.html";
+        TemplateService.slider = "";
+    }
+                if($routeParams.CategoryId=="7")
+    {
+        TemplateService.title = "Shop for handbags, clutches, shoulder bags for women";
+        TemplateService.metadescription = "Shop today! for a variety of stylish bags for women like clutches, shoulder bags and more at affordable prices from Lyla Loves.";
+        TemplateService.keywords = "bags for women, womens accessories, clutch bags, shoulder bags, handbags";
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.content = "views/category.html";
+        TemplateService.slider = "";
+    }
+                    if($routeParams.CategoryId=="8")
+    {
+        TemplateService.title = "Shop for printed, ethnic scarves for women ";
+        TemplateService.metadescription = "Find beautiful printed and ethnic scarves for women to suit your style. Choose from a wide range of designs at the best prices from Lyla Loves..";
+        TemplateService.keywords = "scarves for women, womens scarf, printed scarves, ethnic scarves";
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.content = "views/category.html";
+        TemplateService.slider = "";
+    }
+                        if($routeParams.CategoryId=="34")
+    {
+        TemplateService.title = "Buy hair accessories for women online";
+        TemplateService.metadescription = "Choose from a selection of trendy hair accessories for women at Lyla Loves.";
+        TemplateService.keywords = "hair accessories for women, Hair accessory for women, womens hair accessories";
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.content = "views/category.html";
+        TemplateService.slider = "";
+    }
+                            if($routeParams.CategoryId=="35")
+    {
+        TemplateService.title = "Buy fashionable mobile phone cases";
+        TemplateService.metadescription = "Find a wide range of fashionable mobile phone cases that suit your style. So order your favorite phone case at Lyla Loves NOW!";
+        TemplateService.keywords = "mobile phone cases, phone cases, cell phone cases";
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.content = "views/category.html";
+        TemplateService.slider = "";
+    }
+    
+    
+    
         $scope.gototop = function () {
             $location.hash('totop');
             $anchorScroll();
@@ -1621,13 +1741,13 @@ phonecatControllers.controller('product',
             MainJson.addtocart(id, name, price, quantity).success(cartt);
             $scope.addedtocart = "show";
         };
-        var addedtowaitinglist=function(data) {
+        var addedtowaitinglist = function (data) {
             console.log(data);
-            $scope.addedtowaitinglist=true;
+            $scope.addedtowaitinglist = true;
         };
-        $scope.addedtowaitinglist=false;
-        $scope.addtowaitinglist=function(product,email) {
-            MainJson.addtowaitinglist(product,email).success(addedtowaitinglist);
+        $scope.addedtowaitinglist = false;
+        $scope.addtowaitinglist = function (product, email) {
+            MainJson.addtowaitinglist(product, email).success(addedtowaitinglist);
         };
 
         $scope.$on("$includeContentLoaded", function () {

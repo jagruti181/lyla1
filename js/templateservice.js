@@ -1,7 +1,9 @@
 var templateservicemod = angular.module('templateservicemod', []);
 templateservicemod.service('TemplateService', function () {
-    this.title = "Home";
+    this.title = "Fashion Jewellery London and Accessories | Lyla Loves";
     this.meta = "Google";
+    this.metadesciption = "Google";
+    this.keywords = "Google,yahoo";
     this.header = "views/header.html";
     this.navigation = "views/navigation.html";
 

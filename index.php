@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="firstapp">
 
 <head ng-controller="headerctrl">
-    <title ng-bind="'Lyla Loves - '+template.title">Lyla Loves</title>
+    <title ng-bind="template.title+' | Lyla Loves'">Lyla Loves</title>
     <meta name="name" content="Lyla Loves">
     <meta name="msvalidate.01" content="7FB67E680F127E1BBF8AF2977231BE73" />
-    <meta name="description" content="Bring your Outfit to Life with Fashion Jewelry by lyla loves! Shop Statement Necklaces, Cuff Bracelets, and Midi Rings! Find the Best Fashion Jewelry at lylaloves.co.uk.">
-    <meta name="keywords" content="Jewelry, Fashion Jewelry, Statement Necklaces, Earrings, Rings, Cuff Bracelets.">
+    <meta name="meta" content="{{template.meta}}" />
+    <meta name="description" content="{{template.metadesciption}}">
+    <meta name="keywords" content="{{template.keywords}}">
     <script>
         var hostname = window.location.hostname;
         if (hostname == "lylaloves.co.uk") {
