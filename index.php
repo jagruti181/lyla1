@@ -128,18 +128,26 @@
 
             </div>
             <div class="col-xs-7 padder" ng-controller="newsletter">
-                <p style="text-align:center;">Sign up for our newsletter and get free delivery on your first order! &nbsp;&nbsp;&nbsp;
+            <span>SHIPPING WORLDWIDE</span>
+            <span>FREE  DOMESTIC SHIPPING ON ORDERS OVER £15</span>
+            <span>FREE  INTERNATIONAL SHIPPING ON ORDERS OVER £20</span>
+<!--
+                <p style="float;right">SHIPPING WORLDWIDE &nbsp;&nbsp;&nbsp;
                     <input type="email" class="form-control newsletteremail" ng-model="uemail" placeholder="" required> <a style="color:black;" class="btn btn-primary" ng-click="newsletter(uemail)">SIGN UP</a>
                 </p>
+-->
             </div>
 
             <div class="col-xs-3">
 
 
-                <div class="pull-right" style="margin-right:15px;" ng-controller="badge">
+                <div class="set-head pull-right" style="margin-right:15px;" ng-controller="badge">
 
                     <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
-                        <img src="img/account.png">Log In
+                        <img src="img/account.png">Log in
+                    </a>
+                      <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
+                        <img src="img/maill.png">Newsletter
                     </a>
 
                     <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
@@ -148,7 +156,7 @@
                     </a>
 
                     <a href="#/wishlist" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
-                        <img src="img/wishlist2.png">Favourites
+                        <img src="img/wishlist2.png">Wishlist
                     </a>
 
 

@@ -639,7 +639,7 @@ h5.pricecolor {
     width: 44px;
 }
 .padder {
-    padding: 9px;
+      padding: 13px 0px;
 }
 .marginer {
     margin-top: 20px;
@@ -960,4 +960,13 @@ button.btnss-primary {
   color: #fff;
   background-color: #FF99BC;
   font-weight: 600;
+}
+.padder span {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 0px 10px;
+}
+.set-head {
+    font-size: 13px;
 }
