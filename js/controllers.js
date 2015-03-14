@@ -171,7 +171,7 @@ phonecatControllers.controller('cart',
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
-        TemplateService.navigation = "views/navigation.html";
+        TemplateService.navigation = "";
         TemplateService.changetitle("Cart");
         TemplateService.content = "views/cart.html";
         TemplateService.slider = "";
@@ -918,7 +918,7 @@ phonecatControllers.controller('lookbook',
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
-        TemplateService.changetitle("Ziba Lookbook");
+        TemplateService.changetitle("lyla Lookbook");
         $scope.homeactive = "active";
         TemplateService.content = "views/lookbook.html";
         TemplateService.slider = "";

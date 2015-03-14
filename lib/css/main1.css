@@ -924,3 +924,40 @@ span.cartspace {
     height: 300px;
     /* opacity: 0.5; */
 }
+.contenttops {
+  margin-bottom: 30px;
+  border-top: 1px solid #eee;
+  padding: 5px 0;
+  /* border-bottom: 1px solid #eee; */
+  margin-top: 25px;
+}
+
+a.btns-primary {
+  color: #fff;
+  background-color: #FF99BC;
+  font-weight: 600;
+}
+.btns {
+  display: inline-block;
+  padding: 15px 55px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+}
+button.btnss-primary {
+  color: #fff;
+  background-color: #FF99BC;
+  font-weight: 600;
+}
