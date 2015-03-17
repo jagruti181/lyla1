@@ -19,6 +19,7 @@ phonecatControllers.controller('home',
         $scope.ishome = "homeclass";
         $scope.onhome = "onhome";
         $scope.demo = "demodemo";
+        $scope.hititle="Jewellery London - Picks of the Week";
 
 
         //start get country from geo location
@@ -177,6 +178,7 @@ phonecatControllers.controller('cart',
         TemplateService.slider = "";
         $scope.cart = [];
         $scope.loginlogouttext = "Login";
+        $scope.hititle="Cart";
         //authenticate
 
         var authenticate = function (data, status) {
@@ -716,6 +718,7 @@ phonecatControllers.controller('subjewellery',
         TemplateService.content = "views/subjewellery.html";
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
+      $scope.hititle="Lyla Loves -  Fashion Jewellery, Dainty Jewellery";
         //authenticate
         var authenticate = function (data, status) {
             if (data != "false") {
@@ -1436,12 +1439,13 @@ phonecatControllers.controller('category',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
-    
+          $scope.hititle="Lyla Loves - Fashion Jewellery Online";
     if($routeParams.CategoryId=="2")
     {
         TemplateService.title = "Fashion Necklaces for Women, Statement Necklaces ";
         TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women, silver statement necklaces, dragonfly necklaces, zodiac necklaces and much more at Lyla Loves.";
         TemplateService.keywords = "fashion necklaces for women, silver statement necklace, dragonfly necklace, zodiac necklace, gold necklaces, silver necklaces, pendant necklaces";
+           $scope.hititle="Lyla Loves - Fashion Necklaces for Women";
    
     }
     
@@ -1454,6 +1458,7 @@ phonecatControllers.controller('category',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
+         $scope.hititle="Lyla Loves - Bracelets for Women";
     }
             if($routeParams.CategoryId=="4")
     {
@@ -1464,6 +1469,7 @@ phonecatControllers.controller('category',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
+         $scope.hititle="Gold, Silver, Stud Earrings for Women and Ear Cuffs Online";
     }
         if($routeParams.CategoryId=="5")
     {
@@ -1474,6 +1480,7 @@ phonecatControllers.controller('category',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
+        $scope.hititle="Lyla Loves - Gold, Silver Midi Rings, Stacking Rings";
     }
             if($routeParams.CategoryId=="6")
     {
@@ -1484,6 +1491,7 @@ phonecatControllers.controller('category',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
+        $scope.hititle="Lyla Loves - Fashion Accessories for Women";
     }
                 if($routeParams.CategoryId=="7")
     {
@@ -1494,6 +1502,7 @@ phonecatControllers.controller('category',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
+         $scope.hititle="Lyla Loves - Stylish Bags for Women";
     }
                     if($routeParams.CategoryId=="8")
     {
@@ -1504,6 +1513,7 @@ phonecatControllers.controller('category',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
+        $scope.hititle="Lyla Loves - Scarves for Women";
     }
                         if($routeParams.CategoryId=="34")
     {
@@ -1514,6 +1524,7 @@ phonecatControllers.controller('category',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
+        $scope.hititle="Lyla Loves - Hair Accessories for Women";
     }
                             if($routeParams.CategoryId=="35")
     {
@@ -1524,6 +1535,7 @@ phonecatControllers.controller('category',
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
+        $scope.hititle="Lyla Loves - Hair Accessories for Women";
     }
     
     
