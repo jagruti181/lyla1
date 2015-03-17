@@ -993,7 +993,7 @@ phonecatControllers.controller('checkout',
         var paymentcomplete = function (data, status) {
             console.log(data);
             MainJson.orderemail($scope.paymentorderemail, $scope.paymentorderid).success(orderemailsend);
-            window.location.href = "http://www.lylaloves.co.uk/#/thankyou";
+            $location.path('/thankyou');
         };
         var handler = StripeCheckout.configure({
             key: 'pk_live_I1udSOaNJK4si3FCMwvHsY4g',
@@ -1430,6 +1430,8 @@ phonecatControllers.controller('category',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
         $scope.iscategory = "category";
 
+   
+    
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
             TemplateService.title = "Find latest collection of fashion jewellery online";

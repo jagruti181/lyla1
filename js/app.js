@@ -1,9 +1,10 @@
 // JavaScript Document
 var firstapp = angular.module('firstapp', [
   'ngRoute',
+    'ngResource',
   'phonecatControllers',
   'templateservicemod',
-  'ngAnimate',
+  
   'Service',
   'ui.bootstrap',
   'ImageZoom',
@@ -12,8 +13,8 @@ var firstapp = angular.module('firstapp', [
     'infinite-scroll'
 ]);
 
-firstapp.config(['$routeProvider',
-  function ($routeProvider) {
+firstapp.config(
+    function ($routeProvider, $locationProvider) {
         $routeProvider.
         when('/home', {
             templateUrl: 'views/template.html',
@@ -96,51 +97,46 @@ firstapp.config(['$routeProvider',
             templateUrl: 'views/template.html',
             controller: 'loginwishlist'
         }).
-          when('/subjewellery', {
+        when('/subjewellery', {
             templateUrl: 'views/template.html',
             controller: 'subjewellery'
         }).
         otherwise({
             redirectTo: '/home'
         });
-  }]);
+        $locationProvider.html5Mode(true);
+    });
 
 firstapp.filter('imagepath', function () {
     return function (input) {
-        return "http://www.lylaloves.co.uk/showimage?size=300&image="+input;
-        
+        return "http://www.lylaloves.co.uk/showimage?size=300&image=" + input;
+
     };
 });
 firstapp.filter('imagepathbig', function () {
     return function (input) {
-        return "http://www.lylaloves.co.uk/showimage?size=800&image="+input;
-       
+        return "http://www.lylaloves.co.uk/showimage?size=800&image=" + input;
+
     };
 });
 
 firstapp.filter('convertprice', function () {
     return function (input) {
-        
-        var price=parseFloat(input);
-        if(price<0)
-        {
+
+        var price = parseFloat(input);
+        if (price < 0) {
             return 0;
         }
-        var currencyshow="£";
-        for(var i=0;i<conversionrate.length;i++)
-        {
-            if(conversionrate[i].name==currency)
-            {
+        var currencyshow = "£";
+        for (var i = 0; i < conversionrate.length; i++) {
+            if (conversionrate[i].name == currency) {
                 //console.log("currency: "+currency+" price ini: "+price+" price new: "+parseFloat(conversionrate[i].conversionrate)*price);
-                if(currency=="USD")
-                {
-                    currencyshow="$";
+                if (currency == "USD") {
+                    currencyshow = "$";
+                } else if (currency == "EURO") {
+                    currencyshow = "€";
                 }
-                else if(currency=="EURO")
-                {
-                    currencyshow="€";
-                }
-                return currencyshow+" "+(parseFloat(conversionrate[i].conversionrate)*price).toFixed(2);
+                return currencyshow + " " + (parseFloat(conversionrate[i].conversionrate) * price).toFixed(2);
             }
         }
     };

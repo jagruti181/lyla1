@@ -1,5 +1,5 @@
 var templateservicemod = angular.module('templateservicemod', []);
-templateservicemod.service('TemplateService', function () {
+templateservicemod.service('TemplateService', function ($location) {
     this.title = "Fashion Jewellery London and Accessories | Lyla Loves";
     this.meta = "Google";
     this.metadesciption = "Google";
@@ -20,6 +20,10 @@ templateservicemod.service('TemplateService', function () {
         $(".zoomContainer").remove();
 
         this.firstload = "";
+    };
+    
+    this.gourl=function(url) {
+        $location.path(url);
     };
     
 });

@@ -12,7 +12,7 @@
         <ul>
         <li ng-repeat="property in properties" >
         	
-        	<a href="#/property/{{property.id}}">
+        	<a ng-click="template.gourl('/property/'+property.id);">
             {{property.property}}
             <img src="{{property.image|imagepath}}" />
             </a>

@@ -16,7 +16,7 @@
         <div style="overflow:hidden;height:230px;">
             <span ng-repeat="slider in sliders">
                 <span ng-show="$index<5" class="pickweek">
-                    <a href="#/product/{{slider.link}}"><img src="{{slider.image|imagepath}}" class="slideset1 animated slideInLeft" ng-show="showslideset1==0"></a>
+                    <a ng-click="template.gourl('/product/'+slider.link);" ><img src="{{slider.image|imagepath}}" class="slideset1 animated slideInLeft" ng-show="showslideset1==0"></a>
                     <div class="proprice proprice2">
                         <a href="#/product/{{product.id}}">
                             <h5> {{slider.price|convertprice}}</h5>
@@ -24,9 +24,9 @@
                     </div>
                 </span>
             <span ng-show="$index>=5" class="pickweek">
-                    <a href="#/product/{{slider.link}}"><img src="{{slider.image|imagepath}}" class="slideset1 animated slideInRight" ng-show="showslideset1==1"></a>
+                    <a ng-click="template.gourl('/product/'+slider.link);"><img src="{{slider.image|imagepath}}" class="slideset1 animated slideInRight" ng-show="showslideset1==1"></a>
                 <div class="proprice proprice2">
-                    <a href="#/product/{{product.id}}">
+                    <a ng-click="template.gourl('/product/'+product.id);">
                         <h5> {{slider.price|convertprice}}</h5>
                     </a>
                 </div>

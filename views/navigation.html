@@ -6,7 +6,7 @@
         <ul class="nav nav-pills font mainmenu" ng-class="ishome" >
            
             <li>
-                <a href="#/category/31">Just In</a>
+                <a ng-click="template.gourl('/category/31');">Just In</a>
                 
             </li>
             <!--li ng-mouseover="showsub(5)" ng-mouseleave="hidesub(5)" style="position:relative;">
@@ -16,12 +16,12 @@
             </li-->
 
             <li ng-mouseover="showsub(0)" ng-mouseleave="hidesub(0)" style="position:relative;">
-                <a href="#/subjewellery">Jewellery</a>
+                <a ng-click="template.gourl('/subjewellery')">Jewellery</a>
                 <div class="megamenu megamenu2" ng-include src="submenuval[0]" ng-show="submenu[0]">
                 </div>
             </li>
             <li ng-mouseover="showsub(1)" ng-mouseleave="hidesub(1)" style="position:relative;">
-                <a href="#/category/6">Accesories</a>
+                <a  ng-click="template.gourl('/category/6');">Accesories</a>
                 <div class="megamenu megamenu2" ng-include src="submenuval[1]" ng-show="submenu[1]">
                 </div>
             </li>
@@ -33,17 +33,17 @@
             </li>
 -->
             <li>
-                <a href="#/lylaloves">lyla loves...</a>
+                <a ng-click="template.gourl('/lylaloves');">lyla loves...</a>
                 
             </li>
                 <li>
-                    <a class="" href="#/lookbook">lookbook</a>
+                    <a class="" ng-click="template.gourl('/lookbook');">lookbook</a>
 
                 </li>
 
 
             <li ng-mouseover="showsub(6)" ng-mouseleave="hidesub(6)">
-                <a   href="#/contact">#asklyla</a>
+                <a  ng-click="template.gourl('/contact');">#asklyla</a>
 <!--
                 <div class="megamenu" ng-include src="submenuval[6]" ng-show="submenu[6]">
                 </div>

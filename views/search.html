@@ -35,7 +35,7 @@
         <div class="col-md-3 text-center" ng-repeat="product in find"  my-repeat-directive>
             <div class="product wow fadeInLeft" data-wow-delay="0.6s" data-wow-duration="1s" data-wow-offset="10" style="visibility:none;">
                 <span ng-show="product.isnew=='1'" class="pronew"><img src="img/new.png"></span>
-                   <a href="#/product/{{product.id}}">
+                   <a ng-click="template.gourl('/product/'+product.id);">
                     <div class="img1">
                         <img src="{{product.image|imagepath}}" class="img">
                     </div>

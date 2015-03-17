@@ -58,7 +58,7 @@
         })();
     </script>
 
-
+    <base href="/">
     <link rel="shortcut icon" href="img/logo.jpg" />
     <link href="lib/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="lib/css/animate.css" rel="stylesheet" type="text/css">
@@ -102,7 +102,7 @@
                 (i[r].q = i[r].q || []).push(arguments)
             }, i[r].l = 1 * new Date();
             a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
+                m = s.getElementsByTagName(o)[0];
             a.async = 1;
             a.src = g;
             m.parentNode.insertBefore(a, m)
@@ -128,10 +128,10 @@
 
             </div>
             <div class="col-xs-7 padder" ng-controller="newsletter">
-            <span>SHIPPING WORLDWIDE</span>
-            <span>FREE  DOMESTIC SHIPPING ON ORDERS OVER £15</span>
-            <span>FREE  INTERNATIONAL SHIPPING ON ORDERS OVER £20</span>
-<!--
+                <span>SHIPPING WORLDWIDE</span>
+                <span>FREE  DOMESTIC SHIPPING ON ORDERS OVER £15</span>
+                <span>FREE  INTERNATIONAL SHIPPING ON ORDERS OVER £20</span>
+                <!--
                 <p style="float;right">SHIPPING WORLDWIDE &nbsp;&nbsp;&nbsp;
                     <input type="email" class="form-control newsletteremail" ng-model="uemail" placeholder="" required> <a style="color:black;" class="btn btn-primary" ng-click="newsletter(uemail)">SIGN UP</a>
                 </p>
@@ -146,16 +146,16 @@
                     <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
                         <img src="img/account.png">Log in
                     </a>
-                      <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
+                    <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
                         <img src="img/maill.png">Newsletter
                     </a>
 
                     <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
-                    <a href="#/cart" class="topicon {{template.cartclicked}}">
+                    <a ng-click="template.gourl('/cart');" class="topicon {{template.cartclicked}}">
                         <img src="img/cart.png">Cart
                     </a>
 
-                    <a href="#/wishlist" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
+                    <a ng-click="template.gourl('/wishlist');" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
                         <img src="img/wishlist2.png">Wishlist
                     </a>
 
@@ -231,5 +231,3 @@
 </body>
 
 </html>
-
-
