@@ -970,3 +970,9 @@ button.btnss-primary {
 .set-head {
     font-size: 13px;
 }
+.set-im img:hover {
+    -webkit-transform: scale(2);    -moz-transform: scale(2);    -o-transform: scale(2);    transform: scale(2);      position: relative;      
+    left: 30%;      z-index: 999;
+    width: 100%;
+    -webkit-transition: all 1s ease;
+}
