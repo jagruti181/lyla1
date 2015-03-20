@@ -5,8 +5,7 @@
     <title ng-bind="template.title+' | Lyla Loves'">Lyla Loves</title>
     <meta name="name" content="Lyla Loves">
     <meta name="msvalidate.01" content="7FB67E680F127E1BBF8AF2977231BE73" />
-    <meta name="meta" content="{{template.meta}}" />
-    <meta name="description" content="{{template.metadesciption}}">
+    <meta name="description" content="{{template.metadescription}}">
     <meta name="keywords" content="{{template.keywords}}">
     <script>
         var hostname = window.location.hostname;
