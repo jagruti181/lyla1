@@ -159,10 +159,12 @@
                         <img src="img/maill.png">Newsletter
                     </a>
 
+<!--
                     <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
                     <a ng-click="template.gourl('/cart');" class="topicon {{template.cartclicked}}">
                         <img src="img/cart.png">Cart
                     </a>
+-->
 
                     <a ng-click="template.gourl('/wishlist');" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
                         <img src="img/wishlist2.png">Wishlist

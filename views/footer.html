@@ -12,12 +12,19 @@
                 </div>
             </div>
             <div class="col-xs-6">
-                <span style="position:absolute;right:270px;">Worldwide Shipping<span>
+                <span style="position:absolute;right:270px;">Worldwide Shipping</span>
 <!--	
                         <div class="text-center">Sign up for our newsletter! &nbsp;&nbsp;&nbsp;
                             <input type="email" class="form-control newsletteremail" ng-model="uemail" placeholder=""> <a class="btn btn-primary" ng-click="newsletter(uemail)">Subscribe</a>
                         </div>
 -->
+                   <div class="cart-set">
+                    <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
+                    <a ng-click="template.gourl('/cart');" class="topicon {{template.cartclicked}}">
+                        <img src="img/carts.png">Cart
+                    </a>
+                    </div>
+
                     </div>
                 </div>
             </div>

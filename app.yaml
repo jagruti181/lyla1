@@ -9,9 +9,9 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /(.+\.(gif|png|jpg|css|js|html|eot|woff|ttf|svg|otf))$
+- url: /(.+\.(gif|png|jpg|css|js|html|eot|woff|ttf|svg|otf|xml))$
   static_files: \1
-  upload: .+\.(gif|png|jpg|css|js|html|eot|woff|ttf|svg|otf)$
+  upload: .+\.(gif|png|jpg|css|js|html|eot|woff|ttf|svg|otf|xml)$
   application_readable: true  
 
 - url: /admin/assets
@@ -44,13 +44,17 @@ handlers:
 - url: /.*
   script: index.php  
 
-- url: /BingSiteAuth\.xml
+- url: /BingSiteAuth.xml
   static_files: BingSiteAuth.xml
-  upload: BingSiteAuth\.xml
+  upload: BingSiteAuth.xml
   
-- url: /googleeb491dfb6fb22923\.html
+- url: /sitemap.xml
+  static_files: sitemap.xml
+  upload: sitemap.xml  
+  
+- url: /googleeb491dfb6fb22923.html
   static_files: googleeb491dfb6fb22923.html
-  upload: googleeb491dfb6fb22923\.html
+  upload: googleeb491dfb6fb22923.html
   
 
 
