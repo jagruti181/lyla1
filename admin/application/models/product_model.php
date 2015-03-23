@@ -9,6 +9,17 @@ class Product_model extends CI_Model
         $query=$this->db->query("INSERT INTO `userwishlist`(`user`,`product`) VALUES ('$user','$product')");
         return $query;
     }
+//    public function createnewblue($name,$relatedproduct)
+//    {
+//        $data  = array(
+//           'category' => $name, 
+//            
+//        );
+//        $query=$this->db->insert( 'product', $data );
+//		$id=$this->db->insert_id();
+//    
+//        
+//    }
 	public function createproduct($name,$sku,$description,$url,$visibility,$price,$wholesaleprice,$firstsaleprice,$secondsaleprice,$specialpricefrom,$specialpriceto,$metatitle,$metadesc,$metakeyword,$quantity,$status,$category,$relatedproduct)
 	{
 		$data  = array(
@@ -77,6 +88,11 @@ class Product_model extends CI_Model
 	{
 	$query=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`price`,`product`.`quantity` FROM `product` 
 		ORDER BY `product`.`id` ASC")->result();
+		return $query;
+	}
+    function viewnewblue()
+	{
+	$query=$this->db->query("SELECT `category`.`name`,`category`.`id`,`productcategory`.`product` FROM `category` INNER JOIN `productcategory` ON `productcategory`.`category`=`category`.`id`  WHERE `category`.`id`='31' ")->result();
 		return $query;
 	}
 	public function beforeeditproduct( $id )
@@ -157,6 +173,12 @@ class Product_model extends CI_Model
 		$query=$this->db->query("DELETE FROM `product` WHERE `id`='$id'");
 		$this->db->query("DELETE FROM `productcategory` WHERE `product`='$id'");
 		$this->db->query("DELETE FROM `relatedproduct` WHERE `product`='$id'");
+	}
+    	function deletenewblue($id,$productcat)
+	{
+
+		$this->db->query("DELETE FROM `productcategory` WHERE `category`='$id'  &&  `product`='$productcat' ");
+		
 	}
 	public function getcategorydropdown()
 	{
