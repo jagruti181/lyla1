@@ -1049,3 +1049,32 @@ button.btnss-primary {
     border-color: transparent #03E1E4;    display: block;    width: 0;    z-index: 2;    
     top: 27px;    right: -14px;
 }*/
+
+.step-set ul li {
+}
+.step-set {
+    /* text-align: center; */
+    /* border: 1px solid; */
+    margin: 15px auto;
+}
+
+.step-set ul {
+    border: 1px solid;
+    float: left;
+    padding: 0px;
+}
+
+.step-set ul li {
+    /* border-right: 1px solid; */
+    float: left;
+    display: inline;
+    padding: 18px 25px;
+}
+.step-set ul li.active{
+    background: rgb(39, 240, 232);
+    color: #fff;
+    border-right: 1px solid #696969;
+}
+.step-set ul li + li {
+  border-right: 1px solid;
+}
