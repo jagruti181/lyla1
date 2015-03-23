@@ -68,12 +68,21 @@
     <link href="https://checkout.stripe.com/v3/checkout/button.css" rel="stylesheet">
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="lib/js/jquery-1.11.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>-->
+<!--    <script src="lib/js/jquery-1.11.1.min.js"></script>-->
     <script src="lib/js/angular.min.js"></script>
     <script src="lib/js/angular-animate.js"></script>
     <script src="lib/js/angular-route.min.js"></script>
     <script src="lib/js/angular-resource.min.js"></script>
+
+    <script src="lib/js/zoom.js"></script>
+    <!--    <script src="lib/js/jquery.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+
+    <!--      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>-->
+
+    <!--      <script type="text/JavaScript" src="http://www.professorcloud.com/js/cloud-zoom.1.0.2.js"></script>-->
 
     <!--<script src="lib/js/bootstrap.min.js"></script>-->
     <script src="lib/js/ui-bootstrap-tpls-0.11.0.min.js"></script>
@@ -115,6 +124,7 @@
 </head>
 
 <body>
+    <header>
     <div class="top-bar barheight">
 
         <div class="row">
@@ -182,6 +192,7 @@
             </div>
         </div>
     </div>
+    </header>
     <div class="barheight"></div>
     <div class="container-fluid-non-responsive">
         <!--        <div ng-view skrollr-tag></div>-->

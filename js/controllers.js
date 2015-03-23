@@ -19,7 +19,7 @@ phonecatControllers.controller('home',
         $scope.ishome = "homeclass";
         $scope.onhome = "onhome";
         $scope.demo = "demodemo";
-        $scope.hititle="Jewellery London - Picks of the Week";
+        $scope.hititle = "Jewellery London - Picks of the Week";
 
 
         //start get country from geo location
@@ -178,7 +178,7 @@ phonecatControllers.controller('cart',
         TemplateService.slider = "";
         $scope.cart = [];
         $scope.loginlogouttext = "Login";
-        $scope.hititle="Cart";
+        $scope.hititle = "Cart";
         //authenticate
 
         var authenticate = function (data, status) {
@@ -557,7 +557,7 @@ phonecatControllers.controller('contact',
         TemplateService.title = "Contact Lyla Loves | Fashion Jewellery London";
         TemplateService.metadescription = "To ask any query related to fashion jewellery or to shop for the latest accessories, get in touch with our experts and get your style right at Lyla Loves.";
         TemplateService.keywords = "fashion jewellery online, jewllery london, necklaces, bracelets, earrings, rings, accessories for women";
-//        TemplateService.changetitle("Login");
+        //        TemplateService.changetitle("Login");
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
         $scope.homeactive = "active";
@@ -718,7 +718,7 @@ phonecatControllers.controller('subjewellery',
         TemplateService.content = "views/subjewellery.html";
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
-      $scope.hititle="Lyla Loves -  Fashion Jewellery, Dainty Jewellery";
+        $scope.hititle = "Lyla Loves -  Fashion Jewellery, Dainty Jewellery";
         //authenticate
         var authenticate = function (data, status) {
             if (data != "false") {
@@ -1430,118 +1430,109 @@ phonecatControllers.controller('category',
     function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
         $scope.iscategory = "category";
 
-   
-    
+
+
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
-            TemplateService.title = "Find latest collection of fashion jewellery online";
+        TemplateService.title = "Find latest collection of fashion jewellery online";
         TemplateService.metadescription = "Grab all the latest arrivals in fashion jewellery online today and find a range of accessories for women at Lyla loves.";
         TemplateService.keywords = "fashion jewellery online, dainty jewellery, jewellery london, accessories for women";
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
-          $scope.hititle="Lyla Loves - Fashion Jewellery Online";
-    if($routeParams.CategoryId=="2")
-    {
-        TemplateService.title = "Fashion Necklaces for Women, Statement Necklaces ";
-        TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women, silver statement necklaces, dragonfly necklaces, zodiac necklaces and much more at Lyla Loves.";
-        TemplateService.keywords = "fashion necklaces for women, silver statement necklace, dragonfly necklace, zodiac necklace, gold necklaces, silver necklaces, pendant necklaces";
-           $scope.hititle="Lyla Loves - Fashion Necklaces for Women";
-   
-    }
-    
-    if($routeParams.CategoryId=="3")
-    {
-        TemplateService.title = "Gold, silver and leather bracelets for women";
-        TemplateService.metadescription = "Find out the best collection of gold and silver bracelets, wrap around bracelets and leather bracelets for women and many more at Lyla Loves.";
-        TemplateService.keywords = "bracelets for women, silver bracelets for women, wrap around bracelets, leather bracelets for women, adjustable bracelets, bangles";
-        TemplateService.header = "views/header.html";
-        TemplateService.navigation = "views/navigation.html";
-        TemplateService.content = "views/category.html";
-        TemplateService.slider = "";
-         $scope.hititle="Lyla Loves - Bracelets for Women";
-    }
-            if($routeParams.CategoryId=="4")
-    {
-        TemplateService.title = "Ear cuffs, gold, silver and stud earrings for women";
-        TemplateService.metadescription = "Shop for a range of ear cuffs online, gold and silver earrings, stud earrings for women and more. Choose from beautiful selection of earrings at Lyla Loves.";
-        TemplateService.keywords = "ear cuffs online, stud earrings for women, gold earrings, silver earrings.";
-        TemplateService.header = "views/header.html";
-        TemplateService.navigation = "views/navigation.html";
-        TemplateService.content = "views/category.html";
-        TemplateService.slider = "";
-         $scope.hititle="Gold, Silver, Stud Earrings for Women and Ear Cuffs Online";
-    }
-        if($routeParams.CategoryId=="5")
-    {
-        TemplateService.title = "Gold stacking rings & silver midi rings for women";
-        TemplateService.metadescription = "Buy ultimate piece of women's fashion rings from a wide range of gold and silver midi rings, gold stacking rings and many more only at Lyla Loves.";
-        TemplateService.keywords = "rings for women, silver midi rings, gold stacking rings, geometric rings, pearl rings.";
-        TemplateService.header = "views/header.html";
-        TemplateService.navigation = "views/navigation.html";
-        TemplateService.content = "views/category.html";
-        TemplateService.slider = "";
-        $scope.hititle="Lyla Loves - Gold, Silver Midi Rings, Stacking Rings";
-    }
-            if($routeParams.CategoryId=="6")
-    {
-        TemplateService.title = "Buy the latest fashion accessories for women online";
-        TemplateService.metadescription = "Get the best trendy fashion accessories for women like bags, mobile cases, scarves and more at Lyla Loves.";
-        TemplateService.keywords = "accessories for women, bags for women, scarves for women, mobile phone cases, hair accessories.";
-        TemplateService.header = "views/header.html";
-        TemplateService.navigation = "views/navigation.html";
-        TemplateService.content = "views/category.html";
-        TemplateService.slider = "";
-        $scope.hititle="Lyla Loves - Fashion Accessories for Women";
-    }
-                if($routeParams.CategoryId=="7")
-    {
-        TemplateService.title = "Shop for handbags, clutches, shoulder bags for women";
-        TemplateService.metadescription = "Shop today! for a variety of stylish bags for women like clutches, shoulder bags and more at affordable prices from Lyla Loves.";
-        TemplateService.keywords = "bags for women, womens accessories, clutch bags, shoulder bags, handbags";
-        TemplateService.header = "views/header.html";
-        TemplateService.navigation = "views/navigation.html";
-        TemplateService.content = "views/category.html";
-        TemplateService.slider = "";
-         $scope.hititle="Lyla Loves - Stylish Bags for Women";
-    }
-                    if($routeParams.CategoryId=="8")
-    {
-        TemplateService.title = "Shop for printed, ethnic scarves for women ";
-        TemplateService.metadescription = "Find beautiful printed and ethnic scarves for women to suit your style. Choose from a wide range of designs at the best prices from Lyla Loves..";
-        TemplateService.keywords = "scarves for women, womens scarf, printed scarves, ethnic scarves";
-        TemplateService.header = "views/header.html";
-        TemplateService.navigation = "views/navigation.html";
-        TemplateService.content = "views/category.html";
-        TemplateService.slider = "";
-        $scope.hititle="Lyla Loves - Scarves for Women";
-    }
-                        if($routeParams.CategoryId=="34")
-    {
-        TemplateService.title = "Buy hair accessories for women online";
-        TemplateService.metadescription = "Choose from a selection of trendy hair accessories for women at Lyla Loves.";
-        TemplateService.keywords = "hair accessories for women, Hair accessory for women, womens hair accessories";
-        TemplateService.header = "views/header.html";
-        TemplateService.navigation = "views/navigation.html";
-        TemplateService.content = "views/category.html";
-        TemplateService.slider = "";
-        $scope.hititle="Lyla Loves - Hair Accessories for Women";
-    }
-                            if($routeParams.CategoryId=="35")
-    {
-        TemplateService.title = "Buy fashionable mobile phone cases";
-        TemplateService.metadescription = "Find a wide range of fashionable mobile phone cases that suit your style. So order your favorite phone case at Lyla Loves NOW!";
-        TemplateService.keywords = "mobile phone cases, phone cases, cell phone cases";
-        TemplateService.header = "views/header.html";
-        TemplateService.navigation = "views/navigation.html";
-        TemplateService.content = "views/category.html";
-        TemplateService.slider = "";
-        $scope.hititle="Lyla Loves - Hair Accessories for Women";
-    }
-    
-    
-    
+        $scope.hititle = "Lyla Loves - Fashion Jewellery Online";
+        if ($routeParams.CategoryId == "2") {
+            TemplateService.title = "Fashion Necklaces for Women, Statement Necklaces ";
+            TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women, silver statement necklaces, dragonfly necklaces, zodiac necklaces and much more at Lyla Loves.";
+            TemplateService.keywords = "fashion necklaces for women, silver statement necklace, dragonfly necklace, zodiac necklace, gold necklaces, silver necklaces, pendant necklaces";
+            $scope.hititle = "Lyla Loves - Fashion Necklaces for Women";
+
+        }
+
+        if ($routeParams.CategoryId == "3") {
+            TemplateService.title = "Gold, silver and leather bracelets for women";
+            TemplateService.metadescription = "Find out the best collection of gold and silver bracelets, wrap around bracelets and leather bracelets for women and many more at Lyla Loves.";
+            TemplateService.keywords = "bracelets for women, silver bracelets for women, wrap around bracelets, leather bracelets for women, adjustable bracelets, bangles";
+            TemplateService.header = "views/header.html";
+            TemplateService.navigation = "views/navigation.html";
+            TemplateService.content = "views/category.html";
+            TemplateService.slider = "";
+            $scope.hititle = "Lyla Loves - Bracelets for Women";
+        }
+        if ($routeParams.CategoryId == "4") {
+            TemplateService.title = "Ear cuffs, gold, silver and stud earrings for women";
+            TemplateService.metadescription = "Shop for a range of ear cuffs online, gold and silver earrings, stud earrings for women and more. Choose from beautiful selection of earrings at Lyla Loves.";
+            TemplateService.keywords = "ear cuffs online, stud earrings for women, gold earrings, silver earrings.";
+            TemplateService.header = "views/header.html";
+            TemplateService.navigation = "views/navigation.html";
+            TemplateService.content = "views/category.html";
+            TemplateService.slider = "";
+            $scope.hititle = "Gold, Silver, Stud Earrings for Women and Ear Cuffs Online";
+        }
+        if ($routeParams.CategoryId == "5") {
+            TemplateService.title = "Gold stacking rings & silver midi rings for women";
+            TemplateService.metadescription = "Buy ultimate piece of women's fashion rings from a wide range of gold and silver midi rings, gold stacking rings and many more only at Lyla Loves.";
+            TemplateService.keywords = "rings for women, silver midi rings, gold stacking rings, geometric rings, pearl rings.";
+            TemplateService.header = "views/header.html";
+            TemplateService.navigation = "views/navigation.html";
+            TemplateService.content = "views/category.html";
+            TemplateService.slider = "";
+            $scope.hititle = "Lyla Loves - Gold, Silver Midi Rings, Stacking Rings";
+        }
+        if ($routeParams.CategoryId == "6") {
+            TemplateService.title = "Buy the latest fashion accessories for women online";
+            TemplateService.metadescription = "Get the best trendy fashion accessories for women like bags, mobile cases, scarves and more at Lyla Loves.";
+            TemplateService.keywords = "accessories for women, bags for women, scarves for women, mobile phone cases, hair accessories.";
+            TemplateService.header = "views/header.html";
+            TemplateService.navigation = "views/navigation.html";
+            TemplateService.content = "views/category.html";
+            TemplateService.slider = "";
+            $scope.hititle = "Lyla Loves - Fashion Accessories for Women";
+        }
+        if ($routeParams.CategoryId == "7") {
+            TemplateService.title = "Shop for handbags, clutches, shoulder bags for women";
+            TemplateService.metadescription = "Shop today! for a variety of stylish bags for women like clutches, shoulder bags and more at affordable prices from Lyla Loves.";
+            TemplateService.keywords = "bags for women, womens accessories, clutch bags, shoulder bags, handbags";
+            TemplateService.header = "views/header.html";
+            TemplateService.navigation = "views/navigation.html";
+            TemplateService.content = "views/category.html";
+            TemplateService.slider = "";
+            $scope.hititle = "Lyla Loves - Stylish Bags for Women";
+        }
+        if ($routeParams.CategoryId == "8") {
+            TemplateService.title = "Shop for printed, ethnic scarves for women ";
+            TemplateService.metadescription = "Find beautiful printed and ethnic scarves for women to suit your style. Choose from a wide range of designs at the best prices from Lyla Loves..";
+            TemplateService.keywords = "scarves for women, womens scarf, printed scarves, ethnic scarves";
+            TemplateService.header = "views/header.html";
+            TemplateService.navigation = "views/navigation.html";
+            TemplateService.content = "views/category.html";
+            TemplateService.slider = "";
+            $scope.hititle = "Lyla Loves - Scarves for Women";
+        }
+        if ($routeParams.CategoryId == "34") {
+            TemplateService.title = "Buy hair accessories for women online";
+            TemplateService.metadescription = "Choose from a selection of trendy hair accessories for women at Lyla Loves.";
+            TemplateService.keywords = "hair accessories for women, Hair accessory for women, womens hair accessories";
+            TemplateService.header = "views/header.html";
+            TemplateService.navigation = "views/navigation.html";
+            TemplateService.content = "views/category.html";
+            TemplateService.slider = "";
+            $scope.hititle = "Lyla Loves - Hair Accessories for Women";
+        }
+        if ($routeParams.CategoryId == "35") {
+            TemplateService.title = "Buy fashionable mobile phone cases";
+            TemplateService.metadescription = "Find a wide range of fashionable mobile phone cases that suit your style. So order your favorite phone case at Lyla Loves NOW!";
+            TemplateService.keywords = "mobile phone cases, phone cases, cell phone cases";
+            TemplateService.header = "views/header.html";
+            TemplateService.navigation = "views/navigation.html";
+            TemplateService.content = "views/category.html";
+            TemplateService.slider = "";
+            $scope.hititle = "Lyla Loves - Hair Accessories for Women";
+        }
+
+
+
         $scope.gototop = function () {
             $location.hash('totop');
             $anchorScroll();
@@ -1644,7 +1635,7 @@ phonecatControllers.controller('category',
             $scope.subcategory = data.subcategory;
             $scope.currentcategory = data.currentcategory;
             $scope.productlist = data.product;
-//            $location.hash($scope.category.name.replace(/ /g, "_"));
+            //            $location.hash($scope.category.name.replace(/ /g, "_"));
             $location.replace();
             console.log(data);
             console.log(data.product);
@@ -1679,6 +1670,58 @@ phonecatControllers.controller('category',
 
 phonecatControllers.controller('product',
     function ($scope, $routeParams, TemplateService, MainJson, $timeout, $location) {
+
+        $scope.name = 'World';
+
+        $scope.items = [{
+            "src": "http://t3.gstatic.com/images?q=tbn:ANd9GcR1Kp2JmcnxhBOf66aN_JqMWl3h_okOQKFX_kEqwr9mRe5iPomy",
+            "alt": "image 001"
+  }, {
+            "src": "http://t3.gstatic.com/images?q=tbn:ANd9GcQAoT9UmjmunwFTAA19_n1auOFR_JG017_TUru-E91T7nIH8HyU",
+            "alt": "image 002"
+  }, {
+            "src": "http://t2.gstatic.com/images?q=tbn:ANd9GcTfntbVv3pl5wFCe6IdkaMVrme_Au9TD8Z_xE95Ezv6jz8oK4nT",
+            "alt": "image 003"
+  }, {
+            "src": "http://t1.gstatic.com/images?q=tbn:ANd9GcSAOralDJGSVtfirbHG5VdFqG8fTqXMh7C4Xd_aHCy176SKNQqK",
+            "alt": "image 004"
+  }, {
+            "src": "http//fc08.deviantart.net/fs70/f/2012/122/0/c/landscape_wallpaper_by_nickchoubg-d4yaep3.png",
+            "alt": "image 005"
+  }, ];
+
+        $scope.ZoomItems = [];
+        $scope.ZoomItems.push({
+            id: 0,
+            big: "http://www.professorcloud.com/images/zoomengine/bigimage00.jpg",
+            tiny: "http://www.professorcloud.com/images/zoomengine/tinyimage.jpg",
+            small: "http://www.professorcloud.com/images/zoomengine/smallimage.jpg",
+            title: "display title",
+        });
+        $scope.ZoomItems.push({
+            id: 1,
+            big: "http://www.professorcloud.com/images/zoomengine/bigimage01.jpg",
+            tiny: "http://www.professorcloud.com/images/zoomengine/tinyimage-1.jpg",
+            small: "http://www.professorcloud.com/images/zoomengine/smallimage-1.jpg",
+            title: "display title",
+        });
+        $scope.ZoomItems.push({
+            id: 2,
+            big: "http://www.professorcloud.com/images/zoomengine/bigimage02.jpg",
+            tiny: "http://www.professorcloud.com/images/zoomengine/tinyimage-2.jpg",
+            small: "http://www.professorcloud.com/images/zoomengine/smallimage-2.jpg",
+            title: "display title",
+        });
+
+        $scope.SelectedItem = $scope.ZoomItems[0];
+
+        $scope.ThumbnailClicked = function (Item) {
+            $scope.SelectedItem = Item;
+
+        };
+
+
+
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -1740,7 +1783,7 @@ phonecatControllers.controller('product',
             $scope.productimage = data.productimage;
             $scope.relatedproduct = data.relatedproduct;
             console.log(data);
-//            $location.hash($scope.product.name.replace(/ /g, "_"));
+            //            $location.hash($scope.product.name.replace(/ /g, "_"));
             $location.replace();
         };
         MainJson.getproductdetails($routeParams.ProductId).success(productsuccess);
