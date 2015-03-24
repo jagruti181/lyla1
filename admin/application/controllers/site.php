@@ -591,14 +591,16 @@ class Site extends CI_Controller
 				$specialpricefrom = date("Y-m-d",strtotime($specialpricefrom));
 			if($specialpriceto != "")
 				$specialpriceto = date("Y-m-d",strtotime($specialpriceto));
-			if($this->product_model->createproduct($name,$sku,$description,$url,$visibility,$price,$wholesaleprice,$firstsaleprice,$secondsaleprice,$specialpricefrom,$specialpriceto,$metatitle,$metadesc,$metakeyword,$quantity,$status,$category,$relatedproduct)==0)
+			$productid=$this->product_model->createproduct($name,$sku,$description,$url,$visibility,$price,$wholesaleprice,$firstsaleprice,$secondsaleprice,$specialpricefrom,$specialpriceto,$metatitle,$metadesc,$metakeyword,$quantity,$status,$category,$relatedproduct);
+            if($productid==0)
 			$data['alerterror']="New product could not be created.";
 			else
 			$data['alertsuccess']="product  created Successfully.";
-			$data['table']=$this->product_model->viewproduct();
-			$data['redirect']="site/viewproduct";
+//           $session_id=$this->session->userdata('id');
+//            $data['table']=$this->product_model->viewproduct();
+			$data['redirect']="site/uploadproductimage?id=".$productid;
 			//$data['other']="template=$template";
-			$this->load->view("redirect",$data);
+			$this->load->view("redirect2",$data);
 		}
 	}
     

@@ -51,8 +51,11 @@ class Product_model extends CI_Model
 			'status' => $status,
 		);
 		$query=$this->db->insert( 'product', $data );
-		$id=$this->db->insert_id();
-		if(!empty($category))
+		$id=$this->db->insert_id();        
+        
+//        $mysession["id"]=$id;
+//        $this->session->set_userdata($mysession);
+        if(!empty($category))
 		{
 			foreach($category as $key => $cat)
 			{
@@ -79,7 +82,7 @@ class Product_model extends CI_Model
 				$query=$this->db->insert( 'relatedproduct', $data2 );
 			}
 		}*/
-		return  1;
+		return  $id;
 	}
     function deleteall($id)
     {
