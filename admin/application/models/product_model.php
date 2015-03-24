@@ -9,17 +9,17 @@ class Product_model extends CI_Model
         $query=$this->db->query("INSERT INTO `userwishlist`(`user`,`product`) VALUES ('$user','$product')");
         return $query;
     }
-//    public function createnewblue($name,$relatedproduct)
-//    {
-//        $data  = array(
-//           'category' => $name, 
-//            
-//        );
-//        $query=$this->db->insert( 'product', $data );
+    public function createnewblue($product)
+    {
+        $data  = array(
+           'category' => 31,
+            'product'=>$product
+        );
+        $query=$this->db->insert('productcategory',$data);
 //		$id=$this->db->insert_id();
-//    
-//        
-//    }
+    
+        
+    }
 	public function createproduct($name,$sku,$description,$url,$visibility,$price,$wholesaleprice,$firstsaleprice,$secondsaleprice,$specialpricefrom,$specialpriceto,$metatitle,$metadesc,$metakeyword,$quantity,$status,$category,$relatedproduct)
 	{
 		$data  = array(
@@ -92,7 +92,7 @@ class Product_model extends CI_Model
 	}
     function viewnewblue()
 	{
-	$query=$this->db->query("SELECT `category`.`name`,`category`.`id`,`productcategory`.`product` FROM `category` INNER JOIN `productcategory` ON `productcategory`.`category`=`category`.`id`  WHERE `category`.`id`='31' ")->result();
+	$query=$this->db->query("SELECT `category`.`name` as `catname`,`category`.`id`,`productcategory`.`product`,`product`.`name` as `podname`  FROM `category` INNER JOIN `productcategory` ON `productcategory`.`category`=`category`.`id` INNER  JOIN `product` ON `product`.`id`=`productcategory`.`product`  WHERE `category`.`id`='31' ")->result();
 		return $query;
 	}
 	public function beforeeditproduct( $id )

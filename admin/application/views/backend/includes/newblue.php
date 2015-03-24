@@ -1,13 +1,5 @@
 <div class=" row" style="padding:1% 0;">
-	<div class="col-md-10">
-		<div class=" pull-right col-md-1 createbtn" ><a class="btn btn-primary" href="<?php echo site_url('site/exportorderitemcsv'); ?>"target="_blank"><i class="icon-plus"></i>Export to CSV </a></div>
-	</div>
-<!--
-	<div class="col-md-10">
-		<div class=" pull-right col-md-1 createbtn" ><a class="btn btn-primary" href="<?php echo site_url('site/exportordercsv'); ?>"target="_blank"><i class="icon-plus"></i>Export to CSV </a></div>
-	</div>	
--->
-<div class=" pull-right col-md-1 createbtn" ><a class="btn btn-primary" href="<?php echo site_url('site/createorder'); ?>"><i class="icon-plus"></i>Create </a></div>
+<div class=" pull-right col-md-1 createbtn" ><a class="btn btn-primary" href="<?php echo site_url('site/createnewblue')?>"><i class="icon-plus"></i>Create</a></div>
 </div>
 <div class="row">
 
@@ -24,23 +16,20 @@
 					<th>Profuct Id</th>
 					<th>Name</th>
 			       <th> Actions </th>
-<!--
-					<th>Status</th>
-					<th>Time</th>
-					<th> Actions </th>
--->
+
 				</tr>
 			</thead>
 			<tbody>
+<!--           <?php print_r($table)?>-->
 			   <?php foreach($table as $row) { ?>
 					<tr>
 						<td><?php echo $row->id; ?></td>
-						<td><?php echo $row->product; ?></td>
+						<td><?php echo $row->podname;?></td>
 <!--						<td><?php echo $row->firstname." ".$row->lastname; ?></td>-->
-						<td><?php echo $row->name; ?></td>
+						<td><?php echo $row->catname;?></td>
 <!--
-						<td><?php echo $row->orderstatus; ?></td>
-						<td><?php echo $row->timestamp; ?></td>
+						<td><?php echo $row->orderstatus;?></td>
+						<td><?php echo $row->timestamp;?></td>
 -->
 						<td>
                             <a class="btn btn-danger btn-xs" href="<?php echo site_url('site/deletenewblue?id=').$row->id.'&productcat='.$row->product;?>" onclick="return confirm('Are you sure?')"><i class="icon-trash "></i></a>

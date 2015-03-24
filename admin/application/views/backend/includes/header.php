@@ -166,6 +166,7 @@ $(document).ready(function(){
 						<li><a href="<?php echo site_url('site/viewbanner3'); ?>">Banner3</a></li>
 						<li><a href="<?php echo site_url('site/viewcelebcorner'); ?>">Celeb corner</a></li>
 						<li><a href="<?php echo site_url('site/viewbloggerscorner'); ?>">Bloggers corner</a></li>
+						<li><a href="<?php echo site_url('site/viewnewblue'); ?>">Bloggers corner</a></li>
 					 </ul>
 				  </li>
 				   <li >

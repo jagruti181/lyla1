@@ -384,43 +384,9 @@ class Site extends CI_Controller
 		$data[ 'title' ] = 'Create category';
 		$this->load->view( 'template', $data );	
 	}
-    	public function createnewbluecategory()
-	{
-		$access = array("1");
-		$this->checkaccess($access);
-         $data['status']=$this->product_model->getproductdropdown();
-		$data['page'] ='createnewblue';
-		$data['title'] ='Create category';
-		$this->load->view( 'template', $data );	
-	}
-//    function createnewbluecategorysubmit()
-//	{
-//        $access = array("1");
-//		$this->checkaccess($access);
-//		if($this->form_validation->run() == FALSE)	
-//		{
-//			$data['alerterror'] = validation_errors();
-//			$data[ 'status' ] =$this->product_model->getproductdropdown();
-//			$data[ 'page' ] = 'createnewblue';
-//			$data[ 'title' ] = 'Create product';
-//			$this->load->view('template',$data);
-//		}
-//		else
-//		{
-//			
-//			$name=$this->input->post('name');
-//			$relatedproduct=$this->input->post('relatedproduct');
-//			
-//			if($this->product_model->createnewblue($name,$relatedproduct)==0)
-//			$data['alerterror']="New new blue could not be created.";
-//			else
-//			$data['alertsuccess']="new blue  created Successfully.";
-//			$data['table']=$this->product_model->viewnewblue();
-//			$data['redirect']="site/viewnewblue";
-//			//$data['other']="template=$template";
-//			$this->load->view("redirect",$data);
-//	
-//	}
+
+
+   
 	function createcategorysubmit()
 	{
 		$access = array("1");
@@ -645,15 +611,7 @@ class Site extends CI_Controller
 		$data['title']='View product';
         $this->load->view('template',$data);
 	}
-    function viewnewblue()
-	{
-		$access = array("1");
-		$this->checkaccess($access);
-	$data['table']=$this->product_model->viewnewblue();
-		$data['page']='newblue';
-		$data['title']='View new blue';
-		$this->load->view('template',$data);
-	}
+
 	function editproduct()
 	{
 		$access = array("1");
@@ -750,18 +708,7 @@ class Site extends CI_Controller
 		$data['title']='View product';
 		$this->load->view('template',$data);
 	}
-    function deletenewblue()
-	{
-		$access = array("1");
-		$this->checkaccess($access);
-        $this->product_model->deletenewblue($this->input->get('id'),$this->input->get('productcat'));
-		$data['table']=$this->product_model->viewnewblue();
-        $data['alertsuccess']="product Deleted Successfully";
-		$data['page']='newblue';
-		$data['title']='View new blue';
-		$this->load->view('template',$data);
-       
-	}
+   
 	function uploadproductimage()
 	{
 		$access = array("1");
@@ -3205,6 +3152,47 @@ class Site extends CI_Controller
         $data['redirect']="site/viewproduct";
         $this->load->view("redirect",$data);
     }
+    //new blue
+     function deletenewblue()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $this->product_model->deletenewblue($this->input->get('id'),$this->input->get('productcat'));
+		$data['table']=$this->product_model->viewnewblue();
+        $data['alertsuccess']="product Deleted Successfully";
+        $data['redirect']="site/viewnewblue";
+        $data['other']="template=$template";
+		$this->load->view("redirect",$data);
+       
+	}
+         function createnewblue()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $data['status']=$this->product_model->getproductdropdown();
+		$data['page'] ='createnewblue';
+		$data['title'] ='Create category';
+		$this->load->view('template',$data);	
+	}
+     public function createnewbluesubmit()
+    {
+//        print_r($_POST);
+        $product=$this->input->post('product');
+        $this->product_model->createnewblue($product);
+        $data['redirect']="site/viewnewblue";
+        $data['other']="template=$template";
+		$this->load->view("redirect",$data);
+       
+    }
+        function viewnewblue()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+	   $data['table']=$this->product_model->viewnewblue();
+		$data['page']='newblue';
+		$data['title']='View new blue';
+		$this->load->view('template',$data);
+	}
    
 }
 ?>
