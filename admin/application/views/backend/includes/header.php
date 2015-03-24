@@ -203,6 +203,27 @@ $(document).ready(function(){
                           <span>Pending Orders</span>
                           <span class="arrow"></span>
                       </a>
+                  </li> 
+                     <li >
+                      <a href="<?php echo site_url('site/viewprocessingorder'); ?>" class="">
+                          <i class="icon-money"></i>
+                          <span>Processing Orders</span>
+                          <span class="arrow"></span>
+                      </a>
+                  </li> 
+                     <li >
+                      <a href="<?php echo site_url('site/viewabandondorder'); ?>" class="">
+                          <i class="icon-money"></i>
+                          <span>Abonded order</span>
+                          <span class="arrow"></span>
+                      </a>
+                  </li> 
+                      <li >
+                      <a href="<?php echo site_url('site/viewfailedorder'); ?>" class="">
+                          <i class="icon-money"></i>
+                          <span>failed order</span>
+                          <span class="arrow"></span>
+                      </a>
                   </li>
                   <li >
                       <a href="<?php echo site_url('site/newsletter'); ?>" class="">

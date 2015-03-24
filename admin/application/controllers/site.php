@@ -2663,6 +2663,33 @@ class Site extends CI_Controller
 		$data['title']='View Pending order';
 		$this->load->view('template',$data);
 	}
+    function viewprocessingorder()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$data['table']=$this->order_model->viewprocessingorder();
+		$data['page']='viewprocesing';
+		$data['title']='View Processing order';
+		$this->load->view('template',$data);
+	}  
+    function viewabandondorder()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$data['table']=$this->order_model->viewabandondorder();
+		$data['page']='viewabandond';
+		$data['title']='View Abonded order';
+		$this->load->view('template',$data);
+	}    
+    function viewfailedorder()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$data['table']=$this->order_model->viewfailedorder();
+		$data['page']='viewfailed';
+		$data['title']='View failed order';
+		$this->load->view('template',$data);
+	}
     function deleteorder()
     {
         $access = array("1");
