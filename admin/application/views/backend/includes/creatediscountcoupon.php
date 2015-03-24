@@ -6,6 +6,7 @@
 			</header>
 			<div class="panel-body">
 				<form class="form-horizontal row-fluid" method="post" action="<?php echo site_url('site/creatediscountcouponsubmit');?>" >
+                     
 							
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Coupon Type</label>
@@ -61,6 +62,27 @@
 							?>
 						</div>
 					</div>
+					   <div class="form-group">
+						<label class="col-sm-2 control-label">Start Date</label>
+						<div class="col-sm-4">
+						  <input type="date" id="normal-field" class="form-control" name="startdate" value="<?php echo set_value('specialpricefrom');?>">
+						</div>
+					</div>   
+					 <div class="form-group">
+						<label class="col-sm-2 control-label">End Date</label>
+						<div class="col-sm-4">
+						  <input type="date" id="normal-field" class="form-control" name="enddate" value="<?php echo set_value('specialpricefrom');?>">
+						</div>
+					</div>
+						<div class=" form-group">
+					  <label class="col-sm-2 control-label">Category</label>
+					  <div class="col-sm-4">
+						<?php
+							echo form_dropdown('category',$category,set_value('category'),'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."');
+						?>
+					  </div>
+					</div>
+					
 					<div class="form-group">
 						<label class="col-sm-2 control-label">&nbsp;</label>
 						<div class="col-sm-4">	

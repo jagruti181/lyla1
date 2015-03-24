@@ -66,6 +66,26 @@
 						  <input type="text" id="normal-field" class="form-control" name="couponcode" value="<?php echo set_value('couponcode',$before['dc']->couponcode);?>">
 						</div>
 					</div>
+										   <div class="form-group">
+						<label class="col-sm-2 control-label">Start Date</label>
+						<div class="col-sm-4">
+						  <input type="date" id="normal-field" class="form-control" name="startdate" value="<?php echo set_value('startdate',$before['dc']->startdate);?>">
+						</div>
+					</div>   
+					 <div class="form-group">
+						<label class="col-sm-2 control-label">End Date</label>
+						<div class="col-sm-4">
+						  <input type="date" id="normal-field" class="form-control" name="enddate" value="<?php echo set_value('enddate',$before['dc']->enddate);?>">
+						</div>
+					</div>
+						<div class=" form-group">
+					  <label class="col-sm-2 control-label">Category</label>
+					  <div class="col-sm-4">
+						<?php
+							echo form_dropdown('category',$category,set_value('category',$before['dc']->category),'class="chzn-select form-control" 	data-placeholder="Choose a Accesslevel..."');
+						?>
+					  </div>
+					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">&nbsp;</label>
 						<div class="col-sm-4">	

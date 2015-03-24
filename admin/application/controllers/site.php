@@ -2178,7 +2178,8 @@ class Site extends CI_Controller
 	{
 		$access = array("1");
 		$this->checkaccess($access);
-		$data[ 'coupontype' ] =$this->discountcoupon_model->getcoupontype();
+          $data['category']=$this->category_model->getcategorydropdown();
+        $data[ 'coupontype' ] =$this->discountcoupon_model->getcoupontype();
 		$data[ 'product' ] =$this->discountcoupon_model->getproducts();
 		$data[ 'page' ] = 'creatediscountcoupon';
 		$data[ 'title' ] = 'Create discountcoupon';
@@ -2213,7 +2214,10 @@ class Site extends CI_Controller
 			$yproducts=$this->input->post('yproducts');
 			$couponcode=$this->input->post('couponcode');
 			$product=$this->input->post('product');
-			if($this->discountcoupon_model->creatediscountcoupon($coupontype,$discountpercent,$discountamount,$minamount,$xproducts,$yproducts,$couponcode,$product)==0)
+           $startdate=$this->input->post('startdate');
+            $enddate=$this->input->post('enddate');
+           $category=$this->input->post('category');
+			if($this->discountcoupon_model->creatediscountcoupon($coupontype,$discountpercent,$discountamount,$minamount,$xproducts,$yproducts,$couponcode,$product,$startdate,$enddate,$category)==0)
 			$data['alerterror']="New discountcoupon could not be created.";
 			else
 			$data['alertsuccess']="discountcoupon  created Successfully.";
@@ -2237,7 +2241,8 @@ class Site extends CI_Controller
 		$access = array("1");
 		$this->checkaccess($access);
 		$data['before']=$this->discountcoupon_model->beforeeditdiscountcoupon($this->input->get('id'));
-		$data[ 'coupontype' ] =$this->discountcoupon_model->getcoupontype();
+         $data['category']=$this->category_model->getcategorydropdown();
+        $data[ 'coupontype' ] =$this->discountcoupon_model->getcoupontype();
 		$data[ 'product' ] =$this->discountcoupon_model->getproducts();
 		$data['page']='editdiscountcoupon';
 		$data['title']='Edit discountcoupon';
@@ -2274,7 +2279,10 @@ class Site extends CI_Controller
 			$yproducts=$this->input->post('yproducts');
 			$couponcode=$this->input->post('couponcode');
 			$product=$this->input->post('product');
-			if($this->discountcoupon_model->editdiscountcoupon($id,$coupontype,$discountpercent,$discountamount,$minamount,$xproducts,$yproducts,$couponcode,$product)==0)
+            $startdate=$this->input->post('startdate');
+            $enddate=$this->input->post('enddate');
+            $category=$this->input->post('category');
+			if($this->discountcoupon_model->editdiscountcoupon($id,$coupontype,$discountpercent,$discountamount,$minamount,$xproducts,$yproducts,$couponcode,$product,$startdate,$enddate,$category)==0)
 			$data['alerterror']="discountcoupon Editing was unsuccesful";
 			else
 			$data['alertsuccess']="discountcoupon edited Successfully.";
@@ -2632,8 +2640,13 @@ class Site extends CI_Controller
 		}
 			
 	}
+    function viewdata()
+    {
+        echo "data here";
+    }
 	function vieworder()
 	{
+        echo "order here";
 		$access = array("1");
 		$this->checkaccess($access);
 		$data['table']=$this->order_model->vieworder();
@@ -3190,6 +3203,17 @@ class Site extends CI_Controller
 		$this->checkaccess($access);
 	   $data['table']=$this->product_model->viewnewblue();
 		$data['page']='newblue';
+		$data['title']='View new blue';
+		$this->load->view('template',$data);
+	}
+  
+    function vieworderdetails()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $id=$this->input->get('id');
+        $data['order']=$this->order_model->particularorders($id);
+        $data['page']='viewparticularorder';
 		$data['title']='View new blue';
 		$this->load->view('template',$data);
 	}

@@ -4,7 +4,7 @@ if ( !defined( 'BASEPATH' ) )
 class discountcoupon_model extends CI_Model
 {
 	//discountcoupon
-	public function creatediscountcoupon($coupontype,$discountpercent,$discountamount,$minamount,$xproducts,$yproducts,$couponcode,$product)
+	public function creatediscountcoupon($coupontype,$discountpercent,$discountamount,$minamount,$xproducts,$yproducts,$couponcode,$product,$startdate,$enddate,$category)
 	{
 		$data  = array(
 			'coupontype' => $coupontype,
@@ -14,6 +14,9 @@ class discountcoupon_model extends CI_Model
 			'xproducts' => $xproducts,
 			'yproducts' => $yproducts,
 			'couponcode' => $couponcode,
+            'startdate' => $startdate,
+            'enddate' => $enddate,
+            'category' => $category,
 			
 		);
 		$query=$this->db->insert( 'discountcoupon', $data );
@@ -33,15 +36,15 @@ class discountcoupon_model extends CI_Model
 	}
 	function viewdiscountcoupon()
 	{
-		$query=$this->db->query("SELECT `discountcoupon`.`id`,`coupontype`.`name` as `coupontype`,`discountcoupon`.`couponcode`,`discountcoupon`.`coupontype` as `coupontypeid` FROM `discountcoupon` 
+		$query=$this->db->query("SELECT `discountcoupon`.`id`,`coupontype`.`name`, `discountcoupon`.`startdate`,`discountcoupon`.`enddate`,`discountcoupon`.`category`, `coupontype`,`discountcoupon`.`couponcode`,`discountcoupon`.`coupontype` as `coupontypeid` FROM `discountcoupon` 
 		INNER JOIN  `coupontype` ON  `coupontype`.`id`=`discountcoupon`.`coupontype`
 		ORDER BY `discountcoupon`.`id` ASC")->result();
 		return $query;
 	}
-	public function beforeeditdiscountcoupon( $id )
+	public function beforeeditdiscountcoupon($id)
 	{
-		$this->db->where( 'id', $id );
-		$query['dc']=$this->db->get( 'discountcoupon' )->row();
+		$this->db->where('id',$id);
+		$query['dc']=$this->db->get('discountcoupon')->row();
 		$discountproducts=$this->db->query("SELECT `product` FROM `discountproducts` WHERE `discountproducts`.`discountcoupon`='$id'")->result();
 		$query['dcproducts']=array();
 		foreach($discountproducts as $pro)
@@ -51,7 +54,7 @@ class discountcoupon_model extends CI_Model
 		return $query;
 	}
 	
-	public function editdiscountcoupon( $id,$coupontype,$discountpercent,$discountamount,$minamount,$xproducts,$yproducts,$couponcode,$product)
+	public function editdiscountcoupon( $id,$coupontype,$discountpercent,$discountamount,$minamount,$xproducts,$yproducts,$couponcode,$product,$startdate,$enddate,$category)
 	{
 		$data = array(
 			'coupontype' => $coupontype,
@@ -61,9 +64,12 @@ class discountcoupon_model extends CI_Model
 			'xproducts' => $xproducts,
 			'yproducts' => $yproducts,
 			'couponcode' => $couponcode,
+             'startdate' => $startdate,
+            'enddate' => $enddate,
+            'category' => $category,
 		);
-		$this->db->where( 'id', $id );
-		$this->db->update( 'discountcoupon', $data );
+		$this->db->where('id',$id);
+		$this->db->update('discountcoupon',$data);
 		
 		$this->db->query("DELETE FROM `discountproducts` WHERE `discountcoupon`='$id'");
 		

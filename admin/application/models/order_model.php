@@ -405,6 +405,13 @@ WHERE DATE(`order`.`timestamp`) = '$date'")->result();
         
         }
         
+        
     }
+    
+         function particularorders($id)
+         {
+           $query=$this->db->query("SELECT `orderstatus`.`name` ,`order`.`finalamount`,`order`.`timestamp`,`order`.`firstname`,`order`.`lastname`FROM `order` INNER JOIN `orderstatus` ON `order`.`orderstatus`=`orderstatus`.`id` WHERE `user`='$id'")->result();
+           return $query;
+         }
 }
 ?>
