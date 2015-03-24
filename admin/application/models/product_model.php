@@ -11,11 +11,21 @@ class Product_model extends CI_Model
     }
     public function createnewblue($product)
     {
-        $data  = array(
-           'category' => 31,
-            'product'=>$product
-        );
-        $query=$this->db->insert('productcategory',$data);
+        $query="SELECT * FROM `productcategory`   WHERE `category`=31 AND `product`=$product";
+        $select=$this->db->query($query)->result();
+        if(empty($select))
+        {
+            $data=array(
+               'category' => 31,
+                'product'=>$product
+            );
+            $query=$this->db->insert('productcategory',$data);
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
 //		$id=$this->db->insert_id();
     
         
@@ -520,8 +530,7 @@ class Product_model extends CI_Model
 		$query=$this->db->get( 'productwaiting' )->row();
 		return $query;
 	}
-    
-	public function editproductwaiting($id,$product,$user,$email)
+   public function editproductwaiting($id,$product,$user,$email)
 	{
 		$data = array(
 			'product' => $product,
@@ -603,6 +612,13 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
 		else
 			return  1;
 	}
+    public function productcat()
+    {
+       	$query=$this->db->query("SELECT `category` FROM `productcategory`   WHERE `productcategory`.`product`='31' ")->result();
+		return $query;
+        
+    }
+    
     
 }
 ?>

@@ -166,7 +166,7 @@ $(document).ready(function(){
 						<li><a href="<?php echo site_url('site/viewbanner3'); ?>">Banner3</a></li>
 						<li><a href="<?php echo site_url('site/viewcelebcorner'); ?>">Celeb corner</a></li>
 						<li><a href="<?php echo site_url('site/viewbloggerscorner'); ?>">Bloggers corner</a></li>
-						<li><a href="<?php echo site_url('site/viewnewblue'); ?>">Bloggers corner</a></li>
+
 					 </ul>
 				  </li>
 				   <li >
@@ -176,14 +176,21 @@ $(document).ready(function(){
                           <span class="arrow"></span>
                       </a>
                   </li>
-				   <li >
+                  <li>
+                      <a href="<?php echo site_url('site/viewnewblue'); ?>" class="">
+                          <i class="icon-gbp"></i>
+                          <span>New Blue list</span>
+                          <span class="arrow"></span>
+                      </a>
+                  </li>
+				   <li>
                       <a href="<?php echo site_url('site/viewpaymentgateway'); ?>" class="">
                           <i class="icon-money"></i>
                           <span>Payment Gateway</span>
                           <span class="arrow"></span>
                       </a>
                   </li>
-                  <li >
+                  <li>
                       <a href="<?php echo site_url('site/vieworder'); ?>" class="">
                           <i class="icon-money"></i>
                           <span>Orders</span>

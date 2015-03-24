@@ -3176,7 +3176,7 @@ class Site extends CI_Controller
 	}
      public function createnewbluesubmit()
     {
-//        print_r($_POST);
+//       print_r($_POST);
         $product=$this->input->post('product');
         $this->product_model->createnewblue($product);
         $data['redirect']="site/viewnewblue";
