@@ -2,19 +2,20 @@
     <div class="contenttops">
        <div class="container">
            <div class="row">
-            <div class="col-md-3"></div>
+            <div class="col-md-2"></div>
             
-               <div class="col-md-6">
+               <div class="col-md-8">
                    <div class="step-set">
                        <ul>
-                           <li class="active">My Bag</li>
-                           <li>Payment & Billing</li>
-                           <li>Summary</li>
-                           <li style="border-right:none;">Complete</li>
+                           <a ng-click="template.gourl('/cart');" ><li class="active">My Bag</li></a>
+                           <a ng-click="template.gourl('/checkout');" ><li>Collection Or Delivery</li></a>
+                           <a href=""><li>Payment & Billing</li></a>
+                           <a href=""><li>Summary</li></a>
+                           <a href=""><li style="border-right:none;">Complete</li></a>
                        </ul>
                    </div>
                </div>
-               <div class="col-md-3"></div>
+               <div class="col-md-2"></div>
            </div>
        </div>
         <div class="row">

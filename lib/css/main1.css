@@ -1059,13 +1059,13 @@ button.btnss-primary {
 }
 
 .step-set ul {
-    border: 1px solid;
+    border: 1px solid #03E1E4;
     float: left;
     padding: 0px;
 }
 
 .step-set ul li {
-    /* border-right: 1px solid; */
+    border-right: 1px solid #03E1E4;
     float: left;
     display: inline;
     padding: 18px 25px;
@@ -1073,8 +1073,19 @@ button.btnss-primary {
 .step-set ul li.active{
     background: rgb(39, 240, 232);
     color: #fff;
-    border-right: 1px solid #696969;
+    border-right: 1px solid #03E1E4;
+    box-shadow: 0 1px 2px #6ECCC8 !important;
+    position: relative;
 }
 .step-set ul li + li {
   border-right: 1px solid;
+}
+.step-set ul li.active:after {
+    content: '';  
+    position: absolute;  border-style: solid;  
+    border-width: 11px 10px 0px;  
+    border-color: #27F0E8 transparent;  display: block;  width: 0;  z-index: 1;  
+    bottom: -11px;  
+    left: 50%;
+    transform: translatex(-50%);
 }
