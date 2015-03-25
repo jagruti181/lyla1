@@ -378,7 +378,10 @@ class User_model extends CI_Model
     {
            // $query=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`description`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`, `product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`, `productimage`.`image`,`category`.`name` FROM `product` INNER JOIN `productcategory` ON `product`.`id`=`productcategory`.`product` LEFT OUTER JOIN `productimage` ON `productimage`.`product`=`product`.`id` LEFT OUTER JOIN `category` ON `category`.`id`=`productcategory`.`category` WHERE `product`.`name` LIKE '%$search%' OR `product`.`description` LIKE '%$search%' OR `category`.`name` LIKE '%$search%'");
         
+            $userid=$this->session->userdata('id');
+        
             $query=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`description`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`, `product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`productimage`.`image` FROM `product` INNER JOIN `productimage` ON `productimage`.`product`=`product`.`id`  WHERE `product`.`name` LIKE '%$search%' OR `product`.`description` LIKE '%$search%' GROUP BY `product`.`id`");
+        
             foreach($query as $p_row)
 		{
 			$productid = $p_row->id;
@@ -388,7 +391,15 @@ class User_model extends CI_Model
 			$p_row->isnew=$query5->isnew;
 			
 		}
-        return $query->result();
+        
+        $queryreturn=$query->result();
+        
+        foreach($queryreturn as $row)
+        {
+            $product=$row->id;
+        $this->db->query("INSERT INTO `productsearchlog`(`product`, `user`, `timestamp`) VALUES ('$product','$userid',NULL)");
+        }
+        return $queryreturn;
     }
     
     

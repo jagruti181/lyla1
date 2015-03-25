@@ -465,7 +465,9 @@ class Product_model extends CI_Model
 		GROUP BY `product`.`id`
 		ORDER BY `productimage`.`order`")->result();
 		
-		
+		//for product view log
+        $userid=$this->session->userdata('id');
+        $this->db->query("INSERT INTO `productviewlog`(`product`, `user`, `timestamp`) VALUES ('$product','$userid',NULL)");
 		
 		return $query;
 	}
@@ -587,6 +589,13 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
 			if($row['specialpriceto'] != "")
 				$specialpriceto = date("Y-m-d",strtotime($row['specialpriceto']));
             $sku=$row['sku'];
+            $productfeatures=$row['productfeatures'];
+            $image=$row['image'];
+            $allimages=explode(",",$image);
+            $category=$row['category'];
+            $allcategories=explode(",",$category);
+            
+            $category=$row['category'];
             $data  = array(
                 'name' => $row['name'],
                 'sku' => $row['sku'],
@@ -605,11 +614,74 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
                 'status' => 1
             );
             $checkproductpresent=$this->db->query("SELECT COUNT(`id`) as `count1` FROM `product` WHERE `sku`='$sku'")->row();
+//            print_r($data);
             if($checkproductpresent->count1 == 0)
             {
-            $query=$this->db->insert( 'product', $data );
+                $query=$this->db->insert( 'product', $data );
+                $productid=$this->db->insert_id();
             }
+            
+			foreach($allimages as $key => $image)
+			{
+				$data1  = array(
+					'product' => $productid,
+					'image' => $image,
+				);
+				$queryproductimage=$this->db->insert( 'productimage', $data1 );
+			}
+            
+			foreach($allcategories as $key => $category)
+			{
+                $categoryquery=$this->db->query("SELECT * FROM `category` where `name`LIKE '$category'")->row();
+                if(empty($categoryquery))
+                {
+                    $this->db->query("INSERT INTO `category`(`name`) VALUES ('$category')");
+                    $categoryid=$this->db->insert_id();
+                }
+                else
+                {
+                    $categoryid=$categoryquery->id;
+                }
+            
+				$data2  = array(
+					'product' => $productid,
+					'category' => $categoryid,
+				);
+				$queryproductimage=$this->db->insert( 'productcategory', $data2 );
+			}
         }
+        
+//        foreach ($file as $row)
+//        {
+//            
+//            if($row['specialpricefrom'] != "")
+//				$specialpricefrom = date("Y-m-d",strtotime($row['specialpricefrom']));
+//			if($row['specialpriceto'] != "")
+//				$specialpriceto = date("Y-m-d",strtotime($row['specialpriceto']));
+//            $sku=$row['sku'];
+//            $data  = array(
+//                'name' => $row['name'],
+//                'sku' => $row['sku'],
+//                'description' => $row['description'],
+//                'url' => $row['url'],
+//                'metatitle' => $row['metatitle'],
+//                'metadesc' => $row['metadescription'],
+//                'metakeyword' => $row['metakeyword'],
+//                'quantity' => $row['quantity'],
+//                'price' => $row['price'],
+//                'wholesaleprice' => $row['wholesaleprice'],
+//                'firstsaleprice' => $row['firstsaleprice'],
+//                'secondsaleprice' => $row['secondsaleprice'],
+//                'specialpricefrom' => $specialpricefrom,
+//                'specialpriceto' => $specialpriceto,
+//                'status' => 1
+//            );
+//            $checkproductpresent=$this->db->query("SELECT COUNT(`id`) as `count1` FROM `product` WHERE `sku`='$sku'")->row();
+//            if($checkproductpresent->count1 == 0)
+//            {
+//            $query=$this->db->insert( 'product', $data );
+//            }
+//        }
 		if(!$query)
 			return  0;
 		else
