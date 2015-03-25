@@ -21,6 +21,18 @@ class Order_model extends CI_Model
 		$query=$this->db->query($query)->row();
 		return $query;
 	}
+    function bestsellingalltime()
+	{
+		$query="SELECT count(product) as `prodcount`,`orderitems`.`product`,`product`.* FROM `orderitems` INNER JOIN `product` ON `orderitems`.`product`=`product`.`id` group by `product`  order by count(product) desc LIMIT 10";   
+		$query=$this->db->query($query)->result();
+		return $query;
+	}
+    function bestsellingcmonth()
+	{
+		$query="SELECT count(product) as `prodcount`,MONTH(now(timestamp)),`product`.* FROM `orderitems` INNER JOIN `order` ON `orderitems`.`order`=`order`.`id` INNER JOIN `product` ON `product`.`id`=`orderitems`.`product` group by `product` order by count(product) desc LIMIT 10";   
+		$query=$this->db->query($query)->result();
+		return $query;
+	}
 	function vieworder()
 	{
 		$query="SELECT `order`.`id` as `id`,`order`.`firstname` as `firstname`,`order`.`lastname` as `lastname`,`order`.`user` as `user`,`order`.`orderstatus` as `orderstatusid`,`orderstatus`.`name` as `orderstatus`,`order`.`totalamount`,`order`.`discountamount`,`order`.`finalamount`,`order`.`trackingcode`,`order`.`timestamp` FROM `order` 	

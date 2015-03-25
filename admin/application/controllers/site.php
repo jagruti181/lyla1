@@ -2642,14 +2642,11 @@ class Site extends CI_Controller
 		}
 			
 	}
-    function viewdata()
-    {
-        echo "data here";
-    }
+    
+
 	function vieworder()
 	{
-        echo "order here";
-		$access = array("1");
+        $access = array("1");
 		$this->checkaccess($access);
 		$data['table']=$this->order_model->vieworder();
 		$data['page']='vieworder';
@@ -2938,8 +2935,7 @@ class Site extends CI_Controller
 		$data[ 'title' ] = 'Create pickofweak';
 		$this->load->view( 'template', $data );	
 	}
-    
-	function createpickofweaksubmit()
+    function createpickofweaksubmit()
 	{
 		$access = array("1");
 		$this->checkaccess($access);
@@ -3244,6 +3240,26 @@ class Site extends CI_Controller
         $data['order']=$this->order_model->particularorders($id);
         $data['page']='viewparticularorder';
 		$data['title']='View new blue';
+		$this->load->view('template',$data);
+	} 
+    //top 10 product all time
+    function viewbestsellingorder()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $data['order']=$this->order_model->bestsellingalltime();
+        $data['page']='viewbestselling';
+		$data['title']='View Best selling';
+		$this->load->view('template',$data);
+	}
+    //top 10 products of current month
+    function viewbestsellingcurrentmonth()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $data['order']=$this->order_model->bestsellingcmonth();
+        $data['page']='viewbestsellingcmonth';
+		$data['title']='View Best selling of the month';
 		$this->load->view('template',$data);
 	}
    
