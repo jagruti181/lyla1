@@ -52,27 +52,26 @@ class Order_model extends CI_Model
 	}
     function searchlogalltime()
 	{
-		$query="SELECT count(product) as `totalprouct`,product from `productsearchlog` group by `product` order by count(product) desc 
-        LIMIT 10";   
+		$query="SELECT count(product) as `totalprouct`,product,`product`.* from `productsearchlog` INNER JOIN `product` ON `product`.`id`=`productsearchlog`.`product` group by `product` order by count(product) desc LIMIT 10";   
 		$query=$this->db->query($query)->result();
 		return $query;
 	} 
     function searchlogbymonth()
 	{
-		$query="SELECT count(product) as `totalprouct`,product from `productsearchlog` Where Month(timestamp)=Month(CURDATE()) group by 
+		$query="SELECT count(product) as `totalprouct`,product,`product`.* from `productsearchlog` INNER JOIN `product` ON `product`.`id`=`productsearchlog`.`product` Where Month(timestamp)=Month(CURDATE()) group by 
         `product` order by count(product) desc LIMIT 10";   
 		$query=$this->db->query($query)->result();
 		return $query;
 	}
     function viewlogbymonth()
 	{
-		$query="SELECT count(product) as `totalprouct`,product from `productviewlog` Where Month(timestamp)=Month(CURDATE())  group by        `product` order by count(product) desc limit 10";   
+		$query="SELECT count(product) as `totalprouct`,product,`product`.* from `productviewlog` INNER JOIN `product` ON `product`.`id`=`productviewlog`.`product` Where Month(timestamp)=Month(CURDATE())  group by `product` order by count(product) desc limit 10";   
 		$query=$this->db->query($query)->result();
 		return $query;
 	}
     function viewlogalltime()
 	{
-		$query="SELECT count(product) as `totalprouct`,product from `productviewlog` group by `product` order by count(product) desc 
+		$query="SELECT count(product) as `totalprouct`,product,`product`.*  from `productviewlog` INNER JOIN `product` ON `product`.`id`=`productviewlog`.`product` group by `product` order by count(product) desc 
         LIMIT 10";   
 		$query=$this->db->query($query)->result();
 		return $query;
