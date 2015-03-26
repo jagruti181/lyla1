@@ -21,20 +21,14 @@ class Order_model extends CI_Model
 		$query=$this->db->query($query)->row();
 		return $query;
 	}
+    // pwerpoint page 2
     function bestsellingalltime()
 	{
 		$query="SELECT count(product) as `prodcount`,`orderitems`.`product`,`product`.* FROM `orderitems` INNER JOIN `product` ON `orderitems`.`product`=`product`.`id` group by `product`  order by count(product) desc LIMIT 10";   
 		$query=$this->db->query($query)->result();
 		return $query;
 	}
-    function viewbyyear()
-	{
-		$query="SELECT count(couponcode) as `couponyear`,`couponcode`,YEAR(enddate) as `enddate`  FROM `discountcoupon` Where YEAR(enddate)=YEAR
-(CURDATE()) group by `couponcode` order by count(couponcode) desc limit 1";   
-		$query=$this->db->query($query)->result();
-		return $query;
-	} 
-    function bestsellingcmonth()
+      function bestsellingcmonth()
 	{
 		$query="SELECT count(product) as `prodcount` ,`order`.`timestamp` as `timestamp`,`product`.* FROM `orderitems` INNER JOIN `order` ON 
 `orderitems`.`order`=`order`.`id` INNER JOIN `product` ON `product`.`id`=`orderitems`.`product` Where MONTH
@@ -42,13 +36,48 @@ class Order_model extends CI_Model
 		$query=$this->db->query($query)->result();
 		return $query;
 	} 
-    function viewbymonth()
+    function viewbyyear()
+	{
+		$query="SELECT count(couponcode) as `couponyear`,`couponcode`,YEAR(enddate) as `enddate`  FROM `discountcoupon` Where YEAR(enddate)=YEAR(CURDATE()) group by `couponcode` order by count(couponcode) desc limit 1";   
+		$query=$this->db->query($query)->result();
+		return $query;
+	} 
+        
+   function viewbymonth()
 	{
 		$query="SELECT count(couponcode) as `couponmonth`,`couponcode`,MONTH(enddate) as `enddate`  FROM `discountcoupon` Where MONTH(enddate)=MONTH
 (CURDATE()) group by `couponcode` order by count(couponcode) desc limit 1";   
 		$query=$this->db->query($query)->result();
 		return $query;
 	}
+    function searchlogalltime()
+	{
+		$query="SELECT count(product) as `totalprouct`,product from `productsearchlog` group by `product` order by count(product) desc 
+        LIMIT 10";   
+		$query=$this->db->query($query)->result();
+		return $query;
+	} 
+    function searchlogbymonth()
+	{
+		$query="SELECT count(product) as `totalprouct`,product from `productsearchlog` Where Month(timestamp)=Month(CURDATE()) group by 
+        `product` order by count(product) desc LIMIT 10";   
+		$query=$this->db->query($query)->result();
+		return $query;
+	}
+    function viewlogbymonth()
+	{
+		$query="SELECT count(product) as `totalprouct`,product from `productviewlog` Where Month(timestamp)=Month(CURDATE())  group by        `product` order by count(product) desc limit 10";   
+		$query=$this->db->query($query)->result();
+		return $query;
+	}
+    function viewlogalltime()
+	{
+		$query="SELECT count(product) as `totalprouct`,product from `productviewlog` group by `product` order by count(product) desc 
+        LIMIT 10";   
+		$query=$this->db->query($query)->result();
+		return $query;
+	} 
+
 	function vieworder()
 	{
 		$query="SELECT `order`.`id` as `id`,`order`.`firstname` as `firstname`,`order`.`lastname` as `lastname`,`order`.`user` as `user`,`order`.`orderstatus` as `orderstatusid`,`orderstatus`.`name` as `orderstatus`,`order`.`totalamount`,`order`.`discountamount`,`order`.`finalamount`,`order`.`trackingcode`,`order`.`timestamp` FROM `order` 	

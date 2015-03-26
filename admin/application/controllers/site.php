@@ -3222,7 +3222,8 @@ class Site extends CI_Controller
 		$this->load->view("redirect",$data);
        
     }
-        function viewnewblue()
+    
+      function viewnewblue()
 	{
 		$access = array("1");
 		$this->checkaccess($access);
@@ -3262,7 +3263,7 @@ class Site extends CI_Controller
 		$data['title']='View Best selling of the month';
 		$this->load->view('template',$data);
 	} 
-    //
+    
     function viewbyyear()
 	{
 		$access = array("1");
@@ -3283,6 +3284,47 @@ class Site extends CI_Controller
 //		$data['title']='View Best selling of the month';
 //		$this->load->view('template',$data);
 	}
+    function searchlogalltime()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $data['order']=$this->order_model->searchlogalltime();
+        print_r($data['order']);
+//        $data['page']='viewbestsellingcmonth';
+//		$data['title']='View Best selling of the month';
+//		$this->load->view('template',$data);
+	} 
+    function searchlogbymonth()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $data['order']=$this->order_model->searchlogbymonth();
+        print_r($data['order']);
+//        $data['page']='viewbestsellingcmonth';
+//		$data['title']='View Best selling of the month';
+//		$this->load->view('template',$data);
+	} 
+    function viewlogalltime()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $data['order']=$this->order_model->viewlogalltime();
+        print_r($data['order']);
+//        $data['page']='viewbestsellingcmonth';
+//		$data['title']='View Best selling of the month';
+//		$this->load->view('template',$data);
+	} 
+    function viewlogbymonth()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $data['order']=$this->order_model->viewlogbymonth();
+        print_r($data['order']);
+//        $data['page']='viewbestsellingcmonth';
+//		$data['title']='View Best selling of the month';
+//		$this->load->view('template',$data);
+	}
+    
    
 }
 ?>
