@@ -188,7 +188,7 @@
                         <td><?php echo $finalpricetotal;?></td>
                     </tr>
                     <tr>
-                        <td><b>Invoice No.:</b></td>
+                        <td><b>Delivery :</b></td>
                         <td>
                             <?php
                                 if($before['order']->shippingmethod==1)
@@ -223,6 +223,15 @@
                                 }
                             ?>
                         </td>
+                    </tr>
+                    <?php 
+                    if($before->discountcoupon==0 || $before->discountcoupon=="")
+                    {
+                        $discountcoupon='NA';
+                    }?>
+                    <tr>
+                        <td><b>Discount Coupon:</b></td>
+                        <td><?php echo $discountcoupon;?></td>
                     </tr>
                     <tr>
                         <td><b>Final Total:</b></td>
