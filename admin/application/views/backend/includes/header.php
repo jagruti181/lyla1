@@ -270,6 +270,19 @@ $(document).ready(function(){
                           <span>Product Waiting</span>
                           <span class="arrow"></span>
                       </a>
+                  </li>  
+                     <li >
+                      <a href="<?php echo site_url('site/viewbestsellingorder'); ?>" class="">
+                          <i class="icon-money"></i>
+                          <span>Best selling all time</span>
+                          <span class="arrow"></span>
+                      </a>
+                  </li>  <li >
+                      <a href="<?php echo site_url('site/viewbestsellingcurrentmonth'); ?>" class="">
+                          <i class="icon-money"></i>
+                          <span>Best selling of  month</span>
+                          <span class="arrow"></span>
+                      </a>
                   </li>
               </ul>
               <!-- sidebar menu end-->

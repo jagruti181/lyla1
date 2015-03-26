@@ -27,9 +27,25 @@ class Order_model extends CI_Model
 		$query=$this->db->query($query)->result();
 		return $query;
 	}
+    function viewbyyear()
+	{
+		$query="SELECT count(couponcode) as `couponyear`,`couponcode`,YEAR(enddate) as `enddate`  FROM `discountcoupon` Where YEAR(enddate)=YEAR
+(CURDATE()) group by `couponcode` order by count(couponcode) desc limit 1";   
+		$query=$this->db->query($query)->result();
+		return $query;
+	} 
     function bestsellingcmonth()
 	{
-		$query="SELECT count(product) as `prodcount`,MONTH(now(timestamp)),`product`.* FROM `orderitems` INNER JOIN `order` ON `orderitems`.`order`=`order`.`id` INNER JOIN `product` ON `product`.`id`=`orderitems`.`product` group by `product` order by count(product) desc LIMIT 10";   
+		$query="SELECT count(product) as `prodcount` ,`order`.`timestamp` as `timestamp`,`product`.* FROM `orderitems` INNER JOIN `order` ON 
+`orderitems`.`order`=`order`.`id` INNER JOIN `product` ON `product`.`id`=`orderitems`.`product` Where MONTH
+(timestamp)=MONTH(CURDATE()) group by `product` order by count(product) desc LIMIT 10";   
+		$query=$this->db->query($query)->result();
+		return $query;
+	} 
+    function viewbymonth()
+	{
+		$query="SELECT count(couponcode) as `couponmonth`,`couponcode`,MONTH(enddate) as `enddate`  FROM `discountcoupon` Where MONTH(enddate)=MONTH
+(CURDATE()) group by `couponcode` order by count(couponcode) desc limit 1";   
 		$query=$this->db->query($query)->result();
 		return $query;
 	}

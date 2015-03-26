@@ -3261,6 +3261,27 @@ class Site extends CI_Controller
         $data['page']='viewbestsellingcmonth';
 		$data['title']='View Best selling of the month';
 		$this->load->view('template',$data);
+	} 
+    //
+    function viewbyyear()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $data['order']=$this->order_model->viewbyyear();
+        print_r($data['order']);
+//        $data['page']='viewbestsellingcmonth';
+//		$data['title']='View Best selling of the month';
+//		$this->load->view('template',$data);
+	}  
+    function viewbymonth()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+        $data['order']=$this->order_model->viewbymonth();
+        print_r($data['order']);
+//        $data['page']='viewbestsellingcmonth';
+//		$data['title']='View Best selling of the month';
+//		$this->load->view('template',$data);
 	}
    
 }
