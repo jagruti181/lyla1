@@ -3104,12 +3104,11 @@ class Site extends CI_Controller
 	}
     //csv
     
-    	public function exportusercsv()
+    public function exportusercsv()
 	{
 		$access = array("1");
 		$this->checkaccess($access);
 		$this->user_model->exportusercsv();
-            
         $data['table']=$this->user_model->viewusers();
 		$data['page']='viewusers';
 		$data['title']='View Users';
