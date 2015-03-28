@@ -101,6 +101,11 @@ firstapp.config(
             templateUrl: 'views/template.html',
             controller: 'subjewellery'
         }).
+        when('/about', {
+            templateUrl: 'views/template.html',
+            controller: 'about'
+        }).
+     
         otherwise({
             redirectTo: '/home'
         });

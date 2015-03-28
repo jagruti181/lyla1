@@ -1,6 +1,6 @@
 
 
-<div class="productset">
+<div class="productset" >
     <img src="img/pick.png" title="Lyla Loves" alt="Lyla Loves" style="margin: 20px auto 0;display: block;">
     <div class="imageset">
         <a ng-click="slidesetprev(showslideset1);">
@@ -13,7 +13,7 @@
                 <img src="img/rightbanner.png" alt="" ng-show="showslideset1==0">
             </div>
         </a>
-        <div style="overflow:hidden;height:230px;">
+        <div style="overflow:hidden;height:230px;" ng-controller="slider" data-ng-init="init()">
             <span ng-repeat="slider in sliders">
                 <span ng-show="$index<5" class="pickweek">
                     <a ng-click="template.gourl('/product/'+slider.link);" ><img src="{{slider.image|imagepath}}" class="slideset1 animated slideInLeft" ng-show="showslideset1==0"></a>

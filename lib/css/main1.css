@@ -1089,3 +1089,37 @@ button.btnss-primary {
     left: 50%;
     transform: translatex(-50%);
 }
+.pop-set{
+  width: 50%;
+  height: 400px;
+  background: #FFFFFF;
+  z-index: 9999;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+  border-radius: 5px;
+  text-align: center;
+}
+.cont-set {
+    padding-top: 12px;
+}
+
+.cont-set h1 {
+    line-height: 48px;
+    font-size: 50px;
+    color: rgb(131, 219, 219);
+}
+a.gogo {
+    border: #83DBDB;
+    background: #83DBDB;
+    padding: 5px 20px;
+}
+.cont-set h5 {
+    font-family: "CheddarJack";    font-size: x-large;
+    padding-top: 10px;
+}
+
+.createpop {
+    padding-top: 25px;
+}

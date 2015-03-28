@@ -64,6 +64,7 @@
     <link href="lib/css/image-zoom.min.css" rel="stylesheet">
     <link href="lib/css/font-awesome.min.css" rel="stylesheet">
     <link href="lib/css/main1.css" rel="stylesheet">
+    <link href="lib/css/ngDialog.css" rel="stylesheet">
     <link href="lib/range/angular.rangeSlider.css" rel="stylesheet">
     <link href="https://checkout.stripe.com/v3/checkout/button.css" rel="stylesheet">
 
@@ -103,6 +104,7 @@
     <script src="lib/js/jstorage.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="lib/js/ngDialog.js"></script>
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -125,7 +127,7 @@
 
 <body>
     <header>
-    <div class="top-bar barheight">
+    <div class="top-bar barheight" >
 
         <div class="row">
             <div class="col-xs-2">

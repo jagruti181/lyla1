@@ -1,4 +1,4 @@
-var phonecatControllers = angular.module('phonecatControllers', ['templateservicemod', 'Service', 'ngRoute']);
+var phonecatControllers = angular.module('phonecatControllers', ['templateservicemod', 'Service', 'ngRoute','ngDialog']);
 phonecatControllers.controller('home',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
         ////$scope.firstloadclass = TemplateService.firstload;
@@ -20,7 +20,10 @@ phonecatControllers.controller('home',
         $scope.onhome = "onhome";
         $scope.demo = "demodemo";
         $scope.hititle = "Jewellery London - Picks of the Week";
-
+//$scope.init = function () {
+//        ngDialog.open({ template: 'popup.html' });
+//    };
+    
 
         //start get country from geo location
         //        $scope.country = false;
@@ -1398,7 +1401,7 @@ phonecatControllers.controller('headerctrl',
 
     });
 phonecatControllers.controller('slider',
-    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location,ngDialog) {
         $scope.template = TemplateService;
 
 
@@ -1423,7 +1426,13 @@ phonecatControllers.controller('slider',
             }
         };
 
-
+//   $scope.init = function (listing) {
+//
+//            ngDialog.open({
+//                template: 'views/popup.html',
+//                controller: 'slider'
+//            });
+//        };
     });
 
 phonecatControllers.controller('category',
@@ -1902,6 +1911,27 @@ phonecatControllers.controller('returns',
         //authenticate
 
     });
+//phonecatControllers.controller('about',
+//    function ($scope, TemplateService, MainJson, $rootScope, $location) {
+//        //$scope.firstloadclass = TemplateService.firstload;
+//        $scope.template = TemplateService;
+//        TemplateService.header = "views/header.html";
+//        TemplateService.navigation = "views/navigation.html";
+//        TemplateService.changetitle("About lyla");
+//        TemplateService.content = "views/about.html";
+//        $scope.returnsactive = "active";
+//        TemplateService.slider = "";
+//        $scope.loginlogouttext = "Login";
+//        //authenticate
+//        var authenticate = function (data, status) {
+//            if (data != "false") {
+//                $scope.loginlogouttext = "Logout";
+//            }
+//        };
+//        MainJson.authenticate().success(authenticate);
+//        //authenticate
+//
+//    });
 
 phonecatControllers.controller('returns',
     function ($scope, TemplateService, MainJson, $rootScope, $location) {
@@ -1924,6 +1954,7 @@ phonecatControllers.controller('returns',
         //authenticate
 
     });
+
 
 
 
