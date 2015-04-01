@@ -121,6 +121,10 @@
         ga('create', 'UA-54886004-1', 'auto');
         ga('send', 'pageview');
     </script>
+    
+  <script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "8424e299-ed63-4c2d-814f-e8336f26067c", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 
 
 </head>

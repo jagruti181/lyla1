@@ -1682,6 +1682,18 @@ phonecatControllers.controller('product',
 
         $scope.name = 'World';
 
+        
+        $scope.showslideset1 = 0;
+        $scope.slidesetnext = function (value) {
+            console.log("Next Clicked");
+            $scope.showslideset1 = 1;
+            console.log($scope.showslideset1);
+        };
+        $scope.slidesetprev = function (value) {
+            console.log("Prev Clicked");
+            $scope.showslideset1 = 0;
+        };
+    
         $scope.items = [{
             "src": "http://t3.gstatic.com/images?q=tbn:ANd9GcR1Kp2JmcnxhBOf66aN_JqMWl3h_okOQKFX_kEqwr9mRe5iPomy",
             "alt": "image 001"
@@ -1730,6 +1742,11 @@ phonecatControllers.controller('product',
         };
 
 
+        var slidersuccess = function (data, status) {
+            $scope.sliders = data;
+            console.log($scope.sliders);
+        };
+        MainJson.getallslider().success(slidersuccess);
 
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;

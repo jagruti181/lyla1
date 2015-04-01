@@ -965,7 +965,7 @@ button.btnss-primary {
   text-align: center;
   font-size: 12px;
   font-weight: 500;
-  padding: 0px 10px;
+  padding: 0px 5px;
 }
 .set-head {
     font-size: 13px;
@@ -1122,4 +1122,24 @@ a.gogo {
 
 .createpop {
     padding-top: 25px;
+}
+.soc-set {
+    padding: 0px;
+    margin: 10px auto;
+}
+.imagesets{
+
+  width: 1020px;
+  margin: auto;
+  border-top: 2px solid #f7f7f7;
+  height: 244px;
+  position: relative;
+  border-bottom: 2px solid #f7f7f7;
+
+}
+@media (min-width: 1190px) and (max-width: 1320px) {
+ .padder span {
+  text-align: center;
+  font-size: 11px;
+
 }

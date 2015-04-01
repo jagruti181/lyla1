@@ -64,7 +64,16 @@
                     <div ng-show="wishlistadded" class="alert alert-success" style="margin:20px 0;">Added to Wishlist</div>
                     <span ng-show="product.quantity>0"><div ng-show="addedtocart=='show'" class="alert alert-success" style="margin:20px 0;">Added to Cart</div></span>
                 </div>
-
+<div class="soc-set">
+   <span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st__large' displayText=''></span>
+<span class='st_instagram_large' displayText='Instagram Badge'></span>
+<span class='st_pinterest_large' displayText='Pinterest'></span>
+<span class='st_email_large' displayText='Email'></span>
+</div>
 
             </div>
         </div>
@@ -88,18 +97,18 @@
                      
                      <div class="col-md-12">
                      <div class="row">
-                     <div class="col-md-3">
-            <div  ng-show="productimage[0].image">
+                     <div class="col-md-4">
+            <div  ng-show="productimage[0].image" >
                         
 <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
                          
 <!--                            <img  ng-src="{{productimage[0].image|imagepathbig}}" style="max-height:310px;"    class=" imgback wow fadeInLeft zoomimg" />-->
                             
                             
-                            <div zoom2 big="productimage[0].image|imagepathbig" tiny="productimage[0].image|imagepath" small="productimage[0].image|imagepath" ></div>
+                            <div zoom2 big="productimage[0].image|imagepathbig" tiny="productimage[0].image|imagepath" small="productimage[0].image|imagepath" style="max-height:310px;" class=" imgback wow fadeInLeft zoomimg" ></div>
                           </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
             <div  ng-show="productimage[1].image">
                 
                     <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
@@ -108,13 +117,13 @@
                 <div zoom2 big="productimage[1].image|imagepathbig" tiny="productimage[1].image|imagepath" small="productimage[1].image|imagepath" ></div>
                 </div>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-4"></div>
             </div>
             </div>
             
             <div class="col-md-12">
             <div class-="row">
-             <div class="col-md-3">
+             <div class="col-md-4">
             <div class="set-im" ng-show="productimage[2].image">
                
                     <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
@@ -123,7 +132,7 @@
                <div zoom2 big="productimage[2].image|imagepathbig" tiny="productimage[2].image|imagepath" small="productimage[2].image|imagepath" ></div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
             <div class="set-im" ng-show="productimage[3].image">
                 
                     <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
@@ -133,13 +142,13 @@
                 <div zoom2 big="productimage[3].image|imagepathbig" tiny="productimage[3].image|imagepath" small="productimage[3].image|imagepath" ></div>
                 </div>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-4"></div>
             </div>
             </div>
             
             <div class="col-md-12">
             <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
             <div class="set-im" ng-show="productimage[4].image">
                 
                     <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
@@ -148,7 +157,7 @@
                 <div zoom2 big="productimage[4].image|imagepathbig" tiny="productimage[4].image|imagepath" small="productimage[4].image|imagepath" ></div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
             <div class="set-im" ng-show="productimage[5].image">
                 
                     <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
@@ -157,12 +166,12 @@
                 <div zoom2 big="productimage[5].image|imagepathbig" tiny="productimage[5].image|imagepath" small="productimage[5].image|imagepath" ></div>
                 </div>
             </div>
-                <div class="col-md-6"></div>
+                <div class="col-md-4"></div>
             </div>
             </div>
             
             <div class="col-md-12"> 
-               <div class="col-md-3">          
+               <div class="col-md-4">          
                 <div class="set-im" ng-show="productimage[6].image">
                 
                     <!--                              <img ng-elevate-zoom ng-src="{{image.image|imagepath}}"  zoom-image="{{image.image|imagepath}}" class=" imgback wow fadeInLeft zoomimg" resizable ng-style="{  height: windowHeight }" />-->
@@ -177,13 +186,12 @@
 
 
     </div>
-<!--
     <div class="recent-set">
         
 
 <div class="productset" >
-    <img src="img/pick.png" title="Lyla Loves" alt="Lyla Loves" style="margin: 20px auto 0;display: block;">
-    <div class="imageset">
+    <img src="img/picks.png" title="Lyla Loves" alt="Lyla Loves" style="margin: 20px auto 0;display: block;">
+    <div class="imagesets">
         <a ng-click="slidesetprev(showslideset1);">
             <div class="toggle left">
                 <img src="img/leftbanner.png" alt="" ng-show="showslideset1==1">
@@ -218,7 +226,6 @@
 
 </div>
     </div>
--->
 </div>
 <div style="margin-bottom:800px"></div>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
