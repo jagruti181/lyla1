@@ -51,6 +51,10 @@ handlers:
 - url: /sitemap.xml
   static_files: sitemap.xml
   upload: sitemap.xml  
+
+- url: /robots.txt
+  static_files: robots.txt
+  upload: robots.txt    
   
 - url: /googleeb491dfb6fb22923.html
   static_files: googleeb491dfb6fb22923.html
