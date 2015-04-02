@@ -70,8 +70,8 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>-->
-<!--    <script src="lib/js/jquery-1.11.1.min.js"></script>-->
+    <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>-->
+    <!--    <script src="lib/js/jquery-1.11.1.min.js"></script>-->
     <script src="lib/js/angular.min.js"></script>
     <script src="lib/js/angular-animate.js"></script>
     <script src="lib/js/angular-route.min.js"></script>
@@ -121,64 +121,73 @@
         ga('create', 'UA-54886004-1', 'auto');
         ga('send', 'pageview');
     </script>
-    
-  <script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "8424e299-ed63-4c2d-814f-e8336f26067c", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
+    <script type="text/javascript">
+        var switchTo5x = true;
+    </script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "8424e299-ed63-4c2d-814f-e8336f26067c",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
 
 
 </head>
 
 <body>
     <header>
-    <div class="top-bar barheight" >
+        <div class="top-bar barheight">
 
-        <div class="row">
-            <div class="col-xs-2">
-                <div class="input-group headsearch " ng-controller="search">
-                    <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
-                    <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search for an item" ng-change="search(searchpro)">
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="input-group headsearch " ng-controller="search">
+                        <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
+                        <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search for an item" ng-change="search(searchpro)">
+                    </div>
+
+
                 </div>
-
-
-            </div>
-            <div class="col-xs-7 padder" ng-controller="newsletter">
-                <span>SHIPPING WORLDWIDE</span>
-                <span>FREE  DOMESTIC SHIPPING ON ORDERS OVER £15</span>
-                <span>FREE  INTERNATIONAL SHIPPING ON ORDERS OVER £20</span>
-                <!--
+                <div class="col-xs-7 padder" ng-controller="newsletter">
+                    <span>SHIPPING WORLDWIDE</span>
+                    <span>FREE  DOMESTIC SHIPPING ON ORDERS OVER £15</span>
+                    <span>FREE  INTERNATIONAL SHIPPING ON ORDERS OVER £20</span>
+                    <!--
                 <p style="float;right">SHIPPING WORLDWIDE &nbsp;&nbsp;&nbsp;
                     <input type="email" class="form-control newsletteremail" ng-model="uemail" placeholder="" required> <a style="color:black;" class="btn btn-primary" ng-click="newsletter(uemail)">SIGN UP</a>
                 </p>
 -->
-            </div>
+                </div>
 
-            <div class="col-xs-3">
+                <div class="col-xs-3">
 
 
-                <div class="set-head pull-right" style="margin-right:15px;" ng-controller="badge">
+                    <div class="set-head pull-right" style="margin-right:15px;" ng-controller="badge">
 
-                    <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
-                        <img src="img/account.png">Log in
-                    </a>
-                    <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
-                        <img src="img/maill.png">Newsletter
-                    </a>
+                        <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
+                            <img src="img/account.png">Log in
+                        </a>
+                        <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
+                            <img src="img/maill.png">Newsletter
+                        </a>
 
-<!--
+                        <!--
                     <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
                     <a ng-click="template.gourl('/cart');" class="topicon {{template.cartclicked}}">
                         <img src="img/cart.png">Cart
                     </a>
 -->
 
-                    <a ng-click="template.gourl('/wishlist');" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
-                        <img src="img/wishlist2.png">Wishlist
-                    </a>
+                        <a ng-click="template.gourl('/wishlist');" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
+                            <img src="img/wishlist2.png">Wishlist
+                        </a>
 
 
 
-                    <!--a href="https://twitter.com/ZibaCollection" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.3s">
+                        <!--a href="https://twitter.com/ZibaCollection" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.3s">
                     <img src="img/twitter.png" class="socialicons tadaanimation">
                 </a>
                 <a href="http://pinterest.com/zibacollection/" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.4s">
@@ -193,13 +202,13 @@
                 <a href="http://zibaacc.tumblr.com/" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.7s">
                     <img src="img/tumbler.png" class="socialicons tadaanimation">
                 </a-->
+                    </div>
+
+
+
                 </div>
-
-
-
             </div>
         </div>
-    </div>
     </header>
     <div class="barheight"></div>
     <div class="container-fluid-non-responsive">
@@ -244,6 +253,17 @@
             alert("See You");
             return false;
         });
+    </script>
+    <script type="text/javascript">
+        (function (d, t) {
+            if (window.location.hash != '#gleam' && ('' + document.cookie).match(/(^|;)\s*GleamV37Z7=X($|;)/)) {
+                return;
+            }
+            var g = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            g.src = "https://js.gleam.io/V37Z7/ol.js";
+            s.parentNode.insertBefore(g, s);
+        }(document, "script"));
     </script>
 
 </body>
