@@ -9,6 +9,8 @@
 //	HybridAuth Config file: http://hybridauth.sourceforge.net/userguide/Configuration.html
 // ----------------------------------------------------------------------------------------
 
+
+	
 $config =
 	array(
 		// set on "base_url" the relative url that point to HybridAuth Endpoint
@@ -30,19 +32,19 @@ $config =
 			),
 
 			"Google" => array (
-				"enabled" => false,
-				"keys"    => array ( "id" => "", "secret" => "" ),
+				"enabled" => true,
+				"keys"    => array ( "id" => "64627381966-tfa6hpcnpnvmornmj41b2hujimmjinnj.apps.googleusercontent.com", "secret" => "USyTj9PZgB_-_ZayjiCrL0xK" ),
 			),
 
 			"Facebook" => array (
 				"enabled" => true,
-				"keys"    => array ( "id" => "485244391628150", "secret" => "ef773ba662a5eabac9e51d9626bf1e92" ),
+				"keys"    => array ( "id" => "431094100390990", "secret" => "2d5f411a4bf15cdefb7977eb875c6a52" ),
 
 			),
 
 			"Twitter" => array (
 				"enabled" => true,
-				"keys"    => array ( "key" => "q6l4REBotnpk9TK8t7ZJygTgy", "secret" => "h9CA0BBNyFQoiMnGkDQCZcA7CKQ4NlxuCiZ1rBg2rVKG03TAMd" )
+				"keys"    => array ( "key" => "zdI4WWVFsXLRSI24eagDuZQsj", "secret" => "m94tvojX7itbnYnihQYbc3l2KmKMDZ34L0HCqP1vv8e1nWOLbt" )
 			),
 
 			// windows live

@@ -446,6 +446,63 @@ class User_model extends CI_Model
              echo 'File written!';
         }
 	}
+ function sociallogin($user_profile,$provider)
+    {
+        $query=$this->db->query("SELECT * FROM `user` WHERE `user`.`socialid`='$user_profile->identifier'");
+        if($query->num_rows == 0)
+        {
+
+					$googleid="";
+					$facebookid="";
+					$twitterid="";
+					switch($provider)
+					{
+						case "Google":
+						$googleid=$user_profile->identifier;
+						break;
+						case "Facebook":
+						$facebookid=$user_profile->identifier;
+						break;
+						case "Twitter":
+						$twitterid=$user_profile->identifier;
+						break;
+					}
+
+            $query2=$this->db->query("INSERT INTO `user` (`id`, `firstname`,`lastname`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `name`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `country`, `pincode`, `facebook`, `google`, `twitter`) VALUES (NULL, '$user_profile->firstName','$user_profile->lastName', '', '$user_profile->email', '2', CURRENT_TIMESTAMP, '1', '$user_profile->photoURL', '$user_profile->displayName', '$user_profile->identifier', '$provider', '', '$user_profile->birthYear-$user_profile->birthMonth-$user_profile->birthDay', '', '$user_profile->address,$user_profile->region', '$user_profile->city', '', '$user_profile->country', '', '$facebookid', '$googleid', '$twitterid')");
+            $id=$this->db->insert_id();
+            $newdata = array(
+                'email'     => $user_profile->email,
+                'password' => "",
+                'logged_in' => true,
+                'id'=> $id,
+                'name'=> $user_profile->displayName,
+                'image'=> $user_profile->photoURL,
+                'logintype'=>$provider
+            );
+
+            $this->session->set_userdata($newdata);
+
+            return $newdata;
+
+        }
+        else
+        {
+            $query=$query->row();
+            $newdata = array(
+                'email'     => $user_profile->email,
+                'password' => "",
+                'logged_in' => true,
+                'id'=> $query->id,
+                'name'=> $user_profile->displayName,
+                'image'=> $user_profile->photoURL,
+                'logintype'=>$provider
+            );
+
+            $this->session->set_userdata($newdata);
+
+            return $newdata;
+        }
+    }
     
 }
 ?>

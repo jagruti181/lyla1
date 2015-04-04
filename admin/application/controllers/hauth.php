@@ -28,12 +28,14 @@ class HAuth extends CI_Controller {
 					log_message('debug', 'controller.HAuth.login: user authenticated.');
 
 					$user_profile = $service->getUserProfile();
+					$sociallogin=$this->user_model->sociallogin($user_profile,$provider);
+					redirect($this->input->get_post("returnurl"));
 
-					log_message('info', 'controllers.HAuth.login: user profile:'.PHP_EOL.print_r($user_profile, TRUE));
+					// $data['message'] = $sociallogin;
 
-					$data['user_profile'] = $user_profile;
+					// $this->load->view('json',$data);
 
-					$this->load->view('hauth/done',$data);
+					
 				}
 				else // Cannot authenticate user
 				{
@@ -97,6 +99,91 @@ class HAuth extends CI_Controller {
 		require_once APPPATH.'/third_party/hybridauth/index.php';
 
 	}
+	
+	public function posttweet()
+    {
+        $twitter = $this->hybridauthlib->authenticate("Twitter");
+        $message=$this->input->get_post("message");
+        $post=$this->input->get('id');
+        $project=$this->input->get('project');
+        $twitterid = $twitter->getUserProfile();
+        $twitterid = $twitterid->identifier;
+
+
+
+        $data["message"]=$twitter->api()->post("statuses/update.json?status=$message");
+        if(isset($data["message"]->id_str))
+        {
+            // $this->userpost_model->addpostid($data["message"]->id_str,$post);
+            $this->user_model->updatetweet($data["message"]->id_str,$project,$twitterid);
+            redirect($this->input->get_post("returnurl"));
+            $this->load->view("json",$data);
+        }
+        else
+        {
+            redirect($this->input->get_post("returnurl"));
+		  $this->load->view("json",$data);
+        }
+
+    }
+    public function postfb()
+    {
+        $facebook = $this->hybridauthlib->authenticate("Facebook");
+        $message=$this->input->get_post("message");
+        $image=$this->input->get_post("image");
+        $link=$this->input->get_post("link");
+        $project=$this->input->get_post("project");
+//        echo "out".$message;
+        $facebookid = $facebook->getUserProfile();
+        $facebookid = $facebookid->identifier;
+
+
+
+        if($image=="")
+        {
+            $data["message"]=$facebook->api()->api("v2.2/me/feed", "post", array(
+                "message" => "$message",
+                "link"=>"$link"
+            ));
+
+            if(isset($data["message"]['id']))
+            {
+//                echo "hauth".$project;
+                $this->user_model->updatepost($data["message"]['id'],$project,$facebookid);
+                redirect($this->input->get_post("returnurl"));
+//							$this->load->view("json",$data);
+            }
+            else
+            {
+                redirect($this->input->get_post("returnurl"));
+//							$this->load->view("json",$data);
+            }
+        }
+        else
+        {
+            $data["message"]=$facebook->api()->api("v2.2/me/feed", "post", array(
+                "message" => "$message",
+                "picture"=> "$image",
+                "link"=>"$link"
+            ));
+
+//            print_r($data['message']["id"]);
+
+            if(isset($data["message"]["id"]))
+            {
+                
+             redirect($this->input->get_post("returnurl"));
+
+            $this->load->view("json",$data);
+            }
+            else
+			{
+                redirect($this->input->get_post("returnurl"));
+                $this->load->view("json",$data);
+            }
+        }
+
+    }
 }
 
 /* End of file hauth.php */
