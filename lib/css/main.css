@@ -456,3 +456,24 @@ h5.pricecolor {
 width: 300px;
 height: 300px;
 }
+a.btn.btn-primary.g-login {
+  background: #dd4d3b;
+}
+
+.g-login,.fb-login,.normal-login {
+  margin-right: 10px;
+}
+
+
+a.btn.btn-primary.fb-login {
+  background: #3c5a98;
+}
+a.btn.btn-primary.pull-right.fb-login {
+    background: #3c5a98;
+    margin-right: 8px;
+}
+
+a.btn.btn-primary.pull-right.g-login {
+    background: #dd4d3b;
+    margin-right: 8px;
+}

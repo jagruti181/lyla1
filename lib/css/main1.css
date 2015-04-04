@@ -1143,3 +1143,15 @@ a.gogo {
   font-size: 11px;
 
 }
+
+
+    a.btn.btn-primary.pull-right.fb-login {
+    background: #3c5a98;
+    margin-right: 8px;
+}
+
+a.btn.btn-primary.pull-right.g-login {
+    background: #dd4d3b;
+    margin-right: 8px;
+}
+    
