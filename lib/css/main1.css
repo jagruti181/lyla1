@@ -1144,14 +1144,27 @@ a.gogo {
 
 }
 
-
-    a.btn.btn-primary.pull-right.fb-login {
-    background: #3c5a98;
-    margin-right: 8px;
+}
+a.g-login {
+  background: #dd4d3b;
+    margin-right:8px;
+}
+a.fb-login {
+  background: #3c5a98;
+    margin-right:8px;
+}
+a.g-login:hover,a.g-login:active,a.g-login:focus {
+  background: #dd4d3b;
+    margin-right:8px;
+}
+a.fb-login:hover,a.fb-login:active,a.fb-login:focus {
+  background: #3c5a98;
+    margin-right:8px;
+}
+a.g-login i.fa.fa-google-plus {
+    padding-right: 6px;
 }
 
-a.btn.btn-primary.pull-right.g-login {
-    background: #dd4d3b;
-    margin-right: 8px;
+a.fb-login i.fa.fa-facebook {
+    padding-right: 6px;
 }
-    

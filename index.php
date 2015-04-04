@@ -67,6 +67,7 @@
     <link href="lib/css/ngDialog.css" rel="stylesheet">
     <link href="lib/range/angular.rangeSlider.css" rel="stylesheet">
     <link href="https://checkout.stripe.com/v3/checkout/button.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
