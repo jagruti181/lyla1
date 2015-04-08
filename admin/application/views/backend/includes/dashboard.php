@@ -53,7 +53,129 @@
             
         </div>
     </div>
+<div class="row">
+       <div class="col-md-5">
+          <div class="well" style="text-align:center;">
+              Most Searched Products
+          </div>
+           <div class="row">
+                <div class="col-md-5">
+                    <div class="well" style="text-align:center;">
+                    <p>Most Searched Product Of Month</p>
+                    </div>
+                    <div class="row state-overview"  >
+                        <table class="table table-striped table-hover border-top " id="sample_99" cellpadding="0" cellspacing="0" >
+                            <thead>
+                                <tr>
+                                    <!--<th>Id</th>-->
+                                    <th>Product Name</th>
+                                    <th>Search Times</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php foreach($toptenproductsearchmonth as $row) { ?>
+                                    <tr>
+                                        <!--<td><?php echo $row->id; ?></td>-->
+                                        <td><?php echo $row->productname; ?></td>
+                                        <td><?php echo $row->count1; ?></td>
+                                    </tr>
+                                    <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-5">
+                    <div class="well" style="text-align:center;">
+                    <p>Most Searched Product Of the Year</p>
+                    </div>
+                    <div class="row state-overview"  >
+                        <table class="table table-striped table-hover border-top " id="sample_99" cellpadding="0" cellspacing="0" >
+                            <thead>
+                                <tr>
+                                    <!--<th>Id</th>-->
+                                    <th>Product Name</th>
+                                    <th>Search Times</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php foreach($toptenproductsearchyear as $row) { ?>
+                                    <tr>
+                                        <!--<td><?php echo $row->id; ?></td>-->
+                                        <td><?php echo $row->productname; ?></td>
+                                        <td><?php echo $row->count1; ?></td>
+                                    </tr>
+                                    <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+       <div class="col-md-1">
+        </div>
+       <div class="col-md-5">
+          <div class="well" style="text-align:center;">
+              Most Viewed Products
+          </div>
+           <div class="row">
+                <div class="col-md-5">
+                    <div class="well" style="text-align:center;">
+                    <p>Most viewed Product Of Month</p>
+                    </div>
+                    <div class="row state-overview"  >
+                        <table class="table table-striped table-hover border-top " id="sample_99" cellpadding="0" cellspacing="0" >
+                            <thead>
+                                <tr>
+                                    <!--<th>Id</th>-->
+                                    <th>Product Name</th>
+                                    <th>Search Times</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php foreach($toptenproductviewmonth as $row) { ?>
+                                    <tr>
+                                        <!--<td><?php echo $row->id; ?></td>-->
+                                        <td><?php echo $row->productname; ?></td>
+                                        <td><?php echo $row->count1; ?></td>
+                                    </tr>
+                                    <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-5">
+                    <div class="well" style="text-align:center;">
+                    <p>Most Viewed Product Of the Year</p>
+                    </div>
+                    <div class="row state-overview"  >
+                        <table class="table table-striped table-hover border-top " id="sample_99" cellpadding="0" cellspacing="0" >
+                            <thead>
+                                <tr>
+                                    <!--<th>Id</th>-->
+                                    <th>Product Name</th>
+                                    <th>Search Times</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php foreach($toptenproductviewyear as $row) { ?>
+                                    <tr>
+                                        <!--<td><?php echo $row->id; ?></td>-->
+                                        <td><?php echo $row->productname; ?></td>
+                                        <td><?php echo $row->count1; ?></td>
+                                    </tr>
+                                    <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

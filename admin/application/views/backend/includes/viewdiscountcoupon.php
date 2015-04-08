@@ -4,7 +4,53 @@
 	</div>
 	
 </div>
+
 <div class="row">
+    <div class="col-md-6">
+        <div class="well">
+        <b>Most Popular Of Month</b>
+        </div>
+        <div class="row state-overview"  >
+            <div class="col-lg-12 col-sm-12">
+                <section class="panel">
+                    <div class="symbol terques">
+                        <i class="icon-user"></i>
+                    </div>
+                    <a href="<?php echo site_url('site/dashboardzonewise'); ?>">
+                    <div class="value">
+                       <p>Most Popular Of Month </p>
+                        <h1><?php echo $monthpopularcouponcode->couponcode;?></h1>
+
+                    </div>
+                    </a>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="well">
+        <b>Most Popular Of Year</b>
+        </div>
+        <div class="row state-overview"  >
+            <div class="col-lg-12 col-sm-12">
+                <section class="panel">
+                    <div class="symbol terques">
+                        <i class="icon-user"></i>
+                    </div>
+                    <a href="<?php echo site_url('site/dashboardzonewise'); ?>">
+                    <div class="value">
+                       <p>Most Popular Of Year </p>
+                        <h1><?php echo $yearpopularcouponcode->couponcode;?></h1>
+
+                    </div>
+                    </a>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    
 	<div class="col-lg-12">
 		<section class="panel">
 			<header class="panel-heading">

@@ -695,5 +695,50 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
     }
     
     
+	function gettoptenproductsearchmonth()
+	{
+		$query=$this->db->query("SELECT COUNT(`productsearchlog`.`product`) AS `count1`,`productsearchlog`. `id`, `productsearchlog`. `product`, `productsearchlog`. `user`, `productsearchlog`. `timestamp` ,`product`.`name` AS `productname`,YEAR(`productsearchlog`. `timestamp`)
+FROM `productsearchlog` 
+LEFT OUTER JOIN `product` ON `product`.`id`=`productsearchlog`. `product`
+WHERE YEAR(NOW())=YEAR(`productsearchlog`. `timestamp`)
+GROUP BY `productsearchlog`.`product`
+ORDER BY `count1` DESC
+LIMIT 0 , 10")->result();
+		return $query;
+	}
+	function gettoptenproductsearchyear()
+	{
+		$query=$this->db->query("SELECT COUNT(`productsearchlog`.`product`) AS `count1`,`productsearchlog`. `id`, `productsearchlog`. `product`, `productsearchlog`. `user`, `productsearchlog`. `timestamp` ,`product`.`name` AS `productname`,MONTH(`productsearchlog`. `timestamp`)
+FROM `productsearchlog` 
+LEFT OUTER JOIN `product` ON `product`.`id`=`productsearchlog`. `product`
+WHERE MONTH(NOW())=MONTH(`productsearchlog`. `timestamp`) AND YEAR(NOW())=YEAR(`productsearchlog`. `timestamp`)
+GROUP BY `productsearchlog`.`product`
+ORDER BY `count1` DESC
+LIMIT 0 , 10")->result();
+		return $query;
+	}
+    
+	function gettoptenproductviewmonth()
+	{
+		$query=$this->db->query("SELECT COUNT(`productviewlog`.`product`) AS `count1`,`productviewlog`. `id`, `productviewlog`. `product`, `productviewlog`. `user`, `productviewlog`. `timestamp` ,`product`.`name` AS `productname`,YEAR(`productviewlog`. `timestamp`)
+FROM `productviewlog` 
+LEFT OUTER JOIN `product` ON `product`.`id`=`productviewlog`. `product`
+WHERE YEAR(NOW())=YEAR(`productviewlog`. `timestamp`)
+GROUP BY `productviewlog`.`product`
+ORDER BY `count1` DESC
+LIMIT 0 , 10")->result();
+		return $query;
+	}
+	function gettoptenproductviewyear()
+	{
+		$query=$this->db->query("SELECT COUNT(`productviewlog`.`product`) AS `count1`,`productviewlog`. `id`, `productviewlog`. `product`, `productviewlog`. `user`, `productviewlog`. `timestamp` ,`product`.`name` AS `productname`,MONTH(`productviewlog`. `timestamp`)
+FROM `productviewlog` 
+LEFT OUTER JOIN `product` ON `product`.`id`=`productviewlog`. `product`
+WHERE MONTH(NOW())=MONTH(`productviewlog`. `timestamp`) AND  YEAR(NOW())=YEAR(`productviewlog`. `timestamp`)
+GROUP BY `productviewlog`.`product`
+ORDER BY `count1` DESC
+LIMIT 0 , 10")->result();
+		return $query;
+	}
 }
 ?>

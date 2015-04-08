@@ -25,6 +25,10 @@ class Site extends CI_Controller
 		//$access = array("1","2");
 		$access = array("1","2");
 		$this->checkaccess($access);
+		$data['toptenproductsearchmonth']=$this->product_model->gettoptenproductsearchmonth();
+		$data['toptenproductsearchyear']=$this->product_model->gettoptenproductsearchyear();
+        $data['toptenproductviewmonth']=$this->product_model->gettoptenproductviewmonth();
+		$data['toptenproductviewyear']=$this->product_model->gettoptenproductviewyear();
 		$data[ 'page' ] = 'dashboard';
 		$data[ 'title' ] = 'Welcome';
 		$this->load->view( 'template', $data );	
@@ -2234,6 +2238,8 @@ class Site extends CI_Controller
 		$access = array("1");
 		$this->checkaccess($access);
 		$data['table']=$this->discountcoupon_model->viewdiscountcoupon();
+		$data['monthpopularcouponcode']=$this->discountcoupon_model->getpopularcouponcodemonth();
+		$data['yearpopularcouponcode']=$this->discountcoupon_model->getpopularcouponcodeyear();
 		$data['page']='viewdiscountcoupon';
 		$data['title']='View discountcoupon';
 		$this->load->view('template',$data);

@@ -41,6 +41,26 @@ class discountcoupon_model extends CI_Model
 		ORDER BY `discountcoupon`.`id` ASC")->result();
 		return $query;
 	}
+	function getpopularcouponcodemonth()
+	{
+		$query=$this->db->query("SELECT  `id` , COUNT(  `couponcode` ) AS  `count1`,`couponcode` , MONTH(  `enddate` ) AS  `endmonth` , MONTH( NOW( ) ) AS  `currentmonth` 
+FROM  `discountcoupon` 
+WHERE MONTH(  `enddate` ) = MONTH( NOW( ) ) AND  YEAR(  `enddate` ) = YEAR( NOW( ) )
+GROUP BY  `couponcode` 
+ORDER BY  `count1` DESC 
+LIMIT 0 , 1")->row();
+		return $query;
+	}
+	function getpopularcouponcodeyear()
+	{
+		$query=$this->db->query("SELECT  `id` , COUNT(  `couponcode` ) AS  `count1`,`couponcode` , YEAR(  `enddate` ) AS  `endyear` , YEAR( NOW( ) ) AS  `currentyear` 
+FROM  `discountcoupon` 
+WHERE YEAR(  `enddate` ) = YEAR( NOW( ) ) 
+GROUP BY  `couponcode` 
+ORDER BY  `count1` DESC 
+LIMIT 0 , 1")->row();
+		return $query;
+	}
 	public function beforeeditdiscountcoupon($id)
 	{
 		$this->db->where('id',$id);
