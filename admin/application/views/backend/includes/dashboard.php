@@ -241,17 +241,144 @@
        <div class="col-md-1">
         </div>
        <div class="col-md-5">
-<!--
           <div class="well" style="text-align:center;">
-              Most Viewed Products
+              Revenue
           </div>
--->
            <div class="row">
                 <div class="col-md-5">
-                    
+                    <div class="well" style="text-align:center;">
+                    <p>Total Revenue Of Current Month</p>
+                    </div>
+                    <div class="row state-overview"  >
+                        <div class="col-lg-12 col-sm-12">
+                            <section class="panel">
+                                <div class="symbol terques">
+                                    <i class="icon-user"></i>
+                                </div>
+            <!--                    <a href="<?php echo site_url('site/dashboardzonewise'); ?>">-->
+                                <div class="value">
+                                   <p>Current Month Revenue</p>
+                                    <h1><?php echo $totalrevenuemonth->currentmonthrevenue;?></h1>
+
+                                </div>
+            <!--                    </a>-->
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-5">
+                    <div class="well" style="text-align:center;">
+                    <p>Total Revenue On Site</p>
+                    </div>
+                    <div class="row state-overview"  >
+                        <div class="col-lg-12 col-sm-12">
+                            <section class="panel">
+                                <div class="symbol terques">
+                                    <i class="icon-user"></i>
+                                </div>
+            <!--                    <a href="<?php echo site_url('site/dashboardzonewise'); ?>">-->
+                                <div class="value">
+                                   <p>Total Revenue</p>
+                                    <h1><?php echo $totalrevenue->revenue;?></h1>
+
+                                </div>
+            <!--                    </a>-->
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+<!--
+<div>
+   <div class="well">
+<b>Daily Sales Quantity Amount Graph</b>
+</div>
+    <div class="drawchart">
+    
+</div>
+   <div class="drawpiechart1" style="margin-top:50px;"></div>            
 
+   <script type="text/javascript">
+    $(function () {
+        var seriesOptions = [],
+            seriesCounter = 0,
+            names = [{name:"Quantity",color:"#3498db",url:"<?php echo site_url("site/checkchartjson1");?>"},{name:"Amount",color:"#9b59b6",url:"<?php echo site_url("site/checkchartjson2");?>"}],
+            // create the chart when all data is loaded
+            createChart = function () {
+
+                $('.drawchart').highcharts('StockChart', {
+
+                    rangeSelector: {
+                        inputEnabled: $('.drawchart').width() > 480,
+                        selected: 4
+                    },
+
+                    yAxis: {
+                        labels: {
+                            formatter: function () {
+                                return (this.value > 0 ? ' + ' : '') + this.value + '%';
+                            }
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 2,
+                            color: 'red'
+                    }]
+                    },
+
+                    plotOptions: {
+                        series: {
+                            compare: 'percent'
+                        }
+                    },
+
+                    tooltip: {
+                        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                        valueDecimals: 2
+                    },
+
+                    series: seriesOptions
+                });
+            };
+
+        $.each(names, function (i, singleline) {
+            console.log(names);
+            $.getJSON(singleline.url, function (data) {
+                
+                for(var j=0;j<data.length;j++)
+                {
+                    data[j][0]=parseInt(data[j][0]);
+                    data[j][1]=parseFloat(data[j][1]);
+                }
+                console.log(data);
+                seriesOptions[i] = {
+                    name: singleline.name,
+                    color: singleline.color,
+                    data: data
+                };
+
+                // As we're loading the data asynchronously, we don't know what order it will arrive. So
+                // we keep a counter and create the chart when all the data is loaded.
+                seriesCounter += 1;
+
+                if (seriesCounter === names.length) {
+                    createChart();
+                }
+            });
+        });
+    });
+</script>
+<script>
+$(document).ready(function() {
+    generatepiechart("Sales Person Quantity Pie Diagram for Current Month",".drawpiechart1",<?php echo $values;?>)
+});
+</script>
+</div>
+-->
 
 
 

@@ -768,5 +768,21 @@ LIMIT 0,10")->result();
 		$query=$this->db->query("SELECT `id`, `product`, `user`, `timestamp` FROM `productviewlog` WHERE `user`='$userid' ORDER BY `timestamp` DESC")->result();
 		return $query;
 	}
+	function gettotalrevenuemonth()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(now()) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth`
+FROM `orderitems`
+LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order`
+WHERE MONTH(NOW())=MONTH(`order`.`timestamp`) 
+GROUP BY MONTH(now())")->row();
+		return $query;
+	}
+	function gettotalrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `revenue`
+FROM `orderitems`
+LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order`")->row();
+		return $query;
+	}
 }
 ?>

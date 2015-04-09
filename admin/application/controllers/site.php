@@ -27,11 +27,18 @@ class Site extends CI_Controller
 		$this->checkaccess($access);
 		$data['toptenproductsearchmonth']=$this->product_model->gettoptenproductsearchmonth();
 		$data['toptenproductsearchyear']=$this->product_model->gettoptenproductsearchyear();
+        
         $data['toptenproductviewmonth']=$this->product_model->gettoptenproductviewmonth();
 		$data['toptenproductviewyear']=$this->product_model->gettoptenproductviewyear();
         
 		$data['toptenbestsellingproductmonth']=$this->product_model->gettoptenbestsellingproductmonth();
 		$data['toptenbestsellingproductalltime']=$this->product_model->gettoptenbestsellingproductalltime();
+        
+		$data['toptenbestsellingproductmonth']=$this->product_model->gettoptenbestsellingproductmonth();
+		$data['toptenbestsellingproductalltime']=$this->product_model->gettoptenbestsellingproductalltime();
+        
+        $data['totalrevenuemonth']=$this->product_model->gettotalrevenuemonth();
+        $data['totalrevenue']=$this->product_model->gettotalrevenue();
 		$data[ 'page' ] = 'dashboard';
 		$data[ 'title' ] = 'Welcome';
 		$this->load->view( 'template', $data );	
@@ -3334,5 +3341,15 @@ class Site extends CI_Controller
 	}
     
    
+    public function checkchartjson1()
+    {
+        $data["message"]=$this->chintantable->gethighstockjson("DATE(`order`.`timestamp`)","SUM(`orderitems`.`quantity`)","FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order`","","GROUP BY DATE(`order`.`timestamp`)","","","");
+        $this->load->view('json',$data);
+    }
+    public function checkchartjson2()
+    {
+        $data["message"]=$this->chintantable->gethighstockjson("DATE(`order`.`timestamp`)","SUM(`orderitems`.`quantity`)","FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order`","","GROUP BY DATE(`order`.`timestamp`)","","","");
+        $this->load->view('json',$data);
+    }
 }
 ?>
