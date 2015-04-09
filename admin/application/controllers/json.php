@@ -391,6 +391,12 @@ class Json extends CI_Controller
         $this->order_model->emailcustomerdiscount();
     }
     
-    
+    public function getlastsearchedproductbyuser()
+    {
+        $userid=$this->session->userdata('id');
+//        $userid=$this->input->get_post('id');
+        $data["message"]=$this->product_model->getlastsearchedproductbyuser($userid);
+        $this->load->('json',$data);
+    }
 }
 ?>

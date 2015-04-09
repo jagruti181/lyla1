@@ -740,5 +740,33 @@ ORDER BY `count1` DESC
 LIMIT 0 , 10")->result();
 		return $query;
 	}
+	function gettoptenbestsellingproductmonth()
+	{
+		$query=$this->db->query("SELECT count(`orderitems`.`product`) AS `count1`,MONTH(NOW()),`product`.`name`  AS `productname`,`orderitems`.`product` AS `productid`,`order`.`timestamp`,MONTH(`order`.`timestamp`)
+FROM `orderitems` 
+LEFT OUTER JOIN `order` ON `orderitems`.`order`=`order`.`id` 
+LEFT OUTER JOIN `product` ON `product`.`id`=`orderitems`.`product`
+WHERE MONTH(NOW())=MONTH(`order`.`timestamp`) AND YEAR(NOW())=YEAR(`order`.`timestamp`)
+GROUP BY `orderitems`.`product` 
+ORDER BY COUNT(product) DESC 
+LIMIT 0,10")->result();
+		return $query;
+	}
+	function gettoptenbestsellingproductalltime()
+	{
+		$query=$this->db->query("SELECT count(`orderitems`.`product`) AS `count1`,MONTH(NOW(`order`.`timestamp`)),`product`.`name`  AS `productname`,`orderitems`.`product` AS `productid`
+FROM `orderitems` 
+LEFT OUTER JOIN `order` ON `orderitems`.`order`=`order`.`id` 
+LEFT OUTER JOIN `product` ON `product`.`id`=`orderitems`.`product` 
+GROUP BY `orderitems`.`product` 
+ORDER BY COUNT(product) DESC 
+LIMIT 0,10")->result();
+		return $query;
+	}
+	function getlastsearchedproductbyuser($userid)
+	{
+		$query=$this->db->query("SELECT `id`, `product`, `user`, `timestamp` FROM `productviewlog` WHERE `user`='$userid' ORDER BY `timestamp` DESC")->result();
+		return $query;
+	}
 }
 ?>

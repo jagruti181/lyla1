@@ -177,6 +177,81 @@
         </div>
     </div>
 
+<div class="row">
+       <div class="col-md-5">
+          <div class="well" style="text-align:center;">
+              Best Selling Products
+          </div>
+           <div class="row">
+                <div class="col-md-5">
+                    <div class="well" style="text-align:center;">
+                    <p>Best Selling Products Of Month</p>
+                    </div>
+                    <div class="row state-overview"  >
+                        <table class="table table-striped table-hover border-top " id="sample_99" cellpadding="0" cellspacing="0" >
+                            <thead>
+                                <tr>
+                                    <!--<th>Id</th>-->
+                                    <th>Product Name</th>
+                                    <th>Times</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php foreach($toptenbestsellingproductmonth as $row) { ?>
+                                    <tr>
+                                        <!--<td><?php echo $row->id; ?></td>-->
+                                        <td><?php echo $row->productname; ?></td>
+                                        <td><?php echo $row->count1; ?></td>
+                                    </tr>
+                                    <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-5">
+                    <div class="well" style="text-align:center;">
+                    <p>Best Selling Product Of All Time</p>
+                    </div>
+                    <div class="row state-overview"  >
+                        <table class="table table-striped table-hover border-top " id="sample_99" cellpadding="0" cellspacing="0" >
+                            <thead>
+                                <tr>
+                                    <!--<th>Id</th>-->
+                                    <th>Product Name</th>
+                                    <th>Times</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php foreach($toptenbestsellingproductalltime as $row) { ?>
+                                    <tr>
+                                        <!--<td><?php echo $row->id; ?></td>-->
+                                        <td><?php echo $row->productname; ?></td>
+                                        <td><?php echo $row->count1; ?></td>
+                                    </tr>
+                                    <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       <div class="col-md-1">
+        </div>
+       <div class="col-md-5">
+<!--
+          <div class="well" style="text-align:center;">
+              Most Viewed Products
+          </div>
+-->
+           <div class="row">
+                <div class="col-md-5">
+                    
+        </div>
+    </div>
+
 
 
 

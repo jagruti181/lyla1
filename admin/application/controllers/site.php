@@ -29,6 +29,9 @@ class Site extends CI_Controller
 		$data['toptenproductsearchyear']=$this->product_model->gettoptenproductsearchyear();
         $data['toptenproductviewmonth']=$this->product_model->gettoptenproductviewmonth();
 		$data['toptenproductviewyear']=$this->product_model->gettoptenproductviewyear();
+        
+		$data['toptenbestsellingproductmonth']=$this->product_model->gettoptenbestsellingproductmonth();
+		$data['toptenbestsellingproductalltime']=$this->product_model->gettoptenbestsellingproductalltime();
 		$data[ 'page' ] = 'dashboard';
 		$data[ 'title' ] = 'Welcome';
 		$this->load->view( 'template', $data );	
