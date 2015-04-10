@@ -954,7 +954,7 @@ phonecatControllers.controller('lookbook',
             $scope.lookbookimages = data.product;
             $scope.changeactivelookbook(0);
         };
-        MainJson.getproductbycategory(9).success(categorysuccess);
+        MainJson.getproductbycategory("lookbook").success(categorysuccess);
 
     });
 

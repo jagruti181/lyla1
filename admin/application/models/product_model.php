@@ -378,6 +378,7 @@ class Product_model extends CI_Model
 	}
 	function getproductbycategory($category,$color,$price1,$price2)
 	{
+//        echo $category;
 		$getcategoryidbyname=$this->db->query("SELECT * FROM `category` WHERE `name`LIKE '$category'")->row();
         $category=$getcategoryidbyname->id;
 		$where = "";
