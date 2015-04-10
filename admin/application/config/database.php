@@ -77,7 +77,7 @@ $active_record = TRUE;
 // Production (App Engine Cloud SQL) DB Settings
 $db['production']['hostname'] = 'localhost';
 $db['production']['username'] = 'root';
-$db['production']['password'] = '';
+$db['production']['password'] = 'chintan123';
 $db['production']['database'] = 'lylaadmin';
 $db['production']['dbdriver'] = 'mysqli';
 $db['production']['pconnect'] = FALSE;
