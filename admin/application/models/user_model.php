@@ -414,11 +414,21 @@ class User_model extends CI_Model
                'price'   => $price,
         );
         //array_push($data,$data2);
-
+        $userid=$this->session->userdata('id');
+        if($userid=="")
+        {
+            
+        }
+        else
+        {
+            $this->db->query("INSERT INTO `usercart`(`user`, `product`, `quantity`, `status`, `timestamp`) VALUES ('$userid','$product','$quantity',1,NULL)");
+        }
         $this->cart->insert($data);
     }
     
     function destroycart() {
+        $userid=$this->session->userdata('id');
+        $this->db->query("DELETE FROM `usercart` WHERE `user`='$userid'");
         $this->cart->destroy();
         $orderid=$this->session->userdata("orderid");
         $this->db->query("UPDATE `order` SET `orderstatus`='2' WHERE `id`='$orderid'");

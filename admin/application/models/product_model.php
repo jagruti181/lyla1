@@ -786,5 +786,175 @@ FROM `orderitems`
 LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order`")->row();
 		return $query;
 	}
+    
+	function getjanrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=1 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+        $count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+		return $query->currentmonthrevenue;
+	}
+	function getfebrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=2 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+        $count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+	}
+	function getmarchrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=3 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+        $count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+	}
+	function getaprilrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=4 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+        $count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+	}
+	function getmayrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=5 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+        $count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query;
+            return $query->currentmonthrevenue;
+        }
+	}
+	function getjunerevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=6 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+        $count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+	}
+	function getjulyrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=7 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+        $count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+	}
+	function getaugrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=8 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+		$count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+	}
+	function getseptrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=9 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+		$count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+	}
+	function getoctrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=10 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+		$count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+	}
+	function getnovrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=11 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+		$count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+	}
+	function getdecrevenue()
+	{
+		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(`order`.`timestamp`) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(`order`.`timestamp`)=12 AND YEAR(NOW())=YEAR(`order`.`timestamp`) GROUP BY MONTH(`order`.`timestamp`)");
+		$count=$query->num_rows();
+        if($count==0)
+        {
+            return 0;
+        }
+        else
+        {
+            $query=$query->row();
+            return $query->currentmonthrevenue;
+        }
+	}
 }
 ?>
