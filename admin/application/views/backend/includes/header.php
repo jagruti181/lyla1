@@ -205,7 +205,6 @@ $(document).ready(function(){
                           <span class="arrow"></span>
                       </a>
                   </li> 
-<!--
                      <li >
                       <a href="<?php echo site_url('site/viewprocessingorder'); ?>" class="">
                           <i class="icon-money"></i>
@@ -227,7 +226,6 @@ $(document).ready(function(){
                           <span class="arrow"></span>
                       </a>
                   </li>
--->
                   <li >
                       <a href="<?php echo site_url('site/newsletter'); ?>" class="">
                           <i class="icon-money"></i>
