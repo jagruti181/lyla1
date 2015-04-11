@@ -1,3 +1,4 @@
+<!--
 <header class="Banner">
 
     <div class="Banner-auth" id="auth"></div>
@@ -53,6 +54,7 @@
             
         </div>
     </div>
+-->
 <div class="row">
        <div class="col-md-5">
           <div class="well" style="text-align:center;">
@@ -296,26 +298,23 @@
     <script type="text/javascript">
       google.load("visualization", "1.1", {packages:["bar"]});
       google.setOnLoadCallback(drawStuff);
-
+        
       function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
           ['Months', 'Revenue'],
-          ["Jan", <?php echo $janrevenue;?>],
-            ["Feb", <?php echo $febrevenue;?>],
-            ["March", <?php echo $marchrevenue;?>],
-            ["April", <?php echo $aprilrevenue;?>],
-            ["May", <?php echo $mayrevenue;?>],
-            ["June", <?php echo $junerevenue;?>],
-            ["July", <?php echo $julyrevenue;?>],
-            ["Aug", <?php echo $augrevenue;?>],
-            ["Sept", <?php echo $septrevenue;?>],
-            ["Oct", <?php echo $octrevenue;?>],
-            ["Nov", <?php echo $novrevenue;?>],
-            ["Dec", <?php echo $decrevenue;?>],
-//          ["Queen's pawn (d4)", 31],
-//          ["Knight to King 3 (Nf3)", 12],
-//          ["Queen's bishop pawn (c4)", 10],
-//          ['Other', 3]
+          ["Jan", <?php echo $monthrevenue[1];?>],
+            ["Feb", <?php echo $monthrevenue[2];?>],
+            ["March", <?php echo $monthrevenue[3];?>],
+            ["April", <?php echo $monthrevenue[4];?>],
+            ["May", <?php echo $monthrevenue[5];?>],
+            ["June", <?php echo $monthrevenue[6];?>],
+            ["July", <?php echo $monthrevenue[7];?>],
+            ["Aug", <?php echo $monthrevenue[8];?>],
+            ["Sept", <?php echo $monthrevenue[9];?>],
+            ["Oct", <?php echo $monthrevenue[10];?>],
+            ["Nov", <?php echo $monthrevenue[11];?>],
+            ["Dec", <?php echo $monthrevenue[12];?>]
+
         ]);
 
         var options = {

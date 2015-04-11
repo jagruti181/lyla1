@@ -501,7 +501,12 @@ WHERE DATE(`order`.`timestamp`) = '$date'")->result();
     
          function particularorders($id)
          {
-           $query=$this->db->query("SELECT `orderstatus`.`name` ,`order`.`finalamount`,`order`.`timestamp`,`order`.`firstname`,`order`.`lastname`FROM `order` INNER JOIN `orderstatus` ON `order`.`orderstatus`=`orderstatus`.`id` WHERE `user`='$id'")->result();
+           $query=$this->db->query("SELECT `order`.`id` as `id`,`order`.`firstname` as `firstname`,`order`.`lastname` as `lastname`,`order`.`user` as `user`,`order`.`orderstatus` as `orderstatusid`,`orderstatus`.`name` as `orderstatus`,`order`.`totalamount`,`order`.`discountamount`,`order`.`finalamount`,`order`.`trackingcode`,`order`.`timestamp` FROM `order` 	
+		LEFT OUTER JOIN  `user` ON `user`.`id`=`order`.`user`
+		LEFT OUTER JOIN `orderstatus` ON `orderstatus`.`id`=`order`.`orderstatus`
+		LEFT OUTER JOIN `currency` ON `currency`.`id`=`order`.`currency`
+        WHERE `order`.`user`='$id'
+		ORDER BY `order`.`timestamp` DESC")->result();
            return $query;
          }
 }

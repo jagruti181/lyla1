@@ -33,18 +33,8 @@ class Site extends CI_Controller
 //        }
 //        $data["values"]=json_encode($query);
         
-        $data['janrevenue']=$this->product_model->getjanrevenue();
-        $data['febrevenue']=$this->product_model->getfebrevenue();
-        $data['marchrevenue']=$this->product_model->getmarchrevenue();
-        $data['aprilrevenue']=$this->product_model->getaprilrevenue();
-        $data['mayrevenue']=$this->product_model->getmayrevenue();
-        $data['junerevenue']=$this->product_model->getjunerevenue();
-        $data['julyrevenue']=$this->product_model->getjulyrevenue();
-        $data['augrevenue']=$this->product_model->getaugrevenue();
-        $data['septrevenue']=$this->product_model->getseptrevenue();
-        $data['octrevenue']=$this->product_model->getoctrevenue();
-        $data['novrevenue']=$this->product_model->getnovrevenue();
-        $data['decrevenue']=$this->product_model->getdecrevenue();
+        $data['monthrevenue']=$this->product_model->getmonthrevenue();
+      
         
 		$data['toptenproductsearchmonth']=$this->product_model->gettoptenproductsearchmonth();
 		$data['toptenproductsearchyear']=$this->product_model->gettoptenproductsearchyear();
@@ -3269,14 +3259,14 @@ class Site extends CI_Controller
 		$this->load->view('template',$data);
 	}
   
-    function vieworderdetails()
+    function viewcustomerorders()
 	{
 		$access = array("1");
 		$this->checkaccess($access);
         $id=$this->input->get('id');
         $data['order']=$this->order_model->particularorders($id);
         $data['page']='viewparticularorder';
-		$data['title']='View new blue';
+		$data['title']='View Orders';
 		$this->load->view('template',$data);
 	} 
     //top 10 product all time

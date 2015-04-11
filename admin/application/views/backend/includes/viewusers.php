@@ -22,6 +22,7 @@
 					<th>Company name</th>
 					<th>Country</th>
 					<th>Accesslevel</th>
+					<th>Orders</th>
 					<th>Status</th>
 					<th> Actions </th>
 				</tr>
@@ -36,6 +37,9 @@
 						<td><?php echo $row->companyname; ?></td>
 						<td><?php echo $row->countryname; ?></td>
 						<td><?php echo $row->accesslevel; ?></td>
+						<td>
+						<a class="btn btn-primary btn-pos1"  href="<?php echo site_url('site/viewcustomerorders?id=').$row->id; ?>"><i class="icon-upload"></i>View</a>
+						</td>
 						<td><?php if($row->status==1) { ?>
 							<a href="<?php echo site_url('site/changeuserstatus?id=').$row->id; ?>" class="label label-success label-mini">Enable</a>
 						<?php } else { ?>
