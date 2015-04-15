@@ -141,10 +141,11 @@
 
 <body>
     <header>
-        <div class="top-bar barheight">
+       <div style="width:1440px;">
+        <div class="top-bar barheight" style="width:1440px;float:left;">
 
             <div class="row">
-                <div class="col-xs-2">
+                <div class="col-xs-2" style="width:244px;float:left;min-size:244px;">
                     <div class="input-group headsearch " ng-controller="search">
                         <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
                         <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search for an item" ng-change="search(searchpro)">
@@ -152,7 +153,7 @@
 
 
                 </div>
-                <div class="col-xs-7 padder" ng-controller="newsletter">
+                <div class="col-xs-7 padder" ng-controller="newsletter" style="width:800px;float:left;min-size:900px;">
                     <span>SHIPPING WORLDWIDE</span>
                     <span>FREE  DOMESTIC SHIPPING ON ORDERS OVER £15</span>
                     <span>FREE  INTERNATIONAL SHIPPING ON ORDERS OVER £20</span>
@@ -163,7 +164,7 @@
 -->
                 </div>
 
-                <div class="col-xs-3">
+                <div class="col-xs-3" style="width:302px;float:left;min-width:242px;">
 
 
                     <div class="set-head pull-right" style="margin-right:15px;" ng-controller="badge">
@@ -210,6 +211,7 @@
                 </div>
             </div>
         </div>
+        
     </header>
     <div class="barheight"></div>
     <div class="container-fluid-non-responsive">
