@@ -1167,3 +1167,7 @@ span.currencysym {
 span.currencytobe {
     padding: 0;
 }
+#c9-button.c9-image.c9-bottom-left, #c9-button.c9-image.c9-bottom-right {
+  bottom: 0;
+  display: none;
+}

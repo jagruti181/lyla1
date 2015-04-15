@@ -184,6 +184,11 @@ service.factory('MainJson', function($http, TemplateService) {
     var coupondetails = $.jStorage.get("coupon");
     var discount = $.jStorage.get("coupon");
 
+    var recents = $.jStorage.get("recentproducts");
+    var recentproducts = [];
+    if (recents) {
+        recentproducts = recents;
+    }
     /*{
 		placeorder: function(firstname,lastname,email,company,billingaddress,billingcity,billingstate,billingpincode,billingcountry,phone,fax,shippingaddress,shippingcity,shippingstate,shippingpincode,shippingcountry,id,status) {
 		 	return $http.post(adminurl+'placeorder?user='+id+'&firstname='+firstname+'&lastname='+lastname+'&email='+email+'&phone='+phone+'&status='+status+'&fax='+fax+'&company='+company+'&billingaddress='+billingaddress+'&billingcity='+billingcity+'&billingstate='+billingstate+'&billingpincode='+billingpincode+'&billingcountry='+billingcountry+'&shippingaddress='+shippingaddress+'&shippingstate='+shippingstate+'&shippingpincode='+shippingpincode+'&shippingcountry='+shippingcountry,{});
@@ -464,6 +469,42 @@ service.factory('MainJson', function($http, TemplateService) {
                 withCredentials: true
             });
         },
+
+        getrecentproduct: function() {
+            console.log("ABC");
+        },
+        addrecentproduct: function(product, productimage) {
+
+            for (var i = 0; i < recentproducts.length; i++) {
+                if (recentproducts[i].id == product.id) {
+                    returnrecent.splice(i, 1);
+                }
+            }
+
+            var addproduct = {
+                id: product.id,
+                link: product.id,
+                price: product.price,
+                image: productimage
+            };
+            recentproducts.unshift(addproduct);
+            $.jStorage.set("recentproducts", recentproducts);
+
+            recentproducts = recentproducts.slice(0, 11);
+            console.log(recentproducts);
+
+
+            var returnrecent = recentproducts;
+            for (var i = 0; i < returnrecent.length; i++) {
+                if (returnrecent[i].id == product.id) {
+                    returnrecent.splice(i, 1);
+                }
+            }
+            returnrecent = returnrecent.slice(0, 10);
+            console.log(returnrecent);
+            return returnrecent;
+        },
+
 
 
     }

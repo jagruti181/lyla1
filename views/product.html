@@ -207,7 +207,7 @@
                 <span ng-show="$index<5" class="pickweek">
                     <a ng-click="template.gourl('/product/'+slider.link);" ><img src="{{slider.image|imagepath}}" class="slideset1 animated slideInLeft" ng-show="showslideset1==0"></a>
                     <div class="proprice proprice2">
-                        <a href="#/product/{{product.id}}">
+                        <a ng-click="template.gourl('/product/'+slider.link);">
                             <h5> {{slider.price|convertprice}}</h5>
                         </a>
                     </div>
@@ -215,7 +215,7 @@
             <span ng-show="$index>=5" class="pickweek">
                     <a ng-click="template.gourl('/product/'+slider.link);"><img src="{{slider.image|imagepath}}" class="slideset1 animated slideInRight" ng-show="showslideset1==1"></a>
                 <div class="proprice proprice2">
-                    <a ng-click="template.gourl('/product/'+product.id);">
+                    <a ng-click="template.gourl('/product/'+slider.link);">
                         <h5> {{slider.price|convertprice}}</h5>
                     </a>
                 </div>
@@ -228,4 +228,3 @@
     </div>
 </div>
 <div style="margin-bottom:300px"></div>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>

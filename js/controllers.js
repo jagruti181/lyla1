@@ -1682,6 +1682,15 @@ phonecatControllers.controller('product',
 
         $scope.name = 'World';
 
+        $scope.$on('$viewContentLoaded', function() {
+            console.log("This is View Loaded Again ******************************************************");
+            setTimeout(function() {
+                stButtons.locateElements();
+            }, 1000);
+
+        });
+
+
 
         $scope.showslideset1 = 0;
         $scope.slidesetnext = function(value) {
@@ -1712,27 +1721,7 @@ phonecatControllers.controller('product',
         }, ];
 
         $scope.ZoomItems = [];
-        $scope.ZoomItems.push({
-            id: 0,
-            big: "http://www.professorcloud.com/images/zoomengine/bigimage00.jpg",
-            tiny: "http://www.professorcloud.com/images/zoomengine/tinyimage.jpg",
-            small: "http://www.professorcloud.com/images/zoomengine/smallimage.jpg",
-            title: "display title",
-        });
-        $scope.ZoomItems.push({
-            id: 1,
-            big: "http://www.professorcloud.com/images/zoomengine/bigimage01.jpg",
-            tiny: "http://www.professorcloud.com/images/zoomengine/tinyimage-1.jpg",
-            small: "http://www.professorcloud.com/images/zoomengine/smallimage-1.jpg",
-            title: "display title",
-        });
-        $scope.ZoomItems.push({
-            id: 2,
-            big: "http://www.professorcloud.com/images/zoomengine/bigimage02.jpg",
-            tiny: "http://www.professorcloud.com/images/zoomengine/tinyimage-2.jpg",
-            small: "http://www.professorcloud.com/images/zoomengine/smallimage-2.jpg",
-            title: "display title",
-        });
+        
 
         $scope.SelectedItem = $scope.ZoomItems[0];
 
@@ -1742,11 +1731,11 @@ phonecatControllers.controller('product',
         };
 
 
-        var slidersuccess = function(data, status) {
-            $scope.sliders = data;
-            console.log($scope.sliders);
-        };
-        MainJson.getallslider().success(slidersuccess);
+//        var slidersuccess = function(data, status) {
+//            $scope.sliders = data;
+//            console.log($scope.sliders);
+//        };
+//        MainJson.getallslider().success(slidersuccess);
 
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
@@ -1804,11 +1793,13 @@ phonecatControllers.controller('product',
                 $scope.rate = data.product.price;
             }
             $scope.product = data.product;
+            
             $scope.product.quantity = parseInt($scope.product.quantity);
             $scope.breadcrumbs = data.breadcrumbs;
             $scope.productimage = data.productimage;
             $scope.relatedproduct = data.relatedproduct;
             console.log(data);
+            $scope.sliders=MainJson.addrecentproduct(data.product,data.productimage[0].image);
             //            $location.hash($scope.product.name.replace(/ /g, "_"));
             $location.replace();
         };
