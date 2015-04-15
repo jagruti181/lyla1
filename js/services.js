@@ -477,7 +477,7 @@ service.factory('MainJson', function($http, TemplateService) {
 
             for (var i = 0; i < recentproducts.length; i++) {
                 if (recentproducts[i].id == product.id) {
-                    returnrecent.splice(i, 1);
+                    recentproducts.splice(i, 1);
                 }
             }
 
@@ -494,7 +494,8 @@ service.factory('MainJson', function($http, TemplateService) {
             console.log(recentproducts);
 
 
-            var returnrecent = recentproducts;
+            var returnrecent = new Array();
+            returnrecent=recentproducts.slice(0,recentproducts.length);
             for (var i = 0; i < returnrecent.length; i++) {
                 if (returnrecent[i].id == product.id) {
                     returnrecent.splice(i, 1);
