@@ -75,21 +75,21 @@ $db['testing']['autoinit'] = TRUE;
 $db['testing']['stricton'] = FALSE;
 
 // Production (App Engine Cloud SQL) DB Settings
-//$db['production']['hostname'] = 'localhost';
-//$db['production']['username'] = 'root';
-//$db['production']['password'] = 'chintan123';
-//$db['production']['database'] = 'lylaadmin';
-//$db['production']['dbdriver'] = 'mysqli';
-//$db['production']['pconnect'] = FALSE;
-//$db['production']['dbprefix'] = '';
-//$db['production']['swap_pre'] = '';
-//$db['production']['db_debug'] = FALSE;
-//$db['production']['cache_on'] = FALSE;
-//$db['production']['autoinit'] = FALSE;
-//$db['production']['char_set'] = 'utf8';
-//$db['production']['dbcollat'] = 'utf8_general_ci';
-//$db['production']['cachedir'] = '';
-//$db['production']['socket'] = '/cloudsql/lylalovescouk:admin';
+$db['production']['hostname'] = 'localhost';
+$db['production']['username'] = 'root';
+$db['production']['password'] = 'chintan123';
+$db['production']['database'] = 'lylaadmin';
+$db['production']['dbdriver'] = 'mysqli';
+$db['production']['pconnect'] = FALSE;
+$db['production']['dbprefix'] = '';
+$db['production']['swap_pre'] = '';
+$db['production']['db_debug'] = FALSE;
+$db['production']['cache_on'] = FALSE;
+$db['production']['autoinit'] = FALSE;
+$db['production']['char_set'] = 'utf8';
+$db['production']['dbcollat'] = 'utf8_general_ci';
+$db['production']['cachedir'] = '';
+$db['production']['socket'] = '/cloudsql/lylalovescouk:admin';
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
