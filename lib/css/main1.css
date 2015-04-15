@@ -639,7 +639,7 @@ h5.pricecolor {
     width: 44px;
 }
 .padder {
-      padding: 13px 0px;
+    padding: 13px 0px;
 }
 .marginer {
     margin-top: 20px;
@@ -916,7 +916,7 @@ span.cartspace {
     text-align: center;
     font-family: "CheddarJack";
     font-size: 40px;
-/*    background: #efc7cf;*/
+    /*    background: #efc7cf;*/
     margin: 10px;
 }
 .socialbigs img {
@@ -925,109 +925,104 @@ span.cartspace {
     /* opacity: 0.5; */
 }
 .contenttops {
-  margin-bottom: 30px;
-  border-top: 1px solid #eee;
-  padding: 5px 0;
-  /* border-bottom: 1px solid #eee; */
-  margin-top: 25px;
+    margin-bottom: 30px;
+    border-top: 1px solid #eee;
+    padding: 5px 0;
+    /* border-bottom: 1px solid #eee; */
+    margin-top: 25px;
 }
-
 a.btns-primary {
-  color: #fff;
-  background-color: #FF99BC;
-  font-weight: 600;
+    color: #fff;
+    background-color: #FF99BC;
+    font-weight: 600;
 }
 .btns {
-  display: inline-block;
-  padding: 15px 55px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.4;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-image: none;
-  border: none;
-  border-radius: 0;
+    display: inline-block;
+    padding: 15px 55px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: none;
+    border-radius: 0;
 }
 button.btnss-primary {
-  color: #fff;
-  background-color: #FF99BC;
-  font-weight: 600;
+    color: #fff;
+    background-color: #FF99BC;
+    font-weight: 600;
 }
 .padder span {
-  text-align: center;
-  font-size: 12px;
-  font-weight: 500;
-  padding: 0px 5px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0px 5px;
 }
 .set-head {
     font-size: 13px;
 }
-
 .cloud-zoom-lens {
-	border: 0px solid #888;
-	margin:-4px;	/* Set this to minus the border thickness. */
-	background-color:#fff;	
-	cursor:move;		
+    border: 0px solid #888;
+    margin: -4px;
+    /* Set this to minus the border thickness. */
+    background-color: #fff;
+    cursor: move;
 }
-
 /* This is for the title text. */
+
 .cloud-zoom-title {
-	font-family:Arial, Helvetica, sans-serif;
-	position:absolute !important;
-	background-color:#000;
-	color:#fff;
-	padding:3px;
-	width:100%;
-	text-align:center;	
-	font-weight:bold;
-	font-size:10px;
-	top:0px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute !important;
+    background-color: #000;
+    color: #fff;
+    padding: 3px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+    top: 0px;
 }
-
 /* This is the zoom window. */
+
 .cloud-zoom-big {
-	border: 0px solid #ccc;
-	overflow:hidden;
+    border: 0px solid #ccc;
+    overflow: hidden;
 }
-
 /* This is the loading message. */
+
 .cloud-zoom-loading {
-	color:white;	
-	background:#222;
-	padding:3px;
-	border:1px solid #000;
+    color: white;
+    background: #222;
+    padding: 3px;
+    border: 1px solid #000;
 }
-
 #my-container {
-  width: 270px;
-  height: 170px;
-  border: solid 1px black;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+    width: 270px;
+    height: 170px;
+    border: solid 1px black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
-
 #thumbnails {
-  padding-left: 1px;
-  list-style-type: none;  
+    padding-left: 1px;
+    list-style-type: none;
 }
-
 #thumbnails li {
-  float: left;
-  margin-right: 5px;
+    float: left;
+    margin-right: 5px;
 }
-
 #thumbnails img {
-  width: 50px;
-  height: 50px;
+    width: 50px;
+    height: 50px;
 }
 .cart-set {
     position: fixed;
@@ -1050,27 +1045,23 @@ button.btnss-primary {
     top: 27px;    right: -14px;
 }*/
 
-.step-set ul li {
-}
-.step-set {
+.step-set ul li {} .step-set {
     /* text-align: center; */
     /* border: 1px solid; */
     margin: 15px auto;
 }
-
 .step-set ul {
     border: 1px solid #03E1E4;
     float: left;
     padding: 0px;
 }
-
 .step-set ul li {
     border-right: 1px solid #03E1E4;
     float: left;
     display: inline;
     padding: 18px 25px;
 }
-.step-set ul li.active{
+.step-set ul li.active {
     background: rgb(39, 240, 232);
     color: #fff;
     border-right: 1px solid #03E1E4;
@@ -1078,33 +1069,36 @@ button.btnss-primary {
     position: relative;
 }
 .step-set ul li + li {
-  border-right: 1px solid;
+    border-right: 1px solid;
 }
 .step-set ul li.active:after {
-    content: '';  
-    position: absolute;  border-style: solid;  
-    border-width: 11px 10px 0px;  
-    border-color: #27F0E8 transparent;  display: block;  width: 0;  z-index: 1;  
-    bottom: -11px;  
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 11px 10px 0px;
+    border-color: #27F0E8 transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    bottom: -11px;
     left: 50%;
     transform: translatex(-50%);
 }
-.pop-set{
-  width: 50%;
-  height: 400px;
-  background: #FFFFFF;
-  z-index: 9999;
-  margin: 0 auto;
-  position: relative;
-  top: 50%;
-  transform: translateY(50%);
-  border-radius: 5px;
-  text-align: center;
+.pop-set {
+    width: 50%;
+    height: 400px;
+    background: #FFFFFF;
+    z-index: 9999;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(50%);
+    border-radius: 5px;
+    text-align: center;
 }
 .cont-set {
     padding-top: 12px;
 }
-
 .cont-set h1 {
     line-height: 48px;
     font-size: 50px;
@@ -1116,10 +1110,10 @@ a.gogo {
     padding: 5px 20px;
 }
 .cont-set h5 {
-    font-family: "CheddarJack";    font-size: x-large;
+    font-family: "CheddarJack";
+    font-size: x-large;
     padding-top: 10px;
 }
-
 .createpop {
     padding-top: 25px;
 }
@@ -1127,44 +1121,49 @@ a.gogo {
     padding: 0px;
     margin: 10px auto;
 }
-.imagesets{
-
-  width: 1020px;
-  margin: auto;
-  border-top: 2px solid #f7f7f7;
-  height: 244px;
-  position: relative;
-  border-bottom: 2px solid #f7f7f7;
-
+.imagesets {
+    width: 1020px;
+    margin: auto;
+    border-top: 2px solid #f7f7f7;
+    height: 244px;
+    position: relative;
+    border-bottom: 2px solid #f7f7f7;
 }
 @media (min-width: 1190px) and (max-width: 1320px) {
- .padder span {
-  text-align: center;
-  font-size: 11px;
-
-}
-
+    .padder span {
+        text-align: center;
+        font-size: 11px;
+    }
 }
 a.g-login {
-  background: #dd4d3b;
-    margin-right:8px;
+    background: #dd4d3b;
+    margin-right: 8px;
 }
 a.fb-login {
-  background: #3c5a98;
-    margin-right:8px;
+    background: #3c5a98;
+    margin-right: 8px;
 }
-a.g-login:hover,a.g-login:active,a.g-login:focus {
-  background: #dd4d3b;
-    margin-right:8px;
+a.g-login:hover,
+a.g-login:active,
+a.g-login:focus {
+    background: #dd4d3b;
+    margin-right: 8px;
 }
-a.fb-login:hover,a.fb-login:active,a.fb-login:focus {
-  background: #3c5a98;
-    margin-right:8px;
+a.fb-login:hover,
+a.fb-login:active,
+a.fb-login:focus {
+    background: #3c5a98;
+    margin-right: 8px;
 }
 a.g-login i.fa.fa-google-plus {
     padding-right: 6px;
 }
-
 a.fb-login i.fa.fa-facebook {
     padding-right: 6px;
+}
+span.currencysym {
+    padding: 0;
+}
+span.currencytobe {
+    padding: 0;
 }

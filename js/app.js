@@ -147,6 +147,7 @@ firstapp.filter('convertprice', function () {
     };
 });
 
+
 function AccordionDemoCtrl($scope) {
     $scope.oneAtATime = true;
     /*
