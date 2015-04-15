@@ -21,10 +21,32 @@
                         </div>
 -->
                    <div class="cart-set">
+                   
                     <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
-                    <a ng-click="template.gourl('/cart');" class="topicon {{template.cartclicked}}">
+                    <a ng-click="template.gourl('/cart');" class="topicon {{template.cartclicked}}" style="position: relative;
+  float: left;padding-right: 30px;">
                         <img src="img/carts.png">Cart
                     </a>
+<!--
+                    <div class="cart-det">
+                       <table>
+                           <thead>
+                               <tr>
+                                   <td>Total Amount</td>
+                                   <td>Total Quantity</td>
+                                   <td>Amount for Delivery</td>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <tr>
+                                   <td>25.00</td>
+                                   <td>25.00</td>
+                                   <td>25.00</td>
+                               </tr>
+                           </tbody>
+                       </table>
+                   </div>
+-->
                     </div>
 
                     </div>

@@ -128,39 +128,26 @@ input:focus {
     margin-bottom: 10px;
 }
 .iosicon {
-    -webkit-filter: grayscale(1);
     filter: grayscale(1);
     opacity: 0.7;
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -o-transition: all 1s;
     transition: all 1s;
 }
 .androidicon {
-    -webkit-filter: grayscale(1);
     filter: grayscale(1);
     opacity: 0.4;
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -o-transition: all 1s;
     transition: all 1s;
 }
 .iosicon:hover,
 .androidicon:hover {
-    -webkit-filter: grayscale(0);
     filter: grayscale(0);
     opacity: 1;
 }
 .socialicons {
     width: 60px;
     margin-top: 22px;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
     transition: all 0.5s;
 }
 .socialicons:hover {
-    -webkit-filter: grayscale(0);
     filter: grayscale(0);
     opacity: 1;
     zoom: 1.1;
@@ -195,14 +182,7 @@ input:focus {
     left: 50%;
     z-index: 10;
     opacity: 1;
-    -webkit-transition: all 1.3s;
-    -moz-transition: all 1.3s;
-    -o-transition: all 1.3s;
     transition: all 1.3s;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
     transform: translateX(-50%)
 }
 .product .img2:hover {
@@ -274,8 +254,6 @@ input:focus {
     margin-bottom: 10px;
 }
 .zoomLens {
-    -webkit-box-shadow: rgb(206, 206, 206) 1px 0px 5px 2px;
-    -moz-box-shadow: rgb(206, 206, 206) 1px 0px 5px 2px;
     box-shadow: rgb(206, 206, 206) 1px 0px 5px 2px;
     border: 0px !important;
 }
@@ -303,8 +281,6 @@ input:focus {
     color: #a8a8a8;
 }
 .billing .panel-group .panel {
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
     border-radius: 0px;
     border-color: transparent;
 }
@@ -384,13 +360,7 @@ ul.submenudown li {
     margin: 0;
     background-color: #FFABD3;
     margin-left: 9px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
     border-radius: 0px;
 }
 .carousel-indicators li {
@@ -399,21 +369,13 @@ ul.submenudown li {
     margin: 0;
     background-color: rgba(255, 255, 255, 0.6);
     margin-left: 9px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
     border-radius: 0px;
 }
 .productdetails {
     position: fixed;
     right: 10px;
     background: rgba(253, 253, 253, 0.8);
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
     border-radius: 2px;
     padding: 0 10px;
     z-index: 1;
@@ -436,7 +398,6 @@ button.home-btn {
 button.home-btn:hover {
     background: #F6F6F6;
     color: #FFABD3;
-    -webkit-transition: all 700ms;
     transition: all 700ms;
     -o-transition: all 700ms;
     -moz-transition: all 700ms;
@@ -508,16 +469,10 @@ button.home-btn:focus {
     padding: 10px 20px;
     background: #fcfcfc;
     opacity: 0;
-    -webkit-transition: all 700ms;
-    -moz-transition: all 700ms;
-    -o-transition: all 700ms;
     transition: all 700ms;
 }
 .maincontent:hover .lookdetails {
     opacity: 1;
-    -webkit-transition: all 700ms;
-    -moz-transition: all 700ms;
-    -o-transition: all 700ms;
     transition: all 700ms;
 }
 h5.pricecolor {
@@ -542,9 +497,6 @@ h5.pricecolor {
     width: 250px;
     border-top: 20px solid #ccc;
     float: left;
-    -webkit-transition: all 700ms;
-    -moz-transition: all 700ms;
-    -o-transition: all 700ms;
     transition: all 700ms;
     opacity: .5;
 }
@@ -555,9 +507,6 @@ h5.pricecolor {
 }
 .hori-item.active {
     border-color: #AAA;
-    -webkit-transition: all 700ms;
-    -moz-transition: all 700ms;
-    -o-transition: all 700ms;
     transition: all 700ms;
     background: white;
     opacity: 1;
@@ -616,9 +565,6 @@ h5.pricecolor {
 }
 .bgimg {
     background: url('../../img/banner.jpg');
-    -webkit-background-size: 100% 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
     background-size: 100%;
     height: 578px;
     background-repeat: no-repeat;
@@ -806,8 +752,6 @@ div.megamenu.megamenu2 {
     bottom: 10px;
     right: 10px;
     outline: 0px;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
     border-radius: 100%;
     font-size: 18px;
     padding: 15px;
@@ -834,8 +778,6 @@ div.megamenu.megamenu2 {
 }
 .carticon {
     font-size: 25px;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
     border-radius: 100%;
     width: 25px;
     height: 25px;
@@ -884,8 +826,6 @@ span.cartspace {
 .discountcoupon {
     border-color: #03e1e4;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #03e1e4;
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #03e1e4;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #03e1e4;
 }
 .glyphicon {
@@ -905,8 +845,6 @@ span.cartspace {
     margin-bottom: 20px;
     list-style: none;
     color: #A8A8A8;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
     line-height: 28px;
     zoom: 0.9;
@@ -947,9 +885,6 @@ a.btns-primary {
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     background-image: none;
     border: none;
@@ -1034,6 +969,7 @@ button.btnss-primary {
     border-radius: 0px;
     z-index: 999999;
     float: right;
+/*      width: 600px;*/
 }
 .cart-set img {
     height: 30px;
@@ -1170,4 +1106,15 @@ span.currencytobe {
 #c9-button.c9-image.c9-bottom-left, #c9-button.c9-image.c9-bottom-right {
   bottom: 0;
   display: none;
+}
+.cart-det{
+  position: relative;
+  float: left;
+}
+.cart-det td, th {
+  padding: 2px 15px 2px 11px;
+  border: 1px solid rgb(0, 227, 227);
+  text-align: center;
+  font-size: 15px;
+  color: #000;
 }
