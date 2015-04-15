@@ -18,22 +18,22 @@
     </script>
     <script>
         var isMobile = {
-            Android: function () {
+            Android: function() {
                 return navigator.userAgent.match(/Android/i);
             },
-            BlackBerry: function () {
+            BlackBerry: function() {
                 return navigator.userAgent.match(/BlackBerry/i);
             },
-            iOS: function () {
+            iOS: function() {
                 return navigator.userAgent.match(/iPhone|iPad|iPod/i);
             },
-            Opera: function () {
+            Opera: function() {
                 return navigator.userAgent.match(/Opera Mini/i);
             },
-            Windows: function () {
+            Windows: function() {
                 return navigator.userAgent.match(/IEMobile/i);
             },
-            any: function () {
+            any: function() {
                 return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
             }
         };
@@ -47,7 +47,7 @@
         _clt["custId"] = "{{email}}";
         _clt["siteId"] = "40606bc583";
         _clt["ref"] = encodeURIComponent(document.referrer);
-        (function () {
+        (function() {
             var cl = document.createElement('script');
             cl.type = 'text/javascript';
             cl.async = true;
@@ -107,13 +107,13 @@
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="lib/js/ngDialog.js"></script>
     <script>
-        (function (i, s, o, g, r, a, m) {
+        (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
+            i[r] = i[r] || function() {
                 (i[r].q = i[r].q || []).push(arguments)
             }, i[r].l = 1 * new Date();
             a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
+            m = s.getElementsByTagName(o)[0];
             a.async = 1;
             a.src = g;
             m.parentNode.insertBefore(a, m)
@@ -141,55 +141,51 @@
 
 <body>
     <header>
-       <div style="width:1440px;">
-        <div class="top-bar barheight" style="width:1440px;float:left;">
+        <div style="width:1440px;">
+            <div class="top-bar barheight" style="width:1440px;float:left;">
 
-            <div class="row">
-                <div class="col-xs-2" style="width:244px;float:left;min-size:244px;">
-                    <div class="input-group headsearch " ng-controller="search">
-                        <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
-                        <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search for an item" ng-change="search(searchpro)">
+                <div class="row">
+                    <div class="col-xs-2" style="width:244px;float:left;min-size:244px;">
+                        <div class="input-group headsearch " ng-controller="search">
+                            <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
+                            <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search for an item" ng-change="search(searchpro)">
+                        </div>
+
+
+                    </div>
+                    <div class="col-xs-7 padder" ng-controller="newsletter" style="width:800px;float:left;min-size:900px;">
+                        <span>SHIPPING WORLDWIDE</span>
+                        <span>FREE  DOMESTIC SHIPPING ON ORDERS OVER <span class="currencysym">£</span><span class="currencytobe">15</span> </span>
+                        <span>FREE  INTERNATIONAL SHIPPING ON ORDERS OVER <span class="currencysym">£</span><span class="currencytobe">20</span> </span>
+
                     </div>
 
-
-                </div>
-                <div class="col-xs-7 padder" ng-controller="newsletter" style="width:800px;float:left;min-size:900px;">
-                    <span>SHIPPING WORLDWIDE</span>
-                    <span>FREE  DOMESTIC SHIPPING ON ORDERS OVER £15</span>
-                    <span>FREE  INTERNATIONAL SHIPPING ON ORDERS OVER £20</span>
-                    <!--
-                <p style="float;right">SHIPPING WORLDWIDE &nbsp;&nbsp;&nbsp;
-                    <input type="email" class="form-control newsletteremail" ng-model="uemail" placeholder="" required> <a style="color:black;" class="btn btn-primary" ng-click="newsletter(uemail)">SIGN UP</a>
-                </p>
--->
-                </div>
-
-                <div class="col-xs-3" style="width:302px;float:left;min-width:242px;">
+                    <div class="col-xs-3" style="width:302px;float:left;min-width:242px;">
 
 
-                    <div class="set-head pull-right" style="margin-right:15px;" ng-controller="badge">
+                        <div class="set-head pull-right" style="margin-right:15px;" ng-controller="badge">
 
-                        <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
-                            <img src="img/account.png">Log in
-                        </a>
-                        <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
-                            <img src="img/maill.png">Newsletter
-                        </a>
+                            <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
+                                <img src="img/account.png">Log in
+                            </a>
+                            <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
+                                <img src="img/maill.png">Newsletter
+                            </a>
 
-                        <!--
+                            <!--
                     <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
                     <a ng-click="template.gourl('/cart');" class="topicon {{template.cartclicked}}">
                         <img src="img/cart.png">Cart
                     </a>
 -->
 
-                        <a ng-click="template.gourl('/wishlist');" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
-                            <img src="img/wishlist2.png">Wishlist
-                        </a>
+                            <a ng-click="template.gourl('/wishlist');" class="fadeInRight wow topicon" ng-class="firstloadclass wow">
+                                <img src="img/wishlist2.png">Wishlist
+                            </a>
 
 
 
-                        <!--a href="https://twitter.com/ZibaCollection" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.3s">
+                            <!--a href="https://twitter.com/ZibaCollection" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.3s">
                     <img src="img/twitter.png" class="socialicons tadaanimation">
                 </a>
                 <a href="http://pinterest.com/zibacollection/" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.4s">
@@ -204,14 +200,14 @@
                 <a href="http://zibaacc.tumblr.com/" target="_blank" class="fadeInRight wow" myfirstloadclass data-wow-delay="0.7s">
                     <img src="img/tumbler.png" class="socialicons tadaanimation">
                 </a-->
+                        </div>
+
+
+
                     </div>
-
-
-
                 </div>
             </div>
-        </div>
-        
+
     </header>
     <div class="barheight"></div>
     <div class="container-fluid-non-responsive">
@@ -222,10 +218,10 @@
     <script>
         var issearch = false;
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-
-            $(".headsearch .icon").click(function () {
+            changeallothercurrency();
+            $(".headsearch .icon").click(function() {
 
                 if (issearch) {
                     issearch = false;
@@ -241,7 +237,7 @@
     </script>
 
     <script type="text/javascript">
-        (function (d, t) {
+        (function(d, t) {
             if (window.location.hash != '#gleam' && ('' + document.cookie).match(/(^|;)\s*GleamaaA2s=X($|;)/)) {
                 return;
             }
@@ -252,13 +248,13 @@
         }(document, "script"));
     </script>
     <script>
-        window.addEventListener("beforeunload", function (e) {
+        window.addEventListener("beforeunload", function(e) {
             alert("See You");
             return false;
         });
     </script>
     <script type="text/javascript">
-        (function (d, t) {
+        (function(d, t) {
             if (window.location.hash != '#gleam' && ('' + document.cookie).match(/(^|;)\s*GleamV37Z7=X($|;)/)) {
                 return;
             }
