@@ -20,15 +20,49 @@
                             <input type="email" class="form-control newsletteremail" ng-model="uemail" placeholder=""> <a class="btn btn-primary" ng-click="newsletter(uemail)">Subscribe</a>
                         </div>
 -->
-                   <div class="cart-set">
-                   
-                    <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
-                    <a ng-click="template.gourl('/cart');" class="topicon {{template.cartclicked}}" style="position: relative;
-  float: left;padding-right: 30px;">
-                        <img src="img/carts.png">Cart
-                    </a>
+                  <div class="det-cart">
+                                      <div class="cart-det">
+                                      <div class="row">
+                                          <div class="col-md-3" style="width:160px;">
+                                          <div class="free-set">
+                                              <span>15.00<p>Amount Remaining for free delivery</p></span>
+                                              
+                                          </div>
+                                          </div>
+                                          <div class="col-md-3" style="  width: 180px;">
+                                              <div class="panel" style="  width: 170px;margin-bottom:0px;border:0px">
+                                              <div class="symbol">
 <!--
-                    <div class="cart-det">
+                                                  <i class="fa fa-money" style="  color: #fff;
+  font-size: 24px;"></i>
+-->
+                                              </div>
+                                              <div class="value">
+                                                  <h1>15.00</h1>
+                                                  <p>Amount</p>
+                                              </div>
+                                          </div>
+                                          </div>
+                                            <div class="col-md-3" style="  width: 200px;">
+                                              <div class="panel" style="  width: 170px;margin-bottom:0px;border:0px">
+                                              <div class="symbol">
+<!--
+                                                  <i class="fa fa-money" style="  color: #fff;
+  font-size: 24px;"></i>
+-->
+                                              </div>
+                                              <div class="value">
+                                                  <h1>15.00</h1>
+                                                  <p>Quantity</p>
+                                              </div>
+                                          </div>
+                                          </div>
+                                         
+                                          <div class="col-md-3" style="  width: 180px;">
+                                              <a ng-click="template.gourl('/checkout')"  class="btns btns-primary pull-right" style="  padding: 10px 25px;  margin-top: 12px;">Express checkout</a>
+                                          </div>
+                                      </div>
+<!--
                        <table>
                            <thead>
                                <tr>
@@ -42,11 +76,22 @@
                                    <td>25.00</td>
                                    <td>25.00</td>
                                    <td>25.00</td>
+                                   <td style="  border: none;position: relative;bottom: 14px;"><a class="btn btn-primary" ng-click="signup(register)" href="">Checkout</a></td>
                                </tr>
                            </tbody>
                        </table>
-                   </div>
 -->
+                       
+                   </div>
+
+                   <div class="cart-set">
+                   
+                    <a href="#" class="badge newbadge" ng-show="template.totalproducts!=0">{{template.totalproducts}}</a>
+                    <a ng-click="template.gourl('/cart');" class="topicon {{template.cartclicked}}" style="position: relative;
+  float: left;padding-right: 30px;">
+                        <img src="img/carts.png">Cart
+                    </a>
+                    </div>
                     </div>
 
                     </div>
