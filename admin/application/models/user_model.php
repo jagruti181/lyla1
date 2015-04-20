@@ -514,5 +514,26 @@ class User_model extends CI_Model
         }
     }
     
+    
+    function createsessionbyid($id)
+    {
+        $query=$this->db->query("SELECT * FROM `user` WHERE `user`.`id`='$id'");
+            $query=$query->row();
+            $newdata = array(
+                'email'     => $query->email,
+                'password' => "",
+                'logged_in' => true,
+                'id'=> $query->id,
+                'name'=> $query->name,
+                'image'=> $query->image
+            );
+
+            $this->session->set_userdata($newdata);
+
+            return $newdata;
+        
+    }
+    
+    
 }
 ?>

@@ -398,5 +398,72 @@ class Json extends CI_Controller
         $data["message"]=$this->product_model->getlastsearchedproductbyuser($userid);
         $this->load->view('json',$data);
     }
+    
+    function socialcheck()
+    {
+    //print_r($_POST);
+        
+        
+        $displayName=$_POST["displayName"];
+        $email=$_POST["email"];
+        $photoURL=$_POST["photoURL"];
+        $identifier=$_POST["identifier"];
+        $birthYear=$_POST["birthYear"];
+        $birthMonth=$_POST["birthMonth"];
+        $birthDay=$_POST["birthDay"];
+        $address=$_POST["address"];
+        $region=$_POST["region"];
+        $city=$_POST["city"];
+        $country=$_POST["country"];
+        $provider=$_POST["provider"];
+
+        $query=$this->db->query("SELECT * FROM `user` WHERE `user`.`socialid`='$identifier'");
+        if($query->num_rows == 0)
+        {
+
+					$googleid="";
+					$facebookid="";
+					$twitterid="";
+					switch($provider)
+					{
+						case "Google":
+						$googleid=$user_profile->identifier;
+						break;
+						case "Facebook":
+						$facebookid=$user_profile->identifier;
+						break;
+						case "Twitter":
+						$twitterid=$user_profile->identifier;
+						break;
+					}
+
+            
+            $query2=$this->db->query("INSERT INTO `user` (`id`, `name`,`firstname`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `country`, `pincode`, `facebook`, `google`, `twitter`) VALUES (NULL, '$displayName', '$displayName', '', '$email', '2', CURRENT_TIMESTAMP, '1', '$photoURL', '', '$identifier', '$provider', '', '$birthYear-$birthMonth-$birthDay', '', '$address,$region', '$city', '', '$country', '', '$facebookid', '$googleid', '$twitterid')");
+            $id=$this->db->insert_id();
+            
+            return $id;
+
+        }
+        else
+        {
+            $query=$query->row();
+            
+            $id=$query->id;
+
+            return $id;
+        }
+    
+
+    }
+    
+    function createsessionbyid()
+	{
+		$id=$this->input->get_post('id');
+		$endurl=$this->input->get_post('endurl');
+		$data["message"]=$this->user_model->createsessionbyid($id);
+        redirect($endurl);
+//		$this->load->view("json",$data);
+	}
+    
 }
 ?>
