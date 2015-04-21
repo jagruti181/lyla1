@@ -57,8 +57,10 @@ class Json extends CI_Controller {
     }
     /*function orderitem()
     {
-        $carts = json_decode(file_get_contents('php://input'), true);
-        //print_r($carts['cart']);
+        $carts = json_decode(file_get_contents('php://input'), true);
+
+        //print_r($carts['cart']);
+
 
     $data["message"]=$this->order_model->orderitem($carts['cart']);
     $this->load->view("json",$data);
@@ -214,6 +216,7 @@ class Json extends CI_Controller {
         $price1 = $this->input->get_post("price1");
         $price2 = $this->input->get_post("price2");
         $category = $this->input->get_post("category");
+        $category=str_replace("-"," ",$category);
         $data["message"] = $this->product_model->getproductbycategory($category, $color, $price1, $price2);
         $this->load->view("json", $data);
     }
