@@ -200,7 +200,7 @@ service.factory('MainJson', function($http, TemplateService) {
             });
         },
         nextproduct: function(product, next) {
-            return $http.get("http://localhost:10080/admin/index.php/json/nextproduct", {
+            return $http.get(adminurl + "nextproduct", {
                 params: {
                     id: product,
                     next: next
@@ -495,7 +495,7 @@ service.factory('MainJson', function($http, TemplateService) {
 
 
             var returnrecent = new Array();
-            returnrecent=recentproducts.slice(0,recentproducts.length);
+            returnrecent = recentproducts.slice(0, recentproducts.length);
             for (var i = 0; i < returnrecent.length; i++) {
                 if (returnrecent[i].id == product.id) {
                     returnrecent.splice(i, 1);
