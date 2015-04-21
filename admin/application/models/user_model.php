@@ -6,7 +6,7 @@ class User_model extends CI_Model
 	protected $id,$username ,$password;
 	public function validate($username,$password )
 	{
-		
+
 		$password=md5($password);
 		$query ="SELECT `id`,`firstname`,`lastname`,`name`,`email`,`accesslevel` FROM `user` WHERE `email` LIKE '$username' AND `password` LIKE '$password' ";
 		$row =$this->db->query( $query );
@@ -32,9 +32,9 @@ class User_model extends CI_Model
 		else
 			return false;
 	}
-	
+
 	public function create($name,$firstname,$lastname,$password,$accesslevel,$email,$phone,$status,$billingaddress,$billingcity,$billingstate,$billingcountry,$shippingaddress,$shippingcity,$shippingstate,$shippingcountry,$currency,$companyname,$companyregistrationno,$vatnumber,$country)
-	{ 
+	{
 		$data  = array(
             'companyname'=>$companyname,
             'companyregistrationno'=>$companyregistrationno,
@@ -58,14 +58,14 @@ class User_model extends CI_Model
 			'shippingcountry' => $shippingcountry,
 			'currency' => $currency,
 		);
-		
+
 		$query=$this->db->insert( 'user', $data );
 		$id=$this->db->insert_id();
 		if($query)
 		{
 			$user = $this->session->userdata('id');
 			$this->saveuserlog($id,'User Created',$user);
-			
+
 		}
 		if(!$query)
 			return  0;
@@ -74,11 +74,8 @@ class User_model extends CI_Model
 	}
 	function viewusers()
 	{
-		$query="SELECT `user`.`id` as `id`,`user`.`name` as `name`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`user`.`status` as `status`,`accesslevel`.`name` as `accesslevel`,`user`.`companyname`,`user`.`country`,`country`.`name` as `countryname` FROM `user`
-		LEFT JOIN `accesslevel` ON `user`.`accesslevel` = `accesslevel`.`id` 
-		LEFT JOIN `country` ON `user`.`country` = `country`.`id` 
-		ORDER BY `user`.`id` ASC";
-	   
+		$query="SELECT `user`.`id` as `id`,`user`.`name` as `name`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`user`.`status` as `status`,`accesslevel`.`name` as `accesslevel`,`user`.`companyname`,`user`.`country`,`country`.`name` as `countryname` FROM `user` LEFT JOIN `accesslevel` ON `user`.`accesslevel` = `accesslevel`.`id` LEFT JOIN `country` ON `user`.`country` = `country`.`id` ORDER BY `user`.`id` ASC";
+
 		$query=$this->db->query($query)->result();
 		return $query;
 	}
@@ -88,7 +85,7 @@ class User_model extends CI_Model
 		$query=$this->db->get( 'user' )->row();
 		return $query;
 	}
-	
+
 	public function edit($id,$name,$firstname,$lastname,$password,$accesslevel,$email,$phone,$status,$billingaddress,$billingcity,$billingstate,$billingcountry,$shippingaddress,$shippingcity,$shippingstate,$shippingcountry,$currency,$companyname,$companyregistrationno,$vatnumber,$country)
 	{
 		$data  = array(
@@ -121,7 +118,7 @@ class User_model extends CI_Model
 		{
 			$user = $this->session->userdata('id');
 			$this->saveuserlog($id,'User Details Edited',$user);
-			
+
 		}
 		return 1;
 	}
@@ -174,7 +171,7 @@ class User_model extends CI_Model
 					}
 				}
 			}
-	
+
 		return $return;
 	}
 	function changestatus($id)
@@ -217,7 +214,7 @@ class User_model extends CI_Model
 		{
             $return[$row->name]=$row->name;
 		}
-		
+
 		return $return;
 	}
 	function editaddress($id,$billingaddress,$billingcity,$billingstate,$billingcountry,$shippingaddress,$shippingcity,$shippingstate,$shippingcountry,$shippingpincode)
@@ -233,14 +230,14 @@ class User_model extends CI_Model
 			'shippingcountry' => $shippingcountry,
 			'shippingpincode' => $shippingpincode,
 		);
-		
+
 		$this->db->where( 'id', $id );
 		$query=$this->db->update( 'user', $data );
 		if($query)
 		{
 			$user = $this->session->userdata('id');
 			$this->saveuserlog($id,'User Address Edited',$user);
-			
+
 		}
 		return 1;
 	}
@@ -251,7 +248,7 @@ class User_model extends CI_Model
 		{
 			$user = $this->session->userdata('id');
 			$this->saveuserlog($id,"User Credits Edited, Credits: $credits",$user);
-			
+
 		}
 		return 1;
 	}
@@ -286,17 +283,17 @@ class User_model extends CI_Model
 
             $this->session->set_userdata($newdata);
 
-       
+
         }
         else
         { $newdata="android";}
         return $newdata;
-        
+
     }
     function registewholesaler($firstname,$lastname,$phone,$email,$password)
     {
         $password=md5($password);
-        
+
         $query=$this->db->query("SELECT `id` FROM `user` WHERE `email`='$email'");
         if($query->num_rows == 0)
         {
@@ -325,7 +322,7 @@ class User_model extends CI_Model
         {
             $user=$query->row();
             $user=$user->id;
-            
+
 
             $newdata = array(
                 'email'     => $email,
@@ -340,7 +337,7 @@ class User_model extends CI_Model
         else
         return false;
     }
-    
+
     function newsletter($id,$email,$status)
     {
         $query=$this->db->query("SELECT `email` FROM `newsletterusers` WHERE `email`='$email'");
@@ -362,11 +359,13 @@ class User_model extends CI_Model
             return $contact;
     }
     function authenticate() {
+
          $is_logged_in = $this->session->userdata( 'logged_in' );
+
         //print_r($this->session->userdata( 'logged_in' ));
-        if ( $is_logged_in !== 'true' || !isset( $is_logged_in ) ) {
+        if ( $is_logged_in != 'true' || !isset( $is_logged_in ) ) {
             return false;
-        } //$is_logged_in !== 'true' || !isset( $is_logged_in )
+        } //$is_logged_in != 'true' || !isset( $is_logged_in )
         else {
 		$userid=$this->session->userdata('id');
 		$query=$this->db->query("SELECT * FROM `user` WHERE `id`='$userid'")->row();
@@ -377,23 +376,23 @@ class User_model extends CI_Model
     function searchbyname($search)
     {
            // $query=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`description`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`, `product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`, `productimage`.`image`,`category`.`name` FROM `product` INNER JOIN `productcategory` ON `product`.`id`=`productcategory`.`product` LEFT OUTER JOIN `productimage` ON `productimage`.`product`=`product`.`id` LEFT OUTER JOIN `category` ON `category`.`id`=`productcategory`.`category` WHERE `product`.`name` LIKE '%$search%' OR `product`.`description` LIKE '%$search%' OR `category`.`name` LIKE '%$search%'");
-        
+
             $userid=$this->session->userdata('id');
-        
+
             $query=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`description`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`, `product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`productimage`.`image` FROM `product` INNER JOIN `productimage` ON `productimage`.`product`=`product`.`id`  WHERE `product`.`name` LIKE '%$search%' OR `product`.`description` LIKE '%$search%' GROUP BY `product`.`id`");
-        
+
             foreach($query as $p_row)
 		{
 			$productid = $p_row->id;
-			$query5=$this->db->query("SELECT count(`category`) as `isnew`  FROM `productcategory` 
+			$query5=$this->db->query("SELECT count(`category`) as `isnew`  FROM `productcategory`
 			WHERE  `productcategory`.`category`='31' AND `product`='$productid'
 			LIMIT 0,1")->row();
 			$p_row->isnew=$query5->isnew;
-			
+
 		}
-        
+
         $queryreturn=$query->result();
-        
+
         foreach($queryreturn as $row)
         {
             $product=$row->id;
@@ -401,12 +400,12 @@ class User_model extends CI_Model
         }
         return $queryreturn;
     }
-    
-    
-    
+
+
+
     function addtocart($product,$productname,$quantity,$price) {
         //$data=$this->cart->contents();
-        
+
         $data = array(
                'id'      => $product,
                'name'      => $productname,
@@ -417,7 +416,7 @@ class User_model extends CI_Model
         $userid=$this->session->userdata('id');
         if($userid=="")
         {
-            
+
         }
         else
         {
@@ -425,7 +424,7 @@ class User_model extends CI_Model
         }
         $this->cart->insert($data);
     }
-    
+
     function destroycart() {
         $userid=$this->session->userdata('id');
         $this->db->query("DELETE FROM `usercart` WHERE `user`='$userid'");
@@ -434,13 +433,13 @@ class User_model extends CI_Model
         $this->db->query("UPDATE `order` SET `orderstatus`='2' WHERE `id`='$orderid'");
         return 0;
     }
-    
+
     function exportusercsv()
 	{
 		$this->load->dbutil();
 		$query=$this->db->query("SELECT `user`.`id` as `id`,`user`.`name` as `name`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`user`.`status` as `status`,`accesslevel`.`name` as `accesslevel`,`user`.`companyname`,`user`.`country`,`country`.`name` as `countryname` FROM `user`
-		LEFT JOIN `accesslevel` ON `user`.`accesslevel` = `accesslevel`.`id` 
-		LEFT JOIN `country` ON `user`.`country` = `country`.`id` 
+		LEFT JOIN `accesslevel` ON `user`.`accesslevel` = `accesslevel`.`id`
+		LEFT JOIN `country` ON `user`.`country` = `country`.`id`
 		ORDER BY `user`.`id` ASC");
 
        $content= $this->dbutil->csv_from_result($query);
@@ -513,27 +512,30 @@ class User_model extends CI_Model
             return $newdata;
         }
     }
-    
-    
+
+
     function createsessionbyid($id)
     {
-        $query=$this->db->query("SELECT * FROM `user` WHERE `user`.`id`='$id'");
-            $query=$query->row();
-            $newdata = array(
-                'email'     => $query->email,
-                'password' => "",
-                'logged_in' => true,
-                'id'=> $query->id,
-                'name'=> $query->name,
-                'image'=> $query->image
-            );
 
-            $this->session->set_userdata($newdata);
 
+					$query=$this->db->query("SELECT * FROM `user` WHERE `user`.`id`='$id'");
+							$query=$query->row();
+
+							$newdata        = array(
+								'id' => $query->id,
+								'email' => $query->email,
+								'name' => $query->name ,
+								'firstname' => $query->firstname ,
+								'lastname' => $query->lastname ,
+								'accesslevel' => $query->accesslevel ,
+								'logged_in' => 'true'
+							);
+
+							$this->session->set_userdata($newdata);
             return $newdata;
-        
+
     }
-    
-    
+
+
 }
 ?>
