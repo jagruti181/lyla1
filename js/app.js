@@ -4,7 +4,7 @@ var firstapp = angular.module('firstapp', [
     'ngResource',
   'phonecatControllers',
   'templateservicemod',
-  
+
   'Service',
   'ui.bootstrap',
   'ImageZoom',
@@ -16,7 +16,7 @@ var firstapp = angular.module('firstapp', [
 firstapp.config(
     function ($routeProvider, $locationProvider) {
         $routeProvider.
-        when('/home', {
+        when('/', {
             templateUrl: 'views/template.html',
             controller: 'home'
         }).
@@ -105,7 +105,7 @@ firstapp.config(
             templateUrl: 'views/template.html',
             controller: 'about'
         }).
-     
+
         otherwise({
             redirectTo: '/home'
         });
@@ -266,7 +266,7 @@ firstapp.directive('ngElevateZoom', function() {
     link: function(scope, element, attrs) {
       element.attr('data-zoom-image',attrs.zoomImage);
       //$(element).elevateZoom();
-        $(element).elevateZoom({ zoomType	 : "inner", cursor: "crosshair" }); 
+        $(element).elevateZoom({ zoomType	 : "inner", cursor: "crosshair" });
     }
   };
 });*/
@@ -424,7 +424,7 @@ firstapp.directive('zoom2', ['$compile',
 
           $scope.init = function() {
 
-            
+
 
             //Create a watch to know when to open the PopOver Text
             $scope.$watch('tiny + small + big + title', function(newValue, oldValue) {
