@@ -166,7 +166,7 @@
                         <div class="set-head pull-right" style="margin-right:15px;" ng-controller="badge">
 
                             <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
-                                <img src="img/account.png">Log in
+                                <img src="img/account.png"><span ng-if="check==0">Log in</span><span ng-if="check==1">Logout</span>
                             </a>
                             <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
                                 <img src="img/maill.png">Newsletter
