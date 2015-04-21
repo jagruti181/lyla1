@@ -107,7 +107,7 @@ firstapp.config(
         }).
 
         otherwise({
-            redirectTo: '/home'
+            redirectTo: '/'
         });
         $locationProvider.html5Mode(true);
     });
