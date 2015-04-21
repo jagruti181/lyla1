@@ -21,11 +21,11 @@
 
 if(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Google App Engine') !== false)
 {
-    define('ENVIRONMENT', 'testing');
+    define('ENVIRONMENT', 'production');
 }
 else
 {
-    define('ENVIRONMENT', 'testing');
+    define('ENVIRONMENT', 'development');
 }
 
 /*
