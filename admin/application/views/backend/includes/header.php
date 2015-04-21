@@ -194,7 +194,7 @@ $(document).ready(function(){
                   <li>
                       <a href="<?php echo site_url('site/vieworder'); ?>" class="">
                           <i class="icon-money"></i>
-                          <span>Orders</span>
+                          <span>All Orders</span>
                           <span class="arrow"></span>
                       </a>
                   </li>
