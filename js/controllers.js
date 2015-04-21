@@ -874,6 +874,7 @@ phonecatControllers.controller('search',
         $scope.search = function (search) {
             $location.url("/search/" + search);
         };
+        
         //search
 
     });

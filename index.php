@@ -169,9 +169,9 @@
                                 <img src="img/account.png"><span>Log in</span>
                             </a>
                             <a class="fadeInRight wow topicon" ng-if="check==1" ng-class="firstloadclass wow" ng-click="logout()">
-                                <img src="img/account.png"><span >Logout</span>
+                                <img src="img/account.png"><span>Logout</span>
                             </a>
-                           
+
                             <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
                                 <img src="img/maill.png">Newsletter
                             </a>
@@ -231,8 +231,13 @@
                     issearch = false;
                     $(".headsearch .inputbox").removeClass("showit");
                     $(".headsearch .icon").removeClass("showit");
+
                 } else {
                     issearch = true;
+                    setTimeout(function() {
+                        console.log("Focus will come");
+                        $(".headsearch .inputbox").focus();
+                    }, 100);
                     $(".headsearch .inputbox").addClass("showit");
                     $(".headsearch .icon").addClass("showit");
                 }

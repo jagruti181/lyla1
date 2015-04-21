@@ -109,6 +109,29 @@ firstapp.config(
       redirectTo: '/'
     });
     $locationProvider.html5Mode(true);
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
   });
 
 firstapp.filter('imagepath', function() {
