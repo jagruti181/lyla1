@@ -27,8 +27,8 @@ class Product_model extends CI_Model
             return 0;
         }
 //		$id=$this->db->insert_id();
-    
-        
+
+
     }
 	public function createproduct($name,$sku,$description,$url,$visibility,$price,$wholesaleprice,$firstsaleprice,$secondsaleprice,$specialpricefrom,$specialpriceto,$metatitle,$metadesc,$metakeyword,$quantity,$status,$category,$relatedproduct)
 	{
@@ -51,8 +51,8 @@ class Product_model extends CI_Model
 			'status' => $status,
 		);
 		$query=$this->db->insert( 'product', $data );
-		$id=$this->db->insert_id();        
-        
+		$id=$this->db->insert_id();
+
 //        $mysession["id"]=$id;
 //        $this->session->set_userdata($mysession);
         if(!empty($category))
@@ -86,7 +86,7 @@ class Product_model extends CI_Model
 	}
     function deleteall($id)
     {
-        
+
         foreach($id as $idu)
         {
             $query=$this->db->query("DELETE FROM `product` WHERE `id`='$idu'");
@@ -99,7 +99,7 @@ class Product_model extends CI_Model
     }
 	function viewproduct()
 	{
-	$query=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`price`,`product`.`quantity` FROM `product` 
+	$query=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`price`,`product`.`quantity` FROM `product`
 		ORDER BY `product`.`id` ASC")->result();
 		return $query;
 	}
@@ -126,7 +126,7 @@ class Product_model extends CI_Model
 		}
 		return $query;
 	}
-	
+
 	public function editproduct( $id,$name,$sku,$description,$url,$visibility,$price,$wholesaleprice,$firstsaleprice,$secondsaleprice,$specialpricefrom,$specialpriceto,$metatitle,$metadesc,$metakeyword,$quantity,$status,$category,$relatedproduct)
 	{
 		$data = array(
@@ -178,7 +178,7 @@ class Product_model extends CI_Model
 				$query=$this->db->insert( 'relatedproduct', $data2 );
 			}
 		}*/
-		
+
 		return 1;
 	}
 	function deleteproduct($id)
@@ -191,35 +191,35 @@ class Product_model extends CI_Model
 	{
 
 		$this->db->query("DELETE FROM `productcategory` WHERE `category`='$id'  &&  `product`='$productcat' ");
-		
+
 	}
 	public function getcategorydropdown()
 	{
 		$query=$this->db->query("SELECT * FROM `category`  ORDER BY `id` ASC")->result();
 		$return=array(
-		
+
 		);
 		foreach($query as $row)
 		{
 			$return[$row->id]=$row->name;
 		}
-		
+
 		return $return;
 	}
 	public function getproductdropdown()
 	{
 		$query=$this->db->query("SELECT * FROM `product`  ORDER BY `id` ASC")->result();
 		$return=array(
-		
+
 		);
 		foreach($query as $row)
 		{
 			$return[$row->id]=$row->name;
 		}
-		
+
 		return $return;
 	}
-	
+
 	public function getstatusdropdown()
 	{
 		$status= array(
@@ -247,7 +247,7 @@ class Product_model extends CI_Model
 		$path = $uploaddata[ 'full_path' ];
 		$nextorder=$this->db->query("SELECT IFNULL(MAX(`order`)+1,0) AS `nextorder` FROM `productimage` WHERE `product`='$id'")->row();
 		$nextorder= $nextorder->nextorder;
-		
+
 		if($nextorder=="0")
 		$isdefault="1";
 		else
@@ -263,7 +263,7 @@ class Product_model extends CI_Model
 		{
 			$this->saveproductlog($id,"Product Image Added");
 		}
-		
+
 	}
 	function deleteimage($productimageid,$id)
 	{
@@ -277,10 +277,10 @@ class Product_model extends CI_Model
 	{
 		$order=$this->db->query("SELECT `order` FROM `productimage` WHERE `id`='$productimageid'")->row();
 		$order=$order->order;
-		
-		$this->db->query(" UPDATE `productimage` SET `order`='$order' WHERE `is_default`='1' ");		
+
+		$this->db->query(" UPDATE `productimage` SET `order`='$order' WHERE `is_default`='1' ");
 		$this->db->query(" UPDATE `productimage` SET `is_default`='0' WHERE `productimage`.`product`='$id' ");
-		
+
 		$query=$this->db->query(" UPDATE `productimage` SET `is_default`='1',`order`='0' WHERE `productimage`.`id`='$productimageid' AND `productimage`.`product`='$id' ");
 		if($query)
 		{
@@ -302,7 +302,7 @@ class Product_model extends CI_Model
 		);
 		$this->db->where( 'id', $product );
 		$query=$this->db->update( 'product', $data );
-		
+
 		if($query)
 		{
 			$this->saveproductlog($product,"Product Quantity Updated ,Quantity:$quantity");
@@ -321,7 +321,7 @@ class Product_model extends CI_Model
 			'secondsaleprice' => $secondsaleprice,
 			'specialpricefrom' => $specialpricefrom,
 			'specialpriceto' => $specialpriceto,
-			
+
 		);
 		$this->db->where( 'id', $id );
 		$query=$this->db->update( 'product', $data );
@@ -334,7 +334,7 @@ class Product_model extends CI_Model
 	function editrelatedproduct($id,$relatedproduct)
 	{
 		$this->db->query("DELETE FROM `relatedproduct` WHERE `product`='$id'");
-		
+
 		if(!empty($relatedproduct))
 		{
 			foreach($relatedproduct as $key => $pro)
@@ -346,7 +346,7 @@ class Product_model extends CI_Model
 				$query=$this->db->insert( 'relatedproduct', $data2 );
 			}
 		}
-		
+
 		{
 			$this->saveproductlog($id,"Related Product updated");
 		}
@@ -355,13 +355,13 @@ class Product_model extends CI_Model
 	public function getproducts($product)
 	{
 		$query=$this->db->query("SELECT `id`,`name` FROM `product` WHERE `id` NOT IN ($product)  ORDER BY `id` ASC")->result();
-		
-		
+
+
 		return $query;
 	}
 	function viewproductwaiting($product)
 	{
-		$query=$this->db->query("SELECT `user`.`firstname`,`user`.`lastname`,`productwaiting`.`email`,`productwaiting`.`timestamp`,`productwaiting`.`id` as `id` FROM `productwaiting` 
+		$query=$this->db->query("SELECT `user`.`firstname`,`user`.`lastname`,`productwaiting`.`email`,`productwaiting`.`timestamp`,`productwaiting`.`id` as `id` FROM `productwaiting`
 		LEFT JOIN `user` ON `user`.`id`=`productwaiting`.`user`
 		ORDER BY `productwaiting`.`timestamp` DESC")->result();
 		return $query;
@@ -395,22 +395,22 @@ class Product_model extends CI_Model
 			$where .= " OR `category`.`parent`='$category' ";
 		$query['category']=$this->db->query("SELECT `category`.`name` ,`category`.`image1` FROM `category`
 		WHERE `category`.`id`='$category'")->row();
-        
-       
-        
-		$query['product']=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`,`product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`productimage`.`image` FROM `product`
-		INNER JOIN `productcategory` ON `product`.`id`=`productcategory`.`product` 
-		INNER JOIN `category` ON `category`.`id`=`productcategory`.`category` 
+
+
+
+		$query['product']=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`description`,`product`.`sku`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`,`product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`productimage`.`image` FROM `product`
+		INNER JOIN `productcategory` ON `product`.`id`=`productcategory`.`product`
+		INNER JOIN `category` ON `category`.`id`=`productcategory`.`category`
 		LEFT JOIN `productimage` ON `productimage`.`product`=`product`.`id`
 		WHERE `product`.`visibility`=1 AND `product`.`status`=1 AND `product`.`quantity` > 0 AND `product`.`name` LIKE '%$color%' $pricefilter
         AND (   `productcategory`.`category`=$category $where )
 		GROUP BY `product`.`id`
 		ORDER BY `product`.`id` DESC")->result();
-		
+
 		foreach($query['product'] as $p_row)
 		{
 			$productid = $p_row->id;
-			$p_row->productimage=$this->db->query("SELECT `productimage`.`image` FROM `productimage` 
+			$p_row->productimage=$this->db->query("SELECT `productimage`.`image` FROM `productimage`
 			WHERE `productimage`.`product`='$productid'
 			ORDER BY `productimage`.`order`
 			LIMIT 0,2")->result();
@@ -418,21 +418,21 @@ class Product_model extends CI_Model
 		foreach($query['product'] as $p_row)
 		{
 			$productid = $p_row->id;
-			$query5=$this->db->query("SELECT count(`category`) as `isnew`  FROM `productcategory` 
+			$query5=$this->db->query("SELECT count(`category`) as `isnew`  FROM `productcategory`
 			WHERE  `productcategory`.`category`='31' AND `product`='$productid'
 			LIMIT 0,1")->row();
 			$p_row->isnew=$query5->isnew;
-			
+
 		}
 		/*$query['subcategory']=$this->db->query("SELECT `category`.`name`,`category`.`image1`,`category`.`image2` FROM `category`
 		WHERE `category`.`parent`='$category' AND `category`.`status`=1
 		ORDER BY `category`.`order`")->result();*/
-		$query['subcategory'] = $this->db->query("SELECT `tab1`.`id`,`tab1`.`name`,`tab1`.`image1`,`tab1`.`image2`,COUNT(`tab2`.`id`) as `cnt` FROM 
+		$query['subcategory'] = $this->db->query("SELECT `tab1`.`id`,`tab1`.`name`,`tab1`.`image1`,`tab1`.`image2`,COUNT(`tab2`.`id`) as `cnt` FROM
 		(
-		SELECT `category`.`name`,`category`.`id`,`category`.`image1`,`category`.`image2`,`category`.`order` FROM `category` 
+		SELECT `category`.`name`,`category`.`id`,`category`.`image1`,`category`.`image2`,`category`.`order` FROM `category`
 			WHERE `category`.`parent`='$category' AND `category`.`status`=1
 		) as `tab1`
-		INNER JOIN `productcategory` ON `productcategory`.`category`=`tab1`.`id` 
+		INNER JOIN `productcategory` ON `productcategory`.`category`=`tab1`.`id`
 		INNER JOIN `product`  as `tab2` ON `productcategory`.`product`=`tab2`.`id` AND `tab2`.`status`=1
 		GROUP BY `tab1`.`id`
 		ORDER BY `tab1`.`order` ")->result();
@@ -445,68 +445,68 @@ class Product_model extends CI_Model
 	function getproductdetails($product,$category)
 	{
 		$query['breadcrumbs']=$this->getparentcategories($category);
-		$query['product']=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`,`product`.`description`,`product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`product`.`quantity` FROM `product` 
+		$query['product']=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`,`product`.`description`,`product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`product`.`quantity` FROM `product`
 		WHERE `product`.`id`='$product'")->row();
-		
-		
-			
-			$query5=$this->db->query("SELECT count(`category`) as `isnew`  FROM `productcategory` 
+
+
+
+			$query5=$this->db->query("SELECT count(`category`) as `isnew`  FROM `productcategory`
 			WHERE  `productcategory`.`category`='31' AND `product`='$product'
 			LIMIT 0,1")->row();
 			$query['product']->isnew=$query5->isnew;
-			
-		
-		
-		$query['productimage'] = $this->db->query("SELECT `image` ,`productimage`.`order` FROM `productimage` 
+
+
+
+		$query['productimage'] = $this->db->query("SELECT `image` ,`productimage`.`order` FROM `productimage`
 		WHERE `product`='$product'
 		ORDER BY `productimage`.`order`")->result();
-		
+
 		$query['relatedproduct']=$this->db->query("SELECT `product`.`id`,`product`.`name`,`product`.`sku`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`,`product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`product`.`quantity`,`productimage`.`image` FROM `relatedproduct`
 		INNER JOIN `product` ON `product`.`id`=`relatedproduct`.`relatedproduct` AND `relatedproduct`.`product`='$product' AND `product`.`visibility`=1 AND `product`.`status`=1 AND `product`.`quantity` > 0
-		INNER JOIN `productimage` ON `productimage`.`id`=`product`.`id` 
+		INNER JOIN `productimage` ON `productimage`.`id`=`product`.`id`
 		GROUP BY `product`.`id`
 		ORDER BY `productimage`.`order`")->result();
-		
+
 		//for product view log
         $userid=$this->session->userdata('id');
         $this->db->query("INSERT INTO `productviewlog`(`product`, `user`, `timestamp`) VALUES ('$product','$userid',NULL)");
-		
+
 		return $query;
 	}
-	public function getchildrencategories($category) 
+	public function getchildrencategories($category)
 	{
 		$children=array();
 		$children[]=$category;
 		$query=$this->db->query("SELECT `id` as `children` FROM `category` WHERE `category`.`parent`='$category' ");
 		if ( $query->num_rows() <= 0 ) {
 			return $children;
-		} 
+		}
 		else {
-			
+
 			$query=$query->result();
 			//print_r($query);
 			foreach($query as $row)
-			{	
+			{
 				$other=array();
 				$other=$this->getchildrencategories($row->children);
-				$children=array_merge($children, $other);	
-				
+				$children=array_merge($children, $other);
+
 			}
 			return $children;
 		}
 	}
-	public function getparentcategories($categoryid) 
+	public function getparentcategories($categoryid)
 	{
 		$parents=array();
 		$q = $this->db->query("SELECT `name` FROM `category` WHERE `id`='$categoryid'")->row();
         $c=new stdClass();
 		$c->id=$categoryid;
 		$c->name=$q->name;
-		
+
 		do
 		{
 			$row=$this->db->query("SELECT `category`.`parent` as `category`,`tab2`.`name` FROM `category`
-			LEFT JOIN `category` as `tab2` ON `category`.`parent`=`tab2`.`id` 
+			LEFT JOIN `category` as `tab2` ON `category`.`parent`=`tab2`.`id`
 			WHERE `category`.`id`='$categoryid'")->row();
 			//echo ($row->category);
 			$category = new StdClass();
@@ -514,15 +514,15 @@ class Product_model extends CI_Model
 			$category->name=$row->name;
 			if($row->category != 0 || $row->category != "0")
 			{
-				
+
 				array_push($parents,$category);
 			}
 			$categoryid = $row->category;
-			
+
 		}while($categoryid!=0) ;
 		//$parents[]=$c;
 		array_push($parents,$c);
-		
+
 		return $parents;
 	}
     public function addproductwaitinglist($email,$product)
@@ -530,7 +530,7 @@ class Product_model extends CI_Model
         $this->db->query("INSERT INTO `productwaiting`(`email`,`user`,`product`) VALUES ('$email','','$product')");
         return true;
     }
-	
+
 	public function beforeeditproductwaiting( $id )
 	{
 		$this->db->where( 'id', $id );
@@ -547,15 +547,15 @@ class Product_model extends CI_Model
 		);
 		$this->db->where( 'id', $id );
 		$q=$this->db->update( 'productwaiting', $data );
-		
+
 		return 1;
 	}
-    
+
 	function deleteproductwaiting($id)
 	{
 		$query=$this->db->query("DELETE FROM `productwaiting` WHERE `id`='$id'");
 	}
-    
+
     function exportproductcsv()
 	{
 		$this->load->dbutil();
@@ -580,12 +580,12 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
 //		file_put_contents("gs://lylafiles/product_$timestamp.csv", $content);
 //		redirect("http://lylaloves.co.uk/servepublic?name=product_$timestamp.csv", 'refresh');
 	}
-    
+
 	public function createbycsv($file)
 	{
         foreach ($file as $row)
         {
-            
+
             if($row['specialpricefrom'] != "")
 				$specialpricefrom = date("Y-m-d",strtotime($row['specialpricefrom']));
 			if($row['specialpriceto'] != "")
@@ -596,7 +596,7 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
             $allimages=explode(",",$image);
             $category=$row['category'];
             $allcategories=explode(",",$category);
-            
+
             $category=$row['category'];
             $data  = array(
                 'name' => $row['name'],
@@ -622,7 +622,7 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
                 $query=$this->db->insert( 'product', $data );
                 $productid=$this->db->insert_id();
             }
-            
+
 			foreach($allimages as $key => $image)
 			{
 				$data1  = array(
@@ -631,7 +631,7 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
 				);
 				$queryproductimage=$this->db->insert( 'productimage', $data1 );
 			}
-            
+
 			foreach($allcategories as $key => $category)
 			{
                 $categoryquery=$this->db->query("SELECT * FROM `category` where `name`LIKE '$category'")->row();
@@ -644,7 +644,7 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
                 {
                     $categoryid=$categoryquery->id;
                 }
-            
+
 				$data2  = array(
 					'product' => $productid,
 					'category' => $categoryid,
@@ -652,10 +652,10 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
 				$queryproductimage=$this->db->insert( 'productcategory', $data2 );
 			}
         }
-        
+
 //        foreach ($file as $row)
 //        {
-//            
+//
 //            if($row['specialpricefrom'] != "")
 //				$specialpricefrom = date("Y-m-d",strtotime($row['specialpricefrom']));
 //			if($row['specialpriceto'] != "")
@@ -693,15 +693,20 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
     {
        	$query=$this->db->query("SELECT `category` FROM `productcategory`   WHERE `productcategory`.`product`='31' ")->result();
 		return $query;
-        
+
     }
-    
-    
+
+
 	function gettoptenproductsearchmonth()
 	{
 		$query=$this->db->query("SELECT COUNT(`productsearchlog`.`product`) AS `count1`,`productsearchlog`. `id`, `productsearchlog`. `product`, `productsearchlog`. `user`, `productsearchlog`. `timestamp` ,`product`.`name` AS `productname`,YEAR(`productsearchlog`. `timestamp`),`productimage`.`image`
+<<<<<<< HEAD
 FROM `productsearchlog` 
 LEFT OUTER JOIN `product` ON `product`.`id`=`productsearchlog`. `product` INNER JOIN `productimage` ON `productimage`.`product`= `productsearchlog`. `product`
+=======
+FROM `productsearchlog`
+LEFT OUTER JOIN `product` ON `product`.`id`=`productsearchlog`. `product` LEFT OUTER JOIN `productimage` ON `productimage`.`product`= `productsearchlog`. `product`
+>>>>>>> bc638fb416a72bc7894de185bb200b6f7633f432
 WHERE YEAR(NOW())=YEAR(`productsearchlog`. `timestamp`)
 GROUP BY `productsearchlog`.`product`
 ORDER BY `count1` DESC
@@ -711,20 +716,30 @@ LIMIT 0 , 10")->result();
 	function gettoptenproductsearchyear()
 	{
 		$query=$this->db->query("SELECT COUNT(`productsearchlog`.`product`) AS `count1`,`productsearchlog`. `id`, `productsearchlog`. `product`, `productsearchlog`. `user`, `productsearchlog`. `timestamp` ,`product`.`name` AS `productname`,MONTH(`productsearchlog`. `timestamp`),`productimage`.`image`
+<<<<<<< HEAD
 FROM `productsearchlog` 
 LEFT OUTER JOIN `product` ON `product`.`id`=`productsearchlog`. `product` INNER JOIN `productimage` ON `productimage`.`product`= `productsearchlog`. `product`
+=======
+FROM `productsearchlog`
+LEFT OUTER JOIN `product` ON `product`.`id`=`productsearchlog`. `product` LEFT OUTER JOIN `productimage` ON `productimage`.`product`= `productsearchlog`. `product`
+>>>>>>> bc638fb416a72bc7894de185bb200b6f7633f432
 WHERE MONTH(NOW())=MONTH(`productsearchlog`. `timestamp`) AND YEAR(NOW())=YEAR(`productsearchlog`. `timestamp`)
 GROUP BY `productsearchlog`.`product`
 ORDER BY `count1` DESC
 LIMIT 0 , 10")->result();
 		return $query;
 	}
-    
+
 	function gettoptenproductviewmonth()
 	{
 		$query=$this->db->query("SELECT COUNT(`productviewlog`.`product`) AS `count1`,`productviewlog`. `id`, `productviewlog`. `product`, `productviewlog`. `user`, `productviewlog`. `timestamp` ,`product`.`name` AS `productname`,YEAR(`productviewlog`. `timestamp`),`productimage`.`image`
+<<<<<<< HEAD
 FROM `productviewlog` 
 LEFT OUTER JOIN `product` ON `product`.`id`=`productviewlog`. `product` INNER JOIN `productimage` ON `productimage`.`product`= `productviewlog`. `product`
+=======
+FROM `productviewlog`
+LEFT OUTER JOIN `product` ON `product`.`id`=`productviewlog`. `product` LEFT OUTER JOIN `productimage` ON `productimage`.`product`= `productviewlog`. `product`
+>>>>>>> bc638fb416a72bc7894de185bb200b6f7633f432
 WHERE YEAR(NOW())=YEAR(`productviewlog`. `timestamp`)
 GROUP BY `productviewlog`.`product`
 ORDER BY `count1` DESC
@@ -734,8 +749,13 @@ LIMIT 0 , 10")->result();
 	function gettoptenproductviewyear()
 	{
 		$query=$this->db->query("SELECT COUNT(`productviewlog`.`product`) AS `count1`,`productviewlog`. `id`, `productviewlog`. `product`, `productviewlog`. `user`, `productviewlog`. `timestamp` ,`product`.`name` AS `productname`,MONTH(`productviewlog`. `timestamp`),`productimage`.`image`
+<<<<<<< HEAD
 FROM `productviewlog` 
 LEFT OUTER JOIN `product` ON `product`.`id`=`productviewlog`. `product` INNER JOIN `productimage` ON `productimage`.`product`= `productviewlog`. `product`
+=======
+FROM `productviewlog`
+LEFT OUTER JOIN `product` ON `product`.`id`=`productviewlog`. `product` LEFT OUTER JOIN `productimage` ON `productimage`.`product`= `productviewlog`. `product`
+>>>>>>> bc638fb416a72bc7894de185bb200b6f7633f432
 WHERE MONTH(NOW())=MONTH(`productviewlog`. `timestamp`) AND  YEAR(NOW())=YEAR(`productviewlog`. `timestamp`)
 GROUP BY `productviewlog`.`product`
 ORDER BY `count1` DESC
@@ -745,24 +765,39 @@ LIMIT 0 , 10")->result();
 	function gettoptenbestsellingproductmonth()
 	{
 		$query=$this->db->query("SELECT count(`orderitems`.`product`) AS `count1`,MONTH(NOW()),`product`.`name`  AS `productname`,`orderitems`.`product` AS `productid`,`order`.`timestamp`,MONTH(`order`.`timestamp`),`productimage`.`image`
+<<<<<<< HEAD
 FROM `orderitems` 
 LEFT OUTER JOIN `order` ON `orderitems`.`order`=`order`.`id` 
 LEFT OUTER JOIN `product` ON `product`.`id`=`orderitems`.`product` 
 INNER JOIN `productimage` ON `orderitems`. `product`= `productimage`.`product`
+=======
+FROM `orderitems`
+LEFT OUTER JOIN `order` ON `orderitems`.`order`=`order`.`id`
+LEFT OUTER JOIN `product` ON `product`.`id`=`orderitems`.`product`
+LEFT OUTER JOIN `productimage` ON `orderitems`. `product`= `productimage`.`product`
+>>>>>>> bc638fb416a72bc7894de185bb200b6f7633f432
 WHERE MONTH(NOW())=MONTH(`order`.`timestamp`) AND YEAR(NOW())=YEAR(`order`.`timestamp`)
-GROUP BY `orderitems`.`product` 
-ORDER BY COUNT(`orderitems`.`product`) DESC 
+GROUP BY `orderitems`.`product`
+ORDER BY COUNT(`orderitems`.`product`) DESC
 LIMIT 0,10")->result();
 		return $query;
 	}
 	function gettoptenbestsellingproductalltime()
 	{
 		$query=$this->db->query("SELECT count(`orderitems`.`product`) AS `count1`,MONTH(NOW(`order`.`timestamp`)),`product`.`name`  AS `productname`,`orderitems`.`product` AS `productid`,`productimage`.`image`
+<<<<<<< HEAD
 FROM `orderitems` 
 LEFT OUTER JOIN `order` ON `orderitems`.`order`=`order`.`id` 
 LEFT OUTER JOIN `product` ON `product`.`id`=`orderitems`.`product`  INNER JOIN `productimage` ON `productimage`.`product`= `orderitems`. `product`
 GROUP BY `orderitems`.`product` 
 ORDER BY COUNT(`orderitems`.`product`) DESC 
+=======
+FROM `orderitems`
+LEFT OUTER JOIN `order` ON `orderitems`.`order`=`order`.`id`
+LEFT OUTER JOIN `product` ON `product`.`id`=`orderitems`.`product`  LEFT OUTER JOIN `productimage` ON `productimage`.`product`= `orderitems`. `product`
+GROUP BY `orderitems`.`product`
+ORDER BY COUNT(`orderitems`.`product`) DESC
+>>>>>>> bc638fb416a72bc7894de185bb200b6f7633f432
 LIMIT 0,10")->result();
 		return $query;
 	}
@@ -776,7 +811,7 @@ LIMIT 0,10")->result();
 		$query=$this->db->query("SELECT SUM(`orderitems`.`finalprice`) AS `currentmonthrevenue`,MONTH(now()) AS `month`,MONTH(`order`.`timestamp`) AS `timestampmonth`
 FROM `orderitems`
 LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order`
-WHERE MONTH(NOW())=MONTH(`order`.`timestamp`) 
+WHERE MONTH(NOW())=MONTH(`order`.`timestamp`)
 GROUP BY MONTH(now())")->row();
 		return $query;
 	}
@@ -787,7 +822,7 @@ FROM `orderitems`
 LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order`")->row();
 		return $query;
 	}
-    
+
 	function getmonthrevenue()
 	{
         $return=array();
