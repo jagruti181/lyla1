@@ -13,7 +13,7 @@
 				<tr>
 					<!--<th>Id</th>-->
 					<th>Id</th>
-					<th>Profuct Id</th>
+					<th>Product Id</th>
 					<th>Name</th>
 			       <th> Actions </th>
 

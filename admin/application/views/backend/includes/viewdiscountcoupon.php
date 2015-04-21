@@ -16,13 +16,13 @@
                     <div class="symbol terques">
                         <i class="icon-user"></i>
                     </div>
-                    <a href="<?php echo site_url('site/dashboardzonewise'); ?>">
+<!--                    <a href="<?php echo site_url('site/dashboardzonewise'); ?>">-->
                     <div class="value">
                        <p>Most Popular Of Month </p>
                         <h1><?php echo $monthpopularcouponcode->couponcode;?></h1>
 
                     </div>
-                    </a>
+<!--                    </a>-->
                 </section>
             </div>
         </div>
@@ -37,13 +37,13 @@
                     <div class="symbol terques">
                         <i class="icon-user"></i>
                     </div>
-                    <a href="<?php echo site_url('site/dashboardzonewise'); ?>">
+<!--                    <a href="<?php echo site_url('site/dashboardzonewise'); ?>">-->
                     <div class="value">
                        <p>Most Popular Of Year </p>
                         <h1><?php echo $yearpopularcouponcode->couponcode;?></h1>
 
                     </div>
-                    </a>
+<!--                    </a>-->
                 </section>
             </div>
         </div>

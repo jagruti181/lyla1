@@ -134,6 +134,7 @@
                                     <!--<th>Id</th>-->
                                     <th>Product Name</th>
                                     <th>Search Times</th>
+                                    <th>Image</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -141,7 +142,7 @@
                                     <tr>
                                         <!--<td><?php echo $row->id; ?></td>-->
                                         <td><?php echo $row->productname; ?></td>
-                                        <td><?php echo $row->count1; ?></td>
+                                        <td><img class="img" height="100px" width="100px"src="http://www.lylaloves.co.uk/showimage?size=300&amp;image=<?php echo $row->image; ?>"></td>
                                     </tr>
                                     <?php } ?>
                             </tbody>
@@ -161,6 +162,7 @@
                                     <!--<th>Id</th>-->
                                     <th>Product Name</th>
                                     <th>Search Times</th>
+                                    <th>Image</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -168,7 +170,7 @@
                                     <tr>
                                         <!--<td><?php echo $row->id; ?></td>-->
                                         <td><?php echo $row->productname; ?></td>
-                                        <td><?php echo $row->count1; ?></td>
+                                        <td><img class="img" height="100px" width="100px"src="http://www.lylaloves.co.uk/showimage?size=300&amp;image=<?php echo $row->image; ?>"></td>
                                     </tr>
                                     <?php } ?>
                             </tbody>
@@ -196,6 +198,7 @@
                                     <!--<th>Id</th>-->
                                     <th>Product Name</th>
                                     <th>Times</th>
+                                    <th>Images</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -204,6 +207,7 @@
                                         <!--<td><?php echo $row->id; ?></td>-->
                                         <td><?php echo $row->productname; ?></td>
                                         <td><?php echo $row->count1; ?></td>
+                                        <td><img class="img" height="100px" width="100px"src="http://www.lylaloves.co.uk/showimage?size=300&amp;image=<?php echo $row->image; ?>"></td>
                                     </tr>
                                     <?php } ?>
                             </tbody>
