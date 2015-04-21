@@ -701,7 +701,7 @@ LEFT OUTER JOIN `category` ON `productcategory`.`category`=`category`.`id`");
 	{
 		$query=$this->db->query("SELECT COUNT(`productsearchlog`.`product`) AS `count1`,`productsearchlog`. `id`, `productsearchlog`. `product`, `productsearchlog`. `user`, `productsearchlog`. `timestamp` ,`product`.`name` AS `productname`,YEAR(`productsearchlog`. `timestamp`),`productimage`.`image`
 FROM `productsearchlog` 
-LEFT OUTER JOIN `product` ON `product`.`id`=`productsearchlog`. `product` LEFT OUTER JOIN `productimage` ON `productimage`.`product`= `productsearchlog`. `product`
+LEFT OUTER JOIN `product` ON `product`.`id`=`productsearchlog`. `product` INNER JOIN `productimage` ON `productimage`.`product`= `productsearchlog`. `product`
 WHERE YEAR(NOW())=YEAR(`productsearchlog`. `timestamp`)
 GROUP BY `productsearchlog`.`product`
 ORDER BY `count1` DESC
@@ -712,7 +712,7 @@ LIMIT 0 , 10")->result();
 	{
 		$query=$this->db->query("SELECT COUNT(`productsearchlog`.`product`) AS `count1`,`productsearchlog`. `id`, `productsearchlog`. `product`, `productsearchlog`. `user`, `productsearchlog`. `timestamp` ,`product`.`name` AS `productname`,MONTH(`productsearchlog`. `timestamp`),`productimage`.`image`
 FROM `productsearchlog` 
-LEFT OUTER JOIN `product` ON `product`.`id`=`productsearchlog`. `product` LEFT OUTER JOIN `productimage` ON `productimage`.`product`= `productsearchlog`. `product`
+LEFT OUTER JOIN `product` ON `product`.`id`=`productsearchlog`. `product` INNER JOIN `productimage` ON `productimage`.`product`= `productsearchlog`. `product`
 WHERE MONTH(NOW())=MONTH(`productsearchlog`. `timestamp`) AND YEAR(NOW())=YEAR(`productsearchlog`. `timestamp`)
 GROUP BY `productsearchlog`.`product`
 ORDER BY `count1` DESC
@@ -724,7 +724,7 @@ LIMIT 0 , 10")->result();
 	{
 		$query=$this->db->query("SELECT COUNT(`productviewlog`.`product`) AS `count1`,`productviewlog`. `id`, `productviewlog`. `product`, `productviewlog`. `user`, `productviewlog`. `timestamp` ,`product`.`name` AS `productname`,YEAR(`productviewlog`. `timestamp`),`productimage`.`image`
 FROM `productviewlog` 
-LEFT OUTER JOIN `product` ON `product`.`id`=`productviewlog`. `product` LEFT OUTER JOIN `productimage` ON `productimage`.`product`= `productviewlog`. `product`
+LEFT OUTER JOIN `product` ON `product`.`id`=`productviewlog`. `product` INNER JOIN `productimage` ON `productimage`.`product`= `productviewlog`. `product`
 WHERE YEAR(NOW())=YEAR(`productviewlog`. `timestamp`)
 GROUP BY `productviewlog`.`product`
 ORDER BY `count1` DESC
@@ -735,7 +735,7 @@ LIMIT 0 , 10")->result();
 	{
 		$query=$this->db->query("SELECT COUNT(`productviewlog`.`product`) AS `count1`,`productviewlog`. `id`, `productviewlog`. `product`, `productviewlog`. `user`, `productviewlog`. `timestamp` ,`product`.`name` AS `productname`,MONTH(`productviewlog`. `timestamp`),`productimage`.`image`
 FROM `productviewlog` 
-LEFT OUTER JOIN `product` ON `product`.`id`=`productviewlog`. `product` LEFT OUTER JOIN `productimage` ON `productimage`.`product`= `productviewlog`. `product`
+LEFT OUTER JOIN `product` ON `product`.`id`=`productviewlog`. `product` INNER JOIN `productimage` ON `productimage`.`product`= `productviewlog`. `product`
 WHERE MONTH(NOW())=MONTH(`productviewlog`. `timestamp`) AND  YEAR(NOW())=YEAR(`productviewlog`. `timestamp`)
 GROUP BY `productviewlog`.`product`
 ORDER BY `count1` DESC
@@ -748,7 +748,7 @@ LIMIT 0 , 10")->result();
 FROM `orderitems` 
 LEFT OUTER JOIN `order` ON `orderitems`.`order`=`order`.`id` 
 LEFT OUTER JOIN `product` ON `product`.`id`=`orderitems`.`product` 
-LEFT OUTER JOIN `productimage` ON `orderitems`. `product`= `productimage`.`product`
+INNER JOIN `productimage` ON `orderitems`. `product`= `productimage`.`product`
 WHERE MONTH(NOW())=MONTH(`order`.`timestamp`) AND YEAR(NOW())=YEAR(`order`.`timestamp`)
 GROUP BY `orderitems`.`product` 
 ORDER BY COUNT(`orderitems`.`product`) DESC 
@@ -760,7 +760,7 @@ LIMIT 0,10")->result();
 		$query=$this->db->query("SELECT count(`orderitems`.`product`) AS `count1`,MONTH(NOW(`order`.`timestamp`)),`product`.`name`  AS `productname`,`orderitems`.`product` AS `productid`,`productimage`.`image`
 FROM `orderitems` 
 LEFT OUTER JOIN `order` ON `orderitems`.`order`=`order`.`id` 
-LEFT OUTER JOIN `product` ON `product`.`id`=`orderitems`.`product`  LEFT OUTER JOIN `productimage` ON `productimage`.`product`= `orderitems`. `product`
+LEFT OUTER JOIN `product` ON `product`.`id`=`orderitems`.`product`  INNER JOIN `productimage` ON `productimage`.`product`= `orderitems`. `product`
 GROUP BY `orderitems`.`product` 
 ORDER BY COUNT(`orderitems`.`product`) DESC 
 LIMIT 0,10")->result();
