@@ -97,9 +97,9 @@ firstapp.config(
             templateUrl: 'views/template.html',
             controller: 'loginwishlist'
         }).
-        when('/subjewellery', {
+        when('/jewellery', {
             templateUrl: 'views/template.html',
-            controller: 'subjewellery'
+            controller: 'jewellery'
         }).
         when('/about', {
             templateUrl: 'views/template.html',

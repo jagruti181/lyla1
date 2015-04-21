@@ -1,6 +1,6 @@
 var phonecatControllers = angular.module('phonecatControllers', ['templateservicemod', 'Service', 'ngRoute', 'ngDialog']);
 phonecatControllers.controller('home',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         ////$scope.firstloadclass = TemplateService.firstload;
 
         $scope.template = TemplateService;
@@ -90,24 +90,24 @@ phonecatControllers.controller('home',
 
         //get get country from geo location
 
-        $scope.showaccount = function() {
+        $scope.showaccount = function () {
             $scope.visible = true;
         };
-        $scope.hideaccount = function() {
+        $scope.hideaccount = function () {
             $scope.visible = false;
         };
         $scope.showslideset1 = 0;
-        $scope.slidesetnext = function(value) {
+        $scope.slidesetnext = function (value) {
             console.log("Next Clicked");
             $scope.showslideset1 = 1;
             console.log($scope.showslideset1);
         };
-        $scope.slidesetprev = function(value) {
+        $scope.slidesetprev = function (value) {
             console.log("Prev Clicked");
             $scope.showslideset1 = 0;
         };
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.alldate = data;
                 $scope.loginlogouttext = "Logout";
@@ -115,21 +115,21 @@ phonecatControllers.controller('home',
         };
         MainJson.authenticate().success(authenticate);
 
-        var slidersuccess = function(data, status) {
+        var slidersuccess = function (data, status) {
             $scope.sliders = data;
             console.log($scope.sliders);
         };
         MainJson.getallslider().success(slidersuccess);
         //authenticate
         //newsletter
-        var newslettersaved = function(data, status) {
+        var newslettersaved = function (data, status) {
             if (data == "true") {
                 $scope.msgg = "Thank You For Subscribe";
             } else {
                 $scope.msgg = "Thank You For Subscribe";
             }
         };
-        $scope.newsletter = function(uemail) {
+        $scope.newsletter = function (uemail) {
             if (!uemail) {
                 alert("Please Enter Email");
             } else {
@@ -139,23 +139,23 @@ phonecatControllers.controller('home',
         };
         //newsletter
         //cart badge
-        var totalcart = function(data, status) {
+        var totalcart = function (data, status) {
             $scope.badge = data;
         };
         MainJson.gettotalcart().success(totalcart);
         //cart badge
-        $scope.$on("$includeContentLoaded", function() {
+        $scope.$on("$includeContentLoaded", function () {
             TemplateService.firsttimeloaded();
             $(".zoomContainer").remove();
-            $(".pulseanimation").hover(function() {
+            $(".pulseanimation").hover(function () {
                 $(this).addClass("animated pulse");
-            }, function() {
+            }, function () {
                 $(this).removeClass("animated pulse");
             });
 
-            $(".tadaanimation").hover(function() {
+            $(".tadaanimation").hover(function () {
                 $(this).addClass("animated tada");
-            }, function() {
+            }, function () {
                 $(this).removeClass("animated tada");
             });
         });
@@ -170,7 +170,7 @@ phonecatControllers.controller('home',
     });
 
 phonecatControllers.controller('cart',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         $(".zoomContainer").remove();
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
@@ -184,7 +184,7 @@ phonecatControllers.controller('cart',
         $scope.hititle = "Cart";
         //authenticate
 
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.loginlogouttext = data.email;
                 $scope.uid = data.id;
@@ -213,14 +213,14 @@ phonecatControllers.controller('cart',
                 console.log($scope.cart);
 
                 var totallength = 0;
-                _.each($scope.cart, function(cart) {
+                _.each($scope.cart, function (cart) {
                     totallength += parseInt(cart.qty);
                 });
                 var xproducts = parseInt(data.xproducts);
                 var yproducts = parseInt(data.yproducts);
                 var itter = Math.floor(totallength / xproducts) * yproducts;
                 console.log("ITTER " + itter);
-                var newcart = _.sortBy($scope.cart, function(cart) {
+                var newcart = _.sortBy($scope.cart, function (cart) {
                     cart.price = parseFloat(cart.price);
                     cart.qty2 = parseInt(cart.qty);
                     return parseFloat(cart.price);
@@ -250,7 +250,7 @@ phonecatControllers.controller('cart',
         $scope.isamount = 0;
         $scope.isfreedelivery = 0;
         $scope.discountamount = 0;
-        var couponsuccess = function(data, status) {
+        var couponsuccess = function (data, status) {
             if (data == 'false') {
                 $scope.validcouponcode = 0;
             } else {
@@ -265,7 +265,7 @@ phonecatControllers.controller('cart',
 
 
 
-        $scope.checkcoupon = function(couponcode) {
+        $scope.checkcoupon = function (couponcode) {
             console.log(couponcode);
             MainJson.getdiscountcoupon(couponcode).success(couponsuccess);
         };
@@ -273,7 +273,7 @@ phonecatControllers.controller('cart',
 
         //authenticate
         $scope.newquantity = [];
-        var showcart = function(data, status) {
+        var showcart = function (data, status) {
             console.log(data);
             $scope.cart = data;
             console.log("Values in cart");
@@ -288,52 +288,52 @@ phonecatControllers.controller('cart',
             console.log($scope.newquantity);
         };
         MainJson.getcart().success(showcart);
-        var getsubtotal = function(data, status) {
+        var getsubtotal = function (data, status) {
             $scope.subtotal = data;
             calcdiscountamount();
         };
         MainJson.totalcart().success(getsubtotal);
         //separating cart
-        $scope.postcart = function() {
-            $scope.cart = MainJson.getcart();
-            $scope.id = $scope.cart[0].id;
-            $scope.name = $scope.cart[0].name;
-            $scope.price = $scope.cart[0].price;
-            $scope.quantity = $scope.cart[0].quantity;
-            for (var i = 1; i < $scope.cart.length; i++) {
-                $scope.id += "," + $scope.cart[i].id;
-                $scope.name += "," + $scope.cart[i].name;
-                $scope.price += "," + $scope.cart[i].price;
-                $scope.quantity += "," + $scope.cart[i].quantity;
+        $scope.postcart = function () {
+                $scope.cart = MainJson.getcart();
+                $scope.id = $scope.cart[0].id;
+                $scope.name = $scope.cart[0].name;
+                $scope.price = $scope.cart[0].price;
+                $scope.quantity = $scope.cart[0].quantity;
+                for (var i = 1; i < $scope.cart.length; i++) {
+                    $scope.id += "," + $scope.cart[i].id;
+                    $scope.name += "," + $scope.cart[i].name;
+                    $scope.price += "," + $scope.cart[i].price;
+                    $scope.quantity += "," + $scope.cart[i].quantity;
+                }
+
+
             }
-
-
-        }
-        //separating cart
-        //add to cart
-        var getsubtotal = function(data, status) {
+            //separating cart
+            //add to cart
+        var getsubtotal = function (data, status) {
             $scope.subtotal = data;
         };
-        var cartt = function(data, status) {
+        var cartt = function (data, status) {
             console.log(data);
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
             MainJson.totalcart().success(getsubtotal);
         };
-        $scope.addtocart = function(id, name, price, quantity, index) {
+        $scope.addtocart = function (id, name, price, quantity, index) {
             // console.log(id+name+price+quantity);
             $scope.cart[index].subtotal = price * quantity;
             MainJson.addtocart(id, name, price, quantity).success(cartt);
         };
         //addto cart
 
-        $scope.addproductcart = function(id, name, price, quantity, index) {
+        $scope.addproductcart = function (id, name, price, quantity, index) {
             console.log(id + name + price + quantity);
             quantity = parseInt(quantity) + 1;
             $scope.newquantity[index] = quantity;
             $scope.cart[index].subtotal = price * quantity;
             MainJson.addtocart(id, name, price, quantity).success(cartt);
         };
-        $scope.subproductcart = function(id, name, price, quantity, index) {
+        $scope.subproductcart = function (id, name, price, quantity, index) {
             console.log(id + name + price + quantity);
             quantity = parseInt(quantity) - 1;
             $scope.newquantity[index] = quantity;
@@ -342,17 +342,17 @@ phonecatControllers.controller('cart',
         };
 
 
-        var deletefromcart = function() {
+        var deletefromcart = function () {
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
             MainJson.totalcart().success(getsubtotal);
             console.log("Subtotal should change");
         };
-        var savefromcart = function() {
+        var savefromcart = function () {
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
             MainJson.totalcart().success(getsubtotal);
             console.log("Subtotal should change on save");
         };
-        $scope.deletecart = function(id) {
+        $scope.deletecart = function (id) {
             //console.log(cart);
             for (var i = 0; i < $scope.cart.length; i++) {
                 if ($scope.cart[i].id == id) {
@@ -369,7 +369,7 @@ phonecatControllers.controller('cart',
             MainJson.deletecartfromsession(id).success(deletefromcart);
 
         };
-        $scope.savecart = function(id, quantity) {
+        $scope.savecart = function (id, quantity) {
             $scope.returntwo = MainJson.savecart($scope.uid, id, quantity).success(savefromcart);
             $scope.subtotal = $scope.returntwo.subtotal;
         };
@@ -377,10 +377,10 @@ phonecatControllers.controller('cart',
     });
 
 phonecatControllers.controller('logout ',
-    function($scope, TemplateService, MainJson, $location) {
+    function ($scope, TemplateService, MainJson, $location) {
 
         //######################authentication######################
-        var logout = function(data, status) {
+        var logout = function (data, status) {
             //console.log(data);
             $scope.loginlogouttext = "Login";
             $scope.isloggedin = 0;
@@ -395,7 +395,7 @@ phonecatControllers.controller('logout ',
 
 
 phonecatControllers.controller('login',
-    function($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -406,17 +406,17 @@ phonecatControllers.controller('login',
         $scope.loginlogouttext = "Login";
         //authenticate
 
-        var cartt = function(data, status) {
+        var cartt = function (data, status) {
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
         };
 
-        var cartdata = function(data, status) {
+        var cartdata = function (data, status) {
             console.log(data);
             for (var i = 0; i < data.length; i++) {
                 MainJson.addtocart(data[i].id, data[i].name, data[i].price, data[i].quantity).success(cartt);;
             }
         };
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             MainJson.getusercart(data.id).success(cartdata);
             if (data != "false") {
                 $scope.loginlogouttext = "Logout";
@@ -426,11 +426,11 @@ phonecatControllers.controller('login',
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
-        var emailsend = function(data, status) {
+        var emailsend = function (data, status) {
             console.log(data);
             alert("Email send to you");
         };
-        var getsignup = function(data, status) {
+        var getsignup = function (data, status) {
             if (data != "false") {
                 $scope.msgr = "Registred Successful";
                 $location.url("/home");
@@ -439,11 +439,11 @@ phonecatControllers.controller('login',
                 $scope.msgr = "Error In Registration";
             }
         };
-        $scope.signup = function(register) {
+        $scope.signup = function (register) {
             console.log(register);
             MainJson.registeruser(register.firstname, register.lastname, register.email, register.password).success(getsignup);
         };
-        var getlogin = function(data, status) {
+        var getlogin = function (data, status) {
             if (data != "false") {
                 $scope.msg = "Login Successful";
                 $location.url("/home");
@@ -451,7 +451,7 @@ phonecatControllers.controller('login',
                 $scope.msg = "Invalid Email Or Password";
             }
         };
-        $scope.userlogin = function(login) {
+        $scope.userlogin = function (login) {
             console.log(login);
             MainJson.loginuser(login.email, login.password).success(getlogin);
         };
@@ -461,7 +461,7 @@ phonecatControllers.controller('login',
 
 
 phonecatControllers.controller('loginwishlist',
-    function($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -473,17 +473,17 @@ phonecatControllers.controller('loginwishlist',
         //authenticate
         $scope.alert2 = "Login or signup for wishlist";
 
-        var cartt = function(data, status) {
+        var cartt = function (data, status) {
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
         };
 
-        var cartdata = function(data, status) {
+        var cartdata = function (data, status) {
             console.log(data);
             for (var i = 0; i < data.length; i++) {
                 MainJson.addtocart(data[i].id, data[i].name, data[i].price, data[i].quantity).success(cartt);;
             }
         };
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             MainJson.getusercart(data.id).success(cartdata);
             if (data != "false") {
                 $scope.loginlogouttext = "Logout";
@@ -493,11 +493,11 @@ phonecatControllers.controller('loginwishlist',
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
-        var emailsend = function(data, status) {
+        var emailsend = function (data, status) {
             console.log(data);
             alert("Email send to you");
         };
-        var getsignup = function(data, status) {
+        var getsignup = function (data, status) {
             if (data != "false") {
                 $scope.msgr = "Registred Successful";
                 $location.url("/home");
@@ -506,11 +506,11 @@ phonecatControllers.controller('loginwishlist',
                 $scope.msgr = "Error In Registration";
             }
         };
-        $scope.signup = function(register) {
+        $scope.signup = function (register) {
             console.log(register);
             MainJson.registeruser(register.firstname, register.lastname, register.email, register.password).success(getsignup);
         };
-        var getlogin = function(data, status) {
+        var getlogin = function (data, status) {
             if (data != "false") {
                 $scope.msg = "Login Successful";
                 $location.url("/wishlist");
@@ -518,7 +518,7 @@ phonecatControllers.controller('loginwishlist',
                 $scope.msg = "Invalid Email Or Password";
             }
         };
-        $scope.userlogin = function(login) {
+        $scope.userlogin = function (login) {
             console.log(login);
             MainJson.loginuser(login.email, login.password).success(getlogin);
         };
@@ -530,7 +530,7 @@ phonecatControllers.controller('loginwishlist',
 
 
 phonecatControllers.controller('xoxo',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -541,7 +541,7 @@ phonecatControllers.controller('xoxo',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.alldata = data;
                 $scope.loginlogouttext = "Logout";
@@ -554,7 +554,7 @@ phonecatControllers.controller('xoxo',
     });
 
 phonecatControllers.controller('contact',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.title = "Contact Lyla Loves | Fashion Jewellery London";
@@ -568,7 +568,7 @@ phonecatControllers.controller('contact',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.alldata = data;
                 $scope.loginlogouttext = "Logout";
@@ -577,12 +577,12 @@ phonecatControllers.controller('contact',
         MainJson.authenticate().success(authenticate);
         //authenticate
         //contact
-        var contact = function(data, status) {
+        var contact = function (data, status) {
             console.log(data);
             $scope.msg = "YOUR REVIEW IS SAVED SUCCESSFULY";
         };
         $scope.contactsubmit = false;
-        $scope.usercontact = function(data) {
+        $scope.usercontact = function (data) {
             $scope.contactsubmit = true;
             MainJson.usercontact("", data.name, data.email, data.phone, data.comment).success(contact);
         };
@@ -592,14 +592,14 @@ phonecatControllers.controller('contact',
 
 
 phonecatControllers.controller('contact2',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
 
-        var contact = function(data, status) {
+        var contact = function (data, status) {
             console.log(data);
             $scope.msg = "YOUR REVIEW IS SAVED SUCCESSFULY";
         };
         $scope.contactsubmit = false;
-        $scope.usercontact = function(data) {
+        $scope.usercontact = function (data) {
             $scope.contactsubmit = true;
             MainJson.usercontact("", data.name, data.email, data.phone, data.comment).success(contact);
         };
@@ -608,7 +608,7 @@ phonecatControllers.controller('contact2',
     });
 
 phonecatControllers.controller('wholesaler',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -619,7 +619,7 @@ phonecatControllers.controller('wholesaler',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.alldata = data;
                 $scope.loginlogouttext = "Logout";
@@ -628,7 +628,7 @@ phonecatControllers.controller('wholesaler',
         MainJson.authenticate().success(authenticate);
         //authenticate
         //register
-        var getwholesalersignup = function(data, status) {
+        var getwholesalersignup = function (data, status) {
             if (data != "false") {
                 $scope.msgr = "Registred Successful";
 
@@ -636,7 +636,7 @@ phonecatControllers.controller('wholesaler',
                 $scope.msgr = "Error In Registration";
             }
         };
-        $scope.wholesalersignup = function(register) {
+        $scope.wholesalersignup = function (register) {
             console.log(register);
             MainJson.registerwholesaler(register.firstname, register.lastname, register.phone, register.email, register.password).success(getwholesalersignup);
         };
@@ -646,7 +646,7 @@ phonecatControllers.controller('wholesaler',
 
 
 phonecatControllers.controller('profile',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -657,7 +657,7 @@ phonecatControllers.controller('profile',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
 
                 $scope.loginlogouttext = "Logout";
@@ -671,7 +671,7 @@ phonecatControllers.controller('profile',
     });
 
 phonecatControllers.controller('lylaloves',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.title = "Follow Lyla Loves on Facebook, Twitter, Pinterest, & Instagram";
@@ -685,7 +685,7 @@ phonecatControllers.controller('lylaloves',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.loginlogouttext = data.email;
             }
@@ -707,8 +707,8 @@ phonecatControllers.controller('lylaloves',
         //        });
 
     });
-phonecatControllers.controller('subjewellery',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+phonecatControllers.controller('jewellery',
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.title = "London Fashion Jewellery | Dainty Jewellery ";
@@ -718,12 +718,12 @@ phonecatControllers.controller('subjewellery',
         TemplateService.navigation = "views/navigation.html";
         //        TemplateService.changetitle("lylaloves...");
         $scope.homeactive = "active";
-        TemplateService.content = "views/subjewellery.html";
+        TemplateService.content = "views/jewellery.html";
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         $scope.hititle = "Lyla Loves -  Fashion Jewellery, Dainty Jewellery";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.loginlogouttext = data.email;
             }
@@ -747,7 +747,7 @@ phonecatControllers.controller('subjewellery',
     });
 
 phonecatControllers.controller('thankyou',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -759,7 +759,7 @@ phonecatControllers.controller('thankyou',
         $scope.loginlogouttext = "Login";
         MainJson.destroycart().success(MainJson.gettotalproductsincart);
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.loginlogouttext = data.email;
             }
@@ -769,14 +769,14 @@ phonecatControllers.controller('thankyou',
 
     });
 phonecatControllers.controller('newsletter',
-    function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
         $scope.msgg = "Message here..........";
 
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             console.log(data);
             if (data != "false") {
                 $scope.alldate = data;
@@ -786,7 +786,7 @@ phonecatControllers.controller('newsletter',
         MainJson.authenticate().success(authenticate);
         //authenticate
         //newsletter
-        var newslettersaved = function(data, status) {
+        var newslettersaved = function (data, status) {
             if (data == "true") {
                 //alert("Thank you for subscribing.");
                 TemplateService.lightboximage = "img/newsletterpopup.jpg";
@@ -796,7 +796,7 @@ phonecatControllers.controller('newsletter',
                 $location.url("/xoxo");
             }
         };
-        $scope.newsletter = function(uemail) {
+        $scope.newsletter = function (uemail) {
             if (!uemail) {
                 alert("Please Enter Email");
             } else {
@@ -809,7 +809,7 @@ phonecatControllers.controller('newsletter',
     });
 
 phonecatControllers.controller('badge',
-    function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -817,7 +817,7 @@ phonecatControllers.controller('badge',
         $scope.check = 0;
 
         //TO LOGIN OR PROFILE
-        $scope.toprofile = function() {
+        $scope.toprofile = function () {
             if ($scope.check == 0) {
                 $location.url("/Login");
             } else {
@@ -826,7 +826,7 @@ phonecatControllers.controller('badge',
         }
 
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             console.log("hhhhhhhhhhhhhhhhhhh");
             console.log(data);
             if (data != "false") {
@@ -839,7 +839,7 @@ phonecatControllers.controller('badge',
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
-        var totalcart = function(data, status) {
+        var totalcart = function (data, status) {
             console.log(data);
             $scope.template.totalproducts = data;
         };
@@ -849,14 +849,14 @@ phonecatControllers.controller('badge',
 
 
 phonecatControllers.controller('search',
-    function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
         $scope.msgg = "Message here..........";
 
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             console.log(data);
             if (data != "false") {
                 $scope.alldate = data;
@@ -866,7 +866,7 @@ phonecatControllers.controller('search',
         MainJson.authenticate().success(authenticate);
         //authenticate
         //search
-        $scope.search = function(search) {
+        $scope.search = function (search) {
             $location.url("/search/" + search);
         };
         //search
@@ -875,8 +875,8 @@ phonecatControllers.controller('search',
 
 
 phonecatControllers.controller('lightbox',
-    function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
-        $scope.removelightbox = function() {
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+        $scope.removelightbox = function () {
             TemplateService.lightboximage = "";
         };
     });
@@ -885,7 +885,7 @@ phonecatControllers.controller('lightbox',
 
 
 phonecatControllers.controller('searchpage',
-    function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -897,7 +897,7 @@ phonecatControllers.controller('searchpage',
         $scope.firstshow = "firstshow";
         $scope.loginlogouttext = "Login";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.loginlogouttext = data.email;
             }
@@ -907,7 +907,7 @@ phonecatControllers.controller('searchpage',
 
         //searching
         $scope.searchresult = $routeParams.search;
-        var searching = function(data, status) {
+        var searching = function (data, status) {
             $scope.find = data;
         };
         MainJson.seach($routeParams.search).success(searching);
@@ -916,7 +916,7 @@ phonecatControllers.controller('searchpage',
 
 
 phonecatControllers.controller('lookbook',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
 
 
 
@@ -931,14 +931,14 @@ phonecatControllers.controller('lookbook',
         $scope.firstshow = "firstshow";
         $scope.loginlogouttext = "Login";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.loginlogouttext = data.email;
             }
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
-        $scope.changeactivelookbook = function(id) {
+        $scope.changeactivelookbook = function (id) {
             $scope.firstshow = "";
             //            console.log(id);
             for (var i = 0; i < $scope.lookbookimages.length; i++) {
@@ -950,7 +950,7 @@ phonecatControllers.controller('lookbook',
         };
 
 
-        var categorysuccess = function(data, status) {
+        var categorysuccess = function (data, status) {
             $scope.lookbookimages = data.product;
             $scope.changeactivelookbook(0);
         };
@@ -960,7 +960,7 @@ phonecatControllers.controller('lookbook',
 
 
 phonecatControllers.controller('checkout',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -990,10 +990,10 @@ phonecatControllers.controller('checkout',
         $scope.paymentorderid = 0;
 
 
-        $scope.focusout = function() {
+        $scope.focusout = function () {
             console.log("out focus");
         };
-        var paymentcomplete = function(data, status) {
+        var paymentcomplete = function (data, status) {
             console.log(data);
             MainJson.orderemail($scope.paymentorderemail, $scope.paymentorderid).success(orderemailsend);
             $location.path('/thankyou');
@@ -1003,7 +1003,7 @@ phonecatControllers.controller('checkout',
             //key: 'pk_test_4etgLi16WbODEDr4YBFdcbP0',
             image: 'img/logo.jpg',
             currency: 'GBP',
-            token: function(token) {
+            token: function (token) {
                 MainJson.chargestripe(token.id, $scope.form.email, ($scope.subtotal + $scope.form.shippingcost - $scope.discountamount), ($scope.form.firstname + " " + $scope.form.lastname)).success(paymentcomplete);
                 //window.location.href="http://www.lylaloves.co.uk/#/thankyou";
                 // Use the token to create the charge with a server-side script.
@@ -1011,7 +1011,7 @@ phonecatControllers.controller('checkout',
             }
         });
 
-        $scope.StipePaymentGen = function(amount) {
+        $scope.StipePaymentGen = function (amount) {
 
 
             handler.open({
@@ -1047,14 +1047,14 @@ phonecatControllers.controller('checkout',
                 console.log($scope.cart);
 
                 var totallength = 0;
-                _.each($scope.cart, function(cart) {
+                _.each($scope.cart, function (cart) {
                     totallength += parseInt(cart.qty);
                 });
                 var xproducts = parseInt(data.xproducts);
                 var yproducts = parseInt(data.yproducts);
                 var itter = Math.floor(totallength / xproducts) * yproducts;
                 console.log("ITTER " + itter);
-                var newcart = _.sortBy($scope.cart, function(cart) {
+                var newcart = _.sortBy($scope.cart, function (cart) {
                     cart.price = parseFloat(cart.price);
                     cart.qty2 = parseInt(cart.qty);
                     return parseFloat(cart.price);
@@ -1080,7 +1080,7 @@ phonecatControllers.controller('checkout',
 
 
         //userloginckeckout
-        var getlogin = function(data, status) {
+        var getlogin = function (data, status) {
             if (data != "false") {
                 //$scope.msg = "Login Successful";
                 $location.url("/checkout");
@@ -1089,18 +1089,18 @@ phonecatControllers.controller('checkout',
                 $scope.msg = "Invalid Email Or Password";
             }
         };
-        $scope.userloginckeckout = function(login) {
+        $scope.userloginckeckout = function (login) {
             console.log(login);
             MainJson.loginuser(login.email, login.password).success(getlogin);
         };
         //userloginckeckout
 
-        $scope.continuebilling = function() {
+        $scope.continuebilling = function () {
             $scope.billinginfo = 1;
             $scope.buttonsvalidate.billing = 1;
         };
 
-        $scope.continueshipping = function() {
+        $scope.continueshipping = function () {
 
             //$scope.errorvalid="Fill All Information *";
             //alert($scope.form.firstname);
@@ -1147,7 +1147,7 @@ phonecatControllers.controller('checkout',
 
         };
 
-        $scope.continueshipping1 = function() {
+        $scope.continueshipping1 = function () {
 
             //$scope.errorvalid="Fill All Information *";
             //alert($scope.form.firstname);
@@ -1218,7 +1218,7 @@ phonecatControllers.controller('checkout',
         }
 
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             console.log(data);
             if (data != "false") {
                 $scope.isloggedin = 1;
@@ -1233,7 +1233,7 @@ phonecatControllers.controller('checkout',
         //authenticate
 
         $scope.newquantity = [];
-        var showcart = function(data, status) {
+        var showcart = function (data, status) {
             console.log(data);
             $scope.cart = data;
             console.log($scope.cart[0].qty);
@@ -1247,7 +1247,7 @@ phonecatControllers.controller('checkout',
             calcdiscountamount();
         };
         MainJson.getcart().success(showcart);
-        var getsubtotal = function(data, status) {
+        var getsubtotal = function (data, status) {
             console.log(data);
             $scope.subtotal = parseFloat(data);
             calcdiscountamount();
@@ -1258,7 +1258,7 @@ phonecatControllers.controller('checkout',
         MainJson.totalcart().success(getsubtotal);
         $scope.showshippingmethods = 0;
         // free
-        $scope.free = function(country, subtotal, shipping) {
+        $scope.free = function (country, subtotal, shipping) {
             console.log("MAaaaza");
             console.log(country);
             console.log(subtotal);
@@ -1297,7 +1297,7 @@ phonecatControllers.controller('checkout',
             }
 
         };
-        $scope.free2 = function(country, subtotal, shipping) {
+        $scope.free2 = function (country, subtotal, shipping) {
             console.log(country);
             console.log(subtotal);
             console.log(shipping);
@@ -1337,28 +1337,28 @@ phonecatControllers.controller('checkout',
         };
         // free
         $scope.form.shippingcost = 0;
-        $scope.changeshippingcost = function(value) {
+        $scope.changeshippingcost = function (value) {
             console.log(value);
             $scope.form.shippingcost = value;
         };
 
 
 
-        $scope.deletecart = function(id) {
+        $scope.deletecart = function (id) {
             $scope.subtotal = MainJson.deletecart(id);
 
         };
-        $scope.savecart = function(id, quantity) {
+        $scope.savecart = function (id, quantity) {
             $scope.subtotal = MainJson.savecart(id, quantity);
         };
-        var orderemailsend = function(data, status) {
+        var orderemailsend = function (data, status) {
             console.log(data);
             //alert("Email send");
         };
 
         // order id and email after payment
 
-        var orderplaced = function(data, status) {
+        var orderplaced = function (data, status) {
             console.log("place order returns");
             console.log(data);
             //            $scope.paymentorderemail = $scope.form.email;
@@ -1366,7 +1366,7 @@ phonecatControllers.controller('checkout',
             //            MainJson.orderemail($scope.form.email, data).success(orderemailsend);
             //alert("Order Placed");
         };
-        $scope.continuepayment = function(form) {
+        $scope.continuepayment = function (form) {
             $scope.paywithcard = 1;
             $scope.buttonsvalidate.payment = 1;
             $scope.form.finalamount = $scope.subtotal;
@@ -1379,7 +1379,7 @@ phonecatControllers.controller('checkout',
             MainJson.placeorder(form).success(orderplaced);
         }
 
-        $scope.placeorder = function(form) {
+        $scope.placeorder = function (form) {
             console.log($scope.cart);
             //MainJson.orderitem($scope.cart);
             $scope.form.cart = $scope.cart;
@@ -1390,10 +1390,10 @@ phonecatControllers.controller('checkout',
     });
 
 phonecatControllers.controller('headerctrl',
-    function($scope, TemplateService, MainJson) {
+    function ($scope, TemplateService, MainJson) {
         $scope.template = TemplateService;
         $scope.testing = "testing";
-        var fillemail = function(data, status) {
+        var fillemail = function (data, status) {
             $scope.email = data.email;
         };
 
@@ -1401,13 +1401,13 @@ phonecatControllers.controller('headerctrl',
 
     });
 phonecatControllers.controller('slider',
-    function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, ngDialog) {
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, ngDialog) {
         $scope.template = TemplateService;
 
 
-        $scope.placelimited = function(limited) {
+        $scope.placelimited = function (limited) {
 
-            var limitedorder = function(data, status) {
+            var limitedorder = function (data, status) {
                 if (data != "false") {
                     // alert("Order Placed");
                     TemplateService.lightboximage = "img/giveawaypopup.jpg";
@@ -1436,7 +1436,7 @@ phonecatControllers.controller('slider',
     });
 
 phonecatControllers.controller('category',
-    function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
+    function ($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
         $scope.iscategory = "category";
 
 
@@ -1451,7 +1451,9 @@ phonecatControllers.controller('category',
         TemplateService.content = "views/category.html";
         TemplateService.slider = "";
         $scope.hititle = "Lyla Loves - Fashion Jewellery Online";
-        if ($routeParams.CategoryId == "2") {
+        console.log($routeParams.CategoryId);
+        if ($routeParams.CategoryId == "necklaces") {
+            console.log("is if");
             TemplateService.title = "Fashion Necklaces for Women, Statement Necklaces ";
             TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women, silver statement necklaces, dragonfly necklaces, zodiac necklaces and much more at Lyla Loves.";
             TemplateService.keywords = "fashion necklaces for women, silver statement necklace, dragonfly necklace, zodiac necklace, gold necklaces, silver necklaces, pendant necklaces";
@@ -1459,7 +1461,7 @@ phonecatControllers.controller('category',
 
         }
 
-        if ($routeParams.CategoryId == "3") {
+        if ($routeParams.CategoryId == "bracelets") {
             TemplateService.title = "Gold, silver and leather bracelets for women";
             TemplateService.metadescription = "Find out the best collection of gold and silver bracelets, wrap around bracelets and leather bracelets for women and many more at Lyla Loves.";
             TemplateService.keywords = "bracelets for women, silver bracelets for women, wrap around bracelets, leather bracelets for women, adjustable bracelets, bangles";
@@ -1469,7 +1471,7 @@ phonecatControllers.controller('category',
             TemplateService.slider = "";
             $scope.hititle = "Lyla Loves - Bracelets for Women";
         }
-        if ($routeParams.CategoryId == "4") {
+        if ($routeParams.CategoryId == "earrings") {
             TemplateService.title = "Ear cuffs, gold, silver and stud earrings for women";
             TemplateService.metadescription = "Shop for a range of ear cuffs online, gold and silver earrings, stud earrings for women and more. Choose from beautiful selection of earrings at Lyla Loves.";
             TemplateService.keywords = "ear cuffs online, stud earrings for women, gold earrings, silver earrings.";
@@ -1479,7 +1481,17 @@ phonecatControllers.controller('category',
             TemplateService.slider = "";
             $scope.hititle = "Gold, Silver, Stud Earrings for Women and Ear Cuffs Online";
         }
-        if ($routeParams.CategoryId == "5") {
+           if ($routeParams.CategoryId == "earcuffs") {
+            TemplateService.title = "Ear cuffs, gold, silver and stud earrings for women";
+            TemplateService.metadescription = "Shop for a range of ear cuffs online, gold and silver earrings, stud earrings for women and more. Choose from beautiful selection of earrings at Lyla Loves.";
+            TemplateService.keywords = "ear cuffs online, stud earrings for women, gold earrings, silver earrings.";
+            TemplateService.header = "views/header.html";
+            TemplateService.navigation = "views/navigation.html";
+            TemplateService.content = "views/category.html";
+            TemplateService.slider = "";
+            $scope.hititle = "Gold, Silver, Stud Earrings for Women and Ear Cuffs Online";
+        }
+        if ($routeParams.CategoryId == "rings") {
             TemplateService.title = "Gold stacking rings & silver midi rings for women";
             TemplateService.metadescription = "Buy ultimate piece of women's fashion rings from a wide range of gold and silver midi rings, gold stacking rings and many more only at Lyla Loves.";
             TemplateService.keywords = "rings for women, silver midi rings, gold stacking rings, geometric rings, pearl rings.";
@@ -1489,7 +1501,7 @@ phonecatControllers.controller('category',
             TemplateService.slider = "";
             $scope.hititle = "Lyla Loves - Gold, Silver Midi Rings, Stacking Rings";
         }
-        if ($routeParams.CategoryId == "6") {
+        if ($routeParams.CategoryId == "accessories") {
             TemplateService.title = "Buy the latest fashion accessories for women online";
             TemplateService.metadescription = "Get the best trendy fashion accessories for women like bags, mobile cases, scarves and more at Lyla Loves.";
             TemplateService.keywords = "accessories for women, bags for women, scarves for women, mobile phone cases, hair accessories.";
@@ -1499,7 +1511,7 @@ phonecatControllers.controller('category',
             TemplateService.slider = "";
             $scope.hititle = "Lyla Loves - Fashion Accessories for Women";
         }
-        if ($routeParams.CategoryId == "7") {
+        if ($routeParams.CategoryId == "bags") {
             TemplateService.title = "Shop for handbags, clutches, shoulder bags for women";
             TemplateService.metadescription = "Shop today! for a variety of stylish bags for women like clutches, shoulder bags and more at affordable prices from Lyla Loves.";
             TemplateService.keywords = "bags for women, womens accessories, clutch bags, shoulder bags, handbags";
@@ -1509,7 +1521,7 @@ phonecatControllers.controller('category',
             TemplateService.slider = "";
             $scope.hititle = "Lyla Loves - Stylish Bags for Women";
         }
-        if ($routeParams.CategoryId == "8") {
+        if ($routeParams.CategoryId == "scarves") {
             TemplateService.title = "Shop for printed, ethnic scarves for women ";
             TemplateService.metadescription = "Find beautiful printed and ethnic scarves for women to suit your style. Choose from a wide range of designs at the best prices from Lyla Loves..";
             TemplateService.keywords = "scarves for women, womens scarf, printed scarves, ethnic scarves";
@@ -1519,7 +1531,7 @@ phonecatControllers.controller('category',
             TemplateService.slider = "";
             $scope.hititle = "Lyla Loves - Scarves for Women";
         }
-        if ($routeParams.CategoryId == "34") {
+        if ($routeParams.CategoryId == "hair") {
             TemplateService.title = "Buy hair accessories for women online";
             TemplateService.metadescription = "Choose from a selection of trendy hair accessories for women at Lyla Loves.";
             TemplateService.keywords = "hair accessories for women, Hair accessory for women, womens hair accessories";
@@ -1529,7 +1541,7 @@ phonecatControllers.controller('category',
             TemplateService.slider = "";
             $scope.hititle = "Lyla Loves - Hair Accessories for Women";
         }
-        if ($routeParams.CategoryId == "35") {
+        if ($routeParams.CategoryId == "phone cases") {
             TemplateService.title = "Buy fashionable mobile phone cases";
             TemplateService.metadescription = "Find a wide range of fashionable mobile phone cases that suit your style. So order your favorite phone case at Lyla Loves NOW!";
             TemplateService.keywords = "mobile phone cases, phone cases, cell phone cases";
@@ -1542,13 +1554,13 @@ phonecatControllers.controller('category',
 
 
 
-        $scope.gototop = function() {
+        $scope.gototop = function () {
             $location.hash('totop');
             $anchorScroll();
         };
         $scope.loginlogouttext = "Login";
         //get user country
-        var getcountry = function(data, status) {
+        var getcountry = function (data, status) {
             console.log("get country");
             console.log(data);
         };
@@ -1588,16 +1600,16 @@ phonecatControllers.controller('category',
             active: ""
         }];
 
-        $scope.filtercolor = function(color) {
+        $scope.filtercolor = function (color) {
             $scope.filter.color = color;
         };
 
-        $scope.filtersave = function(filter) {
+        $scope.filtersave = function (filter) {
             MainJson.setfilter(filter);
             console.log(MainJson.getfilters());
             MainJson.getproductbycategory($routeParams.CategoryId).success(categorysuccess);
         };
-        $scope.filterclear = function() {
+        $scope.filterclear = function () {
             $scope.filter = {
                 color: "",
                 pricemin: 0,
@@ -1610,7 +1622,7 @@ phonecatControllers.controller('category',
 
 
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             console.log(data);
             if (data != "false") {
                 $scope.loginlogouttext = data.email;
@@ -1623,7 +1635,7 @@ phonecatControllers.controller('category',
         $scope.products = [];
         $scope.productsheight = {};
 
-        $scope.addMoreItems = function() {
+        $scope.addMoreItems = function () {
             console.log("More Products Added " + $scope.products.length);
             var first = $scope.products.length;
             var addition = 12;
@@ -1636,7 +1648,7 @@ phonecatControllers.controller('category',
             }
             $scope.productsheight.height = ($scope.products.length / 4) * 430 + "px";
         };
-        var categorysuccess = function(data, status) {
+        var categorysuccess = function (data, status) {
             $scope.products = [];
             $scope.productsheight = {};
             $scope.category = data.category;
@@ -1655,22 +1667,22 @@ phonecatControllers.controller('category',
 
 
 
-        $scope.$on('$viewContentLoaded', function() {
+        $scope.$on('$viewContentLoaded', function () {
 
             new WOW().init();
 
 
             TemplateService.firsttimeloaded();
             $(".zoomContainer").remove();
-            $(".pulseanimation").hover(function() {
+            $(".pulseanimation").hover(function () {
                 $(this).addClass("animated pulse");
-            }, function() {
+            }, function () {
                 $(this).removeClass("animated pulse");
             });
 
-            $(".tadaanimation").hover(function() {
+            $(".tadaanimation").hover(function () {
                 $(this).addClass("animated tada");
-            }, function() {
+            }, function () {
                 $(this).removeClass("animated tada");
             });
         });
@@ -1678,13 +1690,13 @@ phonecatControllers.controller('category',
     });
 
 phonecatControllers.controller('product',
-    function($scope, $routeParams, TemplateService, MainJson, $timeout, $location) {
+    function ($scope, $routeParams, TemplateService, MainJson, $timeout, $location) {
 
         $scope.name = 'World';
 
-        $scope.$on('$viewContentLoaded', function() {
+        $scope.$on('$viewContentLoaded', function () {
             console.log("This is View Loaded Again ******************************************************");
-            setTimeout(function() {
+            setTimeout(function () {
                 stButtons.locateElements();
             }, 1000);
 
@@ -1693,12 +1705,12 @@ phonecatControllers.controller('product',
 
 
         $scope.showslideset1 = 0;
-        $scope.slidesetnext = function(value) {
+        $scope.slidesetnext = function (value) {
             console.log("Next Clicked");
             $scope.showslideset1 = 1;
             console.log($scope.showslideset1);
         };
-        $scope.slidesetprev = function(value) {
+        $scope.slidesetprev = function (value) {
             console.log("Prev Clicked");
             $scope.showslideset1 = 0;
         };
@@ -1721,21 +1733,21 @@ phonecatControllers.controller('product',
         }, ];
 
         $scope.ZoomItems = [];
-        
+
 
         $scope.SelectedItem = $scope.ZoomItems[0];
 
-        $scope.ThumbnailClicked = function(Item) {
+        $scope.ThumbnailClicked = function (Item) {
             $scope.SelectedItem = Item;
 
         };
 
 
-//        var slidersuccess = function(data, status) {
-//            $scope.sliders = data;
-//            console.log($scope.sliders);
-//        };
-//        MainJson.getallslider().success(slidersuccess);
+        //        var slidersuccess = function(data, status) {
+        //            $scope.sliders = data;
+        //            console.log($scope.sliders);
+        //        };
+        //        MainJson.getallslider().success(slidersuccess);
 
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
@@ -1752,7 +1764,7 @@ phonecatControllers.controller('product',
 
 
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.accesslevel = data.accesslevel;
                 $scope.id = data.id;
@@ -1762,83 +1774,83 @@ phonecatControllers.controller('product',
         MainJson.authenticate().success(authenticate);
         //authenticate
         //nextprevious
-        var changelocation = function(data) {
+        var changelocation = function (data) {
             $location.url("/product/" + data.id);
         };
-        $scope.next = function(product) {
+        $scope.next = function (product) {
             MainJson.nextproduct(product, 1).success(changelocation);
         };
-        $scope.previous = function(product) {
+        $scope.previous = function (product) {
             MainJson.nextproduct(product, 0).success(changelocation);
         };
         //nestprevious
         $scope.wishlistlogin = false;
         $scope.wishlistadded = false;
-        var getwishlist = function(data, status) {
+        var getwishlist = function (data, status) {
             console.log(data);
             $scope.wish = data;
             $scope.wishlistadded = true;
         };
-        $scope.addwishlist = function(id) {
+        $scope.addwishlist = function (id) {
             if ($scope.id) {
                 MainJson.addtowishlist(id, $routeParams.ProductId).success(getwishlist);
             } else {
                 $scope.wishlistlogin = true;
             }
         };
-        var productsuccess = function(data, status) {
+        var productsuccess = function (data, status) {
             if ($scope.accesslevel == 3) {
                 $scope.rate = data.product.wholesaleprice;
             } else {
                 $scope.rate = data.product.price;
             }
             $scope.product = data.product;
-            
+
             $scope.product.quantity = parseInt($scope.product.quantity);
             $scope.breadcrumbs = data.breadcrumbs;
             $scope.productimage = data.productimage;
             $scope.relatedproduct = data.relatedproduct;
             console.log(data);
-            $scope.sliders=MainJson.addrecentproduct(data.product,data.productimage[0].image);
+            $scope.sliders = MainJson.addrecentproduct(data.product, data.productimage[0].image);
             //            $location.hash($scope.product.name.replace(/ /g, "_"));
             $location.replace();
         };
         MainJson.getproductdetails($routeParams.ProductId).success(productsuccess);
-        var cartt = function(data, status) {
+        var cartt = function (data, status) {
             console.log(data);
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
         };
-        $scope.addtocart = function(id, name, price, quantity) {
+        $scope.addtocart = function (id, name, price, quantity) {
             // console.log(id+name+price+quantity);
             TemplateService.cartclicked = "animated swing";
 
             MainJson.addtocart(id, name, price, quantity).success(cartt);
             $scope.addedtocart = "show";
         };
-        var addedtowaitinglist = function(data) {
+        var addedtowaitinglist = function (data) {
             console.log(data);
             $scope.addedtowaitinglist = true;
         };
         $scope.addedtowaitinglist = false;
-        $scope.addtowaitinglist = function(product, email) {
+        $scope.addtowaitinglist = function (product, email) {
             MainJson.addtowaitinglist(product, email).success(addedtowaitinglist);
         };
 
-        $scope.$on("$includeContentLoaded", function() {
+        $scope.$on("$includeContentLoaded", function () {
 
             // stLight.options({publisher: "d145c5ea-9796-4078-8488-dc6407ac1d79", doNotHash: false, doNotCopy: false, hashAddressBar: true});
 
             TemplateService.firsttimeloaded();
             $(".zoomContainer").remove();
-            $(".pulseanimation").hover(function() {
+            $(".pulseanimation").hover(function () {
                 $(this).addClass("animated pulse");
-            }, function() {
+            }, function () {
                 $(this).removeClass("animated pulse");
             });
 
-            $(".tadaanimation").hover(function() {
+            $(".tadaanimation").hover(function () {
                 $(this).addClass("animated tada");
-            }, function() {
+            }, function () {
                 $(this).removeClass("animated tada");
             });
         });
@@ -1846,7 +1858,7 @@ phonecatControllers.controller('product',
     });
 
 phonecatControllers.controller('delivery',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -1857,7 +1869,7 @@ phonecatControllers.controller('delivery',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.loginlogouttext = "Logout";
             }
@@ -1868,7 +1880,7 @@ phonecatControllers.controller('delivery',
     });
 
 phonecatControllers.controller('wishlist',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -1880,10 +1892,10 @@ phonecatControllers.controller('wishlist',
         $scope.loginlogouttext = "Login";
         //authenticate
 
-        var userwishlist = function(data, status) {
+        var userwishlist = function (data, status) {
             $scope.find = data;
         };
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             console.log(data);
             if (data != "false") {
                 MainJson.showwishlist(data.id).success(userwishlist)
@@ -1899,7 +1911,7 @@ phonecatControllers.controller('wishlist',
 
 
 phonecatControllers.controller('returns',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -1910,7 +1922,7 @@ phonecatControllers.controller('returns',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.loginlogouttext = "Logout";
             }
@@ -1942,7 +1954,7 @@ phonecatControllers.controller('returns',
 //    });
 
 phonecatControllers.controller('returns',
-    function($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -1953,7 +1965,7 @@ phonecatControllers.controller('returns',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
-        var authenticate = function(data, status) {
+        var authenticate = function (data, status) {
             if (data != "false") {
                 $scope.loginlogouttext = "Logout";
             }
@@ -1964,8 +1976,8 @@ phonecatControllers.controller('returns',
     });
 
 phonecatControllers.controller('zoomCtrl',
-    function($scope) {
-        $scope.switchImage = function(imageSrc) {
+    function ($scope) {
+        $scope.switchImage = function (imageSrc) {
             console.log('change image to: ' + imageSrc);
             $scope.imageSrc = imageSrc;
         };
