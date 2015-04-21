@@ -1997,17 +1997,24 @@ phonecatControllers.controller('SmartCartCtrl',
         var totalitemchange = function(data) {
             $scope.totalitem = data;
         };
-        MainJson.gettotalcart().success(totalitemchange);
+
 
         var totalamountchange = function(data) {
             $scope.totalamount = data;
-            $scope.remainingfordiscount=15-$scope.totalamount;
-            if($scope.remainingfordiscount<0)
-            {
-                $scope.remainingfordiscount==0;
+            $scope.remainingfordiscount = 15 - $scope.totalamount;
+            if ($scope.remainingfordiscount < 0) {
+                $scope.remainingfordiscount == 0;
             }
         };
+        $scope.$on('$routeChangeStart', function(next, current) {
+            MainJson.gettotalcart().success(totalitemchange);
+            MainJson.totalcart().success(totalamountchange);
+        });
+        MainJson.gettotalcart().success(totalitemchange);
         MainJson.totalcart().success(totalamountchange);
+
+
+
     }
 );
 
