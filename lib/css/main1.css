@@ -994,9 +994,9 @@ button.btnss-primary {
   position: absolute;
   float: right;
   /* z-index: 99999999; */
-  right: -580px;
+  right:-580px;
   background: rgb(216, 242, 239);
-  padding: 8px;
+  padding: 8.5px;
   bottom: 0px;
     transition: all ease 1s;
 
@@ -1169,7 +1169,7 @@ span.currencytobe {
 
 .free-set span {
     color: #27F0E8;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 20px;
 }
 .symbol {
@@ -1191,7 +1191,7 @@ span.currencytobe {
   padding: 0px;
   margin: 0;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
   color: rgb(39, 240, 232);
 }
 .value p{
