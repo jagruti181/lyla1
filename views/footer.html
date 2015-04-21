@@ -20,13 +20,13 @@
                             <input type="email" class="form-control newsletteremail" ng-model="uemail" placeholder=""> <a class="btn btn-primary" ng-click="newsletter(uemail)">Subscribe</a>
                         </div>
 -->
-                  <div class="det-cart">
+                  <div class="det-cart" ng-controller="SmartCartCtrl">
 
                                       <div class="cart-det">
                                       <div class="row">
                                           <div class="col-md-3" style="width:160px;">
                                           <div class="free-set">
-                                              <span>15.00<p>Amount Remaining for free delivery</p></span>
+                                              <span>{{remainingfordiscount|convertprice}}<p>Amount Remaining for free delivery</p></span>
                                               
                                           </div>
                                           </div>
@@ -36,7 +36,7 @@
                                                  <img src="../img/coin16.png">
                                               </div>
                                               <div class="value">
-                                                  <h1>15.00</h1>
+                                                  <h1>{{totalamount|convertprice}}</h1>
                                                   <p>Amount</p>
                                               </div>
                                           </div>
@@ -47,7 +47,7 @@
                                                  <img src="../img/gifts2.png">
                                               </div>
                                               <div class="value">
-                                                  <h1>15.00</h1>
+                                                  <h1>{{totalitem}}</h1>
                                                   <p>Quantity</p>
                                               </div>
                                           </div>

@@ -110,28 +110,6 @@ firstapp.config(
     });
     $locationProvider.html5Mode(true);
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
   });
 
 firstapp.filter('imagepath', function() {
