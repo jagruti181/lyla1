@@ -824,6 +824,11 @@ phonecatControllers.controller('badge',
                 $location.url("/profile");
             }
         }
+        
+        $scope.logout=function() {
+            MainJson.logout();
+            $scope.check = 0;
+        };
 
         //authenticate
         var authenticate = function (data, status) {
@@ -1783,6 +1788,8 @@ phonecatControllers.controller('product',
         $scope.previous = function (product) {
             MainJson.nextproduct(product, 0).success(changelocation);
         };
+    
+   
         //nestprevious
         $scope.wishlistlogin = false;
         $scope.wishlistadded = false;
