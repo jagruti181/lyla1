@@ -447,9 +447,7 @@ class Json extends CI_Controller
         else
         {
             $query=$query->row();
-            
             $id=$query->id;
-
             echo $id;
         }
     
@@ -461,7 +459,7 @@ class Json extends CI_Controller
 		$id=$this->input->get_post('id');
 		$endurl=$this->input->get_post('endurl');
 		$data["message"]=$this->user_model->createsessionbyid($id);
-//        redirect($endurl);
+        redirect($endurl);
 //		$this->load->view("json",$data);
 	}
     
