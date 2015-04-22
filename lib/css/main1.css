@@ -1095,10 +1095,14 @@ a.gogo {
 a.g-login {
     background: #dd4d3b;
     margin-right: 8px;
+    padding: 8px 65px;
+    margin-top: 10px;
 }
 a.fb-login {
     background: #3c5a98;
     margin-right: 8px;
+    padding: 8px 65px;
+    margin-top: 10px;
 }
 a.g-login:hover,
 a.g-login:active,
