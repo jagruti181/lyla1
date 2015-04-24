@@ -180,7 +180,7 @@ $(document).ready(function(){
                   <li>
                       <a href="<?php echo site_url('site/viewnewblue'); ?>" class="">
                           <i class="icon-gbp"></i>
-                          <span>New In</span>
+                          <span>Just In</span>
                           <span class="arrow"></span>
                       </a>
                   </li>

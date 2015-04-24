@@ -3221,11 +3221,11 @@ class Site extends CI_Controller
 	{
 		$access = array("1");
 		$this->checkaccess($access);
-        $this->product_model->deletenewblue($this->input->get('id'),$this->input->get('productcat'));
+        $this->product_model->deletenewblue($this->input->get('category'),$this->input->get('product'));
 		$data['table']=$this->product_model->viewnewblue();
         $data['alertsuccess']="product Deleted Successfully";
         $data['redirect']="site/viewnewblue";
-        $data['other']="template=$template";
+//        $data['other']="template=$template";
 		$this->load->view("redirect",$data);
        
 	}
@@ -3233,7 +3233,7 @@ class Site extends CI_Controller
 	{
 		$access = array("1");
 		$this->checkaccess($access);
-        $data['status']=$this->product_model->getproductdropdown();
+        $data['product']=$this->product_model->getproductdropdown();
 		$data['page'] ='createnewblue';
 		$data['title'] ='Create category';
 		$this->load->view('template',$data);	
@@ -3244,7 +3244,7 @@ class Site extends CI_Controller
         $product=$this->input->post('product');
         $this->product_model->createnewblue($product);
         $data['redirect']="site/viewnewblue";
-        $data['other']="template=$template";
+//        $data['other']="template=$template";
 		$this->load->view("redirect",$data);
        
     }

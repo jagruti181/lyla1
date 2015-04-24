@@ -12,22 +12,31 @@ class Product_model extends CI_Model
     public function createnewblue($product)
     {
         $query="SELECT * FROM `productcategory`   WHERE `category`=31 AND `product`=$product";
+        $querycount=$this->db->query("SELECT * FROM `productcategory`   WHERE `category`=31")->result();
+        
         $select=$this->db->query($query)->result();
-        if(empty($select))
-        {
-            $data=array(
-               'category' => 31,
-                'product'=>$product
-            );
-            $query=$this->db->insert('productcategory',$data);
-            return 1;
-        }
-        else
+        $count=count($querycount);
+        if($count >= 30)
         {
             return 0;
         }
-//		$id=$this->db->insert_id();
-
+        else
+        {
+            if(empty($select))
+            {
+                $data=array(
+                   'category' => 31,
+                    'product'=>$product
+                );
+                $query=$this->db->insert('productcategory',$data);
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+    //		$id=$this->db->insert_id();
+        }
 
     }
 	public function createproduct($name,$sku,$description,$url,$visibility,$price,$wholesaleprice,$firstsaleprice,$secondsaleprice,$specialpricefrom,$specialpriceto,$metatitle,$metadesc,$metakeyword,$quantity,$status,$category,$relatedproduct)
@@ -105,7 +114,7 @@ class Product_model extends CI_Model
 	}
     function viewnewblue()
 	{
-	$query=$this->db->query("SELECT `category`.`name` as `catname`,`category`.`id`,`productcategory`.`product`,`product`.`name` as `podname`  FROM `category` INNER JOIN `productcategory` ON `productcategory`.`category`=`category`.`id` INNER  JOIN `product` ON `product`.`id`=`productcategory`.`product`  WHERE `category`.`id`='31' ")->result();
+	$query=$this->db->query("SELECT `productcategory`.`product`, `productcategory`.`category` ,`product`.`name` AS `productname` FROM `productcategory` LEFT OUTER JOIN `product` ON `product`.`id`=`productcategory`.`product` WHERE `productcategory`.`category`=31")->result();
 		return $query;
 	}
 	public function beforeeditproduct( $id )
@@ -190,7 +199,7 @@ class Product_model extends CI_Model
     	function deletenewblue($id,$productcat)
 	{
 
-		$this->db->query("DELETE FROM `productcategory` WHERE `category`='$id'  &&  `product`='$productcat' ");
+		$this->db->query("DELETE FROM `productcategory` WHERE `category`='$id'  AND  `product`='$productcat' ");
 
 	}
 	public function getcategorydropdown()

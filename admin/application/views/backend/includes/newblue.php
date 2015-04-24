@@ -6,15 +6,14 @@
 	<div class="col-lg-12">
 		<section class="panel">
 			<header class="panel-heading">
-                Order Details
+                Just In Details
             </header>
 			<table class="table table-striped table-hover border-top " id="sample_1" cellpadding="0" cellspacing="0" >
 			<thead>
 				<tr>
 					<!--<th>Id</th>-->
-					<th>Id</th>
 					<th>Product Id</th>
-					<th>Name</th>
+					<th>Product Name</th>
 			       <th> Actions </th>
 
 				</tr>
@@ -23,16 +22,10 @@
 <!--           <?php print_r($table)?>-->
 			   <?php foreach($table as $row) { ?>
 					<tr>
-						<td><?php echo $row->id; ?></td>
-						<td><?php echo $row->podname;?></td>
-<!--						<td><?php echo $row->firstname." ".$row->lastname; ?></td>-->
-						<td><?php echo $row->catname;?></td>
-<!--
-						<td><?php echo $row->orderstatus;?></td>
-						<td><?php echo $row->timestamp;?></td>
--->
+						<td><?php echo $row->product; ?></td>
+						<td><?php echo $row->productname;?></td>
 						<td>
-                            <a class="btn btn-danger btn-xs" href="<?php echo site_url('site/deletenewblue?id=').$row->id.'&productcat='.$row->product;?>" onclick="return confirm('Are you sure?')"><i class="icon-trash "></i></a>
+                            <a class="btn btn-danger btn-xs" href="<?php echo site_url('site/deletenewblue?category=').$row->category.'&product='.$row->product;?>" onclick="return confirm('Are you sure?')"><i class="icon-trash "></i></a>
 									 
 					  </td>
 					</tr>
