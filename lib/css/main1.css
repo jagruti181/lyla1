@@ -1203,3 +1203,6 @@ span.currencytobe {
   line-height: 25px;
   font-size: 12px;
 }
+.product .img {
+  height: 300px;
+}
