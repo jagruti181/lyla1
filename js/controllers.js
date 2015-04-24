@@ -1547,7 +1547,7 @@ phonecatControllers.controller('category',
             TemplateService.slider = "";
             $scope.hititle = "Lyla Loves - Hair Accessories for Women";
         }
-        if ($routeParams.CategoryId == "phone cases") {
+        if ($routeParams.CategoryId == "phone-cases") {
             TemplateService.title = "Buy fashionable mobile phone cases";
             TemplateService.metadescription = "Find a wide range of fashionable mobile phone cases that suit your style. So order your favorite phone case at Lyla Loves NOW!";
             TemplateService.keywords = "mobile phone cases, phone cases, cell phone cases";
