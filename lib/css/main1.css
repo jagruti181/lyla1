@@ -618,6 +618,9 @@ h5.pricecolor {
 img.slideset1 {
     width: 190px;
     float: left;
+    height: 190px;
+    text-align: center;
+    overflow: hidden;
 }
 img.butterfly-top {
     position: absolute;
@@ -1203,6 +1206,7 @@ span.currencytobe {
   line-height: 25px;
   font-size: 12px;
 }
+
 .product .img {
   height: 300px;
 }
