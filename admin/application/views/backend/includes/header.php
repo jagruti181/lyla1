@@ -178,7 +178,7 @@ $(document).ready(function(){
                       </a>
                   </li>
                   <li>
-                      <a href="<?php echo site_url('site/viewnewblue'); ?>" class="">
+                      <a href="<?php echo site_url('site/viewjustin'); ?>" class="">
                           <i class="icon-gbp"></i>
                           <span>Just In</span>
                           <span class="arrow"></span>

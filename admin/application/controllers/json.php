@@ -220,6 +220,15 @@ class Json extends CI_Controller {
         $data["message"] = $this->product_model->getproductbycategory($category, $color, $price1, $price2);
         $this->load->view("json", $data);
     }
+    function getjustinproducts() {
+        $color = $this->input->get_post("color");
+        $price1 = $this->input->get_post("price1");
+        $price2 = $this->input->get_post("price2");
+        $category = $this->input->get_post("category");
+        $category=str_replace("-"," ",$category);
+        $data["message"] = $this->product_model->getjustinproducts($category, $color, $price1, $price2);
+        $this->load->view("json", $data);
+    }
     function getproductdetails() {
         $data["message"] = $this->product_model->getproductdetails($this->input->get_post('product'), $this->input->get_post('category'));
         $this->load->view("json", $data);
@@ -362,5 +371,6 @@ class Json extends CI_Controller {
         //		$this->load->view("json",$data);
 
     }
+    
 }
 ?>

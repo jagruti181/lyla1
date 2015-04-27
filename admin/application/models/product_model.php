@@ -815,5 +815,74 @@ LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order`")->row();
         }
 		return $return;
 	}
+    
+    function getjustinproducts($category,$color,$price1,$price2)
+	{
+//        echo $category;
+		$getcategoryidbyname=$this->db->query("SELECT * FROM `category` WHERE `name`LIKE '$category'")->row();
+        $category=$getcategoryidbyname->id;
+		$where = "";
+		if($price1!="")
+		{
+		$pricefilter="AND (`product`.`price` BETWEEN $price1 AND $price2 OR `product`.`price`=$price1 OR `product`.`price`=$price2)";
+		}
+		else
+		{
+		$pricefilter="";
+		}
+		$q3 = $this->db->query("SELECT COUNT(*) as `cnt` FROM `category` WHERE `category`.`parent`= '$category'")->row();
+		if($q3->cnt > 0)
+			$where .= " OR `category`.`parent`='$category' ";
+		$query['category']=$this->db->query("SELECT `category`.`name` ,`category`.`image1` FROM `category`
+		WHERE `category`.`id`='$category'")->row();
+
+
+
+		$query['product']=$this->db->query("SELECT `justin`.`product`,`justin`.`order`,`product`.`id`,`product`.`name`,`product`.`description`,`product`.`sku`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`,`product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`productimage`.`image` 
+        FROM `justin`
+        INNER JOIN `product` ON `product`.`id`=`justin`.`product`
+		INNER JOIN `productcategory` ON `product`.`id`=`productcategory`.`product`
+		INNER JOIN `category` ON `category`.`id`=`productcategory`.`category`
+		LEFT JOIN `productimage` ON `productimage`.`product`=`product`.`id`
+		WHERE `product`.`visibility`=1 AND `product`.`status`=1 AND `product`.`quantity` > 0 AND `product`.`name` LIKE '%$color%' $pricefilter
+        AND (   `productcategory`.`category`=$category $where )
+		GROUP BY `product`.`id`
+		ORDER BY `product`.`id` DESC")->result();
+
+		foreach($query['product'] as $p_row)
+		{
+			$productid = $p_row->id;
+			$p_row->productimage=$this->db->query("SELECT `productimage`.`image` FROM `productimage`
+			WHERE `productimage`.`product`='$productid'
+			ORDER BY `productimage`.`order`
+			LIMIT 0,2")->result();
+		}
+		foreach($query['product'] as $p_row)
+		{
+			$productid = $p_row->id;
+			$query5=$this->db->query("SELECT count(`category`) as `isnew`  FROM `productcategory`
+			WHERE  `productcategory`.`category`='31' AND `product`='$productid'
+			LIMIT 0,1")->row();
+			$p_row->isnew=$query5->isnew;
+
+		}
+		/*$query['subcategory']=$this->db->query("SELECT `category`.`name`,`category`.`image1`,`category`.`image2` FROM `category`
+		WHERE `category`.`parent`='$category' AND `category`.`status`=1
+		ORDER BY `category`.`order`")->result();*/
+		$query['subcategory'] = $this->db->query("SELECT `tab1`.`id`,`tab1`.`name`,`tab1`.`image1`,`tab1`.`image2`,COUNT(`tab2`.`id`) as `cnt` FROM
+		(
+		SELECT `category`.`name`,`category`.`id`,`category`.`image1`,`category`.`image2`,`category`.`order` FROM `category`
+			WHERE `category`.`parent`='$category' AND `category`.`status`=1
+		) as `tab1`
+		INNER JOIN `productcategory` ON `productcategory`.`category`=`tab1`.`id`
+		INNER JOIN `product`  as `tab2` ON `productcategory`.`product`=`tab2`.`id` AND `tab2`.`status`=1
+		GROUP BY `tab1`.`id`
+		ORDER BY `tab1`.`order` ")->result();
+		$query['template']=new StdClass();
+		$query['breadcrumbs']=$this->getparentcategories($category);
+		$query['currentcategory']=$category;
+		$query['template']->pageurl = "partials/product.html";
+		return $query;
+	}
 }
 ?>
