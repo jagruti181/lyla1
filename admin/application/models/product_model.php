@@ -836,18 +836,17 @@ LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order`")->row();
 		$query['category']=$this->db->query("SELECT `category`.`name` ,`category`.`image1` FROM `category`
 		WHERE `category`.`id`='$category'")->row();
 
-
-
-		$query['product']=$this->db->query("SELECT `justin`.`product`,`justin`.`order`,`product`.`id`,`product`.`name`,`product`.`description`,`product`.`sku`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`,`product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`productimage`.`image` 
+        $querystr="SELECT `justin`.`product`,`justin`.`order`,`product`.`id`,`product`.`name`,`product`.`description`,`product`.`sku`,`product`.`url`,`product`.`price`,`product`.`wholesaleprice`,`product`.`firstsaleprice`,`product`.`secondsaleprice`,`product`.`specialpriceto`,`product`.`specialpricefrom`,`productimage`.`image` 
         FROM `justin`
-        INNER JOIN `product` ON `product`.`id`=`justin`.`product`
-		INNER JOIN `productcategory` ON `product`.`id`=`productcategory`.`product`
-		INNER JOIN `category` ON `category`.`id`=`productcategory`.`category`
-		LEFT JOIN `productimage` ON `productimage`.`product`=`product`.`id`
+        LEFT OUTER JOIN `product` ON `product`.`id`=`justin`.`product`
+		LEFT OUTER JOIN `productcategory` ON `product`.`id`=`productcategory`.`product`
+		LEFT OUTER JOIN `category` ON `category`.`id`=`productcategory`.`category`
+		LEFT OUTER JOIN `productimage` ON `productimage`.`product`=`product`.`id`
 		WHERE `product`.`visibility`=1 AND `product`.`status`=1 AND `product`.`quantity` > 0 AND `product`.`name` LIKE '%$color%' $pricefilter
-        AND (   `productcategory`.`category`=$category $where )
 		GROUP BY `product`.`id`
-		ORDER BY `product`.`id` DESC")->result();
+		ORDER BY `product`.`id` DESC";
+//        echo $querystr;
+		$query['product']=$this->db->query($querystr)->result();
 
 		foreach($query['product'] as $p_row)
 		{
