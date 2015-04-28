@@ -131,11 +131,17 @@ input:focus {
     filter: grayscale(1);
     opacity: 0.7;
     transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    -moz-transition: all 1s;
 }
 .androidicon {
     filter: grayscale(1);
     opacity: 0.4;
     transition: all 1s;
+      -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    -moz-transition: all 1s;
 }
 .iosicon:hover,
 .androidicon:hover {
@@ -146,6 +152,9 @@ input:focus {
     width: 60px;
     margin-top: 22px;
     transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
 }
 .socialicons:hover {
     filter: grayscale(0);
@@ -183,7 +192,11 @@ input:focus {
     z-index: 10;
     opacity: 1;
     transition: all 1.3s;
-    transform: translateX(-50%)
+    -webkit-transition: all 1.3s;
+    -moz-transition: all 1.3s;
+    -o-transition: all 1.3s;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
 }
 .product .img2:hover {
     opacity: 0;
@@ -402,6 +415,7 @@ button.home-btn:hover {
     transition: all 700ms;
     -o-transition: all 700ms;
     -moz-transition: all 700ms;
+    -webkit-transition: all 700ms;
 }
 button.home-btn:focus {
     outline: none;
@@ -471,10 +485,14 @@ button.home-btn:focus {
     background: #fcfcfc;
     opacity: 0;
     transition: all 700ms;
+    -webkit-transition: all 700ms;
+    -o-transition: all 700ms;
 }
 .maincontent:hover .lookdetails {
     opacity: 1;
     transition: all 700ms;
+     -webkit-transition: all 700ms;
+    -o-transition: all 700ms;
 }
 h5.pricecolor {
     color: #FFABD3;
@@ -499,6 +517,8 @@ h5.pricecolor {
     border-top: 20px solid #ccc;
     float: left;
     transition: all 700ms;
+     -webkit-transition: all 700ms;
+    -o-transition: all 700ms;
     opacity: .5;
 }
 .hori-item:hover {
@@ -509,6 +529,8 @@ h5.pricecolor {
 .hori-item.active {
     border-color: #AAA;
     transition: all 700ms;
+     -webkit-transition: all 700ms;
+    -o-transition: all 700ms;
     background: white;
     opacity: 1;
 }
@@ -525,6 +547,8 @@ h5.pricecolor {
     z-index: 10000;
     background: white;
     -webkit-transition: all 400ms;
+    -o-transition: all 400ms;
+    -moz-transition: all 400ms;
 }
 .horizon:hover {
     bottom: 0px;
@@ -661,6 +685,8 @@ li.homeclass {
     opacity: 0;
     padding: 0px;
     -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
     position: relative;
     right: 0;
     height: 26px;
@@ -676,6 +702,8 @@ li.homeclass {
 .headsearch .icon {
     background: transparent;
     -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
 }
 .headsearch .icon.showit {
     background: white;
@@ -992,7 +1020,7 @@ button.btnss-primary {
   z-index: 99999999999;
   right: 0px;
   bottom: 5px;
-  width: 840px;
+  width: 900px;
 }
 .cart-det {
   position: absolute;
@@ -1003,6 +1031,9 @@ button.btnss-primary {
   padding: 8.5px;
   bottom: 0px;
     transition: all ease 1s;
+    -webkit-transition: all ease 1s;
+    -moz-transition: all ease 1s;
+    -o-transition: all ease 1s;
 
 }
 .step-set ul li {} .step-set {
@@ -1144,7 +1175,7 @@ span.currencytobe {
   color: #000;
 }
 .det-cart:hover .cart-det{
-     right: 127px; 
+     right: 126px; 
 }
 .free-set {
     border: 1px solid #27F0E8;
@@ -1181,18 +1212,22 @@ span.currencytobe {
     font-size: 20px;
 }
 .symbol {
-  width: 30%;
+  width: 28%;
   padding: 20px 13px;
   border-radius: 4px 0px 0px 4px;
   background: #27f0e8;
-  display: inline-block;
+  display:inline-block;  
+    display: -moz-inline-stack;
+        display: -webkit-inline-box;
+      
+/*        *display: inline;*/
   text-align: center;
 }
 .value {
   width: 70%;
   padding-top: 9px;
   float: right;
-  display: inline-block;
+/*  display:inline-block;*/
   text-align: center;
 }
 .value h1 {
