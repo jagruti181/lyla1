@@ -819,7 +819,7 @@ LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order`")->row();
     function getjustinproducts($category,$color,$price1,$price2)
 	{
 //        echo $category;
-		$getcategoryidbyname=$this->db->query("SELECT * FROM `category` WHERE `name`LIKE '$category'")->row();
+		$getcategoryidbyname=$this->db->query("SELECT * FROM `category` WHERE `id`= '31'")->row();
         $category=$getcategoryidbyname->id;
 		$where = "";
 		if($price1!="")
