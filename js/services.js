@@ -347,6 +347,18 @@ service.factory('MainJson', function($http, TemplateService) {
                 withCredentials: true
             });
         },
+        getjustinproducts: function() {
+            return $http.get(adminurl + 'getjustinproducts', {
+                params: {
+                    
+                    color: filters.color,
+                    price1: filters.pricemin,
+                    price2: filters.pricemax,
+                }
+            }, {
+                withCredentials: true
+            });
+        },
         getusercart: function(user) {
             return $http.get(adminurl + 'getusercart?user=' + user, {}, {
                 withCredentials: true
