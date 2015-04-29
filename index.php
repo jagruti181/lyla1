@@ -39,7 +39,7 @@
         };
 
         if (isMobile.any()) {
-            window.location = "http://mobile.lylaloves.co.uk" + window.location.hash;
+            window.location = "http://m.lylaloves.co.uk" + window.location.hash;
         }
     </script>
     <script type="text/javascript">
