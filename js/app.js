@@ -118,7 +118,6 @@ firstapp.config(
 firstapp.filter('imagepath', function() {
     return function(input) {
         return "http://www.lylaloves.co.uk/showimage?size=300&image=" + input;
-
     };
 });
 firstapp.filter('imagepathbig', function() {
