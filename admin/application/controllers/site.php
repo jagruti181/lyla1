@@ -2692,7 +2692,7 @@ class Site extends CI_Controller
                 $this->email->bcc('them@their-example.com');
 
                 $this->email->subject('Welcome to Lyla');
-                $this->email->message('<img src="http://zibacollection.co.uk/lylalovecouk/img/dispatchedbylyla.jpg" width="560px" height="398px"><br><b>YOUR ORDER IS '.$query1->name.'</b>');
+                $this->email->message('<img src="http://lylaloves.co.uk/img/dispatchedbylyla.jpg" width="560px" height="398px"><br><b>YOUR ORDER IS '.$query1->name.'</b>');
 
                 $this->email->send();
 

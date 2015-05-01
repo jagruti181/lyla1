@@ -41,7 +41,7 @@ class Json extends CI_Controller {
         $this->email->from('lyla@lylaloves.co.uk', 'Lyla');
         $this->email->to($email);
         $this->email->subject('Order');
-        $image=base_url('uploads')."/orderplaced.png";
+        $image=base_url('uploads')."/orderplaced.jpg";
         $message="<img src='$image' width='560px' height='398px'>";
         $this->email->message($message);
         // $this->email->html('<b>hello</b>');

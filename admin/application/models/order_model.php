@@ -245,24 +245,6 @@ class Order_model extends CI_Model
 			);
 			$query2=$this->db->insert( 'orderlog', $data2 );
 		}
-        if($orderstatus==3)
-        {
-        
-            $email = $email;
-            $orderid = $id;
-            $this->load->library('email');
-            $this->email->from('lyla@lylaloves.co.uk', 'Lyla');
-            $this->email->to($email);
-            $this->email->subject('Order');
-            $image=base_url('uploads')."/orderdispatched.png";
-            $message="<img src='$image' width='560px' height='398px'>";
-            $this->email->message();
-            // $this->email->html('<b>hello</b>');
-            $this->email->send();
-            $data["message"] = $this->email->print_debugger();
-            $this->load->view("json", $data);
-        
-        }
 		//$this->db->query("DELETE FROM `orderitems` WHERE `order`='$id'");
 		/*foreach($product as $key => $productid)
 		{
