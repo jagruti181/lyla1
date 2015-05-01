@@ -21,7 +21,15 @@ class Login extends CI_Controller
 		$password=$this->input->post('password');
 		$validate = $this->user_model->validate($username,$password);
 		if ( $validate ) {
-			redirect( base_url() . 'index.php/site', 'refresh' );
+            $accesslevel=$this->session->userdata('accesslevel');
+            if($accesslevel==1)
+            {
+                redirect( base_url() . 'index.php/site', 'refresh' );
+            }
+            else if($accesslevel==5)
+            {
+                redirect( base_url() . 'index.php/site/normaluserindex', 'refresh' );
+            }
 		} //$validate
 		else {
 			$data[ 'alerterror' ] = 'Username or Password Incorrect';
