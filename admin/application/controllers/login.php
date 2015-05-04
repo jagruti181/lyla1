@@ -22,13 +22,13 @@ class Login extends CI_Controller
 		$validate = $this->user_model->validate($username,$password);
 		if ( $validate ) {
             $accesslevel=$this->session->userdata('accesslevel');
-            if($accesslevel==1)
-            {
-                redirect( base_url() . 'index.php/site', 'refresh' );
-            }
-            else if($accesslevel==5)
+            if($accesslevel==5)
             {
                 redirect( base_url() . 'index.php/site/normaluserindex', 'refresh' );
+            }
+            else if($accesslevel==1)
+            {
+                redirect( base_url() . 'index.php/site', 'refresh' );
             }
 		} //$validate
 		else {

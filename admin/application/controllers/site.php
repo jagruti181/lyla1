@@ -57,7 +57,7 @@ class Site extends CI_Controller
 	public function normaluserindex()
 	{
 		//$access = array("1","2");
-		$access = array("5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         
 //        $query=$this->db->query("SELECT SUM(`orderitems`.`quantity`) as `y` FROM `orderitems` LEFT OUTER JOIN `order` ON `order`.`id`=`orderitems`.`order` WHERE MONTH(DATE(`order`.`timestamp`))=MONTH(DATE(NOW())) GROUP BY `order`.`user`")->result();
@@ -272,7 +272,7 @@ class Site extends CI_Controller
 	}
 	function deleteall()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         //print_r($this->input->post('ids'));
 		$data['table']=$this->product_model->deleteall($this->input->post('ids'));
@@ -283,7 +283,7 @@ class Site extends CI_Controller
 	}
 	function deletenewsletter()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         //print_r($this->input->post('ids'));
 		$this->newsletter_model->deletenewsletter($this->input->get('id'));
@@ -296,7 +296,7 @@ class Site extends CI_Controller
 	}
 	function deletelimitedstock()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         //print_r($this->input->post('ids'));
 		$this->newsletter_model->deletelimitedstock($this->input->get('id'));
@@ -309,7 +309,7 @@ class Site extends CI_Controller
 	}
 	function deletecontact()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         //print_r($this->input->post('ids'));
 		$this->newsletter_model->deletecontact($this->input->get('id'));
@@ -322,7 +322,7 @@ class Site extends CI_Controller
 	}
 	function addcreditssubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('credits','credits','trim');
 		
@@ -435,7 +435,7 @@ class Site extends CI_Controller
    	//category
 	public function createcategory()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->user_model->getstatusdropdown();
 		$data['category']=$this->category_model->getcategorydropdown();
@@ -448,7 +448,7 @@ class Site extends CI_Controller
    
 	function createcategorysubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('parent','parent','trim|');
@@ -498,7 +498,7 @@ class Site extends CI_Controller
 	}
 	function viewcategory()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->category_model->viewcategory();
 		$data['page']='viewcategory';
@@ -507,7 +507,7 @@ class Site extends CI_Controller
 	}
 	function editcategory()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->category_model->beforeeditcategory($this->input->get('id'));
 		$data['category']=$this->category_model->getcategorydropdown();
@@ -518,7 +518,7 @@ class Site extends CI_Controller
 	}
 	function editcategorysubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('parent','parent','trim|');
@@ -573,7 +573,7 @@ class Site extends CI_Controller
 	}
 	function deletecategory()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->category_model->deletecategory($this->input->get('id'));
 		$data['table']=$this->category_model->viewcategory();
@@ -585,7 +585,7 @@ class Site extends CI_Controller
 	//product
 	public function createproduct()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->product_model->getstatusdropdown();
 		$data['relatedproduct']=$this->product_model->getproductdropdown();
@@ -597,7 +597,7 @@ class Site extends CI_Controller
 	}
 	function createproductsubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('sku','sku','trim|');
@@ -665,7 +665,7 @@ class Site extends CI_Controller
     
 	function viewproduct()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $data['table']=$this->product_model->viewproduct();
 		$data['page']='viewproduct';
@@ -675,7 +675,7 @@ class Site extends CI_Controller
 
 	function editproduct()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->product_model->beforeeditproduct($this->input->get('id'));
 		$data[ 'status' ] =$this->product_model->getstatusdropdown();
@@ -760,7 +760,7 @@ class Site extends CI_Controller
 	}
 	function deleteproduct()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->product_model->deleteproduct($this->input->get('id'));
 		$data['table']=$this->product_model->viewproduct();
@@ -772,7 +772,7 @@ class Site extends CI_Controller
    
 	function uploadproductimage()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$id=$this->input->get('id');
 		$data['table']=$this->product_model->viewallimages($id);
@@ -784,7 +784,7 @@ class Site extends CI_Controller
 	}
 	function uploadproductimagesubmit()
 	 {
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$config[ 'upload_path' ]   = './uploads/';
 		$config[ 'allowed_types' ] = 'gif|jpg|png|jpeg';
@@ -818,7 +818,7 @@ class Site extends CI_Controller
 	 }
 	 function deleteimage()
 	 {
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$id=$this->input->get('id');
 		$imageid=$this->input->get('imageid');
@@ -834,7 +834,7 @@ class Site extends CI_Controller
 	 }
 	 function defaultimage()
 	 {
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$id=$this->input->get('id');
 		$imageid=$this->input->get('imageid');
@@ -850,7 +850,7 @@ class Site extends CI_Controller
 	 }
 	  function changeorder()
 	 {
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$id=$this->input->get_post('id');
 		$order=$this->input->get_post('order');
@@ -873,7 +873,7 @@ class Site extends CI_Controller
 	}
 	function viewwishlist()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->wishlist_model->viewwishlist();
 		$data['page']='viewwishlist';
@@ -882,7 +882,7 @@ class Site extends CI_Controller
 	}
 	function viewuserwishlist()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->wishlist_model->viewuserwishlist($this->input->get('id'));
 		$data['before']=$this->user_model->beforeedit($this->input->get('id'));
@@ -907,7 +907,7 @@ class Site extends CI_Controller
 	}
 	function viewcart()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->cart_model->viewcart();
 		$data['page']='viewcart';
@@ -916,7 +916,7 @@ class Site extends CI_Controller
 	}
 	function viewusercart()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		
 		$data['table']=$this->cart_model->viewusercart($this->input->get('id'));
@@ -929,7 +929,7 @@ class Site extends CI_Controller
 	//page
 	public function createpage()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'page' ] = 'createpage';
 		$data[ 'title' ] = 'Create page';
@@ -937,7 +937,7 @@ class Site extends CI_Controller
 	}
 	function createpagesubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('content','content','trim|');
@@ -965,7 +965,7 @@ class Site extends CI_Controller
 	}
 	function viewpage()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->page_model->viewpage();
 		$data['page']='viewpage';
@@ -974,7 +974,7 @@ class Site extends CI_Controller
 	}
 	function editpage()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->page_model->beforeeditpage($this->input->get('id'));
 		$data['page']='editpage';
@@ -983,7 +983,7 @@ class Site extends CI_Controller
 	}
 	function editpagesubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('content','content','trim|');
@@ -1015,7 +1015,7 @@ class Site extends CI_Controller
 	}
 	function deletepage()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->page_model->deletepage($this->input->get('id'));
 		$data['table']=$this->page_model->viewpage();
@@ -1027,7 +1027,7 @@ class Site extends CI_Controller
 	//slider
 	public function createslider()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->slider_model->getstatusdropdown();
 		$data['order']=$this->order_model->getorderdropdown();
@@ -1038,7 +1038,7 @@ class Site extends CI_Controller
 	}
 	function createslidersubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 //		$this->form_validation->set_rules('link','link','trim|');
@@ -1093,7 +1093,7 @@ class Site extends CI_Controller
 	}
 	function viewslider()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->slider_model->viewslider();
 		$data['page']='viewslider';
@@ -1102,7 +1102,7 @@ class Site extends CI_Controller
 	}
 	function editslider()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->slider_model->beforeeditslider($this->input->get('id'));
 		$data[ 'status' ] =$this->slider_model->getstatusdropdown();
@@ -1113,7 +1113,7 @@ class Site extends CI_Controller
 	}
 	function editslidersubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('product','product','trim|');
@@ -1167,7 +1167,7 @@ class Site extends CI_Controller
 	}
 	function deleteslider()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->slider_model->deleteslider($this->input->get('id'));
 		$data['table']=$this->slider_model->viewslider();
@@ -1179,7 +1179,7 @@ class Site extends CI_Controller
 	//banner1
 	public function createbanner1()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->banner_model->getstatusdropdown();
 		$data[ 'page' ] = 'createbanner1';
@@ -1188,7 +1188,7 @@ class Site extends CI_Controller
 	}
 	function createbannersubmit1()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1237,7 +1237,7 @@ class Site extends CI_Controller
 	}
 	function viewbanner1()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->banner_model->viewbanner1();
 		$data['page']='viewbanner1';
@@ -1246,7 +1246,7 @@ class Site extends CI_Controller
 	}
 	function editbanner1()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->banner_model->beforeeditbanner1($this->input->get('id'));
 		$data[ 'status' ] =$this->banner_model->getstatusdropdown();
@@ -1256,7 +1256,7 @@ class Site extends CI_Controller
 	}
 	function editbannersubmit1()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1309,7 +1309,7 @@ class Site extends CI_Controller
 	}
 	function deletebanner1()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->banner_model->deletebanner1($this->input->get('id'));
 		$data['table']=$this->banner_model->viewbanner1();
@@ -1321,7 +1321,7 @@ class Site extends CI_Controller
 	//banner2
 	public function createbanner2()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->banner_model->getstatusdropdown();
 		$data[ 'page' ] = 'createbanner2';
@@ -1330,7 +1330,7 @@ class Site extends CI_Controller
 	}
 	function createbannersubmit2()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1379,7 +1379,7 @@ class Site extends CI_Controller
 	}
 	function viewbanner2()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->banner_model->viewbanner2();
 		$data['page']='viewbanner2';
@@ -1388,7 +1388,7 @@ class Site extends CI_Controller
 	}
 	function editbanner2()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->banner_model->beforeeditbanner2($this->input->get('id'));
 		$data[ 'status' ] =$this->banner_model->getstatusdropdown();
@@ -1398,7 +1398,7 @@ class Site extends CI_Controller
 	}
 	function editbannersubmit2()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1451,7 +1451,7 @@ class Site extends CI_Controller
 	}
 	function deletebanner2()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->banner_model->deletebanner2($this->input->get('id'));
 		$data['table']=$this->banner_model->viewbanner2();
@@ -1463,7 +1463,7 @@ class Site extends CI_Controller
 	//banner3
 	public function createbanner3()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->banner_model->getstatusdropdown();
 		$data[ 'page' ] = 'createbanner3';
@@ -1472,7 +1472,7 @@ class Site extends CI_Controller
 	}
 	function createbannersubmit3()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1521,7 +1521,7 @@ class Site extends CI_Controller
 	}
 	function viewbanner3()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->banner_model->viewbanner3();
 		$data['page']='viewbanner3';
@@ -1530,7 +1530,7 @@ class Site extends CI_Controller
 	}
 	function editbanner3()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->banner_model->beforeeditbanner3($this->input->get('id'));
 		$data[ 'status' ] =$this->banner_model->getstatusdropdown();
@@ -1540,7 +1540,7 @@ class Site extends CI_Controller
 	}
 	function editbannersubmit3()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1593,7 +1593,7 @@ class Site extends CI_Controller
 	}
 	function deletebanner3()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->banner_model->deletebanner3($this->input->get('id'));
 		$data['table']=$this->banner_model->viewbanner3();
@@ -1605,7 +1605,7 @@ class Site extends CI_Controller
 	//celebcorner
 	public function createcelebcorner()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->celebcorner_model->getstatusdropdown();
 		$data[ 'page' ] = 'createcelebcorner';
@@ -1614,7 +1614,7 @@ class Site extends CI_Controller
 	}
 	function createcelebcornersubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1659,7 +1659,7 @@ class Site extends CI_Controller
 	}
 	function viewcelebcorner()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->celebcorner_model->viewcelebcorner();
 		$data['page']='viewcelebcorner';
@@ -1668,7 +1668,7 @@ class Site extends CI_Controller
 	}
 	function editcelebcorner()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->celebcorner_model->beforeeditcelebcorner($this->input->get('id'));
 		$data[ 'status' ] =$this->celebcorner_model->getstatusdropdown();
@@ -1678,7 +1678,7 @@ class Site extends CI_Controller
 	}
 	function editcelebcornersubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1727,7 +1727,7 @@ class Site extends CI_Controller
 	}
 	function deletecelebcorner()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->celebcorner_model->deletecelebcorner($this->input->get('id'));
 		$data['table']=$this->celebcorner_model->viewcelebcorner();
@@ -1739,7 +1739,7 @@ class Site extends CI_Controller
 	//bloggerscorner
 	public function createbloggerscorner()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->bloggerscorner_model->getstatusdropdown();
 		$data[ 'page' ] = 'createbloggerscorner';
@@ -1748,7 +1748,7 @@ class Site extends CI_Controller
 	}
 	function createbloggerscornersubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1793,7 +1793,7 @@ class Site extends CI_Controller
 	}
 	function viewbloggerscorner()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->bloggerscorner_model->viewbloggerscorner();
 		$data['page']='viewbloggerscorner';
@@ -1802,7 +1802,7 @@ class Site extends CI_Controller
 	}
 	function editbloggerscorner()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->bloggerscorner_model->beforeeditbloggerscorner($this->input->get('id'));
 		$data[ 'status' ] =$this->bloggerscorner_model->getstatusdropdown();
@@ -1812,7 +1812,7 @@ class Site extends CI_Controller
 	}
 	function editbloggerscornersubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1861,7 +1861,7 @@ class Site extends CI_Controller
 	}
 	function deletebloggerscorner()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->bloggerscorner_model->deletebloggerscorner($this->input->get('id'));
 		$data['table']=$this->bloggerscorner_model->viewbloggerscorner();
@@ -1873,7 +1873,7 @@ class Site extends CI_Controller
 	//navigation
 	public function createnavigation()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->navigation_model->getstatusdropdown();
 		$data[ 'parent' ] =$this->navigation_model->getnavigationdropdown();
@@ -1883,7 +1883,7 @@ class Site extends CI_Controller
 	}
 	function createnavigationsubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -1930,7 +1930,7 @@ class Site extends CI_Controller
 	}
 	function viewnavigation()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->navigation_model->viewnavigation();
 		$data['page']='viewnavigation';
@@ -1939,7 +1939,7 @@ class Site extends CI_Controller
 	}
 	function editnavigation()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->navigation_model->beforeeditnavigation($this->input->get('id'));
 		$data[ 'status' ] =$this->navigation_model->getstatusdropdown();
@@ -1950,7 +1950,7 @@ class Site extends CI_Controller
 	}
 	function editnavigationsubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('link','link','trim|');
@@ -2001,7 +2001,7 @@ class Site extends CI_Controller
 	}
 	function deletenavigation()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->navigation_model->deletenavigation($this->input->get('id'));
 		$data['table']=$this->navigation_model->viewnavigation();
@@ -2013,7 +2013,7 @@ class Site extends CI_Controller
 	//currency
 	public function createcurrency()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'isdefault' ] =$this->currency_model->getisdefault();
 		$data[ 'country' ] =$this->currency_model->getcountry();
@@ -2023,7 +2023,7 @@ class Site extends CI_Controller
 	}
 	function createcurrencysubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('conversionrate','conversionrate','trim|');
@@ -2055,7 +2055,7 @@ class Site extends CI_Controller
 	}
 	function viewcurrency()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->currency_model->viewcurrency();
 		$data['page']='viewcurrency';
@@ -2064,7 +2064,7 @@ class Site extends CI_Controller
 	}
 	function editcurrency()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->currency_model->beforeeditcurrency($this->input->get('id'));
 		$data[ 'isdefault' ] =$this->currency_model->getisdefault();
@@ -2075,7 +2075,7 @@ class Site extends CI_Controller
 	}
 	function editcurrencysubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('conversionrate','conversionrate','trim|');
@@ -2112,7 +2112,7 @@ class Site extends CI_Controller
 	}
 	function deletecurrency()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->currency_model->deletecurrency($this->input->get('id'));
 		$data['table']=$this->currency_model->viewcurrency();
@@ -2124,7 +2124,7 @@ class Site extends CI_Controller
 	//paymentgateway
 	public function createpaymentgateway()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'isdefault' ] =$this->paymentgateway_model->getisdefault();
 		$data[ 'status' ] =$this->paymentgateway_model->getstatusdropdown();
@@ -2134,7 +2134,7 @@ class Site extends CI_Controller
 	}
 	function createpaymentgatewaysubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('order','order','trim|');
@@ -2167,7 +2167,7 @@ class Site extends CI_Controller
 	}
 	function viewpaymentgateway()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->paymentgateway_model->viewpaymentgateway();
 		$data['page']='viewpaymentgateway';
@@ -2176,7 +2176,7 @@ class Site extends CI_Controller
 	}
 	function editpaymentgateway()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->paymentgateway_model->beforeeditpaymentgateway($this->input->get('id'));
 		$data[ 'isdefault' ] =$this->paymentgateway_model->getisdefault();
@@ -2187,7 +2187,7 @@ class Site extends CI_Controller
 	}
 	function editpaymentgatewaysubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('name','Name','trim|required');
 		$this->form_validation->set_rules('order','order','trim|');
@@ -2225,7 +2225,7 @@ class Site extends CI_Controller
 	}
 	function deletepaymentgateway()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->paymentgateway_model->deletepaymentgateway($this->input->get('id'));
 		$data['table']=$this->paymentgateway_model->viewpaymentgateway();
@@ -2237,7 +2237,7 @@ class Site extends CI_Controller
 	//discountcoupon
 	public function creatediscountcoupon()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
           $data['category']=$this->category_model->getcategorydropdown();
         $data[ 'coupontype' ] =$this->discountcoupon_model->getcoupontype();
@@ -2248,7 +2248,7 @@ class Site extends CI_Controller
 	}
 	function creatediscountcouponsubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('coupontype','coupontype','trim|');
 		$this->form_validation->set_rules('discountpercent','discountpercent','trim|');
@@ -2290,7 +2290,7 @@ class Site extends CI_Controller
 	}
 	function viewdiscountcoupon()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->discountcoupon_model->viewdiscountcoupon();
 		$data['monthpopularcouponcode']=$this->discountcoupon_model->getpopularcouponcodemonth();
@@ -2301,7 +2301,7 @@ class Site extends CI_Controller
 	}
 	function editdiscountcoupon()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->discountcoupon_model->beforeeditdiscountcoupon($this->input->get('id'));
          $data['category']=$this->category_model->getcategorydropdown();
@@ -2313,7 +2313,7 @@ class Site extends CI_Controller
 	}
 	function editdiscountcouponsubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('coupontype','coupontype','trim|');
 		$this->form_validation->set_rules('discountpercent','discountpercent','trim|');
@@ -2360,7 +2360,7 @@ class Site extends CI_Controller
 	}
 	function deletediscountcoupon()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->discountcoupon_model->deletediscountcoupon($this->input->get('id'));
 		$data['table']=$this->discountcoupon_model->viewdiscountcoupon();
@@ -2371,7 +2371,7 @@ class Site extends CI_Controller
 	}
 	function editprice()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->product_model->beforeeditproduct($this->input->get('id'));
 		$data['page']='editprice';
@@ -2424,7 +2424,7 @@ class Site extends CI_Controller
 	}
 	function editrelatedproducts()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->product_model->beforeeditproduct($this->input->get('id'));
 		$data['product']=$this->product_model->getproducts($this->input->get('id'));
@@ -2470,7 +2470,7 @@ class Site extends CI_Controller
 	}
 	function viewproductwaiting()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 //		$data['before']=$this->product_model->beforeeditproduct($this->input->get('id'));
 		$data['table']=$this->product_model->viewproductwaiting();
@@ -2483,7 +2483,7 @@ class Site extends CI_Controller
 	//Newsletter
 	public function createnewsletteruser()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->newsletter_model->getstatusdropdown();
 		$data[ 'user' ] =$this->newsletter_model->getuserdropdown();
@@ -2493,7 +2493,7 @@ class Site extends CI_Controller
 	}
 	public function createnewsletterusersubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('status','status','trim|');
 		
@@ -2523,7 +2523,7 @@ class Site extends CI_Controller
 	//Newsletter
 	public function editnewsletteruser()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->celebcorner_model->beforeeditcelebcorner($this->input->get('id'));
 		$data[ 'status' ] =$this->newsletter_model->getstatusdropdown();
@@ -2764,7 +2764,7 @@ class Site extends CI_Controller
    
 	function newsletter()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->newsletter_model->viewnewsletter();
 		$data['page']='viewnewsletter';
@@ -2774,7 +2774,7 @@ class Site extends CI_Controller
 	//newsletter
 	function limitedstock()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->newsletter_model->limitedstock();
 		$data['page']='limitedstock';
@@ -2783,7 +2783,7 @@ class Site extends CI_Controller
 	}
 	function viewcontact()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->newsletter_model->viewcontact();
 		$data['page']='viewcontact';
@@ -2979,7 +2979,7 @@ class Site extends CI_Controller
     
 	function viewpickofweak()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->pickofweak_model->viewpickofweak();
 		$data['page']='viewpickofweak';
@@ -2989,7 +2989,7 @@ class Site extends CI_Controller
     
 	public function createpickofweak()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['order']=$this->order_model->getorderdropdown();
 		$data[ 'page' ] = 'createpickofweak';
@@ -2998,7 +2998,7 @@ class Site extends CI_Controller
 	}
     function createpickofweaksubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('order','Order','trim|required');
 		
@@ -3039,7 +3039,7 @@ class Site extends CI_Controller
     
 	function editpickofweak()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->pickofweak_model->beforeeditpickofweak($this->input->get('id'));
         $data['order']=$this->order_model->getorderdropdown();
@@ -3049,7 +3049,7 @@ class Site extends CI_Controller
 	}
 	function editpickofweaksubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('order','order','trim|required');
 		if($this->form_validation->run() == FALSE)	
@@ -3092,7 +3092,7 @@ class Site extends CI_Controller
     
 	function deletepickofweak()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->pickofweak_model->deletepickofweak($this->input->get('id'));
 		$data['table']=$this->pickofweak_model->viewpickofweak();
@@ -3105,7 +3105,7 @@ class Site extends CI_Controller
     
 	function editproductwaiting()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->product_model->beforeeditproductwaiting($this->input->get('id'));
 		$data['product']=$this->product_model->getproductdropdown();
@@ -3117,7 +3117,7 @@ class Site extends CI_Controller
     
 	function editproductwaitingsubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('email','Email','trim|valid_email');
 		$this->form_validation->set_rules('product','product','trim');
@@ -3153,7 +3153,7 @@ class Site extends CI_Controller
     
 	function deleteproductwaiting()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->product_model->deleteproductwaiting($this->input->get('id'));
 		$data['alertsuccess']="Product Waiting Deleted Successfully";
@@ -3177,7 +3177,7 @@ class Site extends CI_Controller
 	}
     	public function exportnewslettercsv()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->newsletter_model->exportnewslettercsv();
          
@@ -3198,7 +3198,7 @@ class Site extends CI_Controller
 	}
     	public function exportproductcsv()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->product_model->exportproductcsv();
         $data['redirect']="site/viewproduct";
@@ -3207,7 +3207,7 @@ class Site extends CI_Controller
     
     function uploadproductcsv()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'page' ] = 'uploadproductcsv';
 		$data[ 'title' ] = 'Upload product';
@@ -3216,7 +3216,7 @@ class Site extends CI_Controller
     
     function uploadproductcsvsubmit()
 	{
-        $access = array("1","5");
+        $access = array("5","1");
 		$this->checkaccess($access);
         
 //        $config['upload_path'] = './uploads/';
@@ -3253,7 +3253,7 @@ class Site extends CI_Controller
     //new blue
      function deletenewblue()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $this->product_model->deletenewblue($this->input->get('category'),$this->input->get('product'));
 		$data['table']=$this->product_model->viewnewblue();
@@ -3265,7 +3265,7 @@ class Site extends CI_Controller
 	}
          function createnewblue()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $data['product']=$this->product_model->getproductdropdown();
 		$data['page'] ='createnewblue';
@@ -3285,7 +3285,7 @@ class Site extends CI_Controller
     
       function viewnewblue()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 	   $data['table']=$this->product_model->viewnewblue();
 		$data['page']='newblue';
@@ -3306,7 +3306,7 @@ class Site extends CI_Controller
     //top 10 product all time
     function viewbestsellingorder()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $data['order']=$this->order_model->bestsellingalltime();
         $data['page']='viewbestselling';
@@ -3316,7 +3316,7 @@ class Site extends CI_Controller
     //top 10 products of current month
     function viewbestsellingcurrentmonth()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $data['order']=$this->order_model->bestsellingcmonth();
         $data['page']='viewbestsellingcmonth';
@@ -3326,7 +3326,7 @@ class Site extends CI_Controller
     
     function viewbyyear()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $data['order']=$this->order_model->viewbyyear();
         print_r($data['order']);
@@ -3336,7 +3336,7 @@ class Site extends CI_Controller
 	}  
     function viewbymonth()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $data['order']=$this->order_model->viewbymonth();
         print_r($data['order']);
@@ -3346,7 +3346,7 @@ class Site extends CI_Controller
 	}
     function searchlogalltime()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $data['order']=$this->order_model->searchlogalltime();
         print_r($data['order']);
@@ -3356,7 +3356,7 @@ class Site extends CI_Controller
 	} 
     function searchlogbymonth()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $data['order']=$this->order_model->searchlogbymonth();
         print_r($data['order']);
@@ -3366,7 +3366,7 @@ class Site extends CI_Controller
 	} 
     function viewlogalltime()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $data['order']=$this->order_model->viewlogalltime();
         print_r($data['order']);
@@ -3376,7 +3376,7 @@ class Site extends CI_Controller
 	} 
     function viewlogbymonth()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
         $data['order']=$this->order_model->viewlogbymonth();
         print_r($data['order']);
@@ -3402,7 +3402,7 @@ class Site extends CI_Controller
 	
 	function viewjustin()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['table']=$this->justin_model->viewjustin();
 		$data['page']='viewjustin';
@@ -3411,7 +3411,7 @@ class Site extends CI_Controller
 	}
     public function createjustin()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data[ 'status' ] =$this->justin_model->getstatusdropdown();
 		$data['product']=$this->product_model->getproductdropdown();
@@ -3421,7 +3421,7 @@ class Site extends CI_Controller
 	}
 	function createjustinsubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('status','status','trim|');
 		$this->form_validation->set_rules('product','product','trim|required');
@@ -3452,7 +3452,7 @@ class Site extends CI_Controller
 	}
 	function editjustin()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$data['before']=$this->justin_model->beforeeditjustin($this->input->get('id'));
 		$data[ 'status' ] =$this->justin_model->getstatusdropdown();
@@ -3463,7 +3463,7 @@ class Site extends CI_Controller
 	}
 	function editjustinsubmit()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->form_validation->set_rules('product','product','trim|required');
 		$this->form_validation->set_rules('status','status','trim|');
@@ -3500,7 +3500,7 @@ class Site extends CI_Controller
 	}
 	function deletejustin()
 	{
-		$access = array("1","5");
+		$access = array("5","1");
 		$this->checkaccess($access);
 		$this->justin_model->deletejustin($this->input->get('id'));
 		$data['table']=$this->justin_model->viewjustin();
