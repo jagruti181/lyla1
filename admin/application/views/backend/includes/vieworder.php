@@ -38,7 +38,7 @@
 						<td><?php echo $row->timestamp; ?></td>
                         <td> <a class="btn btn-primary btn-xs" href="<?php echo site_url('site/vieworderdetails?id=').$row->id;?>"><i class="icon-pencil"></i></a></td>
 						<td> <a class="btn btn-primary btn-xs" href="<?php echo site_url('site/editorder?id=').$row->id;?>"><i class="icon-pencil"></i></a>
-                            <a class="btn btn-danger btn-xs" href="<?php echo site_url('site/deleteorder?id=').$row->id; ?>" onclick="return confirm('Are you sure?')"><i class="icon-trash "></i></a>
+<!--                            <a class="btn btn-danger btn-xs" href="<?php echo site_url('site/deleteorder?id=').$row->id; ?>" onclick="return confirm('Are you sure?')"><i class="icon-trash "></i></a>-->
 									 
 					  </td>
 					</tr>

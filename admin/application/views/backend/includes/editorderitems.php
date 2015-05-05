@@ -16,6 +16,7 @@ $order=$this->input->get('id');
 					<th>id</th>
 					<th>order</th>
 					<th>product</th>
+					<th>Image</th>
                     <th>product SKU</th>
 					<th>quantity</th>
 					<th> price </th>
@@ -30,6 +31,7 @@ $order=$this->input->get('id');
 						<td class="id"><?php echo $row->id; ?></td>
 						<td><?php echo $row->firstname; ?></td>
 						<td><?php echo $row->name; ?></td>
+						<td><img class="img" height="100px" width="100px"src="http://www.lylaloves.co.uk/showimage?size=300&amp;image=<?php echo $row->image; ?>"></td>
                         <td><?php echo $row->sku; ?></td>
 						<td><?php echo $row->quantity; ?></td>
 						<td><?php echo $row->price; ?></td>

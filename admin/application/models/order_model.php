@@ -392,11 +392,13 @@ class Order_model extends CI_Model
     
 	function getorderitem($id)
 	{
-        $query=$this->db->query("SELECT `orderitems`.`id`,`order`.`firstname`,`orderitems`.`order`,`orderitems`.`product`,`product`.`name`,`product`.`sku`, `orderitems`.`quantity`,`orderitems`.`price`,`orderitems`.`discount`,`orderitems`.`finalprice` ,`order`.`discountcoupon`
+        $query=$this->db->query("SELECT `orderitems`.`id`,`order`.`firstname`,`orderitems`.`order`,`orderitems`.`product`,`product`.`name`,`product`.`sku`, `orderitems`.`quantity`,`orderitems`.`price`,`orderitems`.`discount`,`orderitems`.`finalprice` ,`order`.`discountcoupon`,`productimage`.`image`
         
         FROM `orderitems`
 		INNER JOIN `order` ON `order`.`id`=`orderitems`.`order` 
-		INNER JOIN `product` ON `product`.`id`=`orderitems`.`product` AND `orderitems`.`order`='$id'
+		INNER JOIN `product` ON `product`.`id`=`orderitems`.`product`
+		INNER JOIN `productimage` ON `productimage`.`product`=`orderitems`.`product`
+        AND `orderitems`.`order`='$id'
         " )->result();
 		
 		return $query;
