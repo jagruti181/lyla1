@@ -356,7 +356,9 @@ class Json extends CI_Controller {
                     $twitterid = $user_profile->identifier;
                 break;
             }
-            $query2 = $this->db->query("INSERT INTO `user` (`id`, `name`,`firstname`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `country`, `pincode`, `facebook`, `google`, `twitter`) VALUES (NULL, '$displayName', '$displayName', '', '$email', '2', CURRENT_TIMESTAMP, '1', '$photoURL', '', '$identifier', '$provider', '', '$birthYear-$birthMonth-$birthDay', '', '$address,$region', '$city', '', '$country', '', '$facebookid', '$googleid', '$twitterid')");
+            $getloginpoints=$this->db->query("SELECT * FROM `config`")->row();
+            $credits=$getloginpoints->loginpoints;
+            $query2 = $this->db->query("INSERT INTO `user` (`id`, `name`,`firstname`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `dob`, `street`, `address`, `city`, `state`, `country`, `pincode`, `facebook`, `google`, `twitter`,`credits`) VALUES (NULL, '$displayName', '$displayName', '', '$email', '2', CURRENT_TIMESTAMP, '1', '$photoURL', '', '$identifier', '$provider', '', '$birthYear-$birthMonth-$birthDay', '', '$address,$region', '$city', '', '$country', '', '$facebookid', '$googleid', '$twitterid','$credits')");
             $id = $this->db->insert_id();
             echo $id;
         } else {

@@ -3510,5 +3510,105 @@ class Site extends CI_Controller
 		$this->load->view('template',$data);
 	}
     
+    //category
+	public function createconfig()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$data[ 'page' ] = 'createconfig';
+		$data[ 'title' ] = 'Create config';
+		$this->load->view( 'template', $data );	
+	}
+
+
+   
+	function createconfigsubmit()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$this->form_validation->set_rules('loginpoints','loginpoints','trim|required');
+		$this->form_validation->set_rules('checkoutpercentpoints','checkoutpercentpoints','trim');
+		if($this->form_validation->run() == FALSE)	
+		{
+			$data['alerterror'] = validation_errors();
+			$data[ 'status' ] =$this->user_model->getstatusdropdown();
+			$data['config']=$this->config_model->getconfigdropdown();
+			$data[ 'page' ] = 'createconfig';
+			$data[ 'title' ] = 'Create config';
+			$this->load->view('template',$data);
+		}
+		else
+		{
+			$loginpoints=$this->input->post('loginpoints');
+			$checkoutpercentpoints=$this->input->post('checkoutpercentpoints');
+			
+			if($this->config_model->createconfig($loginpoints,$checkoutpercentpoints)==0)
+			$data['alerterror']="New config could not be created.";
+			else
+			$data['alertsuccess']="config  created Successfully.";
+			$data['table']=$this->config_model->viewconfig();
+			$data['redirect']="site/viewconfig";
+			//$data['other']="template=$template";
+			$this->load->view("redirect",$data);
+		}
+	}
+	function viewconfig()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$data['table']=$this->config_model->viewconfig();
+		$data['page']='viewconfig';
+		$data['title']='View config';
+		$this->load->view('template',$data);
+	}
+	function editconfig()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$data['before']=$this->config_model->beforeeditconfig($this->input->get('id'));
+		$data['page']='editconfig';
+		$data['title']='Edit config';
+		$this->load->view('template',$data);
+	}
+	function editconfigsubmit()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$this->form_validation->set_rules('checkoutpercentpoints','checkoutpercentpoints','trim');
+		$this->form_validation->set_rules('loginpoints','loginpoints','trim');
+		if($this->form_validation->run() == FALSE)	
+		{
+			$data['alerterror'] = validation_errors();
+			$data[ 'status' ] =$this->user_model->getstatusdropdown();
+			$data['page']='editconfig';
+			$data['title']='Edit config';
+			$this->load->view('template',$data);
+		}
+		else
+		{
+			$id=$this->input->post('id');
+			$loginpoints=$this->input->post('loginpoints');
+			$checkoutpercentpoints=$this->input->post('checkoutpercentpoints');
+            
+			if($this->config_model->editconfig($id,$loginpoints,$checkoutpercentpoints)==0)
+			$data['alerterror']="config Editing was unsuccesful";
+			else
+			$data['alertsuccess']="config edited Successfully.";
+			$data['table']=$this->config_model->viewconfig();
+			$data['redirect']="site/viewconfig";
+			$this->load->view("redirect",$data);
+		}
+	}
+	function deleteconfig()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$this->config_model->deleteconfig($this->input->get('id'));
+		$data['table']=$this->config_model->viewconfig();
+		$data['alertsuccess']="config Deleted Successfully";
+		$data['page']='viewconfig';
+		$data['title']='View config';
+		$this->load->view('template',$data);
+	}
 }
 ?>

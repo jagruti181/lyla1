@@ -166,6 +166,7 @@ echo $accesslevel;
 					 </a>
 					 <ul class="sub">
 						<li><a href="<?php echo site_url('site/viewnavigation'); ?>">Navigation</a></li>
+						<li><a href="<?php echo site_url('site/viewconfig'); ?>">Config</a></li>
 						<li><a href="<?php echo site_url('site/viewpage'); ?>">Page</a></li>
 						<li><a href="<?php echo site_url('site/viewslider'); ?>">Slider</a></li>
 						<li><a href="<?php echo site_url('site/viewbanner1'); ?>">Banner1</a></li>
@@ -352,6 +353,7 @@ echo $accesslevel;
 					 <ul class="sub">
 						<li><a href="<?php echo site_url('site/viewnavigation'); ?>">Navigation</a></li>
 						<li><a href="<?php echo site_url('site/viewpage'); ?>">Page</a></li>
+						<li><a href="<?php echo site_url('site/viewconfig'); ?>">Config</a></li>
 						<li><a href="<?php echo site_url('site/viewslider'); ?>">Slider</a></li>
 						<li><a href="<?php echo site_url('site/viewbanner1'); ?>">Banner1</a></li>
 						<li><a href="<?php echo site_url('site/viewbanner2'); ?>">Banner2</a></li>

@@ -431,6 +431,14 @@ class User_model extends CI_Model
         $this->cart->destroy();
         $orderid=$this->session->userdata("orderid");
         $this->db->query("UPDATE `order` SET `orderstatus`='2' WHERE `id`='$orderid'");
+        
+        $orderdetails=$this->db->query("SELECT * FROM `order` WHERE `id`='$orderid'")->row();
+        $amount=$orderdetails->finalamount;
+        $getloginpoints=$this->db->query("SELECT * FROM `config`")->row();
+        $credits=$getloginpoints->loginpoints;
+        $checkoutpercentpoints=$getloginpoints->checkoutpercentpoints;
+        $value=($checkoutpercentpoints/100)*($amount);
+        $this->db->query("UPDATE `user` SET `credits`='$value' WHERE `id`='$userid'");
         return 0;
     }
 
