@@ -128,7 +128,6 @@ input:focus {
     margin-bottom: 10px;
 }
 .iosicon {
-    -webkit-filter: grayscale(1);
     filter: grayscale(1);
     opacity: 0.7;
     transition: all 1s;
@@ -137,7 +136,6 @@ input:focus {
     -moz-transition: all 1s;
 }
 .androidicon {
-    -webkit-filter: grayscale(1);
     filter: grayscale(1);
     opacity: 0.4;
     transition: all 1s;
@@ -147,7 +145,6 @@ input:focus {
 }
 .iosicon:hover,
 .androidicon:hover {
-    -webkit-filter: grayscale(0);
     filter: grayscale(0);
     opacity: 1;
 }
@@ -160,7 +157,6 @@ input:focus {
     -moz-transition: all 0.5s;
 }
 .socialicons:hover {
-    -webkit-filter: grayscale(0);
     filter: grayscale(0);
     opacity: 1;
     zoom: 1.1;
@@ -199,9 +195,6 @@ input:focus {
     -webkit-transition: all 1.3s;
     -moz-transition: all 1.3s;
     -o-transition: all 1.3s;
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
 }
@@ -274,8 +267,6 @@ input:focus {
     margin-bottom: 10px;
 }
 .zoomLens {
-    -webkit-box-shadow: rgb(206, 206, 206) 1px 0px 5px 2px;
-    -moz-box-shadow: rgb(206, 206, 206) 1px 0px 5px 2px;
     box-shadow: rgb(206, 206, 206) 1px 0px 5px 2px;
     border: 0px !important;
 }
@@ -303,8 +294,6 @@ input:focus {
     color: #a8a8a8;
 }
 .billing .panel-group .panel {
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
     border-radius: 0px;
     border-color: transparent;
 }
@@ -384,13 +373,7 @@ ul.submenudown li {
     margin: 0;
     background-color: #FFABD3;
     margin-left: 9px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
     border-radius: 0px;
 }
 .carousel-indicators li {
@@ -399,21 +382,13 @@ ul.submenudown li {
     margin: 0;
     background-color: rgba(255, 255, 255, 0.6);
     margin-left: 9px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
     border-radius: 0px;
 }
 .productdetails {
     position: fixed;
     right: 10px;
     background: rgba(253, 253, 253, 0.8);
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
     border-radius: 2px;
     padding: 0 10px;
     z-index: 1;
@@ -509,14 +484,12 @@ button.home-btn:focus {
     padding: 10px 20px;
     background: #fcfcfc;
     opacity: 0;
-    -moz-transition: all 700ms;
     transition: all 700ms;
     -webkit-transition: all 700ms;
     -o-transition: all 700ms;
 }
 .maincontent:hover .lookdetails {
     opacity: 1;
-    -moz-transition: all 700ms;
     transition: all 700ms;
     -webkit-transition: all 700ms;
     -o-transition: all 700ms;
@@ -543,7 +516,6 @@ h5.pricecolor {
     width: 250px;
     border-top: 20px solid #ccc;
     float: left;
-    -moz-transition: all 700ms;
     transition: all 700ms;
     -webkit-transition: all 700ms;
     -o-transition: all 700ms;
@@ -556,7 +528,6 @@ h5.pricecolor {
 }
 .hori-item.active {
     border-color: #AAA;
-    -moz-transition: all 700ms;
     transition: all 700ms;
     -webkit-transition: all 700ms;
     -o-transition: all 700ms;
@@ -620,9 +591,6 @@ h5.pricecolor {
 }
 .bgimg {
     background: url('../../img/banner.jpg');
-    -webkit-background-size: 100% 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
     background-size: 100%;
     height: 578px;
     background-repeat: no-repeat;
@@ -784,7 +752,7 @@ div.megamenu.megamenu2 {
     font-family: "CheddarJack";
     font-size: 40px;
     background: #efc7cf;
-    padding: 67px 0;
+    padding: 50px 0;
 }
 .pronew2 {
     display: inline-block;
@@ -817,8 +785,6 @@ div.megamenu.megamenu2 {
     bottom: 10px;
     right: 10px;
     outline: 0px;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
     border-radius: 100%;
     font-size: 18px;
     padding: 15px;
@@ -845,8 +811,6 @@ div.megamenu.megamenu2 {
 }
 .carticon {
     font-size: 25px;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
     border-radius: 100%;
     width: 25px;
     height: 25px;
@@ -895,8 +859,6 @@ span.cartspace {
 .discountcoupon {
     border-color: #03e1e4;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #03e1e4;
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #03e1e4;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #03e1e4;
 }
 .glyphicon {
@@ -916,8 +878,6 @@ span.cartspace {
     margin-bottom: 20px;
     list-style: none;
     color: #A8A8A8;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
     line-height: 28px;
     zoom: 0.9;
@@ -958,14 +918,9 @@ a.btns-primary {
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     background-image: none;
     border: none;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
 }
 button.btnss-primary {
@@ -1021,9 +976,6 @@ button.btnss-primary {
     width: 270px;
     height: 170px;
     border: solid 1px black;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -1047,8 +999,6 @@ button.btnss-primary {
     font-size: 16px;
     background: rgba(216, 242, 239, 1);
     padding: 9px 10px 9px 10px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
     border-radius: 0px;
     z-index: 999999;
     float: right;
@@ -1105,8 +1055,6 @@ button.btnss-primary {
     background: rgb(39, 240, 232);
     color: #fff;
     border-right: 1px solid #03E1E4;
-    -webkit-box-shadow: 0 1px 2px #6ECCC8 !important;
-    -moz-box-shadow: 0 1px 2px #6ECCC8 !important;
     box-shadow: 0 1px 2px #6ECCC8 !important;
     position: relative;
 }
@@ -1124,10 +1072,6 @@ button.btnss-primary {
     z-index: 1;
     bottom: -11px;
     left: 50%;
-    -webkit-transform: translatex(-50%);
-    -moz-transform: translatex(-50%);
-    -ms-transform: translatex(-50%);
-    -o-transform: translatex(-50%);
     transform: translatex(-50%);
 }
 .pop-set {
@@ -1138,13 +1082,7 @@ button.btnss-primary {
     margin: 0 auto;
     position: relative;
     top: 50%;
-    -webkit-transform: translateY(50%);
-    -moz-transform: translateY(50%);
-    -ms-transform: translateY(50%);
-    -o-transform: translateY(50%);
     transform: translateY(50%);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
     text-align: center;
 }
@@ -1245,8 +1183,6 @@ th {
     text-align: center;
     padding: 2px 0px 3px 0px;
     margin: 0;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
     background: rgb(255, 255, 255);
 }
@@ -1256,8 +1192,6 @@ th {
     text-align: center;
     padding: 0;
     margin: 0;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
 }
 .free-set p {
@@ -1276,8 +1210,6 @@ th {
 .symbol {
     width: 28%;
     padding: 20px 13px;
-    -webkit-border-radius: 4px 0px 0px 4px;
-    -moz-border-radius: 4px 0px 0px 4px;
     border-radius: 4px 0px 0px 4px;
     background: #27f0e8;
     display: inline-block;
