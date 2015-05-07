@@ -1,6 +1,6 @@
 application: lylalovescouk
 version: 3
-runtime: php
+runtime: php55
 api_version: 1
 threadsafe: no
 
