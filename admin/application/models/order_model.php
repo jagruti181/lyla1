@@ -399,6 +399,7 @@ class Order_model extends CI_Model
 		INNER JOIN `product` ON `product`.`id`=`orderitems`.`product`
 		INNER JOIN `productimage` ON `productimage`.`product`=`orderitems`.`product`
         AND `orderitems`.`order`='$id'
+        GROUP BY `product`.`id`
         " )->result();
 		
 		return $query;
