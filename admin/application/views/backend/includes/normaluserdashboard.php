@@ -198,56 +198,7 @@
 
        <div class="col-md-1">
         </div>
-       <div class="col-md-5">
-          <div class="well" style="text-align:center;">
-              Revenue
-          </div>
-           <div class="row">
-                <div class="col-md-5">
-                    <div class="well" style="text-align:center;">
-                    <p>Total Revenue Of Current Month</p>
-                    </div>
-                    <div class="row state-overview"  >
-                        <div class="col-lg-12 col-sm-12">
-                            <section class="panel">
-                                <div class="symbol terques">
-                                    <i class="icon-user"></i>
-                                </div>
-            <!--                    <a href="<?php echo site_url('site/dashboardzonewise'); ?>">-->
-                                <div class="value">
-                                   <p>Current Month Revenue</p>
-                                    <h1><?php echo $totalrevenuemonth->currentmonthrevenue;?></h1>
-
-                                </div>
-            <!--                    </a>-->
-                            </section>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                </div>
-                <div class="col-md-5">
-                    <div class="well" style="text-align:center;">
-                    <p>Total Revenue On Site</p>
-                    </div>
-                    <div class="row state-overview"  >
-                        <div class="col-lg-12 col-sm-12">
-                            <section class="panel">
-                                <div class="symbol terques">
-                                    <i class="icon-user"></i>
-                                </div>
-            <!--                    <a href="<?php echo site_url('site/dashboardzonewise'); ?>">-->
-                                <div class="value">
-                                   <p>Total Revenue</p>
-                                    <h1><?php echo $totalrevenue->revenue;?></h1>
-
-                                </div>
-            <!--                    </a>-->
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </div>
+       <div class="col-md-5" style="display:none;">
         </div>
     </div>
 <!--
