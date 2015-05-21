@@ -1,6 +1,7 @@
 var phonecatControllers = angular.module('phonecatControllers', ['templateservicemod', 'Service', 'ngRoute', 'ngDialog']);
 phonecatControllers.controller('home',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Home Screen");
         ////$scope.firstloadclass = TemplateService.firstload;
 
         $scope.template = TemplateService;
@@ -20,6 +21,8 @@ phonecatControllers.controller('home',
         $scope.onhome = "onhome";
         $scope.demo = "demodemo";
         $scope.hititle = "Jewellery London - Picks of the Week";
+    
+    addevent("ButtonTap", " Login");
         //$scope.init = function () {
         //        ngDialog.open({ template: 'popup.html' });
         //    };
@@ -171,6 +174,7 @@ phonecatControllers.controller('home',
 
 phonecatControllers.controller('cart',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Cart Screen");
         $(".zoomContainer").remove();
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
@@ -184,6 +188,8 @@ phonecatControllers.controller('cart',
         $scope.hititle = "Cart";
         //authenticate
 
+     addevent("ButtonTap", " Cart");
+    
         var authenticate = function(data, status) {
             if (data != "false") {
                 $scope.loginlogouttext = data.email;
@@ -378,6 +384,9 @@ phonecatControllers.controller('cart',
 
 phonecatControllers.controller('logout ',
     function($scope, TemplateService, MainJson, $location) {
+     addanalytics("Logout Screen");
+    
+     addevent("ButtonTap", " Logout");
 
         //######################authentication######################
         var logout = function(data, status) {
@@ -396,6 +405,7 @@ phonecatControllers.controller('logout ',
 
 phonecatControllers.controller('login',
     function($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
+     addanalytics("Login Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -405,7 +415,8 @@ phonecatControllers.controller('login',
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
         //authenticate
-
+ addevent("ButtonTap", " Login");
+    
         var cartt = function(data, status) {
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
         };
@@ -462,6 +473,7 @@ phonecatControllers.controller('login',
 
 phonecatControllers.controller('loginwishlist',
     function($scope, TemplateService, MainJson, $rootScope, $routeParams, $location) {
+     addanalytics("Login-wishlist Screen");
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -472,6 +484,8 @@ phonecatControllers.controller('loginwishlist',
         $scope.loginlogouttext = "Login";
         //authenticate
         $scope.alert2 = "Login or signup for wishlist";
+    
+     addevent("ButtonTap", " Wishlist");
 
         var cartt = function(data, status) {
             MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
@@ -531,6 +545,7 @@ phonecatControllers.controller('loginwishlist',
 
 phonecatControllers.controller('xoxo',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Xoxo Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -549,12 +564,15 @@ phonecatControllers.controller('xoxo',
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
+    
+     addevent("ButtonTap", "Xoxo Button");
 
 
     });
 
 phonecatControllers.controller('contact',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Contact Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.title = "Contact Lyla Loves | Fashion Jewellery London";
@@ -587,12 +605,15 @@ phonecatControllers.controller('contact',
             MainJson.usercontact("", data.name, data.email, data.phone, data.comment).success(contact);
         };
         //contact
+    
+    addevent("ButtonTap", "Contact Button");
 
     });
 
 
 phonecatControllers.controller('contact2',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Contact2 Screen");
 
         var contact = function(data, status) {
             console.log(data);
@@ -604,11 +625,14 @@ phonecatControllers.controller('contact2',
             MainJson.usercontact("", data.name, data.email, data.phone, data.comment).success(contact);
         };
         //contact
+    addevent("ButtonTap", "Contact Button");
 
     });
 
 phonecatControllers.controller('wholesaler',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+    
+     addanalytics("Wholesaler Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -641,12 +665,16 @@ phonecatControllers.controller('wholesaler',
             MainJson.registerwholesaler(register.firstname, register.lastname, register.phone, register.email, register.password).success(getwholesalersignup);
         };
         //register
+    
+    addevent("ButtonTap", "Wholesaler Button");
 
     });
 
 
 phonecatControllers.controller('profile',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+    
+     addanalytics("Profile Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -667,11 +695,14 @@ phonecatControllers.controller('profile',
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
+    addevent("ButtonTap", "Profile Button");
+    
 
     });
 
 phonecatControllers.controller('lylaloves',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Lylaloves Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.title = "Follow Lyla Loves on Facebook, Twitter, Pinterest, & Instagram";
@@ -705,10 +736,13 @@ phonecatControllers.controller('lylaloves',
         //
         //            });
         //        });
+    
+    addevent("ButtonTap", "lylaloves Button");
 
     });
 phonecatControllers.controller('jewellery',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Jewellery Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.title = "London Fashion Jewellery | Dainty Jewellery ";
@@ -744,10 +778,13 @@ phonecatControllers.controller('jewellery',
         //            });
         //        });
 
+    addevent("ButtonTap", "jewellery Button");
+    
     });
 
 phonecatControllers.controller('thankyou',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Thankyou Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -766,10 +803,13 @@ phonecatControllers.controller('thankyou',
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
+    
+    addevent("ButtonTap", "Thankyou Button");
 
     });
 phonecatControllers.controller('newsletter',
     function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Newsletter Screen");
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -805,11 +845,13 @@ phonecatControllers.controller('newsletter',
             }
         };
         //newsletter
+    addevent("ButtonTap", "Newsletter Button");
 
     });
 
 phonecatControllers.controller('badge',
     function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Badge Screen");
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -850,11 +892,14 @@ phonecatControllers.controller('badge',
         };
         MainJson.gettotalcart().success(MainJson.gettotalproductsincart);
 
+    addevent("ButtonTap", "badge Button");
+    
     });
 
 
 phonecatControllers.controller('search',
     function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Search Screen");
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -876,15 +921,20 @@ phonecatControllers.controller('search',
         };
 
         //search
+    
+    addevent("ButtonTap", "Search Button");
 
     });
 
 
 phonecatControllers.controller('lightbox',
     function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Lightbox Screen");
         $scope.removelightbox = function() {
             TemplateService.lightboximage = "";
         };
+    
+    addevent("ButtonTap", "lightbox Button");
     });
 
 
@@ -892,6 +942,7 @@ phonecatControllers.controller('lightbox',
 
 phonecatControllers.controller('searchpage',
     function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Search-page Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -918,13 +969,15 @@ phonecatControllers.controller('searchpage',
         };
         MainJson.seach($routeParams.search).success(searching);
         //searching
+    addevent("ButtonTap", "lightbox Button");
+    
     });
 
 
 phonecatControllers.controller('lookbook',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
 
-
+ addanalytics("Lookbook Screen");
 
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
@@ -962,11 +1015,14 @@ phonecatControllers.controller('lookbook',
         };
         MainJson.getproductbycategory("lookbook").success(categorysuccess);
 
+    addevent("ButtonTap", "Lookbook Button");
+    
     });
 
 
 phonecatControllers.controller('checkout',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Checkout Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -1393,10 +1449,14 @@ phonecatControllers.controller('checkout',
             $scope.form.status = $scope.status; //MainJson.placeorder(form.firstname,form.lastname,form.email,form.company,form.billingaddress,form.billingcity,form.billingstate,form.billingpincode,form.billingcountry,form.phone,form.fax,form.shippingaddress,form.shippingcity,form.shippingstate,form.shippingpincode,form.shippingcountry,$scope.id,$scope.status).success(orderplaced); 
             MainJson.placeorder(form).success(orderplaced);
         };
+    
+    
+    addevent("ButtonTap", "Checkout Button");
     });
 
 phonecatControllers.controller('headerctrl',
     function($scope, TemplateService, MainJson) {
+     addanalytics("Header Screen");
         $scope.template = TemplateService;
         $scope.testing = "testing";
         var fillemail = function(data, status) {
@@ -1404,10 +1464,13 @@ phonecatControllers.controller('headerctrl',
         };
 
         MainJson.authenticate().success(fillemail);
+    
+    addevent("ButtonTap", "Header Button");
 
     });
 phonecatControllers.controller('slider',
     function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, ngDialog) {
+     addanalytics("Slider Screen");
         $scope.template = TemplateService;
 
 
@@ -1439,10 +1502,13 @@ phonecatControllers.controller('slider',
         //                controller: 'slider'
         //            });
         //        };
+    
+    addevent("ButtonTap", "Slider Button");
     });
 
 phonecatControllers.controller('category',
     function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
+     addanalytics("Category Screen");
         $scope.iscategory = "category";
 
 
@@ -1694,6 +1760,8 @@ phonecatControllers.controller('category',
                 $(this).removeClass("animated tada");
             });
         });
+    
+    addevent("ButtonTap", "Category Button");
 
     });
 
@@ -1701,6 +1769,7 @@ phonecatControllers.controller('category',
 
 phonecatControllers.controller('JustInCtrl',
     function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
+     addanalytics("Just Screen");
         $scope.iscategory = "category";
 
 
@@ -1858,6 +1927,8 @@ phonecatControllers.controller('JustInCtrl',
                 $(this).removeClass("animated tada");
             });
         });
+    
+      addevent("ButtonTap", "Category Button");
 
     });
 
@@ -1868,6 +1939,7 @@ phonecatControllers.controller('JustInCtrl',
 
 phonecatControllers.controller('product',
     function($scope, $routeParams, TemplateService, MainJson, $timeout, $location) {
+     addanalytics("Product Screen");
 
         $scope.name = 'World';
 
@@ -2033,11 +2105,14 @@ phonecatControllers.controller('product',
                 $(this).removeClass("animated tada");
             });
         });
+    
+      addevent("ButtonTap", "Product Button");
 
     });
 
 phonecatControllers.controller('delivery',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Delivery Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -2055,11 +2130,12 @@ phonecatControllers.controller('delivery',
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
-
+  addevent("ButtonTap", "Delivery Button");
     });
 
 phonecatControllers.controller('wishlist',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Wishlist Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -2085,12 +2161,15 @@ phonecatControllers.controller('wishlist',
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
+    
+    addevent("ButtonTap", "Delivery Button");
 
     });
 
 
 phonecatControllers.controller('returns',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Returns Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -2134,6 +2213,7 @@ phonecatControllers.controller('returns',
 
 phonecatControllers.controller('returns',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Returns Screen");
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
@@ -2151,11 +2231,12 @@ phonecatControllers.controller('returns',
         };
         MainJson.authenticate().success(authenticate);
         //authenticate
-
+addevent("ButtonTap", "Returns Button");
     });
 
 phonecatControllers.controller('zoomCtrl',
     function($scope) {
+     addanalytics("Zoom Screen");
         $scope.switchImage = function(imageSrc) {
             console.log('change image to: ' + imageSrc);
             $scope.imageSrc = imageSrc;
@@ -2165,6 +2246,7 @@ phonecatControllers.controller('zoomCtrl',
 
 phonecatControllers.controller('SmartCartCtrl',
     function($scope, TemplateService, MainJson, $rootScope, $location) {
+     addanalytics("Smartcart Screen");
         var totalitemchange = function(data) {
             $scope.totalitem = data;
         };
@@ -2185,7 +2267,7 @@ phonecatControllers.controller('SmartCartCtrl',
         MainJson.totalcart().success(totalamountchange);
 
 
-
+addevent("ButtonTap", "SmartCart Button");
     }
 );
 
