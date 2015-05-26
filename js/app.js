@@ -1,3 +1,12 @@
+
+var addanalytics = function() {
+    
+};
+
+var addevent = function() {
+    
+};
+
 // JavaScript Document
 var firstapp = angular.module('firstapp', [
     'ngRoute',
