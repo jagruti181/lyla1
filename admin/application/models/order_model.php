@@ -336,11 +336,7 @@ class Order_model extends CI_Model
 		$query=$this->db->insert( 'orderitems', $data );
 		
 	}
-	function deleteorder($id)
-	{
-		$query=$this->db->query("DELETE FROM `order` WHERE `id`='$id'");
-        $query=$this->db->query("DELETE FROM `orderitems` WHERE `order`='$id'");
-	}
+	
     function deleteorderitem($id)
 	{
 		$query=$this->db->query("DELETE FROM `orderitems` WHERE `id`='$id'");
