@@ -8,9 +8,9 @@ phonecatControllers.controller('home',
 
         $scope.template = TemplateService;
         TemplateService.slider = "views/slider.html";
-        TemplateService.meta = "Fashion Jewellery London and Accessories | Lyla Loves";
+        TemplateService.meta = "Fashion Accessories and Jewellery from London  | Lyla Loves";
         TemplateService.title = "Fashion Jewellery London and Accessories";
-        TemplateService.metadescription = "Bring your outfit to life with fashion jewellery london and accessories for women by Lyla Loves! Shop for necklaces, bracelets, earrings, midi rings and more!";
+        TemplateService.metadescription = "Bring your outfit to life with fashion accessories and jewellery from London for women by Lyla Loves! Shop for necklaces, bracelets, earrings, midi rings and more!";
         TemplateService.keywords = "fashion jewellery online, dainty jewellery, jewellery london, fashion necklaces for women, bracelets for women, earrings for women, midi rings, accessories for women";
         TemplateService.header = "views/headerhome.html";
         TemplateService.navigation = "views/navigationhome.html";
@@ -585,9 +585,9 @@ phonecatControllers.controller('contact',
 
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
-        TemplateService.title = "Contact Lyla Loves | Fashion Jewellery London";
+        TemplateService.title = "Contact Us | Accessories & Jewellery | Lyla Loves";
         TemplateService.metadescription = "To ask any query related to fashion jewellery or to shop for the latest accessories, get in touch with our experts and get your style right at Lyla Loves.";
-        TemplateService.keywords = "fashion jewellery online, jewllery london, necklaces, bracelets, earrings, rings, accessories for women";
+        TemplateService.keywords = "fashion jewellery online, jewllery London, necklaces, bracelets, earrings, rings, accessories for women";
         //        TemplateService.changetitle("Login");
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -717,7 +717,7 @@ phonecatControllers.controller('lylaloves',
 
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
-        TemplateService.title = "Follow Lyla Loves on Facebook, Twitter, Pinterest, & Instagram";
+        TemplateService.title = "Follow us on Facebook, Twitter, Pinterest & Instagram | Lyla Loves";
         TemplateService.metadescription = "Follow Lyla Loves on Facebook, Twitter, Pinterest, Instagram & Tumblr to stay updated on the latest fashion and style trends for women and win exciting prizes.";
         TemplateService.keywords = "instagram lyla_loves, twitter lyla_loves, facebook lylaloves, pinterest lyla loves";
         TemplateService.header = "views/header.html";
@@ -757,8 +757,8 @@ phonecatControllers.controller('jewellery',
 
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
-        TemplateService.title = "London Fashion Jewellery | Dainty Jewellery ";
-        TemplateService.metadescription = "Buy women's fashion jewellery london, dainty jewellery, necklaces, bracelets, earrings and midi rings at affordable prices only at Lyla Loves.";
+        TemplateService.title = "Fashion Jewellery Online | Dainty Jewellery | Lyla Loves ";
+        TemplateService.metadescription = "Buy dainty jewellery for women. Or select from a range of fashion jewellery online —necklaces, bracelets, earrings and midi rings at affordable prices at Lyla Loves.";
         TemplateService.keywords = "fashion jewellery online, dainty jewellery, jewellery london, fashion necklaces for women, bracelets for women, earrings for women, midi rings";
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
@@ -997,6 +997,9 @@ phonecatControllers.controller('lookbook',
         $scope.template = TemplateService;
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
+        TemplateService.title = "Online fashion accessories and jewellery | Lookbook | Lyla Loves";
+        TemplateService.metadescription = "The online lookbook by Lyla Loves—showcasing the latest fashionable, and stylish accessories and jewellery for women at affordable prices.";
+        TemplateService.keywords = "fashion jewellery, jewellery London, dainty jewellery, geometric jewellery, accessories for women, womens accessories";
         TemplateService.changetitle("lyla Lookbook");
         $scope.homeactive = "active";
         TemplateService.content = "views/lookbook.html";
@@ -1540,18 +1543,28 @@ phonecatControllers.controller('category',
         TemplateService.slider = "";
         $scope.hititle = "Lyla Loves - Fashion Jewellery Online";
         console.log($routeParams.CategoryId);
+    
+         if ($routeParams.CategoryId == "pendants") {
+            console.log("is if");
+            TemplateService.title = "Exquisite zodiac, silver and gold pendant necklaces | Lyla Loves ";
+            TemplateService.metadescription = "You won't be able to resist our amazing range of pendant necklaces. Shop for silver & gold pendant necklace, dragonfly necklace, zodiac necklace and more at Lyla Loves.";
+            TemplateService.keywords = "gold pendant necklace, dragonfly necklace, zodiac necklace, fashion necklaces for women, dainty jewellery, geometric necklace";
+            $scope.hititle = "Lyla Loves - Fashion Necklaces for Women";
+
+        }
+    
         if ($routeParams.CategoryId == "necklaces") {
             console.log("is if");
-            TemplateService.title = "Fashion Necklaces for Women, Statement Necklaces ";
-            TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women, silver statement necklaces, dragonfly necklaces, zodiac necklaces and much more at Lyla Loves.";
+            TemplateService.title = "Statement Necklaces | Fashion Necklaces for Women | Lyla Loves ";
+            TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women —gold & silver statement necklaces, layered necklaces, choker necklaces and more at Lyla Loves.";
             TemplateService.keywords = "fashion necklaces for women, silver statement necklace, dragonfly necklace, zodiac necklace, gold necklaces, silver necklaces, pendant necklaces";
             $scope.hititle = "Lyla Loves - Fashion Necklaces for Women";
 
         }
 
         if ($routeParams.CategoryId == "bracelets") {
-            TemplateService.title = "Gold, silver and leather bracelets for women";
-            TemplateService.metadescription = "Find out the best collection of gold and silver bracelets, wrap around bracelets and leather bracelets for women and many more at Lyla Loves.";
+            TemplateService.title = "Stylish gold, silver and leather bracelets for women | Lyla Loves";
+            TemplateService.metadescription = "Buy the season's hottest gold and silver bracelets for women. Style your outfit with wrap around bracelets, leather bracelets for women and more from Lyla Loves.";
             TemplateService.keywords = "bracelets for women, silver bracelets for women, wrap around bracelets, leather bracelets for women, adjustable bracelets, bangles";
             TemplateService.header = "views/header.html";
             TemplateService.navigation = "views/navigation.html";
@@ -1560,9 +1573,9 @@ phonecatControllers.controller('category',
             $scope.hititle = "Lyla Loves - Bracelets for Women";
         }
         if ($routeParams.CategoryId == "earrings") {
-            TemplateService.title = "Ear cuffs, gold, silver and stud earrings for women";
-            TemplateService.metadescription = "Shop for a range of ear cuffs online, gold and silver earrings, stud earrings for women and more. Choose from beautiful selection of earrings at Lyla Loves.";
-            TemplateService.keywords = "ear cuffs online, stud earrings for women, gold earrings, silver earrings.";
+            TemplateService.title = "Elegant gold, silver and stud earrings for women | Lyla Loves";
+            TemplateService.metadescription = "Shop from an evocative and stunning range of gold, silver and stud earrings for women, along with hoops and more from Lyla Loves. ";
+            TemplateService.keywords = "stud earrings for women, gold earrings, silver earrings, dainty jewellery, geometric earrings";
             TemplateService.header = "views/header.html";
             TemplateService.navigation = "views/navigation.html";
             TemplateService.content = "views/category.html";
@@ -1570,9 +1583,9 @@ phonecatControllers.controller('category',
             $scope.hititle = "Gold, Silver, Stud Earrings for Women and Ear Cuffs Online";
         }
         if ($routeParams.CategoryId == "earcuffs") {
-            TemplateService.title = "Ear cuffs, gold, silver and stud earrings for women";
-            TemplateService.metadescription = "Shop for a range of ear cuffs online, gold and silver earrings, stud earrings for women and more. Choose from beautiful selection of earrings at Lyla Loves.";
-            TemplateService.keywords = "ear cuffs online, stud earrings for women, gold earrings, silver earrings.";
+            TemplateService.title = "Buy ear cuffs online at the best price | Lyla Loves";
+            TemplateService.metadescription = "Presenting an exclusive collection of ear cuffs online. Shop from a gorgeous collection of ear cuffs at modest prices only at Lyla Loves. Visit us NOW!";
+            TemplateService.keywords = "ear cuffs online, dainty jewellery, ear cuff jewellery, cuff earrings, fashion ear cuffs";
             TemplateService.header = "views/header.html";
             TemplateService.navigation = "views/navigation.html";
             TemplateService.content = "views/category.html";
@@ -1580,7 +1593,7 @@ phonecatControllers.controller('category',
             $scope.hititle = "Gold, Silver, Stud Earrings for Women and Ear Cuffs Online";
         }
         if ($routeParams.CategoryId == "rings") {
-            TemplateService.title = "Gold stacking rings & silver midi rings for women";
+            TemplateService.title = "Gold stacking rings & silver midi rings for women | Lyla Loves";
             TemplateService.metadescription = "Buy ultimate piece of women's fashion rings from a wide range of gold and silver midi rings, gold stacking rings and many more only at Lyla Loves.";
             TemplateService.keywords = "rings for women, silver midi rings, gold stacking rings, geometric rings, pearl rings.";
             TemplateService.header = "views/header.html";
@@ -1590,7 +1603,7 @@ phonecatControllers.controller('category',
             $scope.hititle = "Lyla Loves - Gold, Silver Midi Rings, Stacking Rings";
         }
         if ($routeParams.CategoryId == "accessories") {
-            TemplateService.title = "Buy the latest fashion accessories for women online";
+            TemplateService.title = "Buy the latest fashion accessories for women online | Lyla Loves";
             TemplateService.metadescription = "Get the best trendy fashion accessories for women like bags, mobile cases, scarves and more at Lyla Loves.";
             TemplateService.keywords = "accessories for women, bags for women, scarves for women, mobile phone cases, hair accessories.";
             TemplateService.header = "views/header.html";
@@ -1600,7 +1613,7 @@ phonecatControllers.controller('category',
             $scope.hititle = "Lyla Loves - Fashion Accessories for Women";
         }
         if ($routeParams.CategoryId == "bags") {
-            TemplateService.title = "Shop for handbags, clutches, shoulder bags for women";
+            TemplateService.title = "Shop for handbags, clutches, shoulder bags for women | Lyla Loves";
             TemplateService.metadescription = "Shop today! for a variety of stylish bags for women like clutches, shoulder bags and more at affordable prices from Lyla Loves.";
             TemplateService.keywords = "bags for women, womens accessories, clutch bags, shoulder bags, handbags";
             TemplateService.header = "views/header.html";
@@ -1610,7 +1623,7 @@ phonecatControllers.controller('category',
             $scope.hititle = "Lyla Loves - Stylish Bags for Women";
         }
         if ($routeParams.CategoryId == "scarves") {
-            TemplateService.title = "Shop for printed, ethnic scarves for women ";
+            TemplateService.title = "Shop for printed, ethnic scarves for women | Lyla Loves";
             TemplateService.metadescription = "Find beautiful printed and ethnic scarves for women to suit your style. Choose from a wide range of designs at the best prices from Lyla Loves..";
             TemplateService.keywords = "scarves for women, womens scarf, printed scarves, ethnic scarves";
             TemplateService.header = "views/header.html";
@@ -1620,7 +1633,7 @@ phonecatControllers.controller('category',
             $scope.hititle = "Lyla Loves - Scarves for Women";
         }
         if ($routeParams.CategoryId == "hair") {
-            TemplateService.title = "Buy hair accessories for women online";
+            TemplateService.title = "Buy hair accessories for women online | Lyla Loves";
             TemplateService.metadescription = "Choose from a selection of trendy hair accessories for women at Lyla Loves.";
             TemplateService.keywords = "hair accessories for women, Hair accessory for women, womens hair accessories";
             TemplateService.header = "views/header.html";
@@ -1630,7 +1643,7 @@ phonecatControllers.controller('category',
             $scope.hititle = "Lyla Loves - Hair Accessories for Women";
         }
         if ($routeParams.CategoryId == "phone-cases") {
-            TemplateService.title = "Buy fashionable mobile phone cases";
+            TemplateService.title = "Buy fashionable mobile phone cases | Lyla Loves";
             TemplateService.metadescription = "Find a wide range of fashionable mobile phone cases that suit your style. So order your favorite phone case at Lyla Loves NOW!";
             TemplateService.keywords = "mobile phone cases, phone cases, cell phone cases";
             TemplateService.header = "views/header.html";
@@ -1639,6 +1652,17 @@ phonecatControllers.controller('category',
             TemplateService.slider = "";
             $scope.hititle = "Lyla Loves - Hair Accessories for Women";
         }
+        if ($routeParams.CategoryId == "metallic-tattoos") {
+            TemplateService.title = "Fashionable jewellery-inspired metallic tattoos | Lyla Loves";
+            TemplateService.metadescription = "Choose from our collection of intricate jewellery-inspired metallic tattoos for women. Browse tattoo necklaces, arm bands and more only at Lyla Loves.";
+            TemplateService.keywords = "jewellery tattoos, mettalic jewellery tattoos, jewellery mettalic tattoos, jewellery inspired metallic tattoos";
+            TemplateService.header = "views/header.html";
+            TemplateService.navigation = "views/navigation.html";
+            TemplateService.content = "views/category.html";
+            TemplateService.slider = "";
+            $scope.hititle = "Lyla Loves - Hair Accessories for Women";
+        }
+
 
 
 
@@ -1792,8 +1816,8 @@ phonecatControllers.controller('JustInCtrl',
 
         //$scope.firstloadclass = TemplateService.firstload;
         $scope.template = TemplateService;
-        TemplateService.title = "Find latest collection of fashion jewellery online";
-        TemplateService.metadescription = "Grab all the latest arrivals in fashion jewellery online today and find a range of accessories for women at Lyla loves.";
+        TemplateService.title = "The latest in women's accessories and jewellery  | Lyla Loves";
+        TemplateService.metadescription = "Grab all the latest arrivals in accessories and jewellery for women online. Browse our large selection of necklaces, rings, bags, scarves and more.";
         TemplateService.keywords = "fashion jewellery online, dainty jewellery, jewellery london, accessories for women";
         TemplateService.header = "views/header.html";
         TemplateService.navigation = "views/navigation.html";
