@@ -84,7 +84,7 @@ firstapp.config(
             templateUrl: 'views/template.html',
             controller: 'category'
         }).
-        when('/justin', {
+        when('/just-in', {
             templateUrl: 'views/template.html',
             controller: 'JustInCtrl'
         }).
