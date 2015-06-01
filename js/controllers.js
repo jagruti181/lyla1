@@ -1000,7 +1000,7 @@ phonecatControllers.controller('lookbook',
         TemplateService.title = "Online fashion accessories and jewellery | Lookbook";
         TemplateService.metadescription = "The online lookbook by Lyla Loves—showcasing the latest fashionable, and stylish accessories and jewellery for women at affordable prices.";
         TemplateService.keywords = "fashion jewellery, jewellery London, dainty jewellery, geometric jewellery, accessories for women, womens accessories";
-        TemplateService.changetitle("lyla Lookbook");
+//        TemplateService.changetitle("lyla Lookbook");
         $scope.homeactive = "active";
         TemplateService.content = "views/lookbook.html";
         TemplateService.slider = "";
@@ -1555,15 +1555,15 @@ phonecatControllers.controller('category',
     
         if ($routeParams.CategoryId == "necklaces") {
             console.log("is if");
-            TemplateService.title = "Statement Necklaces | Fashion Necklaces ";
-            TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women —gold & silver statement necklaces, layered necklaces, choker necklaces and more at Lyla Loves.";
-            TemplateService.keywords = "fashion necklaces for women, silver statement necklace, dragonfly necklace, zodiac necklace, gold necklaces, silver necklaces, pendant necklaces";
+            TemplateService.title = "Statement Necklaces | Fashion Necklaces for Women ";
+            TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women —gold & silver statement necklaces, layered necklaces, choker necklaces and more at Lyla Loves";
+            TemplateService.keywords = "fashion necklaces for women, silver statement necklace, layered necklaces, choker necklaces, long necklaces, semi precious necklaces";
             $scope.hititle = "Lyla Loves - Fashion Necklaces for Women";
 
         }
 
         if ($routeParams.CategoryId == "bracelets") {
-            TemplateService.title = "Stylish gold, silver and leather bracelets";
+            TemplateService.title = "Stylish gold, silver and leather bracelets for women";
             TemplateService.metadescription = "Buy the season's hottest gold and silver bracelets for women. Style your outfit with wrap around bracelets, leather bracelets for women and more from Lyla Loves.";
             TemplateService.keywords = "bracelets for women, silver bracelets for women, wrap around bracelets, leather bracelets for women, adjustable bracelets, bangles";
             TemplateService.header = "views/header.html";
