@@ -376,5 +376,80 @@ class Json extends CI_Controller {
 
     }
     
+    function changepassword() {
+        $order = json_decode(file_get_contents('php://input'), true);
+        //print_r($order);
+        $password = $order['password'];
+        $id=$this->session->userdata('id');
+//        echo $password;
+//        return $password;
+        if($id)
+        {
+            $data["message"] = $this->user_model->changepassword($id,$password);
+            $this->load->view("json", $data);
+        }
+        else
+        {
+            $data["message"] = "Please Login!!!";
+            $this->load->view("json", $data);
+        }
+    }
+    function changepersonelinfo() {
+        $order = json_decode(file_get_contents('php://input'), true);
+        //print_r($order);
+        $firstname = $order['firstname'];
+        $lastname = $order['lastname'];
+        $company = $order['company'];
+        $email = $order['email'];
+        $id=$this->session->userdata('id');
+        if($id)
+        {
+            $data["message"] = $this->user_model->changepersonelinfo($id,$firstname,$lastname,$company,$email);
+            $this->load->view("json", $data);
+        }
+        else
+        {
+            $data["message"] = "Please Login!!!";
+            $this->load->view("json", $data);
+        }
+    }
+    
+    function changebillinginfo() {
+        $order = json_decode(file_get_contents('php://input'), true);
+        //print_r($order);
+        $password = $order['address'];
+        $city = $order['city'];
+        $state = $order['state'];
+        $zip = $order['zip'];
+        $country = $order['country'];
+        $telephone = $order['telephone'];
+        $fax = $order['fax'];
+        $id=$this->session->userdata('id');
+        if($id)
+        {
+            $data["message"] = $this->user_model->changebillinginfo($id,$address,$city,$state,$zip,$country,$telephone,$fax);
+            $this->load->view("json", $data);
+        }
+        else
+        {
+            $data["message"] = "Please Login!!!";
+            $this->load->view("json", $data);
+        }
+    }
+    
+    function getuserorders() {
+        $id=$this->session->userdata('id');
+        if($id)
+        {
+            $data["message"] = $this->order_model->getuserorders($id);
+            $this->load->view("json", $data);
+        }
+        else
+        {
+            $data["message"] = "Please Login!!!";
+            $this->load->view("json", $data);
+        }
+    }
+    
 }
 ?>

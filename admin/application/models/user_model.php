@@ -129,7 +129,41 @@ class User_model extends CI_Model
 	function changepassword($id,$password)
 	{
 		$data  = array(
-			'password' =>md5($password),
+			'password' =>md5($password)
+		);
+		$this->db->where('id',$id);
+		$query=$this->db->update( 'user', $data );
+		if(!$query)
+			return  0;
+		else
+			return  1;
+	}
+	function changepersonelinfo($id,$firstname,$lastname,$company,$email)
+	{
+		$data  = array(
+            'companyname'=>$company,
+			'firstname' => $firstname,
+			'lastname' => $lastname,
+			'email' => $email
+		);
+		$this->db->where('id',$id);
+		$query=$this->db->update( 'user', $data );
+		if(!$query)
+			return  0;
+		else
+			return  1;
+	}
+	function changebillinginfo($id,$address,$city,$state,$zip,$country,$telephone,$fax)
+	{
+		$data  = array(
+			'billingaddress' => $address,
+			'billingcity' => $city,
+			'billingstate' => $state,
+            'pincode'=>$zip,
+			'billingcountry' => $country,
+			'phone' => $telephone,
+			'fax' => $fax,
+			'email' => $email
 		);
 		$this->db->where('id',$id);
 		$query=$this->db->update( 'user', $data );

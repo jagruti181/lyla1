@@ -514,5 +514,20 @@ WHERE DATE(`order`.`timestamp`) = '$date'")->result();
 		ORDER BY `order`.`timestamp` DESC")->result();
            return $query;
          }
+    
+	function getuserorders($id)
+	{
+        $query=$this->db->query("SELECT `order`.`id` AS `id` , `product`.`name` AS `productname` , DATE(`order`.`timestamp`) AS `date` , `product`.`sku` AS `sku` , `orderitems`.`quantity` AS `quantity` , `orderitems`.`price` AS `price` , `order`.`orderstatus` AS `status` , `orderstatus`.`name` AS `orderstatusname` , 1 
+        FROM `orderitems` 
+        INNER JOIN `order` ON `order`.`id`=`orderitems`.`order` 
+        INNER JOIN `product` ON `product`.`id`=`orderitems`.`product` 
+        LEFT OUTER JOIN `orderstatus` ON `orderstatus`.`id`=`order`.`orderstatus` 
+        WHERE `order`.`user`='$id' 
+        ORDER BY `order`.`id` DESC")->result();
+//		if(!$query)
+//			return  0;
+//		else
+			return  $query;
+	}
 }
 ?>
