@@ -88,6 +88,10 @@ firstapp.config(
             templateUrl: 'views/template.html',
             controller: 'JustInCtrl'
         }).
+         when('/sale', {
+            templateUrl: 'views/template.html',
+            controller: 'sale'
+        }).
         when('/product/:ProductId', {
             templateUrl: 'views/template.html',
             controller: 'product'
@@ -115,6 +119,10 @@ firstapp.config(
         when('/about', {
             templateUrl: 'views/template.html',
             controller: 'about'
+        }).
+        when('/wholesale', {
+            templateUrl: 'views/template.html',
+            controller: 'wholesale'
         }).
 
         otherwise({

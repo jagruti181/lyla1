@@ -1970,8 +1970,176 @@ phonecatControllers.controller('JustInCtrl',
 
     });
 
+// sale page
+
+phonecatControllers.controller('sale',
+    function($scope, $routeParams, TemplateService, MainJson, $rootScope, $location, $anchorScroll) {
+
+        $scope.iscategory = "category";
 
 
+
+
+
+        //$scope.firstloadclass = TemplateService.firstload;
+        $scope.template = TemplateService;
+        TemplateService.title = "The latest in women's accessories and jewellery";
+        TemplateService.metadescription = "Grab all the latest arrivals in accessories and jewellery for women online. Browse our large selection of necklaces, rings, bags, scarves and more.";
+        TemplateService.keywords = "fashion jewellery online, dainty jewellery, jewellery london, accessories for women";
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.content = "views/sale.html";
+        TemplateService.slider = "";
+        $scope.hititle = "Lyla Loves - Fashion Jewellery Online";
+
+        TemplateService.title = "Fashion Necklaces for Women, Statement Necklaces ";
+        TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women, silver statement necklaces, dragonfly necklaces, zodiac necklaces and much more at Lyla Loves.";
+        TemplateService.keywords = "fashion necklaces for women, silver statement necklace, dragonfly necklace, zodiac necklace, gold necklaces, silver necklaces, pendant necklaces";
+        $scope.hititle = "Lyla Loves - Fashion Necklaces for Women";
+
+
+
+
+        $scope.gototop = function() {
+            $location.hash('totop');
+            $anchorScroll();
+        };
+        $scope.loginlogouttext = "Login";
+        //get user country
+        var getcountry = function(data, status) {
+            console.log("get country");
+            console.log(data);
+        };
+        //  MainJson.showcountry().success(getcountry);
+        $scope.usercountry = "India";
+        //filters
+        $scope.filter = MainJson.getfilters();
+        $scope.filtercolors = [{
+            name: "red",
+            active: ""
+        }, {
+            name: "pink",
+            active: ""
+        }, {
+            name: "black",
+            active: ""
+        }, {
+            name: "white",
+            active: ""
+        }, {
+            name: "grey",
+            active: ""
+        }, {
+            name: "blue",
+            active: ""
+        }, {
+            name: "green",
+            active: ""
+        }, {
+            name: "purple",
+            active: ""
+        }, {
+            name: "yellow",
+            active: ""
+        }, {
+            name: "orange",
+            active: ""
+        }];
+
+        $scope.filtercolor = function(color) {
+            $scope.filter.color = color;
+        };
+
+        $scope.filtersave = function(filter) {
+            MainJson.setfilter(filter);
+            console.log(MainJson.getfilters());
+            MainJson.getproductbycategory($routeParams.CategoryId).success(categorysuccess);
+        };
+        $scope.filterclear = function() {
+            $scope.filter = {
+                color: "",
+                pricemin: 0,
+                pricemax: 30
+            };
+            MainJson.setfilter($scope.filter);
+            MainJson.getproductbycategory($routeParams.CategoryId).success(categorysuccess);
+        };
+
+
+
+        //authenticate
+        var authenticate = function(data, status) {
+            console.log(data);
+            if (data != "false") {
+                $scope.loginlogouttext = data.email;
+                $scope.accesslevel = data.accesslevel;
+            }
+        };
+        MainJson.authenticate().success(authenticate);
+        //authenticate
+
+        $scope.products = [];
+        $scope.productsheight = {};
+
+        $scope.addMoreItems = function() {
+            console.log("More Products Added " + $scope.products.length);
+            var first = $scope.products.length;
+            var addition = 12;
+            var sum = first + addition;
+            if (sum > $scope.productlist.length) {
+                sum = $scope.productlist.length;
+            }
+            for (var i = first; i < sum; i++) {
+                $scope.products.push($scope.productlist[i]);
+            }
+            $scope.productsheight.height = ($scope.products.length / 4) * 430 + "px";
+        };
+        var categorysuccess = function(data, status) {
+            $scope.products = [];
+            $scope.productsheight = {};
+            $scope.category = data.category;
+            $scope.breadcrumbs = data.breadcrumbs;
+            $scope.subcategory = data.subcategory;
+            $scope.currentcategory = data.currentcategory;
+            $scope.productlist = data.product;
+            //            $location.hash($scope.category.name.replace(/ /g, "_"));
+            $location.replace();
+            console.log(data);
+            console.log(data.product);
+            $scope.addMoreItems();
+        };
+        MainJson.getjustinproducts().success(categorysuccess);
+
+
+
+
+        $scope.$on('$viewContentLoaded', function() {
+
+            new WOW().init();
+
+
+            TemplateService.firsttimeloaded();
+            $(".zoomContainer").remove();
+            $(".pulseanimation").hover(function() {
+                $(this).addClass("animated pulse");
+            }, function() {
+                $(this).removeClass("animated pulse");
+            });
+
+            $(".tadaanimation").hover(function() {
+                $(this).addClass("animated tada");
+            }, function() {
+                $(this).removeClass("animated tada");
+            });
+        });
+        addanalytics("Just Screen");
+        addevent("ButtonTap", "Category Button");
+
+    });
+
+
+
+//
 
 
 
@@ -2318,7 +2486,27 @@ phonecatControllers.controller('SmartCartCtrl',
         addevent("ButtonTap", "SmartCart Button");
     }
 );
+phonecatControllers.controller('wholesale',
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
+        //$scope.firstloadclass = TemplateService.firstload;
+        $scope.template = TemplateService;
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.changetitle("wholesale lyla");
+        TemplateService.content = "views/wholesale.html";
+        $scope.returnsactive = "active";
+        TemplateService.slider = "";
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = "Logout";
+            }
+        };
+        MainJson.authenticate().success(authenticate);
+        //authenticate
 
+    });
 function CarouselDemoCtrl($scope) {
 
 }
