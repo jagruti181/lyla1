@@ -2507,6 +2507,27 @@ phonecatControllers.controller('wholesale',
         //authenticate
 
     });
+phonecatControllers.controller('lylabox',
+    function ($scope, TemplateService, MainJson, $rootScope, $location) {
+        //$scope.firstloadclass = TemplateService.firstload;
+        $scope.template = TemplateService;
+        TemplateService.header = "views/header.html";
+        TemplateService.navigation = "views/navigation.html";
+        TemplateService.changetitle("wholesale lyla");
+        TemplateService.content = "views/lylabox.html";
+        $scope.returnsactive = "active";
+        TemplateService.slider = "";
+        $scope.loginlogouttext = "Login";
+        //authenticate
+        var authenticate = function (data, status) {
+            if (data != "false") {
+                $scope.loginlogouttext = "Logout";
+            }
+        };
+        MainJson.authenticate().success(authenticate);
+        //authenticate
+
+    });
 function CarouselDemoCtrl($scope) {
 
 }

@@ -120,6 +120,10 @@ firstapp.config(
             templateUrl: 'views/template.html',
             controller: 'about'
         }).
+        when('/lylabox', {
+            templateUrl: 'views/template.html',
+            controller: 'lylabox'
+        }).
         when('/wholesale', {
             templateUrl: 'views/template.html',
             controller: 'wholesale'
