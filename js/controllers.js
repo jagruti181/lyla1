@@ -9,7 +9,7 @@ phonecatControllers.controller('home',
         $scope.template = TemplateService;
         TemplateService.slider = "views/slider.html";
         TemplateService.meta = "Fashion Accessories and Jewellery from London  | Lyla Loves";
-        TemplateService.title = "Fashion Jewellery London and Accessories";
+        TemplateService.title = "Fashion Accessories and Jewellery from London ";
         TemplateService.metadescription = "Bring your outfit to life with fashion accessories and jewellery from London for women by Lyla Loves! Shop for necklaces, bracelets, earrings, midi rings and more!";
         TemplateService.keywords = "fashion jewellery online, dainty jewellery, jewellery london, fashion necklaces for women, bracelets for women, earrings for women, midi rings, accessories for women";
         TemplateService.header = "views/headerhome.html";
@@ -1825,10 +1825,10 @@ phonecatControllers.controller('JustInCtrl',
         TemplateService.slider = "";
         $scope.hititle = "Lyla Loves - Fashion Jewellery Online";
 
-        TemplateService.title = "Fashion Necklaces for Women, Statement Necklaces ";
-        TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women, silver statement necklaces, dragonfly necklaces, zodiac necklaces and much more at Lyla Loves.";
-        TemplateService.keywords = "fashion necklaces for women, silver statement necklace, dragonfly necklace, zodiac necklace, gold necklaces, silver necklaces, pendant necklaces";
-        $scope.hititle = "Lyla Loves - Fashion Necklaces for Women";
+//        TemplateService.title = "Fashion Necklaces for Women, Statement Necklaces ";
+//        TemplateService.metadescription = "Shop from a stunning range of fashion necklaces for women, silver statement necklaces, dragonfly necklaces, zodiac necklaces and much more at Lyla Loves.";
+//        TemplateService.keywords = "fashion necklaces for women, silver statement necklace, dragonfly necklace, zodiac necklace, gold necklaces, silver necklaces, pendant necklaces";
+//        $scope.hititle = "Lyla Loves - Fashion Necklaces for Women";
 
 
 
