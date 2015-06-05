@@ -1,7 +1,6 @@
 var adminurl = 'http://www.lylaloves.co.uk/admin/index.php/json/';
 var adminurl2 = 'http://www.lylaloves.co.uk/admin/index.php/json/';
 
-
 function changeallothercurrency() {
     $amount = $(".currencytobe");
     $sym = $(".currencysym");
@@ -349,6 +348,18 @@ service.factory('MainJson', function ($http, TemplateService) {
         },
         getjustinproducts: function () {
             return $http.get(adminurl + 'getjustinproducts', {
+                params: {
+
+                    color: filters.color,
+                    price1: filters.pricemin,
+                    price2: filters.pricemax,
+                }
+            }, {
+                withCredentials: true
+            });
+        },
+        getsaleproducts: function () {
+            return $http.get(adminurl + 'getsaleproducts', {
                 params: {
 
                     color: filters.color,

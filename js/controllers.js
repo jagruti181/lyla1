@@ -683,7 +683,7 @@ phonecatControllers.controller('wholesaler',
 
 
 phonecatControllers.controller('profile',
-    function ($scope, TemplateService, MainJson, $rootScope, $location,ngDialog) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location, ngDialog, $timeout) {
 
 
         //$scope.firstloadclass = TemplateService.firstload;
@@ -695,17 +695,15 @@ phonecatControllers.controller('profile',
         TemplateService.content = "views/profile.html";
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
-    
-    
-       $scope.init = function () {
-        
-                    ngDialog.open({
-                        template: 'views/profile-pop.html',
-                        controller: 'slider'
-                        
-                    });
-                };
-    
+
+        $scope.popupmsg = $.jStorage.get("popupmsg");
+        $scope.init = function () {
+            ngDialog.open({
+                template: 'views/profile-pop.html',
+                controller: 'profile'
+            });
+        };
+
         //authenticate
         var authenticate = function (data, status) {
             if (data != "false") {
@@ -721,41 +719,145 @@ phonecatControllers.controller('profile',
         addevent("ButtonTap", "Profile Button");
 
         $scope.personal = {};
+        $scope.pwd = {};
+        $scope.billinfo = {};
+        $scope.mismatch = 0;
 
         var personalInfoSucccess = function (data, status) {
             console.log(data);
+            if (data == "1") {
+                $.jStorage.set("popupmsg", "Your personal information is updated");
+                $scope.init();
+            }
         }
         $scope.savePersonalInfo = function (personalinfo) {
             console.log(personalinfo);
-            MainJson.savePersonalInfo(personalinfo).success(personalInfoSucccess)
+            $scope.allvalidation1 = [{
+                field: $scope.personal.firstname,
+                validation: ""
+            }, {
+                field: $scope.personal.lastname,
+                validation: ""
+            }, {
+                field: $scope.personal.email,
+                validation: ""
+            }];
+            var check = formvalidation1();
+            if (check) {
+                MainJson.savePersonalInfo(personalinfo).success(personalInfoSucccess)
+            }
         }
 
         var changePasswordSuccess = function (data, status) {
             console.log(data);
+            if (data == "1") {
+                $.jStorage.set("popupmsg", "Your password is changed");
+                $scope.init();
+            }
         }
         $scope.changePassword = function (pwd) {
             console.log(pwd);
-            if (pwd.password == pwd.confirmpassword) {
-                MainJson.changepassword(pwd).success(changePasswordSuccess)
-            } else {
-                console.log("Wrong Password");
+            $scope.allvalidation2 = [{
+                field: $scope.pwd.password,
+                validation: ""
+            }, {
+                field: $scope.pwd.confirmpassword,
+                validation: ""
+            }];
+            var check = formvalidation2();
+            if (check) {
+                if (pwd.password == pwd.confirmpassword) {
+                    MainJson.changepassword(pwd).success(changePasswordSuccess)
+                } else {
+                    $scope.mismatch = 1;
+                    console.log("Wrong Password");
+                }
             }
         }
 
         var changeBillingInfoSuccess = function (data, status) {
             console.log(data);
+            if (data == "1") {
+                $.jStorage.set("popupmsg", "Your billing information is changed");
+                $scope.init();
+            }
         }
         $scope.changeBillingInfo = function (billinfo) {
             console.log(billinfo);
-            MainJson.changebillinginfo(billinfo).success(changeBillingInfoSuccess)
+            $scope.allvalidation3 = [{
+                field: $scope.billinfo.address,
+                validation: ""
+            }, {
+                field: $scope.billinfo.city,
+                validation: ""
+            }, {
+                field: $scope.billinfo.state,
+                validation: ""
+            }, {
+                field: $scope.billinfo.zip,
+                validation: ""
+            }, {
+                field: $scope.billinfo.country,
+                validation: ""
+            }, {
+                field: $scope.billinfo.telephone,
+                validation: ""
+            }];
+            var check = formvalidation3();
+            if (check) {
+                MainJson.changebillinginfo(billinfo).success(changeBillingInfoSuccess)
+            }
         }
 
         var getOrdersSuccess = function (data, status) {
             console.log("User Orders");
             console.log(data);
-            $scope.cart=data;
+            $scope.cart = data;
         }
         MainJson.getuserorders().success(getOrdersSuccess)
+
+        $timeout(function () {
+            ngDialog.close();
+        }, 3000);
+
+        function formvalidation1() {
+            var isvalid2 = true;
+            for (var i = 0; i < $scope.allvalidation1.length; i++) {
+                console.log("checking");
+                console.log($scope.allvalidation1[i].field);
+                if ($scope.allvalidation1[i].field == "" || !$scope.allvalidation1[i].field) {
+                    $scope.allvalidation1[i].validation = "ng-dirty";
+                    isvalid2 = false;
+                }
+            }
+            return isvalid2;
+        }
+
+        function formvalidation2() {
+            var isvalid2 = true;
+            for (var i = 0; i < $scope.allvalidation2.length; i++) {
+                console.log("checking");
+                console.log($scope.allvalidation2[i].field);
+                if ($scope.allvalidation2[i].field == "" || !$scope.allvalidation2[i].field) {
+                    $scope.allvalidation2[i].validation = "ng-dirty";
+                    isvalid2 = false;
+                }
+            }
+            return isvalid2;
+        }
+
+        function formvalidation3() {
+            var isvalid2 = true;
+            for (var i = 0; i < $scope.allvalidation3.length; i++) {
+                console.log("checking");
+                console.log($scope.allvalidation3[i].field);
+                if ($scope.allvalidation3[i].field == "" || !$scope.allvalidation3[i].field) {
+                    $scope.allvalidation3[i].validation = "ng-dirty";
+                    isvalid2 = false;
+                }
+            }
+            return isvalid2;
+        }
 
     });
 
@@ -2156,7 +2258,8 @@ phonecatControllers.controller('sale',
             console.log(data.product);
             $scope.addMoreItems();
         };
-        MainJson.getjustinproducts().success(categorysuccess);
+        MainJson.getsaleproducts().success(categorysuccess);
+        //        MainJson.getjustinproducts().success(categorysuccess);
 
 
 

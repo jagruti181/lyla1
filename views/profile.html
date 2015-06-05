@@ -25,11 +25,11 @@
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="text" placeholder="First Name" class="form-control" ng-model="personal.firstname" required>
+                                    <input type="text" placeholder="First Name" class="form-control" ng-model="personal.firstname" ng-class="allvalidation1[0].validation" required>
                                 </div>
                                 <div class="col-xs-4">
 
-                                    <input type="text" placeholder="Last Name" class="form-control" ng-model="personal.lastname" required>
+                                    <input type="text" placeholder="Last Name" class="form-control" ng-model="personal.lastname" ng-class="allvalidation1[1].validation" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -39,12 +39,12 @@
                                 </div>
                                 <div class="col-xs-4">
 
-                                    <input type="email" placeholder="Email" class="form-control" ng-model="personal.email" required>
+                                    <input type="email" placeholder="Email" class="form-control" ng-model="personal.email" ng-class="allvalidation1[2].validation" required>
                                 </div>
                             </div>
 
 
-                            <button href class="btn btn-default pull-right" ng-click="savePersonalInfo(personal);init();">Save</button>
+                            <button href class="btn btn-default pull-right" ng-click="savePersonalInfo(personal);">Save</button>
                             <div class="clearfix"></div>
 
                         </div>
@@ -64,14 +64,14 @@
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="password" placeholder="New Password" class="form-control" ng-model="pwd.password" required>
+                                    <input type="password" placeholder="New Password" class="form-control" ng-model="pwd.password" ng-class="allvalidation2[0].validation" required>
                                 </div>
                                 <div class="col-xs-4">
 
-                                    <input type="password" placeholder="Re-enter Password" class="form-control" ng-model="pwd.confirmpassword" required>
+                                    <input type="password" placeholder="Re-enter Password" class="form-control" ng-model="pwd.confirmpassword" ng-class="allvalidation2[1].validation" required>
                                 </div>
                             </div>
-
+                            <span style="color:red;padding-left:15px;" ng-if="mismatch==1">Passwords doesn't match</span>
                             <button href class="btn btn-default pull-right" ng-click="changePassword(pwd);">Save</button>
                             <div class="clearfix"></div>
 
@@ -95,35 +95,35 @@
 
                             <div class="row">
                                 <div class="col-xs-8">
-                                    <textarea name="" id="" class="form-control" placeholder="Address" ng-model="billinfo.address"></textarea>
+                                    <textarea name="" id="" class="form-control" placeholder="Address" ng-model="billinfo.address" ng-class="allvalidation3[0].validation" required></textarea>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="text" placeholder="City" class="form-control" ng-model="billinfo.city" required>
+                                    <input type="text" placeholder="City" class="form-control" ng-model="billinfo.city" ng-class="allvalidation3[1].validation" required>
 
                                 </div>
                                 <div class="col-xs-4">
 
-                                    <input type="text" placeholder="State/Province" class="form-control" ng-model="billinfo.state">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <input type="text" placeholder="Zip/Postal Code" class="form-control" ng-model="billinfo.zip" required>
-
-                                </div>
-                                <div class="col-xs-4">
-
-                                    <input type="text" placeholder="Country" class="form-control" ng-model="billinfo.country" required>
+                                    <input type="text" placeholder="State/Province" class="form-control" ng-model="billinfo.state" ng-class="allvalidation3[2].validation" required>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="tel" placeholder="Telephone" class="form-control" ng-model="billinfo.telephone" required>
+                                    <input type="text" placeholder="Zip/Postal Code" class="form-control" ng-model="billinfo.zip" ng-class="allvalidation3[3].validation" required>
+
+                                </div>
+                                <div class="col-xs-4">
+
+                                    <input type="text" placeholder="Country" class="form-control" ng-model="billinfo.country" ng-class="allvalidation3[4].validation" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <input type="tel" placeholder="Telephone" class="form-control" ng-model="billinfo.telephone" ng-class="allvalidation3[5].validation" required>
 
                                 </div>
                                 <div class="col-xs-4">
