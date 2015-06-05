@@ -683,7 +683,7 @@ phonecatControllers.controller('wholesaler',
 
 
 phonecatControllers.controller('profile',
-    function ($scope, TemplateService, MainJson, $rootScope, $location) {
+    function ($scope, TemplateService, MainJson, $rootScope, $location,ngDialog) {
 
 
         //$scope.firstloadclass = TemplateService.firstload;
@@ -695,6 +695,17 @@ phonecatControllers.controller('profile',
         TemplateService.content = "views/profile.html";
         TemplateService.slider = "";
         $scope.loginlogouttext = "Login";
+    
+    
+       $scope.init = function () {
+        
+                    ngDialog.open({
+                        template: 'views/profile-pop.html',
+                        controller: 'slider'
+                        
+                    });
+                };
+    
         //authenticate
         var authenticate = function (data, status) {
             if (data != "false") {

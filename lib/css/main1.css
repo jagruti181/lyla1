@@ -1087,10 +1087,11 @@ button.btnss-primary {
     text-align: center;
 }
 .cont-set {
-    padding-top: 12px;
+    padding-top: 78px;
+    OUTLINE: 0;
 }
 .cont-set h1 {
-    line-height: 48px;
+    line-height: 62px;
     font-size: 50px;
     color: rgb(131, 219, 219);
 }
