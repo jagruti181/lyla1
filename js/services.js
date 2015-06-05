@@ -518,14 +518,29 @@ service.factory('MainJson', function ($http, TemplateService) {
             return returnrecent;
         },
         savePersonalInfo: function (personal) {
-            return $http.post(adminurl + 'changepersonelinfo?personal='+personal, {}, {
+            return $http.post(adminurl + 'changepersonelinfo?personal=' + personal, {}, {
                 withCredentials: true
             });
             //return cart;
         },
-
-
-
+        changepassword: function (pwd) {
+            return $http.post(adminurl + 'changepassword?password=' + pwd.password, {}, {
+                withCredentials: true
+            });
+            //return cart;
+        },
+        changebillinginfo: function (billinfo) {
+            return $http.post(adminurl + 'changebillinginfo?billinginfo=' + billinfo, {}, {
+                withCredentials: true
+            });
+            //return cart;
+        },
+        getuserorders: function (billinfo) {
+            return $http.post(adminurl + 'getuserorders', {}, {
+                withCredentials: true
+            });
+            //return cart;
+        },
 
 
 

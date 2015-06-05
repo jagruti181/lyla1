@@ -719,6 +719,33 @@ phonecatControllers.controller('profile',
             MainJson.savePersonalInfo(personalinfo).success(personalInfoSucccess)
         }
 
+        var changePasswordSuccess = function (data, status) {
+            console.log(data);
+        }
+        $scope.changePassword = function (pwd) {
+            console.log(pwd);
+            if (pwd.password == pwd.confirmpassword) {
+                MainJson.changepassword(pwd).success(changePasswordSuccess)
+            } else {
+                console.log("Wrong Password");
+            }
+        }
+
+        var changeBillingInfoSuccess = function (data, status) {
+            console.log(data);
+        }
+        $scope.changeBillingInfo = function (billinfo) {
+            console.log(billinfo);
+            MainJson.changebillinginfo(billinfo).success(changeBillingInfoSuccess)
+        }
+
+        var getOrdersSuccess = function (data, status) {
+            console.log("User Orders");
+            console.log(data);
+            $scope.cart=data;
+        }
+        MainJson.getuserorders().success(getOrdersSuccess)
+
     });
 
 phonecatControllers.controller('lylaloves',
