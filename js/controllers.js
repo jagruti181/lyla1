@@ -723,6 +723,22 @@ phonecatControllers.controller('profile',
         $scope.billinfo = {};
         $scope.mismatch = 0;
 
+        var getUserSuccess = function (data, status) {
+            console.log(data);
+            $scope.personal.firstname = data.firstname;
+            $scope.personal.lastname = data.lastname;
+            $scope.personal.company = data.companyname;
+            $scope.personal.email = data.email;
+
+            $scope.billinfo.address = data.billingaddress;
+            $scope.billinfo.city = data.billingcity;
+            $scope.billinfo.state = data.billingstate;
+            $scope.billinfo.zip = data.pincode;
+            $scope.billinfo.telephone = data.phone;
+            $scope.billinfo.fax = data.fax;
+        };
+        MainJson.getuserdetails().success(getUserSuccess);
+
         var personalInfoSucccess = function (data, status) {
             console.log(data);
             if (data == "1") {
@@ -767,6 +783,7 @@ phonecatControllers.controller('profile',
             var check = formvalidation2();
             if (check) {
                 if (pwd.password == pwd.confirmpassword) {
+                    $scope.mismatch = 0;
                     MainJson.changepassword(pwd).success(changePasswordSuccess)
                 } else {
                     $scope.mismatch = 1;

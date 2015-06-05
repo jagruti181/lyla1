@@ -529,19 +529,34 @@ service.factory('MainJson', function ($http, TemplateService) {
             return returnrecent;
         },
         savePersonalInfo: function (personal) {
-            return $http.post(adminurl + 'changepersonelinfo?personal=' + personal, {}, {
+            return $http.post(adminurl + 'changepersonelinfo', {
+                firstname: personal.firstname,
+                lastname: personal.lastname,
+                company: personal.company,
+                email: personal.email,
+            }, {
                 withCredentials: true
             });
             //return cart;
         },
         changepassword: function (pwd) {
-            return $http.post(adminurl + 'changepassword?password=' + pwd.password, {}, {
+            return $http.post(adminurl + 'changepassword', {
+                password: pwd.password
+            }, {
                 withCredentials: true
             });
             //return cart;
         },
         changebillinginfo: function (billinfo) {
-            return $http.post(adminurl + 'changebillinginfo?billinginfo=' + billinfo, {}, {
+            return $http.post(adminurl + 'changebillinginfo', {
+                address: billinfo.address,
+                city: billinfo.city,
+                state: billinfo.state,
+                zip: billinfo.zip,
+                country: billinfo.country,
+                telephone: billinfo.telephone,
+                fax: billinfo.fax
+            }, {
                 withCredentials: true
             });
             //return cart;
@@ -553,7 +568,12 @@ service.factory('MainJson', function ($http, TemplateService) {
             //return cart;
         },
 
-
+        getuserdetails: function () {
+            return $http.post(adminurl + 'getuserdetails', {}, {
+                withCredentials: true
+            });
+            //return cart;
+        },
 
 
 

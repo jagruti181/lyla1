@@ -396,6 +396,7 @@ class Json extends CI_Controller {
     }
     function changepersonelinfo() {
         $order = json_decode(file_get_contents('php://input'), true);
+        print_r($order);
         //print_r($order);
         $firstname = $order['firstname'];
         $lastname = $order['lastname'];
@@ -417,7 +418,7 @@ class Json extends CI_Controller {
     function changebillinginfo() {
         $order = json_decode(file_get_contents('php://input'), true);
         //print_r($order);
-        $password = $order['address'];
+        $address = $order['address'];
         $city = $order['city'];
         $state = $order['state'];
         $zip = $order['zip'];
