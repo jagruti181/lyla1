@@ -25,26 +25,26 @@
 
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="text" placeholder="First Name" class="form-control" required>
+                                    <input type="text" placeholder="First Name" class="form-control" ng-model="personal.firstname" required>
                                 </div>
                                 <div class="col-xs-4">
 
-                                    <input type="text" placeholder="Last Name" class="form-control" required>
+                                    <input type="text" placeholder="Last Name" class="form-control" ng-model="personal.lastname" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <input type="text" placeholder="Company" class="form-control">
+                                    <input type="text" placeholder="Company" class="form-control" ng-model="personal.company">
 
                                 </div>
                                 <div class="col-xs-4">
 
-                                    <input type="email" placeholder="Email" class="form-control" required>
+                                    <input type="email" placeholder="Email" class="form-control" ng-model="personal.email" required> 
                                 </div>
                             </div>
 
 
-                            <button href class="btn btn-default pull-right">Save</button>
+                            <button href class="btn btn-default pull-right" ng-click="savePersonalInfo(personal);">Save</button>
                             <div class="clearfix"></div>
 
                         </div>
