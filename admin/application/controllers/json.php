@@ -451,5 +451,14 @@ class Json extends CI_Controller {
         }
     }
     
+    function getsaleproducts() {
+        $color = $this->input->get_post("color");
+        $price1 = $this->input->get_post("price1");
+        $price2 = $this->input->get_post("price2");
+        $category = $this->input->get_post("category");
+        $category=str_replace("-"," ",$category);
+        $data["message"] = $this->product_model->getsaleproducts($category, $color, $price1, $price2);
+        $this->load->view("json", $data);
+    }
 }
 ?>

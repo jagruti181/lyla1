@@ -191,6 +191,13 @@ echo $accesslevel;
                           <span class="arrow"></span>
                       </a>
                   </li>
+                  <li>
+                      <a href="<?php echo site_url('site/viewsale'); ?>" class="">
+                          <i class="icon-gbp"></i>
+                          <span>Sale</span>
+                          <span class="arrow"></span>
+                      </a>
+                  </li>
 				   <li>
                       <a href="<?php echo site_url('site/viewpaymentgateway'); ?>" class="">
                           <i class="icon-money"></i>

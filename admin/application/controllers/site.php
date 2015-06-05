@@ -3687,5 +3687,119 @@ class Site extends CI_Controller
 		$data['title']='View config';
 		$this->load->view('template',$data);
 	}
+    
+    
+   //sale
+	
+	function viewsale()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$data['table']=$this->sale_model->viewsale();
+		$data['page']='viewsale';
+		$data['title']='View sale';
+		$this->load->view('template',$data);
+	}
+    public function createsale()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$data[ 'status' ] =$this->sale_model->getstatusdropdown();
+		$data['product']=$this->product_model->getproductdropdown();
+		$data[ 'page' ] = 'createsale';
+		$data[ 'title' ] = 'Create sale';
+		$this->load->view( 'template', $data );	
+	}
+	function createsalesubmit()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$this->form_validation->set_rules('status','status','trim|');
+		$this->form_validation->set_rules('product','product','trim|required');
+		$this->form_validation->set_rules('order','order','trim|');
+		if($this->form_validation->run() == FALSE)	
+		{
+			$data['alerterror'] = validation_errors();
+			$data[ 'status' ] =$this->sale_model->getstatusdropdown();
+            $data['product']=$this->product_model->getproductdropdown();
+			$data[ 'page' ] = 'createsale';
+			$data[ 'title' ] = 'Create sale';
+			$this->load->view('template',$data);
+		}
+		else
+		{
+			$status=$this->input->post('status');
+			$order=$this->input->post('order');
+			$product=$this->input->post('product');
+            
+			if($this->sale_model->createsale($status,$order,$product)==0)
+			$data['alerterror']="New sale could not be created.";
+			else
+			$data['alertsuccess']="sale  created Successfully.";
+			$data['table']=$this->sale_model->viewsale();
+			$data['redirect']="site/viewsale";
+			$this->load->view("redirect",$data);
+		}
+	}
+	function editsale()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$data['before']=$this->sale_model->beforeeditsale($this->input->get('id'));
+		$data[ 'status' ] =$this->sale_model->getstatusdropdown();
+		$data['product']=$this->product_model->getproductdropdown();
+		$data['page']='editsale';
+		$data['title']='Edit sale';
+		$this->load->view('template',$data);
+	}
+	function editsalesubmit()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$this->form_validation->set_rules('product','product','trim|required');
+		$this->form_validation->set_rules('status','status','trim|');
+		$this->form_validation->set_rules('order','order','trim|');
+		if($this->form_validation->run() == FALSE)	
+		{
+			$data['alerterror'] = validation_errors();
+			$data[ 'status' ] =$this->sale_model->getstatusdropdown();
+            $data['product']=$this->product_model->getproductdropdown();
+			$data['before']=$this->sale_model->beforeeditsale($this->input->post('id'));
+			$data['page']='editsale';
+			$data['title']='Edit sale';
+			$this->load->view('template',$data);
+		}
+		else
+		{
+			$id=$this->input->post('id');
+			$product=$this->input->post('product');
+			$status=$this->input->post('status');
+			$order=$this->input->post('order');
+            
+			if($this->sale_model->editsale($id,$status,$order,$product)==0)
+			$data['alerterror']="sale Editing was unsuccesful";
+			else
+			$data['alertsuccess']="sale edited Successfully.";
+			$data['table']=$this->sale_model->viewsale();
+			$data['redirect']="site/viewsale";
+			//$data['other']="template=$template";
+			$this->load->view("redirect",$data);
+			/*$data['page']='viewusers';
+			$data['title']='View Users';
+			$this->load->view('template',$data);*/
+		}
+	}
+	function deletesale()
+	{
+		$access = array("5","1");
+		$this->checkaccess($access);
+		$this->sale_model->deletesale($this->input->get('id'));
+		$data['table']=$this->sale_model->viewsale();
+		$data['alertsuccess']="sale Deleted Successfully";
+		$data['page']='viewsale';
+		$data['title']='View sale';
+		$this->load->view('template',$data);
+	}
+    
 }
 ?>
