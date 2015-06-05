@@ -173,7 +173,7 @@
                             </a>
 
                             <a class="fadeInRight wow topicon" ng-class="firstloadclass wow" ng-click="toprofile()">
-                                <img src="img/maill.png">Newsletter
+                                <img src="img/maill.png">My account
                             </a>
 
                             <!--
