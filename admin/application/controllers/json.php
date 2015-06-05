@@ -460,5 +460,19 @@ class Json extends CI_Controller {
         $data["message"] = $this->product_model->getsaleproducts($category, $color, $price1, $price2);
         $this->load->view("json", $data);
     }
+    public function getuserdetails()
+    {
+        $id=$this->session->userdata('id');
+        if($id)
+        {
+            $data["message"] = $this->user_model->getuserdetails($id);
+            $this->load->view("json", $data);
+        }
+        else
+        {
+            $data["message"] = "Please Login!!!";
+            $this->load->view("json", $data);
+        }
+    }
 }
 ?>

@@ -577,7 +577,11 @@ class User_model extends CI_Model
             return $newdata;
 
     }
-
+    function getuserdetails($id){
+        $query=$this->db->query("SELECT * FROM `user` WHERE `user`.`id`='$id'");
+        $query=$query->row(); 
+        return $query;
+    }
 
 }
 ?>
