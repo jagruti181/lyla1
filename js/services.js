@@ -529,6 +529,7 @@ service.factory('MainJson', function ($http, TemplateService) {
             return returnrecent;
         },
         savePersonalInfo: function (personal) {
+            console.log(personal);
             return $http.post(adminurl + 'changepersonelinfo', {
                 firstname: personal.firstname,
                 lastname: personal.lastname,
@@ -548,6 +549,7 @@ service.factory('MainJson', function ($http, TemplateService) {
             //return cart;
         },
         changebillinginfo: function (billinfo) {
+            console.log(billinfo);
             return $http.post(adminurl + 'changebillinginfo', {
                 address: billinfo.address,
                 city: billinfo.city,
