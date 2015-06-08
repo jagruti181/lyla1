@@ -578,7 +578,7 @@ class User_model extends CI_Model
 
     }
     function getuserdetails($id){
-        $query=$this->db->query("SELECT * FROM `user` WHERE `user`.`id`='$id'");
+        $query=$this->db->query("SELECT `id`, `name`, `firstname`, `lastname`, `email`, `phone`, `billingaddress`, `billingcity`, `billingstate`, `billingcountry`, `shippingaddress`, `shippingcity`, `shippingcountry`, `shippingstate`, `shippingpincode`, `companyname`, `country`, `fax`, `image`, `dob`, `address`, `city`, `state`, `pincode`, `username` FROM `user` WHERE `id`='$id'");
         $query=$query->row(); 
         return $query;
     }
