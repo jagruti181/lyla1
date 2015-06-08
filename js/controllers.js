@@ -733,6 +733,7 @@ phonecatControllers.controller('profile',
             $scope.billinfo.address = data.billingaddress;
             $scope.billinfo.city = data.billingcity;
             $scope.billinfo.state = data.billingstate;
+            $scope.billinfo.country = data.billingcountry;
             $scope.billinfo.zip = data.pincode;
             $scope.billinfo.telephone = data.phone;
             $scope.billinfo.fax = data.fax;
