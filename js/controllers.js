@@ -744,6 +744,7 @@ phonecatControllers.controller('profile',
             if (data == "1") {
                 $.jStorage.set("popupmsg", "Your personal information is updated");
                 $scope.init();
+                MainJson.getuserdetails().success(getUserSuccess);
             }
         }
         $scope.savePersonalInfo = function (personalinfo) {
@@ -769,6 +770,7 @@ phonecatControllers.controller('profile',
             if (data == "1") {
                 $.jStorage.set("popupmsg", "Your password is changed");
                 $scope.init();
+                MainJson.getuserdetails().success(getUserSuccess);
             }
         }
         $scope.changePassword = function (pwd) {
@@ -797,6 +799,7 @@ phonecatControllers.controller('profile',
             if (data == "1") {
                 $.jStorage.set("popupmsg", "Your billing information is changed");
                 $scope.init();
+                MainJson.getuserdetails().success(getUserSuccess);
             }
         }
         $scope.changeBillingInfo = function (billinfo) {
