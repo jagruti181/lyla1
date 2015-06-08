@@ -1247,7 +1247,6 @@ th {
     background: rgb(216, 242, 239);
     padding: 10px 0px 4px;
 }
-
 .wholesale-bn.text-center h4 {
     font-size: 44px;
     font-family: "CheddarJack";
@@ -1260,8 +1259,14 @@ th {
     color: #03e1e4;
 }
 .wholesale-cnt {
-    margin-bottom: 176px;
+    margin-bottom: 50px;
 }
-.wholesale-cnt {
-    margin-bottom: 176px;
+.banner h1 {
+    color: #96f3f3;
+    font-weight: 600;
+    text-align: center;
+}
+.col-md-12.banner1 {
+    border: 1px solid rgb(150, 243, 243);
+    margin-bottom: 50px;
 }
