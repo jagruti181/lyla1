@@ -341,6 +341,10 @@ class Order_model extends CI_Model
 	{
 		$query=$this->db->query("DELETE FROM `orderitems` WHERE `id`='$id'");
 	}
+    function deleteorder($id)
+	{
+		$query=$this->db->query("DELETE FROM `order` WHERE `id`='$id'");
+	}
 	public function getuser()
 	{
 		$query=$this->db->query("SELECT * FROM `user` WHERE `accesslevel`=2 ORDER BY `name` ASC" )->result();

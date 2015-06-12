@@ -41,6 +41,12 @@ handlers:
 - url: /uploadsuccess/(.+)
   script: uploadsuccess/index.php  
 
+- url: /servepublic
+  script: servepublic/index.php
+
+- url: /servepublic/(.+)
+  script: servepublic/index.php 
+  
 - url: /.*
   script: index.php  
 
@@ -59,7 +65,8 @@ handlers:
 - url: /googleeb491dfb6fb22923.html
   static_files: googleeb491dfb6fb22923.html
   upload: googleeb491dfb6fb22923.html
-  
+   
+
 
 
 
