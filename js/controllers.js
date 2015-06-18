@@ -25,7 +25,7 @@ phonecatControllers.controller('home',
         $scope.hititle = "Jewellery London - Picks of the Week";
 
         addanalytics("Home Screen");
-        addevent("ButtonTap", " Login");
+        addevent("ButtonTap", "Login");
         //$scope.init = function () {
         //        ngDialog.open({ template: 'popup.html' });
         //    };
