@@ -18,22 +18,22 @@
     </script>
     <script>
         var isMobile = {
-            Android: function() {
+            Android: function () {
                 return navigator.userAgent.match(/Android/i);
             },
-            BlackBerry: function() {
+            BlackBerry: function () {
                 return navigator.userAgent.match(/BlackBerry/i);
             },
-            iOS: function() {
+            iOS: function () {
                 return navigator.userAgent.match(/iPhone|iPad|iPod/i);
             },
-            Opera: function() {
+            Opera: function () {
                 return navigator.userAgent.match(/Opera Mini/i);
             },
-            Windows: function() {
+            Windows: function () {
                 return navigator.userAgent.match(/IEMobile/i);
             },
-            any: function() {
+            any: function () {
                 return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
             }
         };
@@ -47,7 +47,7 @@
         _clt["custId"] = "{{email}}";
         _clt["siteId"] = "40606bc583";
         _clt["ref"] = encodeURIComponent(document.referrer);
-        (function() {
+        (function () {
             var cl = document.createElement('script');
             cl.type = 'text/javascript';
             cl.async = true;
@@ -107,19 +107,19 @@
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="lib/js/ngDialog.js"></script>
     <script>
-        (function(i, s, o, g, r, a, m) {
+        (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
+            i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
             }, i[r].l = 1 * new Date();
             a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
+                m = s.getElementsByTagName(o)[0];
             a.async = 1;
             a.src = g;
             m.parentNode.insertBefore(a, m)
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-54886004-1', 'auto');
+        ga('create', 'UA-XXXX-Y', 'auto');
         ga('send', 'pageview');
     </script>
 
@@ -142,10 +142,10 @@
 <body>
     <header>
         <div style="">
-            <div class="top-bar barheight" >
+            <div class="top-bar barheight">
 
                 <div class="row">
-                    <div class="col-xs-2" >
+                    <div class="col-xs-2">
                         <div class="input-group headsearch " ng-controller="search">
                             <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
                             <input type="text" class="form-control inputbox" ng-model="searchpro" placeholder="Search for an item" ng-change="search(searchpro)">
@@ -153,14 +153,14 @@
 
 
                     </div>
-                    <div class="col-xs-7 padder" ng-controller="newsletter" >
+                    <div class="col-xs-7 padder" ng-controller="newsletter">
                         <span>SHIPPING WORLDWIDE</span>
                         <span>FREE  DOMESTIC SHIPPING ON ORDERS OVER <span class="currencysym">£</span><span class="currencytobe">15</span> </span>
                         <span>FREE  INTERNATIONAL SHIPPING ON ORDERS OVER <span class="currencysym">£</span><span class="currencytobe">20</span> </span>
 
                     </div>
 
-                    <div class="col-xs-3" >
+                    <div class="col-xs-3">
 
 
                         <div class="set-head pull-right" style="margin-right:15px;" ng-controller="badge">
@@ -222,10 +222,10 @@
     <script>
         var issearch = false;
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             changeallothercurrency();
-            $(".headsearch .icon").click(function() {
+            $(".headsearch .icon").click(function () {
 
                 if (issearch) {
                     issearch = false;
@@ -234,7 +234,7 @@
 
                 } else {
                     issearch = true;
-                    setTimeout(function() {
+                    setTimeout(function () {
                         console.log("Focus will come");
                         $(".headsearch .inputbox").focus();
                     }, 100);
@@ -246,7 +246,7 @@
     </script>
 
     <script type="text/javascript">
-        (function(d, t) {
+        (function (d, t) {
             if (window.location.hash != '#gleam' && ('' + document.cookie).match(/(^|;)\s*GleamaaA2s=X($|;)/)) {
                 return;
             }
@@ -257,13 +257,13 @@
         }(document, "script"));
     </script>
     <script>
-        window.addEventListener("beforeunload", function(e) {
+        window.addEventListener("beforeunload", function (e) {
             alert("See You");
             return false;
         });
     </script>
     <script type="text/javascript">
-        (function(d, t) {
+        (function (d, t) {
             if (window.location.hash != '#gleam' && ('' + document.cookie).match(/(^|;)\s*GleamV37Z7=X($|;)/)) {
                 return;
             }

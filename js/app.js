@@ -1,10 +1,16 @@
-
-var addanalytics = function() {
-    
+var addanalytics = function(title) {
+    //addanalytics("Xoxo Screen");
+    if (ga) {
+        ga('send', 'pageview', {
+            'title': 'title'
+        });
+    }
 };
 
-var addevent = function() {
-    
+var addevent = function(category, title) {
+    if (ga) {
+        ga('send', 'event', category, title, title);
+    }
 };
 
 // JavaScript Document
@@ -88,7 +94,7 @@ firstapp.config(
             templateUrl: 'views/template.html',
             controller: 'JustInCtrl'
         }).
-         when('/sale', {
+        when('/sale', {
             templateUrl: 'views/template.html',
             controller: 'sale'
         }).
