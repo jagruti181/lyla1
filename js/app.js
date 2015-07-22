@@ -1,4 +1,4 @@
-var addanalytics = function(title) {
+var addanalytics = function (title) {
     //addanalytics("Xoxo Screen");
     if (ga) {
         ga('send', 'pageview', {
@@ -7,10 +7,9 @@ var addanalytics = function(title) {
     }
 };
 
-var addevent = function(category, title) {
+var addevent = function (category, title) {
     if (ga) {
-        ga('send', 'event', category, title, title);
-    }
+    ga('send', 'event', category, title, title);
 };
 
 // JavaScript Document
@@ -28,7 +27,7 @@ var firstapp = angular.module('firstapp', [
 ]);
 
 firstapp.config(
-    function($routeProvider, $locationProvider) {
+    function ($routeProvider, $locationProvider) {
         $routeProvider.
         when('/', {
             templateUrl: 'views/template.html',
@@ -142,20 +141,20 @@ firstapp.config(
 
     });
 
-firstapp.filter('imagepath', function() {
-    return function(input) {
+firstapp.filter('imagepath', function () {
+    return function (input) {
         return "http://www.lylaloves.co.uk/showimage?size=300&image=" + input;
     };
 });
-firstapp.filter('imagepathbig', function() {
-    return function(input) {
+firstapp.filter('imagepathbig', function () {
+    return function (input) {
         return "http://www.lylaloves.co.uk/showimage?size=800&image=" + input;
 
     };
 });
 
-firstapp.filter('convertprice', function() {
-    return function(input) {
+firstapp.filter('convertprice', function () {
+    return function (input) {
 
         var price = parseFloat(input);
         if (price < 0) {
@@ -224,7 +223,7 @@ function CarouselDemoCtrl($scope) {
 }
 
 function ScrollCtrl($scope, $location, $anchorScroll) {
-    $scope.gotopropertydetails = function() {
+    $scope.gotopropertydetails = function () {
         // set the location.hash to the id of
         // the element you wish to scroll to.
         $location.hash('property-details');
@@ -232,7 +231,7 @@ function ScrollCtrl($scope, $location, $anchorScroll) {
         // call $anchorScroll()
         $anchorScroll();
     };
-    $scope.gotoflats = function() {
+    $scope.gotoflats = function () {
         // set the location.hash to the id of
         // the element you wish to scroll to.
         $location.hash('flat-details');
@@ -240,7 +239,7 @@ function ScrollCtrl($scope, $location, $anchorScroll) {
         // call $anchorScroll()
         $anchorScroll();
     };
-    $scope.gotoflats = function() {
+    $scope.gotoflats = function () {
         // set the location.hash to the id of
         // the element you wish to scroll to.
         $location.hash('flat-details');
@@ -248,7 +247,7 @@ function ScrollCtrl($scope, $location, $anchorScroll) {
         // call $anchorScroll()
         $anchorScroll();
     };
-    $scope.gotolocation = function() {
+    $scope.gotolocation = function () {
         // set the location.hash to the id of
         // the element you wish to scroll to.
         $location.hash('location-details');
@@ -256,7 +255,7 @@ function ScrollCtrl($scope, $location, $anchorScroll) {
         // call $anchorScroll()
         $anchorScroll();
     };
-    $scope.gotoamenities = function() {
+    $scope.gotoamenities = function () {
         // set the location.hash to the id of
         // the element you wish to scroll to.
         $location.hash('amenity-details');
@@ -264,7 +263,7 @@ function ScrollCtrl($scope, $location, $anchorScroll) {
         // call $anchorScroll()
         $anchorScroll();
     };
-    $scope.gotogallery = function() {
+    $scope.gotogallery = function () {
         // set the location.hash to the id of
         // the element you wish to scroll to.
         $location.hash('gallery-details');
@@ -274,14 +273,14 @@ function ScrollCtrl($scope, $location, $anchorScroll) {
     };
 }
 
-firstapp.directive('resizable', function($window) {
-    return function($scope) {
-        $scope.initializeWindowSize = function() {
+firstapp.directive('resizable', function ($window) {
+    return function ($scope) {
+        $scope.initializeWindowSize = function () {
             $scope.windowHeight = $window.innerHeight;
             return $scope.windowWidth = $window.innerWidth;
         };
         $scope.initializeWindowSize();
-        return angular.element($window).bind('resize', function() {
+        return angular.element($window).bind('resize', function () {
             $scope.initializeWindowSize();
             return $scope.$apply();
         });
@@ -300,14 +299,14 @@ firstapp.directive('ngElevateZoom', function() {
   };
 });*/
 
-firstapp.directive('ngElevateZoom', function() {
+firstapp.directive('ngElevateZoom', function () {
     return {
         restrict: 'A',
-        link: function(scope, element, attrs) {
+        link: function (scope, element, attrs) {
             console.log("Linking")
 
             //Will watch for changes on the attribute
-            attrs.$observe('zoomImage', function() {
+            attrs.$observe('zoomImage', function () {
                 linkElevateZoom();
             })
 
@@ -328,11 +327,11 @@ firstapp.directive('ngElevateZoom', function() {
     };
 });
 
-firstapp.run(function($rootScope) {
+firstapp.run(function ($rootScope) {
     $rootScope.isloaded = 0; //global variable
 });
-firstapp.directive('myRepeatDirective', function() {
-    return function(scope, element, attrs) {
+firstapp.directive('myRepeatDirective', function () {
+    return function (scope, element, attrs) {
         angular.element(element).css('color', 'blue');
         if (scope.$last) {
             new WOW().init();
@@ -345,11 +344,11 @@ firstapp.directive('myRepeatDirective', function() {
 
 firstapp.directive('thumbnail', [
 
-    function() {
+    function () {
         return {
             restrict: 'AC',
-            link: function(scope, elem, attrs) {
-                elem.bind('click', function() {
+            link: function (scope, elem, attrs) {
+                elem.bind('click', function () {
                     var src = elem.find('img').attr('src');
 
                     // call your SmoothZoom here
@@ -366,7 +365,7 @@ firstapp.directive('thumbnail', [
 
 firstapp.directive('zoom', [
 
-    function() {
+    function () {
         return {
             restrict: 'AC',
             scope: {
@@ -375,7 +374,7 @@ firstapp.directive('zoom', [
                 //  big: "=",
                 //  title: "=",
             },
-            link: function(scope, elem, attrs) {
+            link: function (scope, elem, attrs) {
                 //elem.bind('click', function() {
                 //  $(this).CloudZoom();
                 //});
@@ -407,7 +406,7 @@ firstapp.directive('zoom', [
 
 
 firstapp.directive('zoom1',
-    function($compile) {
+    function ($compile) {
         return {
             restrict: 'AC',
             scope: {
@@ -419,7 +418,7 @@ firstapp.directive('zoom1',
             //Template doesn't seem work correctly, leaves a loading message.
             //template: '<a href="{{big}}" class="cloud-zoom" rel="adjustX: 10, adjustY:-4"><img src="{{small}}"/></a>',
             //replace: true,
-            link: function(scope, element, attrs) {
+            link: function (scope, element, attrs) {
 
 
                 var str = '<a href="' + scope.big + '" class="cloud-zoom" rel="adjustX: 10, adjustY:-4">' +
@@ -436,7 +435,7 @@ firstapp.directive('zoom1',
 
 
 firstapp.directive('zoom2', ['$compile',
-    function($compile) {
+    function ($compile) {
         return {
             restrict: 'AC',
             scope: {
@@ -449,14 +448,14 @@ firstapp.directive('zoom2', ['$compile',
             //template: '<a href="{{big}}" class="cloud-zoom" rel="adjustX: 10, adjustY:-4"><img src="{{small}}"/></a>',
             //replace: true,
             controller: ["$scope", "$attrs", "$element", "$compile",
-                function($scope, $attrs, $element, $compile) {
+                function ($scope, $attrs, $element, $compile) {
 
-                    $scope.init = function() {
+                    $scope.init = function () {
 
 
 
                         //Create a watch to know when to open the PopOver Text
-                        $scope.$watch('tiny + small + big + title', function(newValue, oldValue) {
+                        $scope.$watch('tiny + small + big + title', function (newValue, oldValue) {
                             console.log("in watch.");
 
 
