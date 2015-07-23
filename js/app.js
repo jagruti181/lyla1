@@ -9,7 +9,8 @@ var addanalytics = function (title) {
 
 var addevent = function (category, title) {
     if (ga) {
-    ga('send', 'event', category, title, title);
+        ga('send', 'event', category, title, title);
+    }
 };
 
 // JavaScript Document
