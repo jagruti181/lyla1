@@ -1248,8 +1248,9 @@ phonecatControllers.controller('checkout',
             $location.path('/thankyou');
         };
         var handler = StripeCheckout.configure({
-            key: 'sk_live_edgERqcQM9uEkrd4Ro07C9ZV',
-            //key: 'pk_test_4etgLi16WbODEDr4YBFdcbP0',
+//            key: 'sk_live_edgERqcQM9uEkrd4Ro07C9ZV',
+//            key: 'sk_live_edgERqcQM9uEkrd4Ro07C9ZV',
+            key: 'pk_test_4etgLi16WbODEDr4YBFdcbP0',
             image: 'img/logo.jpg',
             currency: 'GBP',
             token: function (token) {
