@@ -486,16 +486,21 @@ class User_model extends CI_Model
 
        $content= $this->dbutil->csv_from_result($query);
         //$data = 'Some file data';
+        
+$timestamp=new DateTime();
+        $timestamp=$timestamp->format('Y-m-d_H.i.s');
+		file_put_contents("gs://lylafiles/users_$timestamp.csv", $content);
+		redirect("http://lylaloves.co.uk/servepublic?name=users_$timestamp.csv", 'refresh');
 
-        if ( ! write_file('./csvgenerated/userfile.csv', $content))
-        {
-             echo 'Unable to write the file';
-        }
-        else
-        {
-            redirect(base_url('csvgenerated/userfile.csv'), 'refresh');
-             echo 'File written!';
-        }
+//        if ( ! write_file('./csvgenerated/userfile.csv', $content))
+//        {
+//             echo 'Unable to write the file';
+//        }
+//        else
+//        {
+//            redirect(base_url('csvgenerated/userfile.csv'), 'refresh');
+//             echo 'File written!';
+//        }
 	}
  function sociallogin($user_profile,$provider)
     {
