@@ -479,7 +479,7 @@ class User_model extends CI_Model
     function exportusercsv()
 	{
 		$this->load->dbutil();
-		$query=$this->db->query("SELECT `user`.`id` as `id`,`user`.`name` as `name`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`user`.`status` as `status`,`accesslevel`.`name` as `accesslevel`,`user`.`companyname`,`user`.`country`,`country`.`name` as `countryname` FROM `user`
+		$query=$this->db->query("SELECT `user`.`id` as `id`,`user`.`name` as `name`,`user`.`email` as `email`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`user`.`status` as `status`,`accesslevel`.`name` as `accesslevel`,`user`.`companyname`,`user`.`country`,`country`.`name` as `countryname` FROM `user`
 		LEFT JOIN `accesslevel` ON `user`.`accesslevel` = `accesslevel`.`id`
 		LEFT JOIN `country` ON `user`.`country` = `country`.`id`
 		ORDER BY `user`.`id` ASC");
