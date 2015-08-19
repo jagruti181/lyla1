@@ -21,6 +21,7 @@
 					<th>Last name</th>
 					<th>Company name</th>
 					<th>Country</th>
+					<th>Login Type</th>
 					<th>Accesslevel</th>
 					<th>Orders</th>
 					<th>Status</th>
@@ -36,6 +37,7 @@
 						<td><?php echo $row->lastname; ?></td>
 						<td><?php echo $row->companyname; ?></td>
 						<td><?php echo $row->countryname; ?></td>
+						<td><?php echo $row->logintype; ?></td>
 						<td><?php echo $row->accesslevel; ?></td>
 						<td>
 						<a class="btn btn-primary btn-pos1"  href="<?php echo site_url('site/viewcustomerorders?id=').$row->id; ?>"><i class="icon-upload"></i>View</a>

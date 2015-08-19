@@ -74,7 +74,7 @@ class User_model extends CI_Model
 	}
 	function viewusers()
 	{
-		$query="SELECT `user`.`id` as `id`,`user`.`name` as `name`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`user`.`status` as `status`,`accesslevel`.`name` as `accesslevel`,`user`.`companyname`,`user`.`country`,`country`.`name` as `countryname` FROM `user` LEFT JOIN `accesslevel` ON `user`.`accesslevel` = `accesslevel`.`id` LEFT JOIN `country` ON `user`.`country` = `country`.`id` ORDER BY `user`.`id` ASC";
+		$query="SELECT `user`.`id` as `id`,`user`.`name` as `name`,`user`.`firstname` as `firstname`,`user`.`lastname` as `lastname`,`user`.`status` as `status`,`accesslevel`.`name` as `accesslevel`,`user`.`companyname`,`user`.`country`,`country`.`name` as `countryname`,`user`.`logintype` AS `logintype` FROM `user` LEFT JOIN `accesslevel` ON `user`.`accesslevel` = `accesslevel`.`id` LEFT JOIN `country` ON `user`.`country` = `country`.`id` ORDER BY `user`.`id` ASC";
 
 		$query=$this->db->query($query)->result();
 		return $query;

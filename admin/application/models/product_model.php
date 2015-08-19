@@ -411,7 +411,7 @@ class Product_model extends CI_Model
 		INNER JOIN `productcategory` ON `product`.`id`=`productcategory`.`product`
 		INNER JOIN `category` ON `category`.`id`=`productcategory`.`category`
 		LEFT JOIN `productimage` ON `productimage`.`product`=`product`.`id`
-		WHERE `product`.`visibility`=1 AND `product`.`status`=1 AND `product`.`quantity` > 0 AND `product`.`name` LIKE '%$color%' $pricefilter
+		WHERE `product`.`visibility`=1 AND `product`.`status`=1 AND `product`.`quantity` >= 0 AND `product`.`name` LIKE '%$color%' $pricefilter
         AND (   `productcategory`.`category`=$category $where )
 		GROUP BY `product`.`id`
 		ORDER BY `product`.`id` DESC")->result();
